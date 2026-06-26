@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammad Naved - AI-Assisted Builder & Prompt Engineer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FAFAFA;
+      color: #1c1917;
+      font-size: 11.5px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px 45px;
+      position: relative;
+    }
+    
+    /* HEADER */
+    .header {
+      margin-bottom: 20px;
+    }
+    .header-name {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+    .header-subtitle {
+      font-size: 10px;
+      font-weight: 500;
+      color: #78716c;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .header-info-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      font-size: 10px;
+      color: #44403c;
+    }
+    .header-links a {
+      color: #44403c;
+      text-decoration: underline;
+    }
+    .header-contact {
+      text-align: right;
+    }
+    .divider {
+      height: 1px;
+      background: #e7e5e4;
+      margin: 14px 0;
+    }
+    
+    /* SECTION */
+    .section {
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #78716c;
+      margin-bottom: 10px;
+    }
+    
+    /* PROFILE SUMMARY */
+    .summary-text {
+      color: #44403c;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    
+    /* CORE EXPERTISE */
+    .expertise-list {
+      list-style: none;
+    }
+    .expertise-item {
+      margin-bottom: 6px;
+      color: #44403c;
+      line-height: 1.5;
+    }
+    .expertise-item strong {
+      color: #1c1917;
+      font-weight: 600;
+    }
+    
+    /* PROJECTS */
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+    .project-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1c1917;
+    }
+    .project-domain {
+      font-size: 8.5px;
+      font-weight: 700;
+      color: #a8a29e;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .tags {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .tag {
+      background: #f5f5f4;
+      border: 1px solid #e7e5e4;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 8.5px;
+      color: #57534e;
+      font-weight: 500;
+    }
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .bullet-list li {
+      position: relative;
+      padding-left: 12px;
+      margin-bottom: 5px;
+      color: #44403c;
+      line-height: 1.5;
+    }
+    .bullet-list li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: #a8a29e;
+    }
+    
+    /* EXPERIENCE */
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+    .experience-role {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1c1917;
+    }
+    .experience-date {
+      font-size: 8.5px;
+      font-weight: 700;
+      color: #78716c;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: #f5f5f4;
+      border: 1px solid #e7e5e4;
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+    .experience-location {
+      font-size: 9.5px;
+      color: #78716c;
+      margin-bottom: 6px;
+    }
+    
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .skills-col {
+      color: #44403c;
+    }
+    .skills-col strong {
+      color: #1c1917;
+      font-weight: 600;
+    }
+    
+    /* CERTIFICATIONS */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 20px;
+    }
+    .cert-item {
+      color: #44403c;
+      line-height: 1.4;
+    }
+    .cert-item::before {
+      content: "✦ ";
+      color: #a8a29e;
+    }
+    .cert-item strong {
+      color: #1c1917;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    
+    <!-- HEADER -->
+    <div class="header">
+      <h1 class="header-name">Mohammad Naved</h1>
+      <div class="header-subtitle">AI-Assisted Builder · Prompt Engineer</div>
+      <div class="header-info-container">
+        <div class="header-links">
+          <a href="https://www.linkedin.com/in/md-naved-2b79b8382" target="_blank">linkedin.com/in/md-naved-2b79b8382</a><br>
+          <a href="https://mohammad-navedportfolio.vercel.app" target="_blank">mohammad-navedportfolio.vercel.app</a>
+        </div>
+        <div class="header-contact">
+          Indore, Madhya Pradesh<br>
+          <a href="https://github.com/MD-NAVED" target="_blank">github.com/MD-NAVED</a><br>
+          +91 9753880839 | <a href="mailto:andyk4548@gmail.com">andyk4548@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <!-- PROFILE SUMMARY -->
+    <div class="section">
+      <div class="section-title">Profile Summary</div>
+      <p class="summary-text">
+        Prompt Engineer who builds and ships real, working AI products by directing large language models rather than writing code line-by-line. Designs system prompts, prompt chains, and agentic workflows that turn LLMs into reliable application components — translating product ideas into working software through precise instruction design, iterative testing, and prompt-level debugging.
+      </p>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <!-- CORE EXPERTISE -->
+    <div class="section">
+      <div class="section-title">Core Expertise</div>
+      <ul class="expertise-list">
+        <li class="expertise-item"><strong>– Prompt Engineering & Design</strong> — system prompts, few-shot examples, chain-of-thought structuring, output formatting control</li>
+        <li class="expertise-item"><strong>– LLM Application Architecture</strong> — integrating Gemini API into multi-step, production-style workflows</li>
+        <li class="expertise-item"><strong>– AI Agent Workflows</strong> — building and orchestrating agent pipelines; expanding into LangChain and n8n for autonomous, multitool agents</li>
+        <li class="expertise-item"><strong>– AI-Assisted Development</strong> — directing AI coding tools (“vibe-coding”) to design, build, and ship full-stack products end-to-end</li>
+        <li class="expertise-item"><strong>– Prompt Debugging & Evaluation</strong> — iterating on prompt failures, hallucination control, and output consistency across edge cases</li>
+      </ul>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <!-- SELF-INITIATED PROJECTS -->
+    <div class="section">
+      <div class="section-title">Self-Initiated Projects</div>
+      <p style="color: #78716c; font-style: italic; margin-bottom: 12px; font-size: 10px;">Independent projects built outside of formal employment, demonstrating hands-on technical ability</p>
+      
+      <!-- PROJECT 1 -->
+      <div style="margin-bottom: 14px;">
+        <div class="project-header">
+          <div class="project-title">DataLens AI — Full-Stack AI Analytics Platform</div>
+          <div class="project-domain">Frontend Architecture & BI</div>
+        </div>
+        <div class="tags">
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Recharts</span>
+          <span class="tag">Gemini AI</span>
+          <span class="tag">Analytics</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Built an AI chat interface that converts natural-language questions into SQL queries via prompt-driven query generation</li>
+          <li>Designed prompt templates for the ML Lab module to explain model outputs and surface insights in plain language</li>
+          <li>Directed end-to-end product development — frontend, ETL pipeline, and SQL engine — using AI-assisted, prompt-first development</li>
+        </ul>
+      </div>
+      
+      <!-- PROJECT 2 -->
+      <div>
+        <div class="project-header">
+          <div class="project-title">AutoApply AI — Automated Job Application System</div>
+          <div class="project-domain">AI Automation</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Gemini AI</span>
+          <span class="tag">Automation</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Designed a multi-step prompt chain that reads a job description, extracts requirements, and generates a tailored resume and cover letter through structured LLM calls</li>
+          <li>Engineered system prompts to keep Gemini's output format, tone, and length consistent across hundreds of varying job postings</li>
+          <li>Built fallback and retry prompt logic to handle malformed or incomplete model outputs in production use</li>
+        </ul>
+      </div>
+    </div>
+    
+
+    
+    <div class="divider"></div>
+    
+    <!-- TECHNICAL SKILLS -->
+    <div class="section">
+      <div class="section-title">Technical Skills & Competencies</div>
+      <div class="skills-grid">
+        <div class="skills-col">
+          <strong>– AI / LLM:</strong> Gemini API, Prompt Engineering, LangChain (expanding), n8n (expanding)
+        </div>
+        <div class="skills-col">
+          <strong>– Languages & Data:</strong> Python, SQL, DuckDB
+        </div>
+        <div class="skills-col">
+          <strong>– Frontend:</strong> React, TypeScript, TailwindCSS
+        </div>
+      </div>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <!-- CERTIFICATIONS -->
+    <div class="section">
+      <div class="section-title">Certifications & Learning</div>
+      <div class="certs-grid">
+        <div class="cert-item"><strong>Python for Data Analysis & Visualization</strong> — Self-directed</div>
+        <div class="cert-item"><strong>SQL for Data Analytics</strong> — Relational Database Workflows</div>
+        <div class="cert-item"><strong>Generative AI with Gemini</strong> — Prompt Engineering</div>
+        <div class="cert-item"><strong>Power BI</strong> — Interactive Dashboard Design & Reporting</div>
+      </div>
+    </div>
+    
+  </div>
+</body>
+</html>
