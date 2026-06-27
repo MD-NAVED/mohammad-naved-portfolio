@@ -1029,7 +1029,7 @@ export default function App() {
                        </div>
                      </motion.div>
 
-                     {/* Right Column: Education & Learning */}
+                     {/* Right Column: Certifications & Languages */}
                      <motion.div
                        initial={{ opacity: 0, x: 30 }}
                        whileInView={{ opacity: 1, x: 0 }}
@@ -1039,14 +1039,7 @@ export default function App() {
                      >
                        <div>
                          <div className="flex items-center gap-2 mb-6 border-b border-neutral-200/50 dark:border-neutral-800/50 pb-4">
-                           <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">Education & Learning</h2>
-                         </div>
-
-                         <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-6 transition-colors">Education</h3>
-                         <div className="bg-white/40 dark:bg-[#111111]/40 p-6 rounded-2xl border border-white/60 dark:border-white/5 backdrop-blur-sm">
-                           <p className="font-medium text-neutral-900 dark:text-neutral-100 text-sm md:text-base transition-colors">B.Tech in Computer Science</p>
-                           <p className="text-neutral-500 dark:text-neutral-400 text-sm mt-2 transition-colors leading-relaxed">Rajiv Gandhi Proudyogiki Vishwavidyalaya</p>
-                           <p className="text-xs font-bold text-neutral-400 dark:text-neutral-600 uppercase tracking-widest mt-4 transition-colors">2021 — 2025</p>
+                           <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">Certifications & Languages</h2>
                          </div>
                        </div>
 
