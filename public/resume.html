@@ -17,7 +17,7 @@
       font-family: 'Inter', sans-serif;
       background: #FAFAFA;
       color: #1c1917;
-      font-size: 11.5px;
+      font-size: 11px;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
@@ -25,10 +25,26 @@
     .page {
       width: 210mm;
       height: 297mm;
-      margin: 0 auto;
+      margin: 0 auto 20px auto;
       background: #ffffff;
-      padding: 30px 45px;
+      padding: 35px 50px;
       position: relative;
+      box-sizing: border-box;
+      page-break-after: always;
+      break-after: page;
+    }
+    
+    @media print {
+      body {
+        background: #ffffff;
+      }
+      .page {
+        margin: 0;
+        border: none;
+        box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+      }
     }
     
     /* HEADER */
@@ -243,7 +259,7 @@
     <div class="section">
       <div class="section-title">Profile Summary</div>
       <p class="summary-text">
-        Prompt Engineer who builds and ships real, working AI products by directing large language models rather than writing code line-by-line. Designs system prompts, prompt chains, and agentic workflows that turn LLMs into reliable application components — translating product ideas into working software through precise instruction design, iterative testing, and prompt-level debugging.
+        Prompt Engineer who builds and ships real, working AI products by directing large language models rather than writing code line-by-line. Designs system prompts, prompt chains, and agentic workflows that turn LLMs into reliable application components — translating product ideas into working software through precise instruction design, iterative testing, and prompt-level debugging. Currently expanding into Applied AI Engineering — building end-to-end LLM-integrated systems beyond prompt design alone.
       </p>
     </div>
     
@@ -257,6 +273,7 @@
         <li class="expertise-item"><strong>– LLM Application Architecture</strong> — integrating Gemini API into multi-step, production-style workflows</li>
         <li class="expertise-item"><strong>– AI Agent Workflows</strong> — building and orchestrating agent pipelines; expanding into LangChain and n8n for autonomous, multitool agents</li>
         <li class="expertise-item"><strong>– AI-Assisted Development</strong> — directing AI coding tools (“vibe-coding”) to design, build, and ship full-stack products end-to-end</li>
+        <li class="expertise-item"><strong>– Automation Tooling</strong> — built a Node.js/Puppeteer script that auto-regenerates and redeploys resume PDFs from live portfolio data, removing manual export steps from the update workflow</li>
         <li class="expertise-item"><strong>– Prompt Debugging & Evaluation</strong> — iterating on prompt failures, hallucination control, and output consistency across edge cases</li>
       </ul>
     </div>
@@ -269,7 +286,47 @@
       <p style="color: #78716c; font-style: italic; margin-bottom: 12px; font-size: 10px;">Independent projects built outside of formal employment, demonstrating hands-on technical ability</p>
       
       <!-- PROJECT 1 -->
-      <div style="margin-bottom: 14px;">
+      <div style="margin-bottom: 15px;">
+        <div class="project-header">
+          <div class="project-title">SmartNest — Smart Home IoT Solution</div>
+          <div class="project-domain">IoT & Full-Stack Automation</div>
+        </div>
+        <div class="tags">
+          <span class="tag">React Native</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">MQTT</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Expo</span>
+          <span class="tag">Docker</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Built a home automation platform with React Native/Expo client and FastAPI backend for multi-room device bulk control and scheduling</li>
+          <li>Integrated MQTT (EMQX) broker connection and JSON payload routing on ESP32 microcontrollers for real-time control and telemetry</li>
+          <li>Engineered a camera-based QR provisioner to scan, pair, and register device hardware profiles instantly, with manual Node ID fallbacks</li>
+        </ul>
+      </div>
+      
+      <!-- PROJECT 2 -->
+      <div style="margin-bottom: 15px;">
+        <div class="project-header">
+          <div class="project-title">AutoApply AI — Automated Job Application System</div>
+          <div class="project-domain">AI Automation</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Gemini AI</span>
+          <span class="tag">Automation</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Designed a multi-step prompt chain that reads a job description, extracts requirements, and generates a tailored resume and cover letter through structured LLM calls</li>
+          <li>Engineered system prompts to keep Gemini's output format, tone, and length consistent across hundreds of varying job postings</li>
+          <li>Built fallback and retry prompt logic to handle malformed or incomplete model outputs in production use</li>
+        </ul>
+      </div>
+      
+      <!-- PROJECT 3 -->
+      <div style="margin-bottom: 15px;">
         <div class="project-header">
           <div class="project-title">DataLens AI — Full-Stack AI Analytics Platform</div>
           <div class="project-domain">Frontend Architecture & BI</div>
@@ -287,28 +344,35 @@
           <li>Directed end-to-end product development — frontend, ETL pipeline, and SQL engine — using AI-assisted, prompt-first development</li>
         </ul>
       </div>
-      
-      <!-- PROJECT 2 -->
+    </div>
+  </div>
+
+  <div class="page">
+    <!-- SELF-INITIATED PROJECTS (PART 2) -->
+    <div class="section">
+      <div class="section-title">Self-Initiated Projects (Continued)</div>
+
+      <!-- PROJECT 4 -->
       <div>
         <div class="project-header">
-          <div class="project-title">AutoApply AI — Automated Job Application System</div>
-          <div class="project-domain">AI Automation</div>
+          <div class="project-title">Interactive Portfolio & PDF Automation Pipeline</div>
+          <div class="project-domain">Frontend & DevOps Automation</div>
         </div>
         <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">Gemini AI</span>
-          <span class="tag">Automation</span>
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Framer Motion</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Puppeteer</span>
+          <span class="tag">TailwindCSS</span>
         </div>
         <ul class="bullet-list">
-          <li>Designed a multi-step prompt chain that reads a job description, extracts requirements, and generates a tailored resume and cover letter through structured LLM calls</li>
-          <li>Engineered system prompts to keep Gemini's output format, tone, and length consistent across hundreds of varying job postings</li>
-          <li>Built fallback and retry prompt logic to handle malformed or incomplete model outputs in production use</li>
+          <li>Engineered an interactive React/TypeScript portfolio featuring hardware-accelerated Framer Motion animations, a responsive terminal interface, and a system theme-matching toggle</li>
+          <li>Automated resume exports by building a Node.js script using Puppeteer to dynamically scrape the live portfolio build and compile a pixel-perfect A4 PDF resume</li>
+          <li>Optimized bundle loading and routing to achieve fast load times and clean responsiveness across all viewport layouts</li>
         </ul>
       </div>
     </div>
-    
-
     
     <div class="divider"></div>
     
