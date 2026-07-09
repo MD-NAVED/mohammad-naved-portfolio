@@ -760,13 +760,13 @@ function PromptTerminal({ setCurrentView }: { setCurrentView: (view: 'home' | 'p
 
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<'home' | 'projects' | 'experience' | 'contact'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'projects' | 'experience' | 'services' | 'contact'>('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selectedProject, setSelectedProject] = useState<typeof projectsData[0] | null>(null);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
-  const viewsList: ('home' | 'projects' | 'experience' | 'contact')[] = ['home', 'projects', 'experience', 'contact'];
+  const viewsList: ('home' | 'projects' | 'experience' | 'services' | 'contact')[] = ['home', 'projects', 'experience', 'services', 'contact'];
 
   useEffect(() => {
     if (isTerminalOpen) {
@@ -910,6 +910,7 @@ export default function App() {
     { id: 'home', label: 'Home' },
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
+    { id: 'services', label: 'Services' },
     { id: 'contact', label: 'Contact' }
   ];
 
@@ -1514,11 +1515,226 @@ export default function App() {
                      </motion.div>
                   </div>
                 </motion.div>
-             )}
+              )}
 
 
-             {/* CONTACT VIEW */}
-             {currentView === 'contact' && (
+              {/* SERVICES/FREELANCE VIEW */}
+              {currentView === 'services' && (
+                <motion.div key="services" variants={pageVariants} initial="initial" animate="animate" exit="exit" className="space-y-16">
+                  
+                  <div className="border-b border-neutral-200 dark:border-neutral-800 pb-8">
+                    <h2 className="text-3xl md:text-5xl font-medium tracking-tighter text-neutral-900 dark:text-neutral-100 transition-colors">Freelance Services</h2>
+                    <p className="text-neutral-500 dark:text-neutral-400 mt-4 max-w-2xl font-light leading-relaxed">
+                      Custom AI solutions, workflow automation, and full-stack development designed to accelerate your business.
+                    </p>
+                  </div>
+
+                  {/* Pricing and Engagement Models Grid */}
+                  <div className="space-y-8">
+                    <div className="flex items-center gap-2 border-b border-neutral-200/50 dark:border-neutral-800/50 pb-4">
+                      <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">Engagement Models</h2>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      
+                      {/* Hourly Rate Card */}
+                      <motion.div 
+                        whileHover={{ y: -6, scale: 1.01 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 shadow-sm backdrop-blur-md flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 dark:bg-indigo-500/5 flex items-center justify-center text-indigo-500 mb-6">
+                            <Briefcase className="w-6 h-6" />
+                          </div>
+                          <h3 className="text-xl font-medium mb-3 text-neutral-900 dark:text-neutral-100">Hourly Collaboration</h3>
+                          <p className="text-sm font-light text-neutral-500 dark:text-neutral-400 leading-relaxed mb-6">
+                            Best for debugging, consultation, ad-hoc prompt tuning, or helping you build features step-by-step.
+                          </p>
+                        </div>
+                        <div>
+                          <div className="text-3xl font-medium text-neutral-900 dark:text-neutral-100 mb-2">
+                            $25 - $35 <span className="text-xs text-neutral-400 dark:text-neutral-500 font-bold uppercase tracking-wider">/ Hour</span>
+                          </div>
+                          <span className="text-[10px] uppercase font-bold tracking-widest text-indigo-500 bg-indigo-500/10 px-3 py-1 rounded-full">Flexible</span>
+                        </div>
+                      </motion.div>
+
+                      {/* Project-Based Card */}
+                      <motion.div 
+                        whileHover={{ y: -6, scale: 1.01 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 shadow-sm backdrop-blur-md flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="w-12 h-12 rounded-2xl bg-violet-500/10 dark:bg-violet-500/5 flex items-center justify-center text-violet-500 mb-6">
+                            <Workflow className="w-6 h-6" />
+                          </div>
+                          <h3 className="text-xl font-medium mb-3 text-neutral-900 dark:text-neutral-100">Project-Based</h3>
+                          <p className="text-sm font-light text-neutral-500 dark:text-neutral-400 leading-relaxed mb-6">
+                            Best for complete products with scoped requirements (e.g., custom AI agent pipelines or dashboards).
+                          </p>
+                        </div>
+                        <div>
+                          <div className="text-3xl font-medium text-neutral-900 dark:text-neutral-100 mb-2">
+                            Custom Quote
+                          </div>
+                          <span className="text-[10px] uppercase font-bold tracking-widest text-violet-500 bg-violet-500/10 px-3 py-1 rounded-full">Scoped Scope</span>
+                        </div>
+                      </motion.div>
+
+                      {/* Monthly Retainer Card */}
+                      <motion.div 
+                        whileHover={{ y: -6, scale: 1.01 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 shadow-sm backdrop-blur-md flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 dark:bg-emerald-500/5 flex items-center justify-center text-emerald-500 mb-6">
+                            <Server className="w-6 h-6" />
+                          </div>
+                          <h3 className="text-xl font-medium mb-3 text-neutral-900 dark:text-neutral-100">Monthly Retainer</h3>
+                          <p className="text-sm font-light text-neutral-500 dark:text-neutral-400 leading-relaxed mb-6">
+                            Best for ongoing support, regular pipeline updates, prompt monitoring, or continuous AI building.
+                          </p>
+                        </div>
+                        <div>
+                          <div className="text-3xl font-medium text-neutral-900 dark:text-neutral-100 mb-2">
+                            $1,000+ <span className="text-xs text-neutral-400 dark:text-neutral-500 font-bold uppercase tracking-wider">/ Month</span>
+                          </div>
+                          <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-500 bg-emerald-500/10 px-3 py-1 rounded-full">Dedicated</span>
+                        </div>
+                      </motion.div>
+
+                    </div>
+                  </div>
+
+                  {/* Services List / Core Offerings */}
+                  <div className="space-y-8">
+                    <div className="flex items-center gap-2 border-b border-neutral-200/50 dark:border-neutral-800/50 pb-4">
+                      <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">Core Capabilities</h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="space-y-6">
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-xl bg-neutral-200/50 dark:bg-neutral-800/50 flex items-center justify-center text-neutral-600 dark:text-neutral-400 mt-1">
+                            <Brain className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">AI Prompt Engineering & Optimization</h4>
+                            <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mt-2 font-light">
+                              Designing complex prompt chains, structured output formats (JSON/XML), few-shot learning systems, and safety filters that make LLMs perform reliably in production applications.
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-xl bg-neutral-200/50 dark:bg-neutral-800/50 flex items-center justify-center text-neutral-600 dark:text-neutral-400 mt-1">
+                            <Workflow className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Agentic Workflows & Automation</h4>
+                            <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mt-2 font-light">
+                              Creating autonomous agent systems that use tool callings, database actions, and automated integrations (e.g. n8n, LangChain, or custom Puppeteer scraping scripts) to reduce manual work.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="space-y-6">
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-xl bg-neutral-200/50 dark:bg-neutral-800/50 flex items-center justify-center text-neutral-600 dark:text-neutral-400 mt-1">
+                            <Cpu className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Full-Stack AI Prototyping</h4>
+                            <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mt-2 font-light">
+                              Developing lightweight React interfaces, API endpoints (Vite, Express, FastAPI), and databases (PostgreSQL/SQL) to quickly bring AI concepts from idea to a working prototype.
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-xl bg-neutral-200/50 dark:bg-neutral-800/50 flex items-center justify-center text-neutral-600 dark:text-neutral-400 mt-1">
+                            <Database className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Custom Automation Tooling</h4>
+                            <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mt-2 font-light">
+                              Building automated PDF pipelines, web scrapers, data parsers, and custom workflows to sync resources and remove manual tasks.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* My Working Process */}
+                  <div className="space-y-8">
+                    <div className="flex items-center gap-2 border-b border-neutral-200/50 dark:border-neutral-800/50 pb-4">
+                      <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">How I Work</h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 pt-4">
+                      
+                      <div className="p-6 rounded-2xl bg-white/20 dark:bg-[#111111]/20 border border-white/40 dark:border-white/5">
+                        <div className="text-xs font-bold text-indigo-500 mb-2">01</div>
+                        <h4 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Discovery</h4>
+                        <p className="text-xs text-neutral-500 dark:text-neutral-400 font-light leading-relaxed">
+                          We discuss your requirements, target goals, and technical stack details.
+                        </p>
+                      </div>
+
+                      <div className="p-6 rounded-2xl bg-white/20 dark:bg-[#111111]/20 border border-white/40 dark:border-white/5">
+                        <div className="text-xs font-bold text-indigo-500 mb-2">02</div>
+                        <h4 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Prototype</h4>
+                        <p className="text-xs text-neutral-500 dark:text-neutral-400 font-light leading-relaxed">
+                          I build a quick, testable prototype using AI-assisted speeds.
+                        </p>
+                      </div>
+
+                      <div className="p-6 rounded-2xl bg-white/20 dark:bg-[#111111]/20 border border-white/40 dark:border-white/5">
+                        <div className="text-xs font-bold text-indigo-500 mb-2">03</div>
+                        <h4 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Refine</h4>
+                        <p className="text-xs text-neutral-500 dark:text-neutral-400 font-light leading-relaxed">
+                          We run evaluations, test edge cases, and tune prompts for consistency.
+                        </p>
+                      </div>
+
+                      <div className="p-6 rounded-2xl bg-white/20 dark:bg-[#111111]/20 border border-white/40 dark:border-white/5">
+                        <div className="text-xs font-bold text-indigo-500 mb-2">04</div>
+                        <h4 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Delivery</h4>
+                        <p className="text-xs text-neutral-500 dark:text-neutral-400 font-light leading-relaxed">
+                          I deliver complete documentation, codebase transfer, and Vercel hosting setup.
+                        </p>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  {/* Call to Action */}
+                  <div className="p-8 rounded-3xl bg-gradient-to-r from-indigo-500/10 to-violet-500/10 border border-indigo-500/20 dark:border-indigo-500/10 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div>
+                      <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100">Ready to build your next AI project?</h3>
+                      <p className="text-sm text-neutral-500 dark:text-neutral-400 font-light mt-1">Let's discuss how we can turn your product vision into a working application.</p>
+                    </div>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => setCurrentView('contact')}
+                      className="px-6 py-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-neutral-950 font-semibold text-sm transition-all shadow-md cursor-pointer"
+                    >
+                      Start Collaboration
+                    </motion.button>
+                  </div>
+
+                </motion.div>
+              )}
+
+
+              {/* CONTACT VIEW */}
+              {currentView === 'contact' && (
                <motion.div key="contact" variants={pageVariants} initial="initial" animate="animate" exit="exit" className="space-y-12">
                  
                  <div className="border-b border-neutral-200 dark:border-neutral-800 pb-8">
