@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Analytics } from '@vercel/analytics/react';
 import {
   Mail,
   Phone,
@@ -777,6 +778,23 @@ export default function App() {
       document.body.style.overflow = '';
     };
   }, [isTerminalOpen]);
+
+  // Load Microsoft Clarity dynamically if VITE_CLARITY_PROJECT_ID is present
+  useEffect(() => {
+    const clarityId = import.meta.env.VITE_CLARITY_PROJECT_ID;
+    if (clarityId) {
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);
+        t.async=1;
+        t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];
+        if (y && y.parentNode) {
+          y.parentNode.insertBefore(t,y);
+        }
+      })(window, document, "clarity", "script", clarityId);
+    }
+  }, []);
 
   // Swipe navigation for touch devices
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -1834,6 +1852,7 @@ export default function App() {
           </div>
         )}
 
+        <Analytics />
       </div>
     </div>
   );
