@@ -49,7 +49,7 @@ const techSkillsData = [
 const projectsData = [
   {
     id: 3,
-    title: "SmartNest — Smart Home IoT Solution",
+    title: "4Layers — Smart Home IoT Solution",
     domain: "IoT & Full-Stack Automation",
     tags: ["React Native", "FastAPI", "MQTT", "PostgreSQL", "Expo", "Docker"],
     summary: [
@@ -176,27 +176,27 @@ function PromptTerminal({ setCurrentView }: { setCurrentView: (view: 'home' | 'p
     let responseText = "";
     
     // Now determine response text based on keywords and detected language
-    if (lowerQuery.includes('smartnest')) {
+    if (lowerQuery.includes('smartnest') || lowerQuery.includes('4layers')) {
       if (isSpanish) {
-        responseText = "SmartNest es una solución de domótica IoT construida con React Native, FastAPI, MQTT, PostgreSQL y Docker, que admite emparejamiento de hardware mediante códigos QR.";
+        responseText = "4Layers (SmartNest) es una solución de domótica IoT construida con React Native, FastAPI, MQTT, PostgreSQL y Docker, que admite emparejamiento de hardware mediante códigos QR.";
       } else if (isGerman) {
-        responseText = "SmartNest ist eine IoT-Hausautomationslösung, die mit React Native, FastAPI, MQTT, PostgreSQL und Docker entwickelt wurde und die Hardware-Kopplung über QR-Codes unterstützt.";
+        responseText = "4Layers (SmartNest) ist eine IoT-Hausautomationslösung, die mit React Native, FastAPI, MQTT, PostgreSQL und Docker entwickelt wurde und die Hardware-Kopplung über QR-Codes unterstützt.";
       } else if (isFrench) {
-        responseText = "SmartNest est une solution domotique IoT construite avec React Native, FastAPI, MQTT, PostgreSQL et Docker, prenant en charge l'appairage matériel via des codes QR.";
+        responseText = "4Layers (SmartNest) est une solution domotique IoT construite avec React Native, FastAPI, MQTT, PostgreSQL et Docker, prenant en charge l'appairage matériel via des codes QR.";
       } else if (isDevnagari) {
-        responseText = "स्मार्टनेस्ट एक स्मार्ट होम IoT समाधान है जिसे रिएक्ट नेटिव, FastAPI, MQTT, पोस्टग्रेएसक्यूएल और डॉकर के साथ बनाया गया है, जो क्यूआर कोड के माध्यम से हार्डवेयर पेयरिंग का समर्थन करता है।";
+        responseText = "4Layers (स्मार्टनेस्ट) एक स्मार्ट होम IoT समाधान है जिसे रिएक्ट नेटिव, FastAPI, MQTT, पोस्टग्रेएसक्यूएल और डॉकर के साथ बनाया गया है, जो क्यूआर कोड के माध्यम से हार्डवेयर पेयरिंग का समर्थन करता है।";
       } else if (isBengali) {
-        responseText = "SmartNest হলো একটি আইওটি (IoT) হোম অটোমেশন সিস্টেম যা রিয়্যাক্ট নেটিভ, ফাস্টএপিআই এবং এমকিউটিটি দিয়ে তৈরি।";
+        responseText = "4Layers (SmartNest) হলো একটি আইওটি (IoT) হোম অটোমেশন সিস্টেম যা রিয়্যাক্ট নেটিভ, ফাস্টএপিআই এবং এমকিউটিটি দিয়ে তৈরি।";
       } else if (isTelugu) {
-        responseText = "స్మార్ట్‌నెస్ట్ అనేది రియాక్ట్ నేటివ్, FastAPI మరియు MQTT తో నిర్మించబడిన IoT హోమ్ ఆటోమేషన్ సిస్టమ్.";
+        responseText = "4Layers (స్మార్ట్‌నెస్ట్) అనేది రియాక్ట్ నేటివ్, FastAPI మరియు MQTT తో నిర్మించబడిన IoT హోమ్ ఆటోమేషన్ సిస్టమ్.";
       } else if (isTamil) {
-        responseText = "ஸ்மார்ட்நெஸ்ட் என்பது ரியாக்ட் நேட்டிவ், FastAPI மற்றும் MQTT கொண்டு உருவாக்கப்பட்ட ஒரு IoT ஹோம் ஆட்டோமேஷன் சிஸ்டம் ஆகும்.";
+        responseText = "4Layers (స్మార్ట్‌நெஸ்ட்) என்பது ரியாக்ட் நேட்டிவ், FastAPI மற்றும் MQTT கொண்டு உருவாக்கப்பட்ட ஒரு IoT ஹோம் ஆட்டோமேஷன் சிஸ்டம் ஆகும்.";
       } else if (isMarathi) {
-        responseText = "स्मार्टनेस्ट ही रिएक्ट नेटिव्ह, FastAPI आणि MQTT सह तयार केलेली IoT होम ऑटोमेशन सिस्टीम आहे.";
+        responseText = "4Layers (स्मार्टनेस्ट) ही रिएक्ट नेटिव्ह, FastAPI आणि MQTT सह तयार केलेली IoT होम ऑटोमेशन सिस्टीम आहे.";
       } else if (isHinglish) {
-        responseText = "SmartNest ek smart home IoT system hai jise React Native, FastAPI, aur MQTT protocol se banaya gaya hai. Ye ESP32 hardware pairing QR/Barcode scan se support karta hai.";
+        responseText = "4Layers (SmartNest) ek smart home IoT system hai jise React Native, FastAPI, aur MQTT protocol se banaya gaya hai. Ye ESP32 hardware pairing QR/Barcode scan se support karta hai.";
       } else {
-        responseText = "SmartNest is Naved's latest IoT home automation system built with React Native (Expo), FastAPI, MQTT, PostgreSQL, Supabase and Docker, supporting hardware pairing via QR/Barcode.";
+        responseText = "4Layers (SmartNest) is Naved's latest IoT home automation system built with React Native (Expo), FastAPI, MQTT, PostgreSQL, Supabase and Docker, supporting hardware pairing via QR/Barcode.";
       }
     } else if (lowerQuery.includes('datalens')) {
       if (isSpanish) {
@@ -234,9 +234,9 @@ function PromptTerminal({ setCurrentView }: { setCurrentView: (view: 'home' | 'p
       } else if (isTelugu) {
         responseText = "ఆటోఅప్లై AI అనేది ఉద్యోగ వివరాలను చదివి స్వయంచాలకంగా అనుకూలీకరించిన రెజ్యూమెలను రూపొందించే AI సిస్టమ్.";
       } else if (isTamil) {
-        responseText = "ஆட்டோஅప్ளை AI என்பது வேலை விவரங்களைப் படித்து தானாகவே தனிப்பயனாக்கப்பட்ட பயோடేటாவை உருவாக்கும் ஒரு AI தளம் ஆகும்.";
+        responseText = "ஆட்டோஅప్ளை AI என்பது வேலை விவரங்களைப் படித்து தானாகவே தனிப்பயனாக்கப்பட்ட பயோடேட்டாவை உருவாக்கும் ஒரு AI தளம் ஆகும்.";
       } else if (isMarathi) {
-        responseText = "ऑटोअप्लाय AI ही एक svayanchalit নোকরি অর্জ প্রণালী আহে জি নোকরিচে তপশীল বাচून कस्टमाइज्ड बायोडाटा तयार करते.";
+        responseText = "ऑटोअप्लाय AI ही एक svayanchalit नোকরি অর্জ প্রণালী आहे जी नোকরিचे तपशील वाचून कस्टमाइज्ड बायोडाटा तयार करते.";
       } else if (isHinglish) {
         responseText = "AutoApply AI ek job application automation system hai jo python aur LLM prompt chain use karke job description se resume aur cover letter dynamically customize karta hai.";
       } else {
@@ -244,25 +244,25 @@ function PromptTerminal({ setCurrentView }: { setCurrentView: (view: 'home' | 'p
       }
     } else if (lowerQuery.includes('project') || lowerQuery.includes('work') || lowerQuery.includes('projects') || lowerQuery.includes('proyectos') || lowerQuery.includes('projekte') || lowerQuery.includes('projets') || lowerQuery.includes('প্রজেক্ট') || lowerQuery.includes('ప్రాజెక్ట్') || lowerQuery.includes('திட்டங்கள்') || lowerQuery.includes('प्रकल्प')) {
       if (isSpanish) {
-        responseText = "Naved ha desarrollado 4 proyectos clave: SmartNest (Domótica), AutoApply AI (Automatización de Empleo), DataLens AI (Análisis con IA) y el pipeline de currículum en PDF.";
+        responseText = "Naved ha desarrollado 4 proyectos clave: 4Layers (Domótica), AutoApply AI (Automatización de Empleo), DataLens AI (Análisis con IA) y el pipeline de currículum en PDF.";
       } else if (isGerman) {
-        responseText = "Naved hat 4 Schlüsselprojekte entwickelt: Hausautomation (SmartNest), Job-Automatisierung (AutoApply AI), KI-Analytik (DataLens AI) und die PDF-Lebenslauf-Pipeline.";
+        responseText = "Naved hat 4 Schlüsselprojekte entwickelt: Hausautomation (4Layers), Job-Automatisierung (AutoApply AI), KI-Analytik (DataLens AI) und die PDF-Lebenslauf-Pipeline.";
       } else if (isFrench) {
-        responseText = "Naved a développé 4 projets clés: Domotique (SmartNest), Automatisation d'emploi (AutoApply AI), Analyse IA (DataLens AI) et le pipeline de CV en PDF.";
+        responseText = "Naved a développé 4 projets clés: Domotique (4Layers), Automatisation d'emploi (AutoApply AI), Analyse IA (DataLens AI) et le pipeline de CV en PDF.";
       } else if (isDevnagari) {
-        responseText = "नावेद ने 4 मुख्य प्रोजेक्ट बनाए हैं: स्मार्टनेस्ट (IoT होम ऑटोमेशन), ऑटोअप्लाई एआई (जॉब ऑटोमेशन), डेटा लेंस एआई (एनालिटिक्स) और पोर्टफोलियो पीडीएफ पाइपलाइन।";
+        responseText = "नावेद ने 4 मुख्य प्रोजेक्ट बनाए हैं: 4Layers (IoT होम ऑटोमेशन), ऑटोअप्लाई एआई (जॉब ऑटोमेशन), डेटा लेंस एआई (एनालिटिक्स) और पोर्टफोलियो पीडीएफ पाइपलाइन।";
       } else if (isBengali) {
-        responseText = "নাভেদ ৪টি প্রজেক্ট তৈরি করেছেন: SmartNest (আইওটি), AutoApply AI (জব অটোমেশন), DataLens AI (অ্যানালিটিক্স) এবং পিডিএফ রেজ্যুমে পাইপলাইন।";
+        responseText = "নাভেদ ৪টি প্রজেক্ট তৈরি করেছেন: 4Layers (আইওটি), AutoApply AI (জব অটোমেশন), DataLens AI (অ্যানালিটিক্স) এবং পিডিএফ রেজ্যুমে পাইপলাইন।";
       } else if (isTelugu) {
-        responseText = "నావేద్ 4 ప్రాజెక్టులను నిర్మించారు: స్మార్ట్‌నెస్ట్, ఆటోఅప్లై AI, డేటా లెన్స్ AI మరియు రెజ్యూమే పిడిఎఫ్ పైప్‌లైన్.";
+        responseText = "నావేద్ 4 ప్రాజెక్టులను నిర్మించారు: 4Layers, ఆటోఅప్లై AI, డేటా లెన్స్ AI మరియు రెజ్యూమే పిడిఎఫ్ పైప్‌లైన్.";
       } else if (isTamil) {
-        responseText = "நாவேத் 4 முக்கிய திட்டங்களை உருவாக்கியுள்ளார்: ஸ்மார்ட்நெஸ்ட், ஆட்டோஅப்ளை AI, டேட்டாலென்ஸ் AI மற்றும் பிடிஎஃப் பயோடேட்டா பைப்லைன்.";
+        responseText = "நாவேத் 4 முக்கிய திட்டங்களை உருவாக்கியுள்ளார்: 4Layers, ஆட்டோஅப்ளை AI, டேட்டாலெన్స్ AI மற்றும் பிடிஎஃப் பயோடேட்டா பைப்லைன்.";
       } else if (isMarathi) {
-        responseText = "नावेदमने ४ प्रकल्प तयार केले आहेत: स्मार्टनेस्ट, ऑटोअप्लाय AI, डेटा लेन्स AI आणि पीडीएफ बायोडाटा पाइपलाइन.";
+        responseText = "नावेदमने ४ प्रकल्प तयार केले आहेत: 4Layers, ऑटोअप्लाय AI, डेटा लेन्स AI आणि पीडीएफ बायोडाटा पाइपलाइन.";
       } else if (isHinglish) {
-        responseText = "Naved ne 4 projects banaye hain: SmartNest (IoT Automation), AutoApply AI (Job Application Tool), DataLens AI (Analytics Platform), aur Portfolio PDF Automation.";
+        responseText = "Naved ne 4 projects banaye hain: 4Layers (IoT Automation), AutoApply AI (Job Application Tool), DataLens AI (Analytics Platform), aur Portfolio PDF Automation.";
       } else {
-        responseText = "Naved has built 4 key projects: SmartNest (IoT Home Automation), AutoApply AI (Job Automation), DataLens AI (Analytics Platform), and Portfolio PDF Automation Pipeline.";
+        responseText = "Naved has built 4 key projects: 4Layers (IoT Home Automation), AutoApply AI (Job Automation), DataLens AI (Analytics Platform), and Portfolio PDF Automation Pipeline.";
       }
     } else if (lowerQuery.includes('skills') || lowerQuery.includes('tech') || lowerQuery.includes('habilidades') || lowerQuery.includes('fähigkeiten') || lowerQuery.includes('competences') || lowerQuery.includes('कौशल') || lowerQuery.includes('দক্ষতা') || lowerQuery.includes('নైపుణ్యాలు') || lowerQuery.includes('திறமைகள்') || lowerQuery.includes('कौशल्य')) {
       if (isSpanish) {
@@ -370,9 +370,9 @@ function PromptTerminal({ setCurrentView }: { setCurrentView: (view: 'home' | 'p
       } else if (isMarathi) {
         responseText = "नावेद हा एक उपयोजित AI आणि प्रॉम्प्ट अभियंता आहे. तो विविध AI ॲप्लिकेशन्स तयार करतो.";
       } else if (isHinglish) {
-        responseText = "Naved ek Applied AI & Prompt Engineer hain jo LLMs, Python, aur React frontends ke sath working applications build karte hain. Aap unke projects (SmartNest, DataLens AI, AutoApply AI) ke baare me detail me jaan sakte hain.";
+        responseText = "Naved ek Applied AI & Prompt Engineer hain jo LLMs, Python, aur React frontends ke sath working applications build karte hain. Aap unke projects (4Layers, DataLens AI, AutoApply AI) ke baare me detail me jaan sakte hain.";
       } else {
-        responseText = "Naved is an Applied AI & Prompt Engineer. He builds smart applications using LLM API integrations, custom agents, Python, and React. Feel free to ask about his specific projects (SmartNest, DataLens AI, AutoApply AI).";
+        responseText = "Naved is an Applied AI & Prompt Engineer. He builds smart applications using LLM API integrations, custom agents, Python, and React. Feel free to ask about his specific projects (4Layers, DataLens AI, AutoApply AI).";
       }
     }
     
@@ -429,7 +429,7 @@ function PromptTerminal({ setCurrentView }: { setCurrentView: (view: 'home' | 'p
   "status": "success",
   "data": {
     "projects": [
-      { "name": "SmartNest", "type": "IoT Smart Home Solution" },
+      { "name": "4Layers", "type": "IoT Smart Home Solution" },
       { "name": "AutoApply AI", "type": "Automation System" },
       { "name": "DataLens AI", "type": "Analytics Platform" },
       { "name": "Interactive Portfolio", "type": "DevOps & Portfolio Automation" }
