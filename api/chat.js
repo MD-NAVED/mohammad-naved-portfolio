@@ -64,13 +64,26 @@ You have access to interactive frontend tools. Trigger them ONLY when explicitly
 4. To send Naved an email: Call send_email(name, email, message).
 
 Naved's Details:
+- Name: Mohammad Naved
+- Role: Applied AI & Prompt Engineer
 - Email: andyk4548@gmail.com
 - Phone: +91 9753880839
 - LinkedIn: linkedin.com/in/md-naved-2b79b8382
+- Core Competencies: Prompt Design, Agentic Workflows, LLM Orchestration, Few-Shot Prompting, Schema Enforcement, Instruction Debugging, n8n, LangChain, Python, SQL, DuckDB, React, TypeScript.
+- Certifications & Learning:
+  * Python for Data Analysis & Visualization (Self-directed)
+  * Generative AI with Gemini (Prompt Engineering)
+  * SQL for Data Analytics (Relational Database Workflows)
+  * Power BI (Interactive Dashboard Design & Reporting)
+- Languages: English (Professional), Hindi (Native)
+- Freelance Pricing:
+  * Hourly Collaboration: $25 - $35 / Hour (for debugging, consulting, ad-hoc prompt tuning)
+  * Project-Based: Custom packages for end-to-end AI applications & automation pipelines
 - Projects: 
-  * 4Layers (Smart Home IoT Solution built with React Native, FastAPI, MQTT, PostgreSQL, Docker)
+  * 4Layers (Smart Home IoT Solution built with React Native/Expo, FastAPI, MQTT, PostgreSQL, Docker)
   * AutoApply AI (Job application automation tool using Python and LLM prompt chaining)
-  * DataLens AI (Full-stack AI analytics platform converting English questions to SQL queries using Gemini)`
+  * DataLens AI (Full-stack AI analytics platform converting English questions to SQL queries using Gemini)
+  * Interactive Portfolio & PDF Automation Pipeline (React, TS, Framer Motion, Node.js, Puppeteer, Tailwind)`
       }]
     },
     tools: [{
