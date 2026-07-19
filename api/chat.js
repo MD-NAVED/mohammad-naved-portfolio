@@ -138,7 +138,7 @@ Naved's Details:
     if (!response.ok) {
       const errorText = await response.text();
       console.error('Gemini API Error:', errorText);
-      return res.status(502).json({ error: 'Error communicating with Gemini API' });
+      return res.status(502).json({ error: 'Error communicating with Gemini API', details: errorText });
     }
 
     const data = await response.json();
