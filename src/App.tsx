@@ -842,9 +842,22 @@ export default function App() {
   const [contactEmail, setContactEmail] = useState('');
   const [contactMessage, setContactMessage] = useState('');
 
-  const handleContactSubmit = async (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus('submitting');
+
+    // Honeypot spam check
+    const formData = new FormData(e.currentTarget);
+    const botcheck = formData.get('botcheck');
+    if (botcheck) {
+      // Silently succeed to fool spam bots without calling Web3Forms API
+      setFormStatus('success');
+      setContactName('');
+      setContactEmail('');
+      setContactMessage('');
+      setTimeout(() => setFormStatus('idle'), 4000);
+      return;
+    }
 
     const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
 
@@ -1791,6 +1804,15 @@ export default function App() {
                     >
                       <div className="w-full max-w-2xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)]">
                         <form className="space-y-10" onSubmit={handleContactSubmit}>
+                          {/* Honeypot Spam Protection */}
+                          <input 
+                            type="checkbox" 
+                            name="botcheck" 
+                            className="hidden" 
+                            style={{ display: 'none' }} 
+                            tabIndex={-1}
+                            autoComplete="off"
+                          />
                           <div>
                             <label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-2 block">Name</label>
                             <motion.input 
