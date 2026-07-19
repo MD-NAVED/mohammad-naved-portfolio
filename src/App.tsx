@@ -1768,6 +1768,20 @@ export default function App() {
             </motion.button>
           </div>
         )}
+        {/* Floating AI Agent Trigger Button (Visible on all pages when terminal is closed) */}
+        {!isTerminalOpen && !selectedProject && (
+          <motion.button
+            onClick={() => setIsTerminalOpen(true)}
+            initial={{ scale: 0, y: 50 }}
+            animate={{ scale: 1, y: 0 }}
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            whileTap={{ scale: 0.9 }}
+            className="fixed bottom-6 right-6 z-40 p-4 rounded-full bg-gradient-to-tr from-violet-600 to-indigo-600 text-white shadow-xl hover:shadow-2xl transition-all cursor-pointer flex items-center justify-center border border-white/10 dark:border-neutral-800"
+            aria-label="Ask AI Agent"
+          >
+            <Brain className="w-6 h-6" />
+          </motion.button>
+        )}
 
         <Analytics />
       </div>
