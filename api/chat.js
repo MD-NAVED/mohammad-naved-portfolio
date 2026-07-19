@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { message, history } = req.body;
+  const { message, history, currentView } = req.body;
   if (!message) {
     return res.status(400).json({ error: 'Message is required' });
   }
@@ -46,6 +46,8 @@ export default async function handler(req, res) {
     parts: [{ text: message }]
   });
 
+  const viewContext = currentView ? `\nThe visitor is currently looking at the '${currentView}' section of your portfolio. If they ask context-dependent questions like "tell me about this page", "what is this section", or "what is here", they are referring to the '${currentView}' page, so explain it directly in the chat.` : '';
+
   const requestBody = {
     contents,
     systemInstruction: {
@@ -53,6 +55,7 @@ export default async function handler(req, res) {
         text: `You are the AI portfolio agent for Mohammad Naved, an Applied AI & Prompt Engineer. 
 Your goal is to answer visitor questions in a friendly, conversational, and professional manner.
 Be concise (max 2-3 sentences per paragraph), and format your text with clean paragraph breaks (\n\n) to simulate separate chat messages.
+${viewContext}
 
 You have access to interactive frontend tools. Trigger them ONLY when explicitly requested:
 1. To navigate the page: Call navigate_site(section). ONLY call this if the user explicitly asks to go to a section (e.g. "go to projects", "show me your contacts page"). Do NOT call this for general questions like "tell me about your skills" or "what projects have you built".

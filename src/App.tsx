@@ -97,13 +97,14 @@ const projectsData = [
 
 
 interface PromptTerminalProps {
+  currentView: 'home' | 'projects' | 'experience' | 'contact';
   setCurrentView: (view: 'home' | 'projects' | 'experience' | 'contact') => void;
   isDarkMode: boolean;
   setIsDarkMode: (dark: boolean) => void;
   sendEmail: (name: string, email: string, message: string) => Promise<boolean>;
 }
 
-function PromptTerminal({ setCurrentView, isDarkMode, setIsDarkMode, sendEmail }: PromptTerminalProps) {
+function PromptTerminal({ currentView, setCurrentView, isDarkMode, setIsDarkMode, sendEmail }: PromptTerminalProps) {
   const [messages, setMessages] = useState<{
     id: string;
     sender: 'user' | 'agent';
@@ -147,7 +148,8 @@ function PromptTerminal({ setCurrentView, isDarkMode, setIsDarkMode, sendEmail }
         },
         body: JSON.stringify({
           message: queryText,
-          history: chatHistory
+          history: chatHistory,
+          currentView: currentView
         })
       });
 
@@ -1717,6 +1719,7 @@ export default function App() {
                 </motion.button>
 
                 <PromptTerminal 
+                  currentView={currentView}
                   setCurrentView={(view) => {
                     setCurrentView(view);
                     setTimeout(() => {
