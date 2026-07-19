@@ -104,13 +104,28 @@ interface PromptTerminalProps {
 }
 
 function PromptTerminal({ setCurrentView, isDarkMode, setIsDarkMode, sendEmail }: PromptTerminalProps) {
-  const [activeTab, setActiveTab] = useState<'prompt' | 'output'>('prompt');
-  const [currentPrompt, setCurrentPrompt] = useState<string>('');
-  const [outputContent, setOutputContent] = useState<string>('// Click a prompt below to execute...\n');
-  const [isRunning, setIsRunning] = useState(false);
-  const [activeButton, setActiveButton] = useState<string | null>(null);
+  const [messages, setMessages] = useState<{
+    id: string;
+    sender: 'user' | 'agent';
+    text: string;
+    toolLog?: string;
+  }[]>([
+    {
+      id: 'welcome',
+      sender: 'agent',
+      text: "Hello! I am Naved's AI assistant. Ask me anything about his projects, skills, or request to download his CV! I can also interact with this website for you."
+    }
+  ]);
+  
   const [customInput, setCustomInput] = useState('');
+  const [isRunning, setIsRunning] = useState(false);
   const [chatHistory, setChatHistory] = useState<{role: 'user' | 'model', text: string}[]>([]);
+  const messagesEndRef = React.useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to bottom of chat
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, isRunning]);
 
   const handleCustomSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -119,14 +134,10 @@ function PromptTerminal({ setCurrentView, isDarkMode, setIsDarkMode, sendEmail }
     const queryText = customInput.trim();
     setCustomInput('');
     setIsRunning(true);
-    setActiveTab('prompt');
     
-    // Simulate terminal typing of the request logs
-    setCurrentPrompt(`POST /api/chat\nPayload: {\n  "query": "${queryText}"\n}`);
-
-    // We can show status logs in output tab to make it look premium
-    setActiveTab('output');
-    setOutputContent(`// Initializing Agent session...\n// Executing request chain...\n`);
+    // Add user message to chat list
+    const userMsgId = Math.random().toString();
+    setMessages(prev => [...prev, { id: userMsgId, sender: 'user', text: queryText }]);
 
     try {
       const response = await fetch('/api/chat', {
@@ -145,48 +156,40 @@ function PromptTerminal({ setCurrentView, isDarkMode, setIsDarkMode, sendEmail }
       }
 
       const data = await response.json();
-      
       let finalResponseText = data.text;
-      let logs = `[THOUGHT] Query received: "${queryText}"\n`;
+      let toolLog = '';
 
       if (data.toolCall) {
         const { name, args } = data.toolCall;
-        logs += `[ACTION] Model requested tool call: ${name}()\n`;
         
-        // Execute tool calls on client-side
         if (name === 'download_resume') {
-          logs += `[STATUS] Downloading CV in user browser...\n`;
+          toolLog = "📄 Downloading Naved's Resume...";
           const link = document.createElement('a');
           link.href = '/Mohammad_Naved_Resume.pdf';
           link.download = 'Mohammad_Naved_Resume.pdf';
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
-          logs += `[SUCCESS] CV Download triggered successfully!\n`;
           finalResponseText = "I have initiated the CV download in your browser window. Let me know if you need help with anything else!";
         } 
         else if (name === 'toggle_theme') {
           const mode = args.mode || (isDarkMode ? 'light' : 'dark');
-          logs += `[STATUS] Switching site theme to ${mode} mode...\n`;
+          toolLog = `🎨 Switching website theme to ${mode} mode...`;
           setIsDarkMode(mode === 'dark');
-          logs += `[SUCCESS] Theme updated to ${mode}!\n`;
           finalResponseText = `Switched theme to ${mode} mode successfully.`;
         } 
         else if (name === 'navigate_site') {
           const section = args.section;
-          logs += `[STATUS] Navigating portfolio view to /${section}...\n`;
+          toolLog = `🌐 Navigating view to ${section.toUpperCase()}...`;
           setCurrentView(section);
-          logs += `[SUCCESS] Viewport updated to /${section}!\n`;
           finalResponseText = `Navigating you directly to my ${section} page.`;
         } 
         else if (name === 'send_email') {
-          logs += `[STATUS] Initiating secure contact form submission to Naved...\n`;
+          toolLog = "✉️ Sending email handshake...";
           const success = await sendEmail(args.name, args.email, args.message);
           if (success) {
-            logs += `[SUCCESS] Message successfully delivered to Naved's email!\n`;
             finalResponseText = `Thanks ${args.name}! I have securely transmitted your message directly to Naved's inbox. He will reply back to your email: ${args.email}.`;
           } else {
-            logs += `[ERROR] Failed to send email. Please check credentials.\n`;
             finalResponseText = "I encountered an error trying to deliver the email message. You can reach Naved directly at andyk4548@gmail.com.";
           }
         }
@@ -199,383 +202,164 @@ function PromptTerminal({ setCurrentView, isDarkMode, setIsDarkMode, sendEmail }
         { role: 'model', text: finalResponseText }
       ]);
 
-      const outputJSON = `${logs}\n{\n  "status": "success",\n  "response": "${finalResponseText.replace(/"/g, '\\"')}"\n}`;
-
-      // Simulate output streaming
-      let currentOutput = '';
-      let outIndex = 0;
-      const outputInterval = setInterval(() => {
-        if (outIndex < outputJSON.length) {
-          currentOutput += outputJSON.substring(outIndex, outIndex + 3);
-          setOutputContent(currentOutput);
-          outIndex += 3;
-        } else {
-          clearInterval(outputInterval);
-          setIsRunning(false);
-          setTimeout(() => setCurrentPrompt(''), 3000);
-        }
-      }, 10);
+      // Add agent message to chat list
+      const agentMsgId = Math.random().toString();
+      setMessages(prev => [
+        ...prev, 
+        { id: agentMsgId, sender: 'agent', text: finalResponseText, toolLog }
+      ]);
 
     } catch (error) {
       console.error(error);
-      const errorLogs = `[ERROR] Connection failed. Check environment variables or serverless availability.`;
-      setOutputContent(`${errorLogs}\n\n{\n  "status": "error",\n  "response": "Could not connect to the AI Agent server. Please try again later."\n}`);
+      const agentMsgId = Math.random().toString();
+      setMessages(prev => [
+        ...prev, 
+        { 
+          id: agentMsgId, 
+          sender: 'agent', 
+          text: "I encountered a connection error. Please make sure your serverless functions are configured correctly or try again later." 
+        }
+      ]);
+    } finally {
       setIsRunning(false);
-      setTimeout(() => setCurrentPrompt(''), 3000);
     }
   };
 
-  const prompts = {
-    skills: {
-      label: "summarize_skills.sh",
-      input: "GET /skills/summary\nHeader: Authorization Bearer Developer\nQuery: list top tech skills and competencies",
-      output: `{
-  "role": "Prompt Engineer",
-  "focus": "LLM Orchestration & Workflows",
-  "skills": {
-    "core": ["Gemini API", "Prompt Design", "LangChain", "n8n"],
-    "data": ["Python", "SQL", "DuckDB", "Power BI"],
-    "frontend": ["React", "TypeScript", "TailwindCSS"]
-  },
-  "status": "ready_to_ship"
-}`
-    },
-    projects: {
-      label: "get_projects.json",
-      input: "POST /agent/run\nPayload: {\n  \"task\": \"fetch active projects\",\n  \"limit\": 4\n}",
-      output: `{
-  "status": "success",
-  "data": {
-    "projects": [
-      { "name": "4Layers", "type": "IoT Smart Home Solution" },
-      { "name": "AutoApply AI", "type": "Automation System" },
-      { "name": "DataLens AI", "type": "Analytics Platform" },
-      { "name": "Interactive Portfolio", "type": "DevOps & Portfolio Automation" }
-    ],
-    "action": "REDIRECT_TO_PROJECTS"
-  }
-}`
-    },
-    contact: {
-      label: "initiate_contact.py",
-      input: "import agent\n\nagent.trigger_event(\n    type='contact_handshake',\n    target='andyk4548@gmail.com'\n)",
-      output: `{
-  "status": "success",
-  "channel": "email",
-  "info": {
-    "email": "andyk4548@gmail.com",
-    "phone": "+919753880839"
-  },
-  "action": "REDIRECT_TO_CONTACT"
-}`
-    }
-  };
-
-  const runPrompt = (key: keyof typeof prompts) => {
+  const handleQuickAction = (text: string) => {
     if (isRunning) return;
-    setIsRunning(true);
-    setActiveButton(key);
-    setActiveTab('prompt');
-    setCurrentPrompt('');
-    setOutputContent('');
-
-    const targetPrompt = prompts[key];
-    
-    // Simulate typing input
-    let currentInput = '';
-    let index = 0;
-    const typingInterval = setInterval(() => {
-      if (index < targetPrompt.input.length) {
-        currentInput += targetPrompt.input[index];
-        setCurrentPrompt(currentInput);
-        index++;
-      } else {
-        clearInterval(typingInterval);
-        
-        // Simulate execution delay
-        setTimeout(() => {
-          setActiveTab('output');
-          
-          // Simulate typing output JSON
-          let currentOutput = '';
-          let outIndex = 0;
-          const outputInterval = setInterval(() => {
-            if (outIndex < targetPrompt.output.length) {
-              currentOutput += targetPrompt.output.substring(outIndex, outIndex + 3);
-              setOutputContent(currentOutput);
-              outIndex += 3;
-            } else {
-              clearInterval(outputInterval);
-              setIsRunning(false);
-              
-              // Handle action redirects
-              if (key === 'projects') {
-                setTimeout(() => {
-                  setCurrentView('projects');
-                  setActiveButton(null);
-                  setCurrentPrompt('');
-                  setOutputContent('// Click a prompt below to execute...\n');
-                  setActiveTab('prompt');
-                }, 1500);
-              } else if (key === 'contact') {
-                setTimeout(() => {
-                  setCurrentView('contact');
-                  setActiveButton(null);
-                  setCurrentPrompt('');
-                  setOutputContent('// Click a prompt below to execute...\n');
-                  setActiveTab('prompt');
-                }, 1500);
-              } else {
-                setTimeout(() => {
-                  setActiveButton(null);
-                }, 2000);
-              }
-            }
-          }, 15);
-        }, 800);
+    setCustomInput(text);
+    // Submit programmatically in next microtask
+    setTimeout(() => {
+      const form = document.getElementById('chat-form');
+      if (form) {
+        form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
       }
-    }, 10);
-  };
-
-  const renderHighlightedPrompt = (text: string) => {
-    if (!text) return null;
-    return text.split('\n').map((line, i) => {
-      let lineContent;
-      if (line.startsWith('GET') || line.startsWith('POST')) {
-        const parts = line.split(' ');
-        lineContent = (
-          <>
-            <span className="text-violet-400 font-bold">{parts[0]}</span>{' '}
-            <span className="text-sky-300">{parts[1]}</span>
-          </>
-        );
-      } else if (line.startsWith('Header:') || line.startsWith('Query:') || line.startsWith('Payload:')) {
-        const idx = line.indexOf(' ');
-        lineContent = (
-          <>
-            <span className="text-neutral-500 font-semibold">{line.substring(0, idx)}</span>
-            <span className="text-neutral-300">{line.substring(idx)}</span>
-          </>
-        );
-      } else if (line.startsWith('import ') || line.startsWith('agent.')) {
-        if (line.startsWith('import ')) {
-          lineContent = (
-            <>
-              <span className="text-violet-400">import</span>{line.substring(6)}
-            </>
-          );
-        } else {
-          lineContent = (
-            <>
-              <span className="text-sky-400">agent</span>
-              <span className="text-neutral-500">.</span>
-              <span className="text-amber-300">trigger_event</span>
-              {line.substring(19)}
-            </>
-          );
-        }
-      } else {
-        lineContent = line;
-      }
-
-      return (
-        <span key={i}>
-          {i > 0 && <br />}
-          {lineContent}
-        </span>
-      );
-    });
-  };
-
-  const highlightArrayValues = (arrayStr: string) => {
-    const parts = arrayStr.split(/"/g);
-    return parts.map((part, index) => {
-      if (index % 2 === 1) {
-        return <span key={index} className="text-amber-300">"{part}"</span>;
-      }
-      return <span key={index} className="text-neutral-400">{part}</span>;
-    });
-  };
-
-  const renderHighlightedJSON = (text: string) => {
-    if (!text || text.startsWith('//')) {
-      return <span className="text-neutral-500 italic">{text}</span>;
-    }
-    return text.split('\n').map((line, i) => {
-      const match = line.match(/^(\s*)"([^"]+)":\s*(.*)$/);
-      if (match) {
-        const [_, indent, key, val] = match;
-        let valEl = <span className="text-emerald-400">{val}</span>;
-        
-        const trimmedVal = val.trim();
-        if (trimmedVal.startsWith('[') && (trimmedVal.endsWith('],') || trimmedVal.endsWith(']'))) {
-          valEl = <>{highlightArrayValues(trimmedVal)}</>;
-        } else if (trimmedVal.startsWith('{') || trimmedVal.endsWith('{')) {
-          valEl = <span className="text-neutral-400">{val}</span>;
-        } else if (trimmedVal.startsWith('"')) {
-          valEl = <span className="text-amber-300">{val}</span>;
-        } else if (!isNaN(Number(trimmedVal.replace(/[,\s]/g, '')))) {
-          valEl = <span className="text-purple-400">{val}</span>;
-        } else if (trimmedVal.includes('true') || trimmedVal.includes('false')) {
-          valEl = <span className="text-purple-400">{val}</span>;
-        }
-        
-        return (
-          <div key={i} className="min-h-[18px]">
-            {indent}
-            <span className="text-sky-400">"{key}"</span>
-            <span className="text-neutral-400">: </span>
-            {valEl}
-          </div>
-        );
-      }
-      return <div key={i} className="min-h-[18px] text-neutral-400">{line}</div>;
-    });
+    }, 50);
   };
 
   return (
     <div className="relative w-full max-w-lg group">
-      {/* Dynamic ambient glow behind the terminal */}
-      <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-800 opacity-20 blur-md group-hover:opacity-30 transition duration-500"></div>
+      {/* Dynamic ambient glow behind the chat container */}
+      <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-600 opacity-20 blur-md group-hover:opacity-30 transition duration-500"></div>
       
-      <div className="relative w-full bg-[#0a0a0a]/95 backdrop-blur-xl rounded-2xl border border-neutral-800/80 text-neutral-300 font-mono text-[11px] overflow-hidden shadow-2xl flex flex-col h-[340px] text-left">
-        {/* macOS Style Window Titlebar */}
-        <div className="bg-[#121212]/90 backdrop-blur-md px-4 py-3 flex items-center justify-between border-b border-neutral-900/60 select-none">
+      <div className="relative w-full bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl rounded-3xl border border-neutral-200/80 dark:border-neutral-800/80 text-neutral-800 dark:text-neutral-300 font-sans overflow-hidden shadow-2xl flex flex-col h-[480px] text-left">
+        {/* Window Titlebar */}
+        <div className="bg-neutral-50 dark:bg-[#121212]/90 backdrop-blur-md px-5 py-4 flex items-center justify-between border-b border-neutral-200/60 dark:border-neutral-900/60 select-none">
           <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 rounded-full bg-[#ff5f56] shadow-[0_0_8px_rgba(255,95,86,0.2)]"></div>
-            <div className="w-3 h-3 rounded-full bg-[#ffbd2e] shadow-[0_0_8px_rgba(255,189,46,0.2)]"></div>
-            <div className="w-3 h-3 rounded-full bg-[#27c93f] shadow-[0_0_8px_rgba(39,201,63,0.2)]"></div>
+            <div className="w-3.5 h-3.5 rounded-full bg-[#ff5f56] shadow-[0_0_8px_rgba(255,95,86,0.2)]"></div>
+            <div className="w-3.5 h-3.5 rounded-full bg-[#ffbd2e] shadow-[0_0_8px_rgba(255,189,46,0.2)]"></div>
+            <div className="w-3.5 h-3.5 rounded-full bg-[#27c93f] shadow-[0_0_8px_rgba(39,201,63,0.2)]"></div>
           </div>
-          <div className="text-[9px] uppercase tracking-widest text-neutral-500 font-bold flex items-center gap-1.5">
-            <Terminal className="w-3.5 h-3.5 text-neutral-600" />
-            gemini-agent-terminal
+          <div className="text-[10px] uppercase font-bold tracking-widest text-neutral-500 dark:text-neutral-400 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#27c93f] animate-pulse"></span>
+            Naved's AI Agent
           </div>
-          <div className="w-12"></div>
+          <div className="text-[9px] px-2 py-0.5 rounded bg-neutral-200 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 font-mono font-bold">
+            GEMINI 3.5
+          </div>
         </div>
 
-        {/* Tab Headers */}
-        <div className="flex border-b border-neutral-900/60 bg-[#0e0e0e]/80 select-none">
-          <motion.button 
-            onClick={() => !isRunning && setActiveTab('prompt')}
-            disabled={isRunning}
-            whileHover={!isRunning ? { backgroundColor: 'rgba(255,255,255,0.02)' } : {}}
-            whileTap={!isRunning ? { scale: 0.98 } : {}}
-            className={`px-4 py-2.5 text-[10px] uppercase font-bold tracking-wider transition-all flex items-center gap-2 border-r border-neutral-900/60 ${
-              activeTab === 'prompt' 
-                ? 'bg-[#0a0a0a] text-white border-t-2 border-t-neutral-100' 
-                : 'text-neutral-500 hover:text-neutral-300 hover:bg-[#111]/30'
-            }`}
-          >
-            <Terminal className="w-3.5 h-3.5" />
-            Prompt Input
-          </motion.button>
-          <motion.button 
-            onClick={() => !isRunning && setActiveTab('output')}
-            disabled={isRunning}
-            whileHover={!isRunning ? { backgroundColor: 'rgba(255,255,255,0.02)' } : {}}
-            whileTap={!isRunning ? { scale: 0.98 } : {}}
-            className={`px-4 py-2.5 text-[10px] uppercase font-bold tracking-wider transition-all flex items-center gap-2 border-r border-neutral-900/60 ${
-              activeTab === 'output' 
-                ? 'bg-[#0a0a0a] text-white border-t-2 border-t-neutral-100' 
-                : 'text-neutral-500 hover:text-neutral-300 hover:bg-[#111]/30'
-            }`}
-          >
-            <Code2 className="w-3.5 h-3.5" />
-            LLM Output {isRunning && activeTab === 'prompt' && <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse ml-0.5"></span>}
-          </motion.button>
-        </div>
-
-        {/* Console Content Screen */}
-        <div className="flex-grow p-4 overflow-y-auto bg-[#0a0a0a]/90 text-neutral-400 relative custom-scrollbar">
-          {activeTab === 'prompt' ? (
-            <div className="whitespace-pre-wrap leading-relaxed select-text font-mono">
-              <span className="text-green-500 font-bold">$ </span>
-              {currentPrompt ? (
-                <>
-                  {renderHighlightedPrompt(currentPrompt)}
-                  <span className="animate-pulse bg-neutral-400 text-transparent ml-0.5">|</span>
-                </>
-              ) : (
-                <form onSubmit={handleCustomSubmit} className="inline-flex w-[90%] items-center">
-                  <input
-                    type="text"
-                    value={customInput}
-                    onChange={(e) => setCustomInput(e.target.value)}
-                    disabled={isRunning}
-                    placeholder="Ask me anything..."
-                    className="bg-transparent border-none outline-none text-neutral-300 w-full placeholder:text-neutral-500 text-[11px] p-0 font-mono focus:ring-0 focus:outline-none"
-                    autoFocus
-                  />
-                </form>
+        {/* Chat Message Window */}
+        <div className="flex-grow p-5 overflow-y-auto space-y-4 bg-transparent custom-scrollbar flex flex-col">
+          {messages.map((msg) => (
+            <div key={msg.id} className="flex flex-col">
+              {/* Tool Execution Logs */}
+              {msg.toolLog && (
+                <div className="flex justify-center my-2">
+                  <span className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[10px] font-mono font-bold py-1 px-3 rounded-full flex items-center gap-1.5 shadow-sm">
+                    {msg.toolLog}
+                  </span>
+                </div>
               )}
+              
+              <div className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} items-start gap-2.5`}>
+                {msg.sender === 'agent' && (
+                  <div className="w-7 h-7 rounded-xl bg-gradient-to-tr from-violet-600 to-indigo-600 flex items-center justify-center text-white shadow-md flex-shrink-0">
+                    <Brain className="w-4 h-4 text-white" />
+                  </div>
+                )}
+                <div
+                  className={`max-w-[80%] rounded-2xl px-4 py-3 text-[13px] leading-relaxed shadow-sm ${
+                    msg.sender === 'user'
+                      ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 rounded-tr-none font-medium'
+                      : 'bg-neutral-100 dark:bg-[#161616] text-neutral-800 dark:text-neutral-200 rounded-tl-none border border-neutral-200/30 dark:border-neutral-800/30'
+                  }`}
+                >
+                  {msg.text}
+                </div>
+              </div>
             </div>
-          ) : (
-            <div className="whitespace-pre-wrap leading-relaxed font-mono select-text">
-              {renderHighlightedJSON(outputContent)}
-            </div>
-          )}
+          ))}
 
-          {isRunning && activeTab === 'prompt' && (
-            <div className="absolute bottom-4 right-4 flex items-center gap-2 bg-neutral-900/90 px-3 py-1.5 rounded-lg border border-neutral-800 text-[10px] text-amber-500 shadow-md">
-              <span className="animate-spin inline-block w-3 h-3 border border-t-transparent border-amber-500 rounded-full"></span>
-              Executing chain...
+          {/* Thinking bubble */}
+          {isRunning && (
+            <div className="flex justify-start items-start gap-2.5">
+              <div className="w-7 h-7 rounded-xl bg-gradient-to-tr from-violet-600 to-indigo-600 flex items-center justify-center text-white shadow-md flex-shrink-0">
+                <Brain className="w-4 h-4 text-white" />
+              </div>
+              <div className="bg-neutral-100 dark:bg-[#161616] rounded-2xl rounded-tl-none px-4 py-3 text-[13px] border border-neutral-200/30 dark:border-neutral-800/30 flex items-center space-x-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 dark:bg-neutral-500 animate-bounce" style={{ animationDelay: '0ms' }}></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 dark:bg-neutral-500 animate-bounce" style={{ animationDelay: '150ms' }}></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 dark:bg-neutral-500 animate-bounce" style={{ animationDelay: '300ms' }}></span>
+              </div>
             </div>
           )}
+          <div ref={messagesEndRef} />
         </div>
 
-        {/* Action Controls */}
-        <div className="bg-[#0e0e0e]/80 backdrop-blur-md p-3 border-t border-neutral-900/60 flex flex-wrap gap-2 justify-center select-none">
-          <motion.button 
-            onClick={() => runPrompt('skills')}
-            disabled={isRunning}
-            whileHover={!isRunning ? { scale: 1.05, y: -1 } : {}}
-            whileTap={!isRunning ? { scale: 0.95 } : {}}
-            transition={{ type: "spring", stiffness: 400, damping: 15 }}
-            className={`px-3.5 py-1.5 rounded-xl border text-[10px] uppercase font-bold tracking-wider transition-all flex items-center gap-2 ${
-              activeButton === 'skills' 
-                ? 'bg-neutral-100 text-neutral-950 border-neutral-100 shadow-md' 
-                : 'bg-neutral-900/60 hover:bg-neutral-800/80 border-neutral-800/80 text-neutral-400 hover:text-white disabled:opacity-50'
-            }`}
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            Skills
-          </motion.button>
-          <motion.button 
-            onClick={() => runPrompt('projects')}
-            disabled={isRunning}
-            whileHover={!isRunning ? { scale: 1.05, y: -1 } : {}}
-            whileTap={!isRunning ? { scale: 0.95 } : {}}
-            transition={{ type: "spring", stiffness: 400, damping: 15 }}
-            className={`px-3.5 py-1.5 rounded-xl border text-[10px] uppercase font-bold tracking-wider transition-all flex items-center gap-2 ${
-              activeButton === 'projects' 
-                ? 'bg-neutral-100 text-neutral-950 border-neutral-100 shadow-md' 
-                : 'bg-neutral-900/60 hover:bg-neutral-800/80 border-neutral-800/80 text-neutral-400 hover:text-white disabled:opacity-50'
-            }`}
-          >
-            <Workflow className="w-3.5 h-3.5" />
-            Projects
-          </motion.button>
-          <motion.button 
-            onClick={() => runPrompt('contact')}
-            disabled={isRunning}
-            whileHover={!isRunning ? { scale: 1.05, y: -1 } : {}}
-            whileTap={!isRunning ? { scale: 0.95 } : {}}
-            transition={{ type: "spring", stiffness: 400, damping: 15 }}
-            className={`px-3.5 py-1.5 rounded-xl border text-[10px] uppercase font-bold tracking-wider transition-all flex items-center gap-2 ${
-              activeButton === 'contact' 
-                ? 'bg-neutral-100 text-neutral-950 border-neutral-100 shadow-md' 
-                : 'bg-neutral-900/60 hover:bg-neutral-800/80 border-neutral-800/80 text-neutral-400 hover:text-white disabled:opacity-50'
-            }`}
-          >
-            <Mail className="w-3.5 h-3.5" />
-            Contact
-          </motion.button>
+        {/* Footer Area */}
+        <div className="p-4 bg-neutral-50/50 dark:bg-[#0c0c0c]/80 backdrop-blur-md border-t border-neutral-200/60 dark:border-neutral-900/60 flex flex-col gap-3">
+          {/* Quick Actions Scrollable */}
+          <div className="flex gap-2 overflow-x-auto pb-1.5 no-scrollbar select-none">
+            <button 
+              onClick={() => handleQuickAction('Show me your projects')}
+              className="px-3.5 py-1.5 rounded-full bg-white dark:bg-[#161616] border border-neutral-200 dark:border-neutral-800 text-[10px] font-bold text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors shadow-sm flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+            >
+              📂 Projects
+            </button>
+            <button 
+              onClick={() => handleQuickAction('List your top skills')}
+              className="px-3.5 py-1.5 rounded-full bg-white dark:bg-[#161616] border border-neutral-200 dark:border-neutral-800 text-[10px] font-bold text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors shadow-sm flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+            >
+              🛠️ Skills
+            </button>
+            <button 
+              onClick={() => handleQuickAction('Download your CV')}
+              className="px-3.5 py-1.5 rounded-full bg-white dark:bg-[#161616] border border-neutral-200 dark:border-neutral-800 text-[10px] font-bold text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors shadow-sm flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+            >
+              📄 Download Resume
+            </button>
+            <button 
+              onClick={() => handleQuickAction('How can I contact you?')}
+              className="px-3.5 py-1.5 rounded-full bg-white dark:bg-[#161616] border border-neutral-200 dark:border-neutral-800 text-[10px] font-bold text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors shadow-sm flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+            >
+              ✉️ Contact Info
+            </button>
+          </div>
+
+          {/* Form Input */}
+          <form id="chat-form" onSubmit={handleCustomSubmit} className="flex gap-2 items-center">
+            <input
+              type="text"
+              value={customInput}
+              onChange={(e) => setCustomInput(e.target.value)}
+              disabled={isRunning}
+              placeholder="Ask the AI Agent..."
+              className="flex-grow bg-white dark:bg-[#161616] border border-neutral-200 dark:border-neutral-800 rounded-2xl px-4 py-3 text-[12px] placeholder:text-neutral-400 dark:placeholder:text-neutral-600 focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-500 dark:text-white transition-colors"
+            />
+            <button
+              type="submit"
+              disabled={isRunning || !customInput.trim()}
+              className="p-3 bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 rounded-2xl hover:scale-105 active:scale-95 disabled:opacity-50 disabled:scale-100 transition-all flex items-center justify-center cursor-pointer shadow-md"
+            >
+              <ArrowUpRight className="w-4 h-4 rotate-45" />
+            </button>
+          </form>
         </div>
       </div>
     </div>
   );
 }
-
 
 export default function App() {
   const [currentView, setCurrentView] = useState<'home' | 'projects' | 'experience' | 'services' | 'contact'>('home');
