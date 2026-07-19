@@ -1689,7 +1689,12 @@ export default function App() {
                 </motion.button>
 
                 <PromptTerminal 
-                  setCurrentView={setCurrentView}
+                  setCurrentView={(view) => {
+                    setCurrentView(view);
+                    setTimeout(() => {
+                      setIsTerminalOpen(false);
+                    }, 1500);
+                  }}
                   isDarkMode={isDarkMode}
                   setIsDarkMode={setIsDarkMode}
                   sendEmail={sendEmailDirectly}
