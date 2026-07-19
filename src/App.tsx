@@ -96,298 +96,112 @@ const projectsData = [
 ];
 
 
-function PromptTerminal({ setCurrentView }: { setCurrentView: (view: 'home' | 'projects' | 'experience' | 'contact') => void }) {
+interface PromptTerminalProps {
+  setCurrentView: (view: 'home' | 'projects' | 'experience' | 'contact') => void;
+  isDarkMode: boolean;
+  setIsDarkMode: (dark: boolean) => void;
+  sendEmail: (name: string, email: string, message: string) => Promise<boolean>;
+}
+
+function PromptTerminal({ setCurrentView, isDarkMode, setIsDarkMode, sendEmail }: PromptTerminalProps) {
   const [activeTab, setActiveTab] = useState<'prompt' | 'output'>('prompt');
   const [currentPrompt, setCurrentPrompt] = useState<string>('');
   const [outputContent, setOutputContent] = useState<string>('// Click a prompt below to execute...\n');
   const [isRunning, setIsRunning] = useState(false);
   const [activeButton, setActiveButton] = useState<string | null>(null);
   const [customInput, setCustomInput] = useState('');
+  const [chatHistory, setChatHistory] = useState<{role: 'user' | 'model', text: string}[]>([]);
 
-  const handleCustomSubmit = (e: React.FormEvent) => {
+  const handleCustomSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!customInput.trim() || isRunning) return;
 
+    const queryText = customInput.trim();
+    setCustomInput('');
     setIsRunning(true);
     setActiveTab('prompt');
     
-    // Simulate query execution logs in terminal input view
-    const queryText = customInput;
-    setCustomInput('');
-    setCurrentPrompt(`POST /agent/chat\nPayload: {\n  "query": "${queryText}"\n}`);
-    
-    // Process query to determine language and keyword response
-    const lowerQuery = queryText.toLowerCase();
-    
-    // Detect Spanish
-    const spanishKeywords = ['hola', 'quien', 'eres', 'proyectos', 'proyecto', 'habilidades', 'contacto', 'resumen', 'cv'];
-    const isSpanish = spanishKeywords.some(word => lowerQuery.split(/\s+/).includes(word));
-    
-    // Detect German
-    const germanKeywords = ['hallo', 'wer', 'bist', 'projekte', 'projekt', 'fähigkeiten', 'kontakt', 'lebenslauf'];
-    const isGerman = germanKeywords.some(word => lowerQuery.split(/\s+/).includes(word));
+    // Simulate terminal typing of the request logs
+    setCurrentPrompt(`POST /api/chat\nPayload: {\n  "query": "${queryText}"\n}`);
 
-    // Detect French
-    const frenchKeywords = ['bonjour', 'salut', 'qui', 'es', 'projets', 'projet', 'competences', 'contact'];
-    const isFrench = frenchKeywords.some(word => lowerQuery.split(/\s+/).includes(word));
+    // We can show status logs in output tab to make it look premium
+    setActiveTab('output');
+    setOutputContent(`// Initializing Agent session...\n// Executing request chain...\n`);
 
-    // Detect Hindi (Devnagari)
-    const devnagariKeywords = ['कौन', 'क्या', 'बारे', 'बताओ', 'जानकारी', 'नमस्ते', 'प्रोजेक्ट', 'अनुभव', 'रेज़्युमे', 'कौशल'];
-    const isDevnagari = devnagariKeywords.some(word => lowerQuery.includes(word));
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: queryText,
+          history: chatHistory
+        })
+      });
 
-    // Detect Bengali
-    const bengaliKeywords = ['কে', 'কি', 'প্রজেক্ট', 'দক্ষতা', 'যোগাযোগ', 'নমস্কার'];
-    const isBengali = bengaliKeywords.some(word => lowerQuery.includes(word));
+      if (!response.ok) {
+        throw new Error('API Error');
+      }
 
-    // Detect Telugu
-    const teluguKeywords = ['ఎవరు', 'ఏమిటి', 'ప్రాజెక్ట్', 'ప్రాజেকటులు', 'నైపుణ్యాలు', 'నమస్కారం'];
-    const isTelugu = teluguKeywords.some(word => lowerQuery.includes(word));
-
-    // Detect Tamil
-    const tamilKeywords = ['யார்', 'என்ன', 'திட்டங்கள்', 'திறமைகள்', 'வணக்கம்'];
-    const isTamil = tamilKeywords.some(word => lowerQuery.includes(word));
-
-    // Detect Marathi
-    const marathiKeywords = ['प्रकल्प', 'कौशल्य', 'नमस्कार', 'कोण', 'काय'];
-    const isMarathi = marathiKeywords.some(word => lowerQuery.includes(word));
-
-    // Detect Hinglish
-    const hinglishKeywords = [
-      'kya', 'kaun', 'tum', 'batao', 'bataiye', 'dikhao', 'dikhaye', 'karo', 
-      'karna', 'karke', 'kr', 'kra', 'kru', 'krna', 'karne', 'btao', 'dkhao', 
-      'kaise', 'se', 'kar', 'naam', 'toh', 'apna', 'apne', 'apni', 'tumhara', 
-      'hai', 'hoon', 'hun', 'tha', 'thi', 'the', 'nhi', 'nahi', 'yaar', 'bhai', 
-      'mujhe', 'mujho', 'mera', 'meri', 'mere', 'kai', 'ke', 'bare', 'baare', 
-      'mai', 'chaiya', 'chahiye', 'kuch'
-    ];
-    const isHinglish = !isSpanish && !isGerman && !isFrench && !isDevnagari && !isBengali && !isTelugu && !isTamil && !isMarathi && hinglishKeywords.some(word => lowerQuery.split(/\s+/).includes(word));
-    
-    let detectedLang = "English";
-    if (isSpanish) detectedLang = "Spanish";
-    else if (isGerman) detectedLang = "German";
-    else if (isFrench) detectedLang = "French";
-    else if (isDevnagari) detectedLang = "Hindi (Devnagari)";
-    else if (isBengali) detectedLang = "Bengali";
-    else if (isTelugu) detectedLang = "Telugu";
-    else if (isTamil) detectedLang = "Tamil";
-    else if (isMarathi) detectedLang = "Marathi";
-    else if (isHinglish) detectedLang = "Hinglish / Hindi";
-
-    let responseText = "";
-    
-    // Now determine response text based on keywords and detected language
-    if (lowerQuery.includes('smartnest') || lowerQuery.includes('4layers')) {
-      if (isSpanish) {
-        responseText = "4Layers (SmartNest) es una solución de domótica IoT construida con React Native, FastAPI, MQTT, PostgreSQL y Docker, que admite emparejamiento de hardware mediante códigos QR.";
-      } else if (isGerman) {
-        responseText = "4Layers (SmartNest) ist eine IoT-Hausautomationslösung, die mit React Native, FastAPI, MQTT, PostgreSQL und Docker entwickelt wurde und die Hardware-Kopplung über QR-Codes unterstützt.";
-      } else if (isFrench) {
-        responseText = "4Layers (SmartNest) est une solution domotique IoT construite avec React Native, FastAPI, MQTT, PostgreSQL et Docker, prenant en charge l'appairage matériel via des codes QR.";
-      } else if (isDevnagari) {
-        responseText = "4Layers (स्मार्टनेस्ट) एक स्मार्ट होम IoT समाधान है जिसे रिएक्ट नेटिव, FastAPI, MQTT, पोस्टग्रेएसक्यूएल और डॉकर के साथ बनाया गया है, जो क्यूआर कोड के माध्यम से हार्डवेयर पेयरिंग का समर्थन करता है।";
-      } else if (isBengali) {
-        responseText = "4Layers (SmartNest) হলো একটি আইওটি (IoT) হোম অটোমেশন সিস্টেম যা রিয়্যাক্ট নেটিভ, ফাস্টএপিআই এবং এমকিউটিটি দিয়ে তৈরি।";
-      } else if (isTelugu) {
-        responseText = "4Layers (స్మార్ట్‌నెస్ట్) అనేది రియాక్ట్ నేటివ్, FastAPI మరియు MQTT తో నిర్మించబడిన IoT హోమ్ ఆటోమేషన్ సిస్టమ్.";
-      } else if (isTamil) {
-        responseText = "4Layers (స్మార్ట్‌நெஸ்ட்) என்பது ரியாக்ட் நேட்டிவ், FastAPI மற்றும் MQTT கொண்டு உருவாக்கப்பட்ட ஒரு IoT ஹோம் ஆட்டோமேஷன் சிஸ்டம் ஆகும்.";
-      } else if (isMarathi) {
-        responseText = "4Layers (स्मार्टनेस्ट) ही रिएक्ट नेटिव्ह, FastAPI आणि MQTT सह तयार केलेली IoT होम ऑटोमेशन सिस्टीम आहे.";
-      } else if (isHinglish) {
-        responseText = "4Layers (SmartNest) ek smart home IoT system hai jise React Native, FastAPI, aur MQTT protocol se banaya gaya hai. Ye ESP32 hardware pairing QR/Barcode scan se support karta hai.";
-      } else {
-        responseText = "4Layers (SmartNest) is Naved's latest IoT home automation system built with React Native (Expo), FastAPI, MQTT, PostgreSQL, Supabase and Docker, supporting hardware pairing via QR/Barcode.";
-      }
-    } else if (lowerQuery.includes('datalens')) {
-      if (isSpanish) {
-        responseText = "DataLens AI es una plataforma de análisis que utiliza IA para traducir lenguaje natural a consultas SQL y generar información empresarial explicada en texto plano.";
-      } else if (isGerman) {
-        responseText = "DataLens AI ist eine Analyseplattform, die KI nutzt, um natürliche Sprache in SQL-Abfragen zu übersetzen und verständliche Erkenntnisse zu generieren.";
-      } else if (isFrench) {
-        responseText = "DataLens AI est une plateforme d'analyse qui utilise l'IA pour traduire le langage naturel en requêtes SQL et générer des informations expliquées en texte clair.";
-      } else if (isDevnagari) {
-        responseText = "डेटा लेंस एआई एक पूर्ण-स्टैक एआई एनालिटिक्स प्लेटफॉर्म है जो प्राकृतिक भाषा को एसक्यूएल में बदलने और व्यावसायिक अंतर्दृष्टि उत्पन्न करने के लिए जेमिनी एआई का उपयोग करता है।";
-      } else if (isBengali) {
-        responseText = "DataLens AI হলো একটি পূর্ণ-স্ট্যাক এআই অ্যানালিটিক্স প্ল্যাটফর্ম যা সহজ ইংরেজি প্রশ্নকে এসকিউএল কোয়েরিতে রূপান্তরিত করে।";
-      } else if (isTelugu) {
-        responseText = "డేటా లెన్స్ అనేది సహజ భాషను SQL ప్రశ్నలుగా మార్చే పూర్తి-స్టాక్ AI అనలిటిక్స్ ప్లాట్‌ఫారమ్.";
-      } else if (isTamil) {
-        responseText = "டேட்டாலென்ஸ் என்பது எளிய மொழியை SQL வினவல்களாக மாற்றும் ஒரு முழு-ஸ்டாக் AI பகுப்பாய்வு தளம் ஆகும்.";
-      } else if (isMarathi) {
-        responseText = "डेटा लेन्स हा एक फुल-स्टॅक AI ॲनालिटिक्स प्लॅटफॉर्म आहे जो सोप्या भाषेला SQL क्वेरीमध्ये रूपांतरित करतो.";
-      } else if (isHinglish) {
-        responseText = "DataLens AI ek full-stack AI analytics platform hai jo React, TypeScript aur Gemini AI use karta hai. Isme raw English questions ko direct SQL query me convert kiya ja sakta hai.";
-      } else {
-        responseText = "DataLens AI is a full-stack AI analytics platform featuring natural language to SQL query translation (using Gemini API) and automated ML insight generators.";
-      }
-    } else if (lowerQuery.includes('autoapply')) {
-      if (isSpanish) {
-        responseText = "AutoApply AI es un sistema automatizado que lee descripciones de trabajo, extrae requisitos y genera currículums adaptados mediante llamadas estructuradas a LLM.";
-      } else if (isGerman) {
-        responseText = "AutoApply AI ist ein automatisiertes System, das Stellenbeschreibungen liest, Anforderungen extrahiert und maßgeschneiderte Lebensläufe über strukturierte LLM-Aufrufe generiert.";
-      } else if (isFrench) {
-        responseText = "AutoApply AI est un système automatisé qui lit les descriptions de poste, extrait les exigences et génère des CV personnalisés via des appels LLM structurés.";
-      } else if (isDevnagari) {
-        responseText = "ऑटोअप्लाई एआई एक स्वचालित नौकरी आवेदन प्रणाली है जो नौकरी के विवरण को पढ़ती है और जेमिनी के संरचित कॉल्स के माध्यम से अनुकूलित बायोडाटा उत्पन्न करती है।";
-      } else if (isBengali) {
-        responseText = "AutoApply AI হলো এআই সিস্টেম যা চাকরির বিবরণ পড়ে স্বয়ংক্রিয়ভাবে কাস্টমাইজড রেজ্যুমে এবং কভার লেটার তৈরি করে।";
-      } else if (isTelugu) {
-        responseText = "ఆటోఅప్లై AI అనేది ఉద్యోగ వివరాలను చదివి స్వయంచాలకంగా అనుకూలీకరించిన రెజ్యూమెలను రూపొందించే AI సిస్టమ్.";
-      } else if (isTamil) {
-        responseText = "ஆட்டோஅప్ளை AI என்பது வேலை விவரங்களைப் படித்து தானாகவே தனிப்பயனாக்கப்பட்ட பயோடேட்டாவை உருவாக்கும் ஒரு AI தளம் ஆகும்.";
-      } else if (isMarathi) {
-        responseText = "ऑटोअप्लाय AI ही एक svayanchalit नোকরি অর্জ প্রণালী आहे जी नোকরিचे तपशील वाचून कस्टमाइज्ड बायोडाटा तयार करते.";
-      } else if (isHinglish) {
-        responseText = "AutoApply AI ek job application automation system hai jo python aur LLM prompt chain use karke job description se resume aur cover letter dynamically customize karta hai.";
-      } else {
-        responseText = "AutoApply AI is an automated job application system that parses job descriptions and dynamically generates custom resumes and cover letters using LLM prompt chaining.";
-      }
-    } else if (lowerQuery.includes('project') || lowerQuery.includes('work') || lowerQuery.includes('projects') || lowerQuery.includes('proyectos') || lowerQuery.includes('projekte') || lowerQuery.includes('projets') || lowerQuery.includes('প্রজেক্ট') || lowerQuery.includes('ప్రాజెక్ట్') || lowerQuery.includes('திட்டங்கள்') || lowerQuery.includes('प्रकल्प')) {
-      if (isSpanish) {
-        responseText = "Naved ha desarrollado 4 proyectos clave: 4Layers (Domótica), AutoApply AI (Automatización de Empleo), DataLens AI (Análisis con IA) y el pipeline de currículum en PDF.";
-      } else if (isGerman) {
-        responseText = "Naved hat 4 Schlüsselprojekte entwickelt: Hausautomation (4Layers), Job-Automatisierung (AutoApply AI), KI-Analytik (DataLens AI) und die PDF-Lebenslauf-Pipeline.";
-      } else if (isFrench) {
-        responseText = "Naved a développé 4 projets clés: Domotique (4Layers), Automatisation d'emploi (AutoApply AI), Analyse IA (DataLens AI) et le pipeline de CV en PDF.";
-      } else if (isDevnagari) {
-        responseText = "नावेद ने 4 मुख्य प्रोजेक्ट बनाए हैं: 4Layers (IoT होम ऑटोमेशन), ऑटोअप्लाई एआई (जॉब ऑटोमेशन), डेटा लेंस एआई (एनालिटिक्स) और पोर्टफोलियो पीडीएफ पाइपलाइन।";
-      } else if (isBengali) {
-        responseText = "নাভেদ ৪টি প্রজেক্ট তৈরি করেছেন: 4Layers (আইওটি), AutoApply AI (জব অটোমেশন), DataLens AI (অ্যানালিটিক্স) এবং পিডিএফ রেজ্যুমে পাইপলাইন।";
-      } else if (isTelugu) {
-        responseText = "నావేద్ 4 ప్రాజెక్టులను నిర్మించారు: 4Layers, ఆటోఅప్లై AI, డేటా లెన్స్ AI మరియు రెజ్యూమే పిడిఎఫ్ పైప్‌లైన్.";
-      } else if (isTamil) {
-        responseText = "நாவேத் 4 முக்கிய திட்டங்களை உருவாக்கியுள்ளார்: 4Layers, ஆட்டோஅப்ளை AI, டேட்டாலெన్స్ AI மற்றும் பிடிஎஃப் பயோடேட்டா பைப்லைன்.";
-      } else if (isMarathi) {
-        responseText = "नावेदमने ४ प्रकल्प तयार केले आहेत: 4Layers, ऑटोअप्लाय AI, डेटा लेन्स AI आणि पीडीएफ बायोडाटा पाइपलाइन.";
-      } else if (isHinglish) {
-        responseText = "Naved ne 4 projects banaye hain: 4Layers (IoT Automation), AutoApply AI (Job Application Tool), DataLens AI (Analytics Platform), aur Portfolio PDF Automation.";
-      } else {
-        responseText = "Naved has built 4 key projects: 4Layers (IoT Home Automation), AutoApply AI (Job Automation), DataLens AI (Analytics Platform), and Portfolio PDF Automation Pipeline.";
-      }
-    } else if (lowerQuery.includes('skills') || lowerQuery.includes('tech') || lowerQuery.includes('habilidades') || lowerQuery.includes('fähigkeiten') || lowerQuery.includes('competences') || lowerQuery.includes('कौशल') || lowerQuery.includes('দক্ষতা') || lowerQuery.includes('নైపుణ్యాలు') || lowerQuery.includes('திறமைகள்') || lowerQuery.includes('कौशल्य')) {
-      if (isSpanish) {
-        responseText = "Naved se especializa en Ingeniería de Prompts, Agentes de IA (LangChain, n8n), Python, SQL, React, TypeScript y Docker.";
-      } else if (isGerman) {
-        responseText = "Naved ist spezialisiert auf Prompt Engineering, KI-Agenten (LangChain, n8n), Python, SQL, React, TypeScript und Docker.";
-      } else if (isFrench) {
-        responseText = "Naved est spécialisé en ingénierie de prompts, agents d'IA (LangChain, n8n), Python, SQL, React, TypeScript et Docker.";
-      } else if (isDevnagari) {
-        responseText = "नावेद प्रॉम्प्ट इंजीनियरिंग, एीआई एजेंट वर्कफ़्लो (LangChain, n8n), पायथन, एसक्यूएल और रिएक्ट/टाइपस्क्रिप्ट में कुशल हैं।";
-      } else if (isBengali) {
-        responseText = "নাভেদ প্রম্পট ইঞ্জিনিয়ারিং, এআই এজেন্ট (LangChain, n8n), পাইথন, এসকিউএল এবং রিয়্যাক্ট/টাইপস্ক্রিপ্ট প্রযুক্তিতে বিশেষজ্ঞ।";
-      } else if (isTelugu) {
-        responseText = "నావేద్ ప్రాంప్ట్ ఇంజనీరింగ్, AI ఏజెంట్లు (LangChain, n8n), పైథాన్, SQL మరియు రియాక్ట్/టైప్‌స్క్రిప్ట్‌లో నిపుణుడు.";
-      } else if (isTamil) {
-        responseText = "நாவேத் பிராம்ப் இன்ஜினியரிங், AI ஏஜெண்டுகள் (LangChain, n8n), பைதான், SQL மற்றும் ரியாக்ட்/டைப்ஸ்கிரிப்ட் ஆகியவற்றில் நிபுணத்துவம் பெற்றவர்.";
-      } else if (isMarathi) {
-        responseText = "नावेद हा प्रॉम्प्ट इंजिनिअरिंग, AI एजंट (LangChain, n8n), पायथन, SQL आणि रिएक्ट/टाइपस्क्रिप्टमध्ये तज्ञ आहे.";
-      } else if (isHinglish) {
-        responseText = "Naved Prompt Engineering, AI Agents (LangChain, n8n), Python, SQL, aur React/TypeScript frontends me specialized hain.";
-      } else {
-        responseText = "Naved specializes in Prompt Engineering, AI Agent workflows (LangChain, n8n), Python, SQL, React, TypeScript, and Docker.";
-      }
-    } else if (lowerQuery.includes('contact') || lowerQuery.includes('email') || lowerQuery.includes('contacto') || lowerQuery.includes('kontakt') || lowerQuery.includes('संपर्क') || lowerQuery.includes('যোগাযোগ') || lowerQuery.includes('సంప్రదించండి') || lowerQuery.includes('தொடர்பு')) {
-      if (isSpanish) {
-        responseText = "Puede contactar a Naved en andyk4548@gmail.com, por teléfono al +91 9753880839 o conectarse en LinkedIn (in/md-naved-2b79b8382).";
-      } else if (isGerman) {
-        responseText = "Sie können Naved unter andyk4548@gmail.com, per Telefon unter +91 9753880839 erreichen oder sich auf LinkedIn verbinden.";
-      } else if (isFrench) {
-        responseText = "Vous pouvez contacter Naved à andyk4548@gmail.com, par téléphone au +91 9753880839 ou vous connecter sur LinkedIn.";
-      } else if (isDevnagari) {
-        responseText = "आप नावेद से andyk4548@gmail.com पर संपर्क कर सकते हैं, फोन +91 9753880839 पर बात कर सकते हैं या लिंक्डइन पर जुड़ सकते हैं।";
-      } else if (isBengali) {
-        responseText = "আপনি নাভেদের সাথে andyk4548@gmail.com ইমেইল অথবা +91 9753880839 ফোনে যোগাযোগ করতে পারেন।";
-      } else if (isTelugu) {
-        responseText = "మీరు నావేద్‌ను andyk4548@gmail.com లేదా +91 9753880839 ద్వారా సంప్రదించవచ్చు.";
-      } else if (isTamil) {
-        responseText = "நீங்கள் நாவேதை andyk4548@gmail.com அல்லது +91 9753880839 மூலம் தொடர்பு கொள்ளலாம்.";
-      } else if (isMarathi) {
-        responseText = "तुम्ही नावेदशी andyk4548@gmail.com किंवा +91 9753880839 वर संपर्क साधू शकता.";
-      } else if (isHinglish) {
-        responseText = "Aap Naved se andyk4548@gmail.com ya phone +91 9753880839 par contact kar sakte hain. LinkedIn link: linkedin.com/in/md-naved-2b79b8382.";
-      } else {
-        responseText = "You can reach Naved at andyk4548@gmail.com, via phone at +91 9753880839, or connect on LinkedIn (in/md-naved-2b79b8382).";
-      }
-    } else if (lowerQuery.includes('resume') || lowerQuery.includes('cv') || lowerQuery.includes('resumen') || lowerQuery.includes('lebenslauf') || lowerQuery.includes('रेज़्युमे') || lowerQuery.includes('রেজ্যুমে')) {
-      if (isSpanish) {
-        responseText = "Puede descargar el currículum en PDF de 2 páginas de Naved directamente desde el botón de descarga del encabezado o en /Mohammad_Naved_Resume.pdf.";
-      } else if (isGerman) {
-        responseText = "Sie können den zweiseitigen PDF-Lebenslauf von Naved direkt über die Download-Schaltfläche im Header oder unter /Mohammad_Naved_Resume.pdf herunterladen.";
-      } else if (isFrench) {
-        responseText = "Vous pouvez télécharger le CV PDF en 2 pages de Naved directement depuis le bouton de téléchargement en haut ou à /Mohammad_Naved_Resume.pdf.";
-      } else if (isDevnagari) {
-        responseText = "आप नावेद का 2-पेज का पीडीएफ रेज़्युमे वेबसाइट हेडर के डाउनलोड बटन से या सीधे /Mohammad_Naved_Resume.pdf से डाउनलोड कर सकते हैं।";
-      } else if (isBengali) {
-        responseText = "আপনি নাভেদের ২-পৃষ্ঠার পিডিএফ রেজ্যুমে হেডার ডাউনলোড বোতাম থেকে সরাসরি ডাউনলোড করতে পারেন।";
-      } else if (isTelugu) {
-        responseText = "మీరు నావేద్ యొక్క 2-పేజీల పిడిఎఫ్ రెజ్యూమేను హెడర్ డౌన్‌లోడ్ బటన్ ద్వారా డౌన్‌లోడ్ చేసుకోవచ్చు.";
-      } else if (isTamil) {
-        responseText = "நீங்கள் நாவேதின் 2-பக்க பிடிஎஃப் பயோடேட்டாவை ஹெடரில் உள்ள பதிவிறக்க பொத்தான் மூலம் பதிவிறக்கம் செய்யலாம்.";
-      } else if (isMarathi) {
-        responseText = "तुम्ही नावेदचा २-पेजचा पीडीएफ बायोडाटा हेडरमधील डाउनलोड बटणावरून थेट डाउनलोड करू शकता.";
-      } else if (isHinglish) {
-        responseText = "Aap Naved ka 2-page print-ready PDF resume website header ke download button se ya directly /Mohammad_Naved_Resume.pdf link se download kar sakte hain.";
-      } else {
-        responseText = "You can download Naved's 2-page print-ready PDF resume directly from the header download button or at /Mohammad_Naved_Resume.pdf.";
-      }
-    } else if (lowerQuery.includes('hello') || lowerQuery.includes('hi') || lowerQuery.includes('hola') || lowerQuery.includes('hallo') || lowerQuery.includes('bonjour') || lowerQuery.includes('नमस्ते') || lowerQuery.includes('নমস্কার') || lowerQuery.includes('నమస్కారం') || lowerQuery.includes('வணக்கம்')) {
-      if (isSpanish) {
-        responseText = "¡Hola! Soy el asistente de IA de Naved. ¡Pregúntame cualquier cosa sobre sus proyectos, habilidades técnicas o currículum!";
-      } else if (isGerman) {
-        responseText = "Hallo! Ich bin Naveds KI-Assistent. Fragen Sie mich alles über seine Projekte, technischen Fähigkeiten oder seinen Lebenslauf!";
-      } else if (isFrench) {
-        responseText = "Bonjour! Je suis l'assistant IA de Naved. Posez-moi des questions sur ses projets, ses compétences techniques ou son CV!";
-      } else if (isDevnagari) {
-        responseText = "नमस्ते! मैं नावेद का एआई सहायक हूँ। आप मुझसे उनके प्रोजेक्ट्स, स्किल्स, रेज़्युमे या संपर्क विवरण के बारे में कुछ भी पूछ सकते हैं!";
-      } else if (isBengali) {
-        responseText = "নমস্কার! আমি নাভেদের এআই সহকারী। তার প্রজেক্ট, দক্ষতা বা রেজ্যুমে সম্পর্কে যেকোনো প্রশ্ন করুন।";
-      } else if (isTelugu) {
-        responseText = "నమస్కారం! నేను నావేద్ యొక్క AI సహాయకుడిని. అతని ప్రాజెక్ట్‌లు లేదా నైపుణ్యాల గురించి ఏదైనా అడగండి.";
-      } else if (isTamil) {
-        responseText = "வணக்கம்! நான் நாவேதின் AI உதவியாளர். அவருடைய திட்டங்கள் அல்லது திறன்களைப் பற்றி ஏதேனும் கேளுங்கள்.";
-      } else if (isMarathi) {
-        responseText = "नमस्कार! मी नावेदचा AI सहाय्यक आहे. मला त्याचे प्रकल्प किंवा कौशल्यांबद्दल काहीही विचारा.";
-      } else if (isHinglish) {
-        responseText = "Hello! Main Naved ka AI assistant hoon. Aap mujhse Naved ke projects, skills, resume, ya contact details ke baare me kuch bhi puch sakte hain!";
-      } else {
-        responseText = "Hello! I am Naved's AI assistant. Ask me anything about Naved's projects, technical skills, resume, or contact details!";
-      }
-    } else {
-      if (isSpanish) {
-        responseText = "Naved es un Ingeniero de Prompts y de IA Aplicada. Construye sistemas integrados con LLM usando Python y React. Pregúntame sobre sus proyectos.";
-      } else if (isGerman) {
-        responseText = "Naved ist ein Applied AI & Prompt Engineer. Er baut LLM-integrierte Systeme mit Python und React. Fragen Sie mich nach seinen Projekten.";
-      } else if (isFrench) {
-        responseText = "Naved est un ingénieur IA appliquée et prompts. Il conçoit des systèmes intégrés avec des LLM à l'aide de Python et React. N'hésitez pas à poser des questions.";
-      } else if (isDevnagari) {
-        responseText = "नावेद एक एप्लाइड एआई और प्रॉम्प्ट इंजीनियर हैं जो एलएलएम, पायथन और रिएक्ट फ्रंटएंड का उपयोग करके काम करने वाले एप्लिकेशन बनाते हैं।";
-      } else if (isBengali) {
-        responseText = "নাভেদ একজন অ্যাপ্লাইড এআই এবং প্রম্পট ইঞ্জিনিয়ার। তিনি প্রম্পট চেইনিং এবং এআই এজেন্ট তৈরিতে পারদর্শী।";
-      } else if (isTelugu) {
-        responseText = "నావేద్ ఒక అప్లైడ్ AI మరియు ప్రాంప్ట్ ఇంజనీర్. అతను AI వర్క్‌ఫ్లోలు మరియు అప్లిকেషన్‌లను నిర్मिస్తాడు.";
-      } else if (isTamil) {
-        responseText = "நாவேத் ஒரு முக்கிய AI மற்றும் பிராம்ப் பொறியாளர் ஆவார். அவர் எல்எல்এম பயன்பாடுகளை உருவாக்குகிறார்.";
-      } else if (isMarathi) {
-        responseText = "नावेद हा एक उपयोजित AI आणि प्रॉम्प्ट अभियंता आहे. तो विविध AI ॲप्लिकेशन्स तयार करतो.";
-      } else if (isHinglish) {
-        responseText = "Naved ek Applied AI & Prompt Engineer hain jo LLMs, Python, aur React frontends ke sath working applications build karte hain. Aap unke projects (4Layers, DataLens AI, AutoApply AI) ke baare me detail me jaan sakte hain.";
-      } else {
-        responseText = "Naved is an Applied AI & Prompt Engineer. He builds smart applications using LLM API integrations, custom agents, Python, and React. Feel free to ask about his specific projects (4Layers, DataLens AI, AutoApply AI).";
-      }
-    }
-    
-    const outputJSON = `{
-  "status": "success",
-  "query": "${queryText}",
-  "language_detected": "${detectedLang}",
-  "response": "${responseText}"
-}`;
-
-    // Staged execution sequence
-    setTimeout(() => {
-      setActiveTab('output');
+      const data = await response.json();
       
-      // Simulate typing output JSON
+      let finalResponseText = data.text;
+      let logs = `[THOUGHT] Query received: "${queryText}"\n`;
+
+      if (data.toolCall) {
+        const { name, args } = data.toolCall;
+        logs += `[ACTION] Model requested tool call: ${name}()\n`;
+        
+        // Execute tool calls on client-side
+        if (name === 'download_resume') {
+          logs += `[STATUS] Downloading CV in user browser...\n`;
+          const link = document.createElement('a');
+          link.href = '/Mohammad_Naved_Resume.pdf';
+          link.download = 'Mohammad_Naved_Resume.pdf';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          logs += `[SUCCESS] CV Download triggered successfully!\n`;
+          finalResponseText = "I have initiated the CV download in your browser window. Let me know if you need help with anything else!";
+        } 
+        else if (name === 'toggle_theme') {
+          const mode = args.mode || (isDarkMode ? 'light' : 'dark');
+          logs += `[STATUS] Switching site theme to ${mode} mode...\n`;
+          setIsDarkMode(mode === 'dark');
+          logs += `[SUCCESS] Theme updated to ${mode}!\n`;
+          finalResponseText = `Switched theme to ${mode} mode successfully.`;
+        } 
+        else if (name === 'navigate_site') {
+          const section = args.section;
+          logs += `[STATUS] Navigating portfolio view to /${section}...\n`;
+          setCurrentView(section);
+          logs += `[SUCCESS] Viewport updated to /${section}!\n`;
+          finalResponseText = `Navigating you directly to my ${section} page.`;
+        } 
+        else if (name === 'send_email') {
+          logs += `[STATUS] Initiating secure contact form submission to Naved...\n`;
+          const success = await sendEmail(args.name, args.email, args.message);
+          if (success) {
+            logs += `[SUCCESS] Message successfully delivered to Naved's email!\n`;
+            finalResponseText = `Thanks ${args.name}! I have securely transmitted your message directly to Naved's inbox. He will reply back to your email: ${args.email}.`;
+          } else {
+            logs += `[ERROR] Failed to send email. Please check credentials.\n`;
+            finalResponseText = "I encountered an error trying to deliver the email message. You can reach Naved directly at andyk4548@gmail.com.";
+          }
+        }
+      }
+
+      // Add to conversation history
+      setChatHistory(prev => [
+        ...prev,
+        { role: 'user', text: queryText },
+        { role: 'model', text: finalResponseText }
+      ]);
+
+      const outputJSON = `${logs}\n{\n  "status": "success",\n  "response": "${finalResponseText.replace(/"/g, '\\"')}"\n}`;
+
+      // Simulate output streaming
       let currentOutput = '';
       let outIndex = 0;
       const outputInterval = setInterval(() => {
@@ -398,13 +212,17 @@ function PromptTerminal({ setCurrentView }: { setCurrentView: (view: 'home' | 'p
         } else {
           clearInterval(outputInterval);
           setIsRunning(false);
-          // Auto-clear active highlights after 3 seconds
-          setTimeout(() => {
-            setCurrentPrompt('');
-          }, 3000);
+          setTimeout(() => setCurrentPrompt(''), 3000);
         }
       }, 10);
-    }, 1200);
+
+    } catch (error) {
+      console.error(error);
+      const errorLogs = `[ERROR] Connection failed. Check environment variables or serverless availability.`;
+      setOutputContent(`${errorLogs}\n\n{\n  "status": "error",\n  "response": "Could not connect to the AI Agent server. Please try again later."\n}`);
+      setIsRunning(false);
+      setTimeout(() => setCurrentPrompt(''), 3000);
+    }
   };
 
   const prompts = {
@@ -894,6 +712,50 @@ export default function App() {
       console.error("Error submitting form:", error);
       setFormStatus('error');
       setTimeout(() => setFormStatus('idle'), 4000);
+    }
+  };
+
+  const sendEmailDirectly = async (name: string, email: string, message: string) => {
+    setFormStatus('submitting');
+    setContactName(name);
+    setContactEmail(email);
+    setContactMessage(message);
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
+    const payload = {
+      access_key: accessKey,
+      name,
+      email,
+      message,
+      subject: `AI Agent Handshake from ${name}`
+    };
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+      const result = await response.json();
+      if (result.success) {
+        setFormStatus('success');
+        setContactName('');
+        setContactEmail('');
+        setContactMessage('');
+        setTimeout(() => setFormStatus('idle'), 4000);
+        return true;
+      }
+      setFormStatus('error');
+      setTimeout(() => setFormStatus('idle'), 4000);
+      return false;
+    } catch (e) {
+      console.error(e);
+      setFormStatus('error');
+      setTimeout(() => setFormStatus('idle'), 4000);
+      return false;
     }
   };
 
@@ -2044,10 +1906,12 @@ export default function App() {
                   <X className="w-4 h-4" />
                 </motion.button>
 
-                <PromptTerminal setCurrentView={(view) => {
-                  setCurrentView(view);
-                  setIsTerminalOpen(false);
-                }} />
+                <PromptTerminal 
+                  setCurrentView={setCurrentView}
+                  isDarkMode={isDarkMode}
+                  setIsDarkMode={setIsDarkMode}
+                  sendEmail={sendEmailDirectly}
+                />
               </motion.div>
             </div>
           )}
