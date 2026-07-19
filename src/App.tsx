@@ -1771,8 +1771,8 @@ export default function App() {
             </motion.button>
           </div>
         )}
-        {/* Floating AI Agent Trigger Button (Visible on all pages when terminal is closed) */}
-        {!isTerminalOpen && !selectedProject && (
+        {/* Floating AI Agent Trigger Button (Visible on other pages when terminal is closed) */}
+        {!isTerminalOpen && !selectedProject && currentView !== 'home' && (
           <motion.button
             onClick={() => setIsTerminalOpen(true)}
             initial={{ scale: 0, y: 50 }}
