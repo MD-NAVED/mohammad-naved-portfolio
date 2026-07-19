@@ -1773,17 +1773,29 @@ export default function App() {
         )}
         {/* Floating AI Agent Trigger Button (Visible on other pages when terminal is closed) */}
         {!isTerminalOpen && !selectedProject && currentView !== 'home' && (
-          <motion.button
-            onClick={() => setIsTerminalOpen(true)}
-            initial={{ scale: 0, y: 50 }}
-            animate={{ scale: 1, y: 0 }}
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            whileTap={{ scale: 0.9 }}
-            className="fixed bottom-6 right-6 z-40 p-4 rounded-full bg-gradient-to-tr from-violet-600 to-indigo-600 text-white shadow-xl hover:shadow-2xl transition-all cursor-pointer flex items-center justify-center border border-white/10 dark:border-neutral-800"
-            aria-label="Ask AI Agent"
-          >
-            <Brain className="w-6 h-6" />
-          </motion.button>
+          <div className="fixed bottom-6 right-6 z-40 flex items-center justify-center">
+            {/* Glowing breathing rings behind */}
+            <div className="absolute inset-0 rounded-full bg-violet-600/40 animate-ping opacity-60 pointer-events-none" style={{ animationDuration: '3s' }}></div>
+            <div className="absolute inset-0 rounded-full bg-indigo-500/20 animate-pulse pointer-events-none"></div>
+            
+            <motion.button
+              onClick={() => setIsTerminalOpen(true)}
+              initial={{ scale: 0, y: 50 }}
+              animate={{ scale: 1, y: 0 }}
+              whileHover={{ scale: 1.1, rotate: 8 }}
+              whileTap={{ scale: 0.9 }}
+              className="relative p-4 rounded-full bg-gradient-to-tr from-violet-600 to-indigo-600 text-white shadow-xl hover:shadow-2xl transition-all cursor-pointer flex items-center justify-center border border-white/10 dark:border-neutral-800"
+              aria-label="Ask AI Agent"
+            >
+              <motion.div
+                animate={{ y: [0, -2, 0] }}
+                transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+                className="flex items-center justify-center"
+              >
+                <Brain className="w-6 h-6" />
+              </motion.div>
+            </motion.button>
+          </div>
         )}
 
         <Analytics />
