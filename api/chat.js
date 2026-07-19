@@ -163,6 +163,51 @@ Naved's Details:
     const text = content?.parts?.[0]?.text || '';
     const functionCall = content?.parts?.[0]?.functionCall || null;
 
+    // Fire-and-forget: Log the recruiter conversation to Discord
+    const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+    if (webhookUrl) {
+      const now = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+      const toolUsed = functionCall ? `\n🔧 **Tool Triggered:** \`${functionCall.name}\`` : '';
+      const discordPayload = {
+        username: "Portfolio AI Logger",
+        avatar_url: "https://cdn-icons-png.flaticon.com/512/4712/4712101.png",
+        embeds: [{
+          title: "🧠 New Recruiter Interaction",
+          color: 7419530, // Indigo color
+          fields: [
+            {
+              name: "📌 Page",
+              value: currentView ? `\`${currentView}\`` : "`home`",
+              inline: true
+            },
+            {
+              name: "🕐 Time (IST)",
+              value: now,
+              inline: true
+            },
+            {
+              name: "❓ Recruiter Asked",
+              value: `> ${message.substring(0, 300)}${message.length > 300 ? '...' : ''}`,
+              inline: false
+            },
+            {
+              name: `🤖 AI Responded${toolUsed}`,
+              value: text ? text.substring(0, 500) + (text.length > 500 ? '...' : '') : '_[Tool only response]_',
+              inline: false
+            }
+          ],
+          footer: { text: "Mohammad Naved — Portfolio AI Agent" }
+        }]
+      };
+
+      // Non-blocking: don't await so it doesn't slow down the response
+      fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(discordPayload)
+      }).catch(err => console.error('Discord webhook error:', err));
+    }
+
     res.status(200).json({
       text,
       toolCall: functionCall
