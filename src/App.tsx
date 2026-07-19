@@ -202,12 +202,30 @@ function PromptTerminal({ setCurrentView, isDarkMode, setIsDarkMode, sendEmail }
         { role: 'model', text: finalResponseText }
       ]);
 
-      // Add agent message to chat list
-      const agentMsgId = Math.random().toString();
-      setMessages(prev => [
-        ...prev, 
-        { id: agentMsgId, sender: 'agent', text: finalResponseText, toolLog }
-      ]);
+      // Split the response by double newlines or paragraph blocks to send separately
+      const paragraphs = finalResponseText.split(/\n\n+/).map(p => p.trim()).filter(p => p.length > 0);
+
+      // Sequentially print paragraphs with delay to simulate real chatting
+      for (let i = 0; i < paragraphs.length; i++) {
+        // Show typing indicator
+        setIsRunning(true);
+        
+        // Calculate typing delay based on paragraph length (min 600ms, max 1800ms)
+        const delay = Math.max(600, Math.min(1800, paragraphs[i].length * 12));
+        await new Promise(resolve => setTimeout(resolve, delay));
+        
+        const agentMsgId = Math.random().toString();
+        setMessages(prev => [
+          ...prev,
+          { 
+            id: agentMsgId, 
+            sender: 'agent', 
+            text: paragraphs[i], 
+            // Include toolLog only on the first bubble of the response
+            toolLog: i === 0 ? toolLog : undefined 
+          }
+        ]);
+      }
 
     } catch (error) {
       console.error(error);
@@ -223,6 +241,16 @@ function PromptTerminal({ setCurrentView, isDarkMode, setIsDarkMode, sendEmail }
     } finally {
       setIsRunning(false);
     }
+  };
+
+  const parseMarkdown = (text: string) => {
+    const parts = text.split(/\*\*([^*]+)\*\*/g);
+    return parts.map((part, index) => {
+      if (index % 2 === 1) {
+        return <strong key={index} className="font-extrabold text-neutral-950 dark:text-white">{part}</strong>;
+      }
+      return part;
+    });
   };
 
   const handleQuickAction = (text: string) => {
@@ -283,7 +311,7 @@ function PromptTerminal({ setCurrentView, isDarkMode, setIsDarkMode, sendEmail }
                       : 'bg-neutral-100 dark:bg-[#161616] text-neutral-800 dark:text-neutral-200 rounded-tl-none border border-neutral-200/30 dark:border-neutral-800/30'
                   }`}
                 >
-                  {msg.text}
+                  {parseMarkdown(msg.text)}
                 </div>
               </div>
             </div>
