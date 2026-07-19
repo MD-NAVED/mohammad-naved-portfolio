@@ -254,9 +254,7 @@ function PromptTerminal({ setCurrentView, isDarkMode, setIsDarkMode, sendEmail }
             <span className="w-2 h-2 rounded-full bg-[#27c93f] animate-pulse"></span>
             Naved's AI Agent
           </div>
-          <div className="text-[9px] px-2 py-0.5 rounded bg-neutral-200 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 font-mono font-bold">
-            GEMINI 3.5
-          </div>
+          <div className="w-12"></div>
         </div>
 
         {/* Chat Message Window */}
@@ -779,8 +777,8 @@ export default function App() {
                       >
                         <div className="w-full flex justify-between items-center">
                           <div className="space-y-1">
-                            <p className="text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-widest transition-colors mb-1">Interactive Agent Terminal</p>
-                            <p className="text-lg font-medium flex items-center gap-2 text-neutral-900 dark:text-white transition-colors">Ask Gemini Anything</p>
+                            <p className="text-[10px] text-neutral-400 dark:text-neutral-500 uppercase tracking-widest font-bold transition-colors mb-1">Interactive AI Assistant</p>
+                            <p className="text-2xl font-bold flex items-center gap-2 text-neutral-900 dark:text-white transition-colors">Chat with my AI Agent</p>
                           </div>
                           <div className="h-12 w-12 rounded-full border border-neutral-300 dark:border-neutral-700 flex items-center justify-center group-hover:bg-neutral-100 dark:group-hover:bg-neutral-850 transition-colors group-hover:translate-x-1">—&gt;</div>
                         </div>
