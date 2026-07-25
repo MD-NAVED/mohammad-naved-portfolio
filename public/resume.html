@@ -18,28 +18,24 @@
       margin: 0;
     }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    html, body {
       background: #ffffff;
       color: #1f2937;
-      font-size: 10.5px;
-      line-height: 1.5;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 9.2px;
+      line-height: 1.38;
       -webkit-font-smoothing: antialiased;
     }
     
     .page {
       width: 210mm;
-      min-height: 297mm;
+      height: 297mm;
       margin: 0 auto;
       background: #ffffff;
-      padding: 40px 48px;
+      padding: 28px 40px;
       box-sizing: border-box;
       position: relative;
-    }
-
-    .page-break {
-      page-break-before: always;
-      break-before: page;
+      overflow: hidden;
     }
     
     @media print {
@@ -48,64 +44,62 @@
       }
       .page {
         width: 100%;
+        height: 100%;
         margin: 0;
-        padding: 40px 48px;
+        padding: 28px 40px;
       }
     }
     
     /* HEADER */
     .header {
       text-align: center;
-      margin-bottom: 22px;
+      margin-bottom: 12px;
     }
     .header-name {
-      font-size: 26px;
+      font-size: 22px;
       font-weight: 700;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
       color: #111827;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     .header-subtitle {
-      font-size: 11px;
-      font-weight: 500;
+      font-size: 10px;
+      font-weight: 600;
       color: #4b5563;
       letter-spacing: 0.5px;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
     }
     .header-contact {
-      font-size: 9.5px;
+      font-size: 8.8px;
       color: #374151;
-      line-height: 1.6;
+      line-height: 1.4;
     }
     .header-contact a {
       color: #374151;
       text-decoration: none;
     }
-    .header-contact a:hover {
-      text-decoration: underline;
-    }
 
     /* SECTIONS */
     .section {
-      margin-bottom: 18px;
+      margin-bottom: 10px;
     }
     .section-title {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
       color: #111827;
-      border-bottom: 1.5px solid #111827;
-      padding-bottom: 3px;
-      margin-bottom: 10px;
+      border-bottom: 1.2px solid #111827;
+      padding-bottom: 2px;
+      margin-bottom: 6px;
     }
     
     /* SUMMARY */
     .summary-text {
       color: #374151;
-      font-size: 10px;
-      line-height: 1.55;
+      font-size: 9px;
+      line-height: 1.4;
       text-align: justify;
     }
 
@@ -116,18 +110,18 @@
     }
     .bullet-list li {
       position: relative;
-      padding-left: 14px;
-      margin-bottom: 4px;
+      padding-left: 12px;
+      margin-bottom: 2.5px;
       color: #374151;
-      font-size: 10px;
-      line-height: 1.5;
+      font-size: 9px;
+      line-height: 1.35;
     }
     .bullet-list li::before {
       content: "•";
       position: absolute;
-      left: 2px;
+      left: 1px;
       color: #111827;
-      font-size: 11px;
+      font-size: 10px;
     }
     .bullet-list li strong {
       color: #111827;
@@ -138,28 +132,28 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 2px;
+      margin-bottom: 1px;
     }
     .item-title {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       color: #111827;
     }
     .item-date {
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 500;
       color: #4b5563;
       font-style: italic;
     }
     .item-subtext {
-      font-size: 9.5px;
+      font-size: 8.5px;
       color: #4b5563;
       font-style: italic;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .project-block {
-      margin-bottom: 14px;
+      margin-bottom: 7px;
     }
 
     /* SIMPLE LIST FOR SKILLS & CERTS */
@@ -169,15 +163,15 @@
     }
     .simple-list li {
       position: relative;
-      padding-left: 14px;
-      margin-bottom: 4px;
+      padding-left: 12px;
+      margin-bottom: 2.5px;
       color: #374151;
-      font-size: 10px;
+      font-size: 9px;
     }
     .simple-list li::before {
       content: "•";
       position: absolute;
-      left: 2px;
+      left: 1px;
       color: #111827;
     }
     .simple-list li strong {
@@ -200,11 +194,8 @@
     <!-- PROFILE SUMMARY -->
     <div class="section">
       <div class="section-title">PROFILE SUMMARY</div>
-      <p class="summary-text" style="margin-bottom: 6px;">
-        Prompt Engineer who builds and ships real, working AI products by directing large language models rather than writing code line-by-line. Designs system prompts, prompt chains, and agentic workflows that turn LLMs into reliable application components, translating product ideas into working software through precise instruction design, iterative testing, and prompt-level debugging.
-      </p>
       <p class="summary-text">
-        Currently expanding into Applied AI Engineering, building end-to-end LLM-integrated systems beyond prompt design alone.
+        Prompt Engineer who builds and ships real, working AI products by directing large language models rather than writing code line-by-line. Designs system prompts, prompt chains, and agentic workflows that turn LLMs into reliable application components, translating product ideas into working software through precise instruction design, iterative testing, and prompt-level debugging. Currently expanding into Applied AI Engineering, building end-to-end LLM-integrated systems beyond prompt design alone.
       </p>
     </div>
     
@@ -279,18 +270,10 @@
         <div class="item-subtext">Self-Initiated | Frontend & DevOps Automation | React, TypeScript, Framer Motion, Node.js, Puppeteer, TailwindCSS</div>
         <ul class="bullet-list">
           <li>Engineered an interactive React/TypeScript portfolio featuring hardware-accelerated Framer Motion animations, a responsive terminal interface, and a system theme-matching toggle</li>
+          <li>Automated resume exports by building a Node.js script using Puppeteer to dynamically scrape the live portfolio build and compile a pixel-perfect A4 PDF resume</li>
+          <li>Optimized bundle loading and routing to achieve fast load times and clean responsiveness across all viewport layouts</li>
         </ul>
       </div>
-    </div>
-  </div>
-
-  <!-- PAGE 2 -->
-  <div class="page page-break">
-    <div class="section" style="padding-top: 10px;">
-      <ul class="bullet-list" style="margin-bottom: 18px;">
-        <li>Automated resume exports by building a Node.js script using Puppeteer to dynamically scrape the live portfolio build and compile a pixel-perfect A4 PDF resume</li>
-        <li>Optimized bundle loading and routing to achieve fast load times and clean responsiveness across all viewport layouts</li>
-      </ul>
     </div>
     
     <!-- TECHNICAL SKILLS -->
@@ -306,14 +289,14 @@
     <!-- EDUCATION -->
     <div class="section">
       <div class="section-title">EDUCATION</div>
-      <div class="item-header" style="margin-bottom: 6px;">
+      <div class="item-header">
         <span class="item-title">B.Tech, Computer Science — RGPV</span>
         <span class="item-date">2025</span>
       </div>
     </div>
     
     <!-- CERTIFICATIONS & LEARNING -->
-    <div class="section">
+    <div class="section" style="margin-bottom: 0;">
       <div class="section-title">CERTIFICATIONS & LEARNING</div>
       <ul class="simple-list">
         <li><strong>Python for Data Analysis & Visualization</strong> — Self-directed</li>
@@ -322,6 +305,7 @@
         <li><strong>Power BI</strong> — Interactive Dashboard Design & Reporting</li>
       </ul>
     </div>
+    
   </div>
 </body>
 </html>
