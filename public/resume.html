@@ -18,12 +18,12 @@
       margin: 0;
     }
 
-    html, body {
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: #ffffff;
       color: #1f2937;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 9.2px;
-      line-height: 1.38;
+      font-size: 10.2px;
+      line-height: 1.48;
       -webkit-font-smoothing: antialiased;
     }
     
@@ -32,10 +32,15 @@
       height: 297mm;
       margin: 0 auto;
       background: #ffffff;
-      padding: 28px 40px;
+      padding: 36px 44px;
       box-sizing: border-box;
       position: relative;
       overflow: hidden;
+    }
+
+    .page-break {
+      page-break-before: always;
+      break-before: page;
     }
     
     @media print {
@@ -46,34 +51,34 @@
         width: 100%;
         height: 100%;
         margin: 0;
-        padding: 28px 40px;
+        padding: 36px 44px;
       }
     }
     
     /* HEADER */
     .header {
       text-align: center;
-      margin-bottom: 12px;
+      margin-bottom: 18px;
     }
     .header-name {
-      font-size: 22px;
+      font-size: 25px;
       font-weight: 700;
-      letter-spacing: 1.2px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       color: #111827;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
     .header-subtitle {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 600;
       color: #4b5563;
       letter-spacing: 0.5px;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
     .header-contact {
-      font-size: 8.8px;
+      font-size: 9.2px;
       color: #374151;
-      line-height: 1.4;
+      line-height: 1.5;
     }
     .header-contact a {
       color: #374151;
@@ -82,24 +87,24 @@
 
     /* SECTIONS */
     .section {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
     .section-title {
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 700;
-      letter-spacing: 0.8px;
+      letter-spacing: 1px;
       text-transform: uppercase;
       color: #111827;
-      border-bottom: 1.2px solid #111827;
+      border-bottom: 1.5px solid #111827;
       padding-bottom: 2px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     
     /* SUMMARY */
     .summary-text {
       color: #374151;
-      font-size: 9px;
-      line-height: 1.4;
+      font-size: 9.8px;
+      line-height: 1.5;
       text-align: justify;
     }
 
@@ -110,18 +115,18 @@
     }
     .bullet-list li {
       position: relative;
-      padding-left: 12px;
-      margin-bottom: 2.5px;
+      padding-left: 14px;
+      margin-bottom: 3.5px;
       color: #374151;
-      font-size: 9px;
-      line-height: 1.35;
+      font-size: 9.8px;
+      line-height: 1.45;
     }
     .bullet-list li::before {
       content: "•";
       position: absolute;
-      left: 1px;
+      left: 2px;
       color: #111827;
-      font-size: 10px;
+      font-size: 11px;
     }
     .bullet-list li strong {
       color: #111827;
@@ -132,28 +137,28 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 1px;
+      margin-bottom: 2px;
     }
     .item-title {
-      font-size: 10px;
+      font-size: 10.8px;
       font-weight: 700;
       color: #111827;
     }
     .item-date {
-      font-size: 9px;
+      font-size: 9.5px;
       font-weight: 500;
       color: #4b5563;
       font-style: italic;
     }
     .item-subtext {
-      font-size: 8.5px;
+      font-size: 9px;
       color: #4b5563;
       font-style: italic;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
 
     .project-block {
-      margin-bottom: 7px;
+      margin-bottom: 11px;
     }
 
     /* SIMPLE LIST FOR SKILLS & CERTS */
@@ -163,15 +168,15 @@
     }
     .simple-list li {
       position: relative;
-      padding-left: 12px;
-      margin-bottom: 2.5px;
+      padding-left: 14px;
+      margin-bottom: 4px;
       color: #374151;
-      font-size: 9px;
+      font-size: 9.8px;
     }
     .simple-list li::before {
       content: "•";
       position: absolute;
-      left: 1px;
+      left: 2px;
       color: #111827;
     }
     .simple-list li strong {
@@ -180,6 +185,8 @@
   </style>
 </head>
 <body>
+
+  <!-- PAGE 1 -->
   <div class="page">
     
     <!-- HEADER -->
@@ -194,8 +201,11 @@
     <!-- PROFILE SUMMARY -->
     <div class="section">
       <div class="section-title">PROFILE SUMMARY</div>
+      <p class="summary-text" style="margin-bottom: 5px;">
+        Prompt Engineer who builds and ships real, working AI products by directing large language models rather than writing code line-by-line. Designs system prompts, prompt chains, and agentic workflows that turn LLMs into reliable application components, translating product ideas into working software through precise instruction design, iterative testing, and prompt-level debugging.
+      </p>
       <p class="summary-text">
-        Prompt Engineer who builds and ships real, working AI products by directing large language models rather than writing code line-by-line. Designs system prompts, prompt chains, and agentic workflows that turn LLMs into reliable application components, translating product ideas into working software through precise instruction design, iterative testing, and prompt-level debugging. Currently expanding into Applied AI Engineering, building end-to-end LLM-integrated systems beyond prompt design alone.
+        Currently expanding into Applied AI Engineering, building end-to-end LLM-integrated systems beyond prompt design alone.
       </p>
     </div>
     
@@ -215,7 +225,7 @@
     <!-- EXPERIENCE -->
     <div class="section">
       <div class="section-title">EXPERIENCE</div>
-      <div class="project-block">
+      <div class="project-block" style="margin-bottom: 0;">
         <div class="item-header">
           <span class="item-title">4Layers — Smart Home IoT Solution</span>
           <span class="item-date">2026 – Present</span>
@@ -229,8 +239,8 @@
       </div>
     </div>
     
-    <!-- PROJECTS -->
-    <div class="section">
+    <!-- PROJECTS (PART 1) -->
+    <div class="section" style="margin-bottom: 0;">
       <div class="section-title">PROJECTS</div>
       
       <!-- AutoApply AI -->
@@ -248,7 +258,7 @@
       </div>
       
       <!-- DataLens AI -->
-      <div class="project-block">
+      <div class="project-block" style="margin-bottom: 0;">
         <div class="item-header">
           <span class="item-title">DataLens AI — Full-Stack AI Analytics Platform</span>
           <span class="item-date">2026</span>
@@ -260,6 +270,14 @@
           <li>Designed prompt templates for the ML Lab module to explain model outputs and surface insights in plain language</li>
         </ul>
       </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page page-break">
+    <!-- PROJECTS (CONTINUED) -->
+    <div class="section">
+      <div class="section-title">PROJECTS (CONTINUED)</div>
 
       <!-- Interactive Portfolio -->
       <div class="project-block" style="margin-bottom: 0;">
@@ -289,7 +307,7 @@
     <!-- EDUCATION -->
     <div class="section">
       <div class="section-title">EDUCATION</div>
-      <div class="item-header">
+      <div class="item-header" style="margin-bottom: 4px;">
         <span class="item-title">B.Tech, Computer Science — RGPV</span>
         <span class="item-date">2025</span>
       </div>
@@ -305,7 +323,7 @@
         <li><strong>Power BI</strong> — Interactive Dashboard Design & Reporting</li>
       </ul>
     </div>
-    
   </div>
+
 </body>
 </html>
