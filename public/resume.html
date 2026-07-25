@@ -22,8 +22,8 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: #ffffff;
       color: #1f2937;
-      font-size: 10.2px;
-      line-height: 1.48;
+      font-size: 10.6px;
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
     }
     
@@ -32,10 +32,13 @@
       height: 297mm;
       margin: 0 auto;
       background: #ffffff;
-      padding: 36px 44px;
+      padding: 42px 48px;
       box-sizing: border-box;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .page-break {
@@ -51,34 +54,34 @@
         width: 100%;
         height: 100%;
         margin: 0;
-        padding: 36px 44px;
+        padding: 42px 48px;
       }
     }
     
     /* HEADER */
     .header {
       text-align: center;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
     }
     .header-name {
-      font-size: 25px;
+      font-size: 26px;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: #111827;
-      margin-bottom: 3px;
+      margin-bottom: 4px;
     }
     .header-subtitle {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 600;
       color: #4b5563;
       letter-spacing: 0.5px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .header-contact {
-      font-size: 9.2px;
+      font-size: 9.6px;
       color: #374151;
-      line-height: 1.5;
+      line-height: 1.6;
     }
     .header-contact a {
       color: #374151;
@@ -87,24 +90,24 @@
 
     /* SECTIONS */
     .section {
-      margin-bottom: 15px;
+      margin-bottom: 18px;
     }
     .section-title {
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
       color: #111827;
       border-bottom: 1.5px solid #111827;
-      padding-bottom: 2px;
-      margin-bottom: 8px;
+      padding-bottom: 3px;
+      margin-bottom: 10px;
     }
     
     /* SUMMARY */
     .summary-text {
       color: #374151;
-      font-size: 9.8px;
-      line-height: 1.5;
+      font-size: 10.2px;
+      line-height: 1.55;
       text-align: justify;
     }
 
@@ -115,11 +118,11 @@
     }
     .bullet-list li {
       position: relative;
-      padding-left: 14px;
-      margin-bottom: 3.5px;
+      padding-left: 15px;
+      margin-bottom: 5px;
       color: #374151;
-      font-size: 9.8px;
-      line-height: 1.45;
+      font-size: 10.2px;
+      line-height: 1.5;
     }
     .bullet-list li::before {
       content: "•";
@@ -137,28 +140,28 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
     .item-title {
-      font-size: 10.8px;
+      font-size: 11.2px;
       font-weight: 700;
       color: #111827;
     }
     .item-date {
-      font-size: 9.5px;
+      font-size: 10px;
       font-weight: 500;
       color: #4b5563;
       font-style: italic;
     }
     .item-subtext {
-      font-size: 9px;
+      font-size: 9.5px;
       color: #4b5563;
       font-style: italic;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
 
     .project-block {
-      margin-bottom: 11px;
+      margin-bottom: 14px;
     }
 
     /* SIMPLE LIST FOR SKILLS & CERTS */
@@ -168,10 +171,10 @@
     }
     .simple-list li {
       position: relative;
-      padding-left: 14px;
-      margin-bottom: 4px;
+      padding-left: 15px;
+      margin-bottom: 6px;
       color: #374151;
-      font-size: 9.8px;
+      font-size: 10.2px;
     }
     .simple-list li::before {
       content: "•";
@@ -188,140 +191,143 @@
 
   <!-- PAGE 1 -->
   <div class="page">
-    
-    <!-- HEADER -->
-    <div class="header">
-      <h1 class="header-name">MOHAMMAD NAVED</h1>
-      <div class="header-subtitle">AI-Assisted Builder · Prompt Engineer</div>
-      <div class="header-contact">
-        Indore, Madhya Pradesh &nbsp;|&nbsp; +91 9753880839 &nbsp;|&nbsp; <a href="mailto:andyk4548@gmail.com">andyk4548@gmail.com</a> &nbsp;&nbsp; <a href="https://linkedin.com/in/md-naved-2b79b8382" target="_blank">linkedin.com/in/md-naved-2b79b8382</a> &nbsp;|&nbsp; <a href="https://github.com/MD-NAVED" target="_blank">github.com/MD-NAVED</a> &nbsp;|&nbsp; <a href="https://mohammad-naved-portfolio.vercel.app" target="_blank">mohammad-naved-portfolio.vercel.app</a>
-      </div>
-    </div>
-    
-    <!-- PROFILE SUMMARY -->
-    <div class="section">
-      <div class="section-title">PROFILE SUMMARY</div>
-      <p class="summary-text" style="margin-bottom: 5px;">
-        Prompt Engineer who builds and ships real, working AI products by directing large language models rather than writing code line-by-line. Designs system prompts, prompt chains, and agentic workflows that turn LLMs into reliable application components, translating product ideas into working software through precise instruction design, iterative testing, and prompt-level debugging.
-      </p>
-      <p class="summary-text">
-        Currently expanding into Applied AI Engineering, building end-to-end LLM-integrated systems beyond prompt design alone.
-      </p>
-    </div>
-    
-    <!-- CORE EXPERTISE -->
-    <div class="section">
-      <div class="section-title">CORE EXPERTISE</div>
-      <ul class="bullet-list">
-        <li><strong>Prompt Engineering & Design</strong> — system prompts, few-shot examples, chain-of-thought structuring, output formatting control</li>
-        <li><strong>LLM Application Architecture</strong> — integrating Gemini API into multi-step, production-style workflows</li>
-        <li><strong>AI Agent Workflows</strong> — building and orchestrating agent pipelines; expanding into LangChain and n8n for autonomous, multi-tool agents</li>
-        <li><strong>AI-Assisted Development</strong> — directing AI coding tools ("vibe-coding") to design, build, and ship full-stack products end-to-end</li>
-        <li><strong>Automation Tooling</strong> — built a Node.js/Puppeteer script that auto-regenerates and redeploys resume PDFs from live portfolio data, removing manual export steps from the update workflow</li>
-        <li><strong>Prompt Debugging & Evaluation</strong> — iterating on prompt failures, hallucination control, and output consistency across edge cases</li>
-      </ul>
-    </div>
-    
-    <!-- EXPERIENCE -->
-    <div class="section">
-      <div class="section-title">EXPERIENCE</div>
-      <div class="project-block" style="margin-bottom: 0;">
-        <div class="item-header">
-          <span class="item-title">4Layers — Smart Home IoT Solution</span>
-          <span class="item-date">2026 – Present</span>
+    <div>
+      <!-- HEADER -->
+      <div class="header">
+        <h1 class="header-name">MOHAMMAD NAVED</h1>
+        <div class="header-subtitle">AI-Assisted Builder · Prompt Engineer</div>
+        <div class="header-contact">
+          Indore, Madhya Pradesh &nbsp;|&nbsp; +91 9753880839 &nbsp;|&nbsp; <a href="mailto:andyk4548@gmail.com">andyk4548@gmail.com</a> &nbsp;&nbsp; <a href="https://linkedin.com/in/md-naved-2b79b8382" target="_blank">linkedin.com/in/md-naved-2b79b8382</a> &nbsp;|&nbsp; <a href="https://github.com/MD-NAVED" target="_blank">github.com/MD-NAVED</a> &nbsp;|&nbsp; <a href="https://mohammad-naved-portfolio.vercel.app" target="_blank">mohammad-naved-portfolio.vercel.app</a>
         </div>
-        <div class="item-subtext">Client Project | IoT & Full-Stack Automation | React Native, FastAPI, MQTT, PostgreSQL, Expo, Docker</div>
-        <ul class="bullet-list">
-          <li>Built a home automation platform with a React Native/Expo client and FastAPI backend for multi-room device bulk control and scheduling</li>
-          <li>Integrated MQTT (EMQX) broker connection and JSON payload routing on ESP32 microcontrollers for real-time control and telemetry</li>
-          <li>Engineered a camera-based QR provisioner to scan, pair, and register device hardware profiles instantly, with manual Node ID fallbacks</li>
-        </ul>
       </div>
-    </div>
-    
-    <!-- PROJECTS (PART 1) -->
-    <div class="section" style="margin-bottom: 0;">
-      <div class="section-title">PROJECTS</div>
       
-      <!-- AutoApply AI -->
-      <div class="project-block">
-        <div class="item-header">
-          <span class="item-title">AutoApply AI — Automated Job Application System</span>
-          <span class="item-date">2026</span>
-        </div>
-        <div class="item-subtext">Self-Initiated | AI Automation | Python, JavaScript, Gemini AI</div>
+      <!-- PROFILE SUMMARY -->
+      <div class="section">
+        <div class="section-title">PROFILE SUMMARY</div>
+        <p class="summary-text" style="margin-bottom: 6px;">
+          Prompt Engineer who builds and ships real, working AI products by directing large language models rather than writing code line-by-line. Designs system prompts, prompt chains, and agentic workflows that turn LLMs into reliable application components, translating product ideas into working software through precise instruction design, iterative testing, and prompt-level debugging.
+        </p>
+        <p class="summary-text">
+          Currently expanding into Applied AI Engineering, building end-to-end LLM-integrated systems beyond prompt design alone.
+        </p>
+      </div>
+      
+      <!-- CORE EXPERTISE -->
+      <div class="section">
+        <div class="section-title">CORE EXPERTISE</div>
         <ul class="bullet-list">
-          <li>Designed a multi-step prompt chain that reads a job description, extracts requirements, and generates a tailored resume and cover letter through structured LLM calls</li>
-          <li>Engineered system prompts to keep Gemini's output format, tone, and length consistent across hundreds of varying job postings</li>
-          <li>Built fallback and retry prompt logic to handle malformed or incomplete model outputs in production use</li>
+          <li><strong>Prompt Engineering & Design</strong> — system prompts, few-shot examples, chain-of-thought structuring, output formatting control</li>
+          <li><strong>LLM Application Architecture</strong> — integrating Gemini API into multi-step, production-style workflows</li>
+          <li><strong>AI Agent Workflows</strong> — building and orchestrating agent pipelines; expanding into LangChain and n8n for autonomous, multi-tool agents</li>
+          <li><strong>AI-Assisted Development</strong> — directing AI coding tools ("vibe-coding") to design, build, and ship full-stack products end-to-end</li>
+          <li><strong>Automation Tooling</strong> — built a Node.js/Puppeteer script that auto-regenerates and redeploys resume PDFs from live portfolio data, removing manual export steps from the update workflow</li>
+          <li><strong>Prompt Debugging & Evaluation</strong> — iterating on prompt failures, hallucination control, and output consistency across edge cases</li>
         </ul>
       </div>
       
-      <!-- DataLens AI -->
-      <div class="project-block" style="margin-bottom: 0;">
-        <div class="item-header">
-          <span class="item-title">DataLens AI — Full-Stack AI Analytics Platform</span>
-          <span class="item-date">2026</span>
+      <!-- EXPERIENCE -->
+      <div class="section">
+        <div class="section-title">EXPERIENCE</div>
+        <div class="project-block" style="margin-bottom: 0;">
+          <div class="item-header">
+            <span class="item-title">4Layers — Smart Home IoT Solution</span>
+            <span class="item-date">2026 – Present</span>
+          </div>
+          <div class="item-subtext">Client Project | IoT & Full-Stack Automation | React Native, FastAPI, MQTT, PostgreSQL, Expo, Docker</div>
+          <ul class="bullet-list">
+            <li>Built a home automation platform with a React Native/Expo client and FastAPI backend for multi-room device bulk control and scheduling</li>
+            <li>Integrated MQTT (EMQX) broker connection and JSON payload routing on ESP32 microcontrollers for real-time control and telemetry</li>
+            <li>Engineered a camera-based QR provisioner to scan, pair, and register device hardware profiles instantly, with manual Node ID fallbacks</li>
+          </ul>
         </div>
-        <div class="item-subtext">Self-Initiated | Frontend Architecture & BI | React, TypeScript, Recharts, Gemini AI</div>
-        <ul class="bullet-list">
-          <li>Directed end-to-end product development — frontend, ETL pipeline, and SQL engine — using AI-assisted, prompt-first development</li>
-          <li>Built an AI chat interface that converts natural-language questions into SQL queries via prompt-driven query generation</li>
-          <li>Designed prompt templates for the ML Lab module to explain model outputs and surface insights in plain language</li>
-        </ul>
+      </div>
+      
+      <!-- PROJECTS (PART 1) -->
+      <div class="section" style="margin-bottom: 0;">
+        <div class="section-title">PROJECTS</div>
+        
+        <!-- AutoApply AI -->
+        <div class="project-block">
+          <div class="item-header">
+            <span class="item-title">AutoApply AI — Automated Job Application System</span>
+            <span class="item-date">2026</span>
+          </div>
+          <div class="item-subtext">Self-Initiated | AI Automation | Python, JavaScript, Gemini AI</div>
+          <ul class="bullet-list">
+            <li>Designed a multi-step prompt chain that reads a job description, extracts requirements, and generates a tailored resume and cover letter through structured LLM calls</li>
+            <li>Engineered system prompts to keep Gemini's output format, tone, and length consistent across hundreds of varying job postings</li>
+            <li>Built fallback and retry prompt logic to handle malformed or incomplete model outputs in production use</li>
+          </ul>
+        </div>
+        
+        <!-- DataLens AI -->
+        <div class="project-block" style="margin-bottom: 0;">
+          <div class="item-header">
+            <span class="item-title">DataLens AI — Full-Stack AI Analytics Platform</span>
+            <span class="item-date">2026</span>
+          </div>
+          <div class="item-subtext">Self-Initiated | Frontend Architecture & BI | React, TypeScript, Recharts, Gemini AI</div>
+          <ul class="bullet-list">
+            <li>Directed end-to-end product development — frontend, ETL pipeline, and SQL engine — using AI-assisted, prompt-first development</li>
+            <li>Built an AI chat interface that converts natural-language questions into SQL queries via prompt-driven query generation</li>
+            <li>Designed prompt templates for the ML Lab module to explain model outputs and surface insights in plain language</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- PAGE 2 -->
   <div class="page page-break">
-    <!-- PROJECTS (CONTINUED) -->
-    <div class="section">
-      <div class="section-title">PROJECTS (CONTINUED)</div>
+    <div>
+      <!-- PROJECTS (CONTINUED) -->
+      <div class="section">
+        <div class="section-title">PROJECTS (CONTINUED)</div>
 
-      <!-- Interactive Portfolio -->
-      <div class="project-block" style="margin-bottom: 0;">
-        <div class="item-header">
-          <span class="item-title">Interactive Portfolio & PDF Automation Pipeline</span>
-          <span class="item-date">2026</span>
+        <!-- Interactive Portfolio -->
+        <div class="project-block" style="margin-bottom: 0;">
+          <div class="item-header">
+            <span class="item-title">Interactive Portfolio & PDF Automation Pipeline</span>
+            <span class="item-date">2026</span>
+          </div>
+          <div class="item-subtext">Self-Initiated | Frontend & DevOps Automation | React Native, TypeScript, Framer Motion, Node.js, Puppeteer, TailwindCSS</div>
+          <ul class="bullet-list">
+            <li>Engineered an interactive React/TypeScript portfolio featuring hardware-accelerated Framer Motion animations, a responsive terminal interface, and a system theme-matching toggle</li>
+            <li>Automated resume exports by building a Node.js script using Puppeteer to dynamically scrape the live portfolio build and compile a pixel-perfect A4 PDF resume</li>
+            <li>Optimized bundle loading and routing to achieve fast load times and clean responsiveness across all viewport layouts</li>
+          </ul>
         </div>
-        <div class="item-subtext">Self-Initiated | Frontend & DevOps Automation | React, TypeScript, Framer Motion, Node.js, Puppeteer, TailwindCSS</div>
-        <ul class="bullet-list">
-          <li>Engineered an interactive React/TypeScript portfolio featuring hardware-accelerated Framer Motion animations, a responsive terminal interface, and a system theme-matching toggle</li>
-          <li>Automated resume exports by building a Node.js script using Puppeteer to dynamically scrape the live portfolio build and compile a pixel-perfect A4 PDF resume</li>
-          <li>Optimized bundle loading and routing to achieve fast load times and clean responsiveness across all viewport layouts</li>
+      </div>
+      
+      <!-- TECHNICAL SKILLS -->
+      <div class="section">
+        <div class="section-title">TECHNICAL SKILLS & COMPETENCIES</div>
+        <ul class="simple-list">
+          <li><strong>AI / LLM:</strong> Gemini API, Prompt Engineering, LangChain (expanding), n8n (expanding)</li>
+          <li><strong>Languages & Data:</strong> Python, SQL, DuckDB</li>
+          <li><strong>Frontend:</strong> React, TypeScript, TailwindCSS</li>
         </ul>
       </div>
-    </div>
-    
-    <!-- TECHNICAL SKILLS -->
-    <div class="section">
-      <div class="section-title">TECHNICAL SKILLS & COMPETENCIES</div>
-      <ul class="simple-list">
-        <li><strong>AI / LLM:</strong> Gemini API, Prompt Engineering, LangChain (expanding), n8n (expanding)</li>
-        <li><strong>Languages & Data:</strong> Python, SQL, DuckDB</li>
-        <li><strong>Frontend:</strong> React, TypeScript, TailwindCSS</li>
-      </ul>
-    </div>
-    
-    <!-- EDUCATION -->
-    <div class="section">
-      <div class="section-title">EDUCATION</div>
-      <div class="item-header" style="margin-bottom: 4px;">
-        <span class="item-title">B.Tech, Computer Science — RGPV</span>
-        <span class="item-date">2025</span>
+      
+      <!-- EDUCATION -->
+      <div class="section">
+        <div class="section-title">EDUCATION</div>
+        <div class="item-header" style="margin-bottom: 6px;">
+          <span class="item-title">B.Tech, Computer Science — RGPV</span>
+          <span class="item-date">2025</span>
+        </div>
       </div>
-    </div>
-    
-    <!-- CERTIFICATIONS & LEARNING -->
-    <div class="section" style="margin-bottom: 0;">
-      <div class="section-title">CERTIFICATIONS & LEARNING</div>
-      <ul class="simple-list">
-        <li><strong>Python for Data Analysis & Visualization</strong> — Self-directed</li>
-        <li><strong>SQL for Data Analytics</strong> — Relational Database Workflows</li>
-        <li><strong>Generative AI with Gemini</strong> — Prompt Engineering</li>
-        <li><strong>Power BI</strong> — Interactive Dashboard Design & Reporting</li>
-      </ul>
+      
+      <!-- CERTIFICATIONS & LEARNING -->
+      <div class="section" style="margin-bottom: 0;">
+        <div class="section-title">CERTIFICATIONS & LEARNING</div>
+        <ul class="simple-list">
+          <li><strong>Python for Data Analysis & Visualization</strong> — Self-directed</li>
+          <li><strong>SQL for Data Analytics</strong> — Relational Database Workflows</li>
+          <li><strong>Generative AI with Gemini</strong> — Prompt Engineering</li>
+          <li><strong>Power BI</strong> — Interactive Dashboard Design & Reporting</li>
+        </ul>
+      </div>
     </div>
   </div>
 
