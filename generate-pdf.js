@@ -10,8 +10,9 @@ const __dirname = path.dirname(__filename);
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   
-  // Navigate to local dev server (make sure server is running on port 3000)
-  const url = 'http://localhost:3000/resume.html';
+  // Navigate directly to local resume.html file
+  const htmlPath = path.join(__dirname, 'public', 'resume.html');
+  const url = `file://${htmlPath}`;
   console.log(`Navigating to ${url}...`);
   try {
     await page.goto(url, {
@@ -19,7 +20,7 @@ const __dirname = path.dirname(__filename);
       timeout: 30000
     });
   } catch (error) {
-    console.error('Error navigating. Make sure npm run dev is running on port 3000!');
+    console.error('Error navigating to file:', error);
     await browser.close();
     process.exit(1);
   }
