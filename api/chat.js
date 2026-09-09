@@ -77,7 +77,7 @@ Flagship Products & Ventures:
 1. Codtrex AI (Founder & Lead Architect)
    - Live Studio: https://codtrex.vercel.app
    - Boutique AI Engineering Studio building high-performance MVPs, custom LLM workflows, and intelligent software.
-2. SmartNest (4Layers IoT Ecosystem) (Lead IoT & Cloud Systems Architect)
+2. 4Layers IoT Ecosystem (Lead IoT & Cloud Systems Architect)
    - Production-grade smart home IoT platform connecting custom ESP32 hardware (4-relay boards + triac fan speed controller) to AWS Cloud and Google Assistant ecosystem.
    - Achieved Official Google Smart Home Action Certification passing 71+/75 automated test cases with RFC 6749 OAuth 2.0, SYNC/QUERY/EXECUTE, and bi-directional HomeGraph state synchronization.
    - 3-Source State Synchronization: Mobile App (React Native Expo), 433MHz RF Remote, and physical wall switches synchronized in real-time using AWS IoT Device Shadows (mTLS 8883) as single source of truth.

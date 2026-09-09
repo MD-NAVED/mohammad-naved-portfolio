@@ -85,7 +85,7 @@ const projectsData: ProjectItem[] = [
   },
   {
     id: 104,
-    title: "SmartNest (4Layers) — Google Certified IoT & Cloud Ecosystem",
+    title: "4Layers — Google Certified Smart Home IoT Ecosystem",
     domain: "Commercial IoT & Cloud Infrastructure",
     role: "Lead IoT & Cloud Systems Architect",
     featuredBadge: "Official Google Certified",
@@ -1226,7 +1226,7 @@ export default function App() {
                           <div>
                             <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
                               Lead IoT &amp; Cloud Systems Architect
-                              <span className="text-indigo-600 dark:text-indigo-400 text-sm font-semibold">&bull; SmartNest (4Layers IoT)</span>
+                              <span className="text-indigo-600 dark:text-indigo-400 text-sm font-semibold">&bull; 4Layers IoT Ecosystem</span>
                             </h3>
                             <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 mt-0.5">Commercial IoT Fleet &bull; AWS IoT Core &bull; Google Home Ecosystem</p>
                           </div>
