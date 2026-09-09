@@ -74,21 +74,21 @@ Naved's Profile & Studio Overview:
 - Core Competencies: Autonomous AI Agents, Production LLM Orchestration, Full-Stack SaaS Architecture (Next.js, React 19, Supabase, Node/FastAPI), IoT Cloud Systems (ESP32, MQTT, Google Home Certification), Database & Security Design.
 
 Flagship Products & Ventures:
-1. MediStock (Founder, Product Architect & Full-Stack Engineer)
+1. Codtrex AI (Founder & Lead Architect)
+   - Live Studio: https://codtrex.vercel.app
+   - Boutique AI Engineering Studio building high-performance MVPs, custom LLM workflows, and intelligent software.
+2. SmartNest (4Layers IoT Ecosystem) (Lead IoT & Cloud Systems Architect)
+   - Production-grade smart home IoT platform connecting custom ESP32 hardware (4-relay boards + triac fan speed controller) to AWS Cloud and Google Assistant ecosystem.
+   - Achieved Official Google Smart Home Action Certification passing 71+/75 automated test cases with RFC 6749 OAuth 2.0, SYNC/QUERY/EXECUTE, and bi-directional HomeGraph state synchronization.
+   - 3-Source State Synchronization: Mobile App (React Native Expo), 433MHz RF Remote, and physical wall switches synchronized in real-time using AWS IoT Device Shadows (mTLS 8883) as single source of truth.
+   - Hard problems solved: QA Hold Mode with 10-min TTL to suppress heartbeat race conditions during Google certification; 4-layer fan speed divergence fix (PostgreSQL JSON column dirty-tracking via flag_modified); production-grade OTA 2.0 dual-partition (A/B) flashing with auto-retry on AWS App Runner & Docker.
+3. MediStock (Founder, Product Architect & Full-Stack Engineer)
    - Live Production: https://medistock-pharma.vercel.app | Founder Admin: https://medistock-admin.vercel.app
    - Cloud-native B2B Pharmacy Management & POS SaaS built with React 18, Supabase, Tailwind, Node.js, Capacitor Android.
    - Key highlights: Sub-300ms barcode billing, 100,000+ medicine catalog with automated company logo engine, HMAC-signed founder store impersonation, WhatsApp invoice dispatch, and offline POS resilience.
-2. Codtrex AI (Founder & Lead Architect)
-   - Live Studio: https://codtrex.vercel.app
-   - Boutique AI Engineering Studio building high-performance MVPs, custom LLM workflows, and intelligent software.
-   - Offers 5 transparent locked pricing tiers and a 15% Partner Commission Referral Program (/partner).
-3. UsedTech Market (Product Architect & Full-Stack Engineer)
+4. UsedTech Market (Product Architect & Full-Stack Engineer)
    - Verified pre-owned computer hardware marketplace across 18 component categories with fair-price benchmark engine and WhatsApp-direct buyer-seller deal matching.
    - Built on Next.js 16, Prisma SQLite, TanStack Query, Zustand, Tailwind v4.
-4. 4Layers / SmartNest (IoT Architecture & Systems Lead)
-   - Enterprise smart home IoT platform.
-   - Earned official Google Home Action Certification with cloud-to-cloud fulfillment.
-   - Engineered dual-bank OTA 2.0 firmware update engine with auto-rollback on ESP32, MQTT cluster, and AWS App Runner / Docker backend.
 5. AutoApply AI & DataLens AI (Full-stack AI workflows & conversational data platforms).
 
 Engagement & Collaboration Models (For Companies & Founders):

@@ -84,6 +84,22 @@ const projectsData: ProjectItem[] = [
     ]
   },
   {
+    id: 104,
+    title: "SmartNest (4Layers) — Google Certified IoT & Cloud Ecosystem",
+    domain: "Commercial IoT & Cloud Infrastructure",
+    role: "Lead IoT & Cloud Systems Architect",
+    featuredBadge: "Official Google Certified",
+    tags: ["ESP32 (ESP-IDF/C)", "AWS IoT Core (mTLS 8883)", "FastAPI", "Google HomeGraph API", "PostgreSQL (RDS)", "AWS App Runner", "Docker & ECR", "OAuth 2.0 (RFC 6749)"],
+    summary: [
+      "Architected a production-grade IoT smart home platform connecting custom ESP32 hardware nodes (4-channel relay boards + triac fan speed controller) to AWS Cloud and Google Assistant ecosystem.",
+      "Achieved Official Google Smart Home Certification: Passed 71+/75 automated test cases in the official Google Test Suite with full RFC 6749 OAuth 2.0 auth lifecycle, SYNC/QUERY/EXECUTE fulfillment, and real-time HomeGraph state reporting (reportStateAndNotification).",
+      "Three-Source Real-Time State Sync: Engineered cross-source state reconciliation across Mobile App (React Native Expo), 433MHz RF Remote, and physical wall switches using AWS IoT Device Shadows (MQTT over mTLS 8883) as single source of truth.",
+      "Invented QA Hold Mode Engine: Solved asynchronous heartbeat race conditions during cloud certification testing via a custom hold-mode engine with 10-minute TTL auto-expiry and fail-open design, suppressing false-positive telemetry restoration.",
+      "4-Layer State Divergence Resolution: Traced and eliminated a complex fan speed divergence bug across shadow webhook key mappings, SQLAlchemy PostgreSQL JSON column dirty-tracking (flag_modified), and Python falsy-0 evaluations.",
+      "Production-Grade OTA 2.0 & Cloud CI/CD: Engineered dual-bank (A/B) partition flashing with NVS boot confirmation, exponential backoff retries, and automated zero-downtime rolling updates on AWS App Runner via Docker and Amazon ECR."
+    ]
+  },
+  {
     id: 102,
     title: "MediStock — Cloud Pharmacy SaaS & Inventory System",
     domain: "B2B SaaS & Point of Sale",
@@ -112,20 +128,6 @@ const projectsData: ProjectItem[] = [
       "Built an algorithmic Fair-Price Engine that calculates dynamic market valuation (Good Deal to High Price) considering market depreciation, warranty, and mining/repair risk discounts.",
       "Architected 4 distinct role-based dashboards (Buyer, Seller, Technician, Admin) with a 6-step sell wizard, category-specific stress test checklists, and WhatsApp-first buyer-seller routing.",
       "Designed a data-driven category registry with non-destructive JSON metadata scaling on Prisma models and a mobile-first single-route SPA architecture."
-    ]
-  },
-  {
-    id: 104,
-    title: "4Layers / SmartNest — Commercial IoT Platform",
-    domain: "Commercial IoT & Cloud Infrastructure",
-    role: "Lead IoT & Cloud Architect",
-    featuredBadge: "Google Certified IoT",
-    tags: ["ESP32", "FastAPI", "MQTT (EMQX)", "AWS App Runner", "PostgreSQL RDS", "Google HomeGraph"],
-    summary: [
-      "Architected an enterprise IoT platform powering commercial smart home switches and fans across cloud, mobile, and ESP32 hardware fleets.",
-      "Achieved Google Home Ecosystem Certification: Engineered custom QA Hold Mode (fixing 15-second heartbeat race conditions during automated tests) and RFC 6749 OAuth 2.0 token refresh security.",
-      "Engineered an automated OTA 2.0 engine featuring exponential backoff retries, scheduled maintenance windows (02:00-05:00 IST), C2-GUARD skipped status, and live success-rate dashboards.",
-      "Migrated system to a 100% pure cloud architecture on AWS App Runner + EMQX MQTT with CORS origin lockdown, auth rate-limiting, and multi-tenant IDOR access controls."
     ]
   },
   {
@@ -1220,6 +1222,39 @@ export default function App() {
                      </div>
 
                      <div className="p-8 md:p-10 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 backdrop-blur-md shadow-sm">
+                        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                          <div>
+                            <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+                              Lead IoT &amp; Cloud Systems Architect
+                              <span className="text-indigo-600 dark:text-indigo-400 text-sm font-semibold">&bull; SmartNest (4Layers IoT)</span>
+                            </h3>
+                            <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 mt-0.5">Commercial IoT Fleet &bull; AWS IoT Core &bull; Google Home Ecosystem</p>
+                          </div>
+                          <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400">
+                            2026
+                          </span>
+                        </div>
+                        <ul className="space-y-2.5 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-light mt-4">
+                          <li className="flex items-start gap-2.5">
+                            <span className="text-indigo-500 font-bold">&mdash;</span>
+                            <span>Achieved Official Google Smart Home Action Certification passing 71+/75 automated test cases with RFC 6749 OAuth 2.0, SYNC/QUERY/EXECUTE, and bi-directional HomeGraph state synchronization.</span>
+                          </li>
+                          <li className="flex items-start gap-2.5">
+                            <span className="text-indigo-500 font-bold">&mdash;</span>
+                            <span>Engineered 3-source real-time state synchronization across Mobile App (React Native Expo), 433MHz RF Remote, and physical wall switches using AWS IoT Device Shadows (mTLS 8883) as single source of truth.</span>
+                          </li>
+                          <li className="flex items-start gap-2.5">
+                            <span className="text-indigo-500 font-bold">&mdash;</span>
+                            <span>Invented QA Hold Mode with 10-minute TTL auto-expiry to suppress false-positive heartbeat race conditions during Google cloud certification tests.</span>
+                          </li>
+                          <li className="flex items-start gap-2.5">
+                            <span className="text-indigo-500 font-bold">&mdash;</span>
+                            <span>Engineered production-grade OTA 2.0 dual-partition (A/B) flashing with NVS boot confirmation and zero-downtime rolling updates on AWS App Runner via Docker and Amazon ECR.</span>
+                          </li>
+                        </ul>
+                      </div>
+
+                     <div className="p-8 md:p-10 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 backdrop-blur-md shadow-sm">
                        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                          <div>
                            <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
@@ -1244,35 +1279,6 @@ export default function App() {
                          <li className="flex items-start gap-2.5">
                            <span className="text-teal-500 font-bold">&mdash;</span>
                            <span>Packaged ultra-light 3.5 MB native Android APK (Capacitor) with high-speed counter billing and Razorpay automated subscription locks.</span>
-                         </li>
-                       </ul>
-                     </div>
-
-                     <div className="p-8 md:p-10 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 backdrop-blur-md shadow-sm">
-                       <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                         <div>
-                           <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
-                             Lead IoT &amp; Cloud Systems Architect
-                             <span className="text-indigo-600 dark:text-indigo-400 text-sm font-semibold">&bull; 4Layers / SmartNest</span>
-                           </h3>
-                           <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 mt-0.5">Commercial IoT Fleet &amp; Smart Home Ecosystem</p>
-                         </div>
-                         <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400">
-                           2026
-                         </span>
-                       </div>
-                       <ul className="space-y-2.5 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-light mt-4">
-                         <li className="flex items-start gap-2.5">
-                           <span className="text-indigo-500 font-bold">&mdash;</span>
-                           <span>Achieved Google Home Ecosystem Certification, building QA Hold Mode to eliminate heartbeat race conditions during Google Test Suite runs.</span>
-                         </li>
-                         <li className="flex items-start gap-2.5">
-                           <span className="text-indigo-500 font-bold">&mdash;</span>
-                           <span>Engineered OTA 2.0 deployment engine with backoff retries, scheduled maintenance windows (02:00-05:00 IST), and live stats dashboard.</span>
-                         </li>
-                         <li className="flex items-start gap-2.5">
-                           <span className="text-indigo-500 font-bold">&mdash;</span>
-                           <span>Migrated platform to 100% pure cloud architecture on AWS App Runner + EMQX MQTT with CORS lockdown and IDOR protection.</span>
                          </li>
                        </ul>
                      </div>
