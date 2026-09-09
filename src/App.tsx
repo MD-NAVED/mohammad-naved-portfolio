@@ -63,7 +63,6 @@ export interface ProjectItem {
   tags: string[];
   summary: string[];
   liveLink?: string;
-  adminLink?: string;
   featuredBadge?: string;
 }
 
@@ -107,7 +106,6 @@ const projectsData: ProjectItem[] = [
     featuredBadge: "Live B2B SaaS",
     tags: ["React 18", "PostgreSQL (Supabase)", "Node.js", "Express", "Capacitor (Android)", "Razorpay", "Next.js 14"],
     liveLink: "https://medistock-pharma.vercel.app",
-    adminLink: "https://medistock-admin.vercel.app",
     summary: [
       "Founded and architected a multi-device cloud pharmacy POS and inventory management platform designed for retail chemists across India, replacing legacy single-PC desktop software.",
       "Engineered FEFO (First-Expiry-First-Out) automated stock rotation engine with 90-day color-coded distributor return warning alerts to eliminate costly inventory write-offs.",
@@ -1151,19 +1149,6 @@ export default function App() {
                                 Live Platform <ArrowUpRight className="w-3.5 h-3.5" />
                               </motion.a>
                             )}
-                            {project.adminLink && (
-                              <motion.a 
-                                href={project.adminLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={(e) => e.stopPropagation()}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-indigo-500 dark:text-indigo-400 border-b border-indigo-500/30 hover:border-indigo-400 transition-colors pb-1 cursor-pointer"
-                              >
-                                Founder Admin Console <ArrowUpRight className="w-3.5 h-3.5" />
-                              </motion.a>
-                            )}
                          </div>
                       </motion.div>
                    ))}
@@ -1969,30 +1954,17 @@ export default function App() {
                     </div>
 
                     {/* Quick Live Actions */}
-                    {(selectedProject.liveLink || selectedProject.adminLink) && (
+                    {selectedProject.liveLink && (
                       <div className="flex flex-wrap gap-3 pt-2">
-                        {selectedProject.liveLink && (
-                          <a
-                            href={selectedProject.liveLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold hover:opacity-90 transition-opacity shadow-md"
-                          >
-                            <span>Open Live Platform</span>
-                            <ExternalLink className="w-3.5 h-3.5" />
-                          </a>
-                        )}
-                        {selectedProject.adminLink && (
-                          <a
-                            href={selectedProject.adminLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-800 dark:text-neutral-200 text-xs font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800/60 transition-colors"
-                          >
-                            <span>Founder Admin Console</span>
-                            <ExternalLink className="w-3.5 h-3.5 text-neutral-400" />
-                          </a>
-                        )}
+                        <a
+                          href={selectedProject.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold hover:opacity-90 transition-opacity shadow-md"
+                        >
+                          <span>Open Live Platform</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
                       </div>
                     )}
                   </div>

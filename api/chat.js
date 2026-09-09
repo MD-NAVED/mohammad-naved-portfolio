@@ -83,7 +83,7 @@ Flagship Products & Ventures:
    - 3-Source State Synchronization: Mobile App (React Native Expo), 433MHz RF Remote, and physical wall switches synchronized in real-time using AWS IoT Device Shadows (mTLS 8883) as single source of truth.
    - Hard problems solved: QA Hold Mode with 10-min TTL to suppress heartbeat race conditions during Google certification; 4-layer fan speed divergence fix (PostgreSQL JSON column dirty-tracking via flag_modified); production-grade OTA 2.0 dual-partition (A/B) flashing with auto-retry on AWS App Runner & Docker.
 3. MediStock (Founder, Product Architect & Full-Stack Engineer)
-   - Live Production: https://medistock-pharma.vercel.app | Founder Admin: https://medistock-admin.vercel.app
+   - Live Production: https://medistock-pharma.vercel.app
    - Cloud-native B2B Pharmacy Management & POS SaaS built with React 18, Supabase, Tailwind, Node.js, Capacitor Android.
    - Key highlights: Sub-300ms barcode billing, 100,000+ medicine catalog with automated company logo engine, HMAC-signed founder store impersonation, WhatsApp invoice dispatch, and offline POS resilience.
 4. UsedTech Market (Product Architect & Full-Stack Engineer)
