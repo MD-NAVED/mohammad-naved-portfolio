@@ -656,7 +656,7 @@ export default function App() {
     { id: 'home', label: 'Home' },
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
-    { id: 'services', label: 'Services' },
+    { id: 'services', label: 'Capabilities' },
     { id: 'contact', label: 'Contact' }
   ];
 
@@ -848,12 +848,12 @@ export default function App() {
                          Founder & Lead AI Engineer @ Codtrex AI
                        </div>
                        <p className="text-base text-neutral-600 dark:text-neutral-400 max-w-xl leading-relaxed mb-8 transition-colors mx-auto md:mx-0 font-light">
-                         Product Architect who conceptualizes, builds, and launches production-grade B2B SaaS, verified marketplace engines, and commercial IoT infrastructure. Directing modern AI coding models and autonomous agent pipelines to ship resilient zero-to-one applications in 14-20 days without $15k agency markups.
+                         Product Architect who conceptualizes, builds, and launches production-grade B2B SaaS, verified marketplace engines, and commercial IoT infrastructure. Directing modern AI coding models and autonomous agent pipelines to ship resilient, production-ready zero-to-one systems with extreme velocity.
                        </p>
                        <div className="flex justify-center md:justify-start items-center space-x-4 mb-8 text-sm w-full">
                          <div className="flex items-center gap-2">
                            <div className="h-2.5 w-2.5 rounded-full bg-emerald-500 dark:bg-emerald-400 transition-colors shadow-[0_0_10px_rgba(16,185,129,0.6)] animate-pulse"></div>
-                           <span className="text-xs font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 transition-colors">Founder @ Codtrex AI &amp; MediStock &bull; Open for Strategic Partnerships</span>
+                           <span className="text-xs font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 transition-colors">Founder @ Codtrex AI &amp; MediStock &bull; Open for Engineering Roles &amp; Consulting</span>
                          </div>
                        </div>
                      </div>
@@ -882,8 +882,8 @@ export default function App() {
                        >
                          <div className="w-full flex justify-between items-center">
                            <div className="space-y-1">
-                             <p className="text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-widest transition-colors mb-1">Codtrex AI Studio</p>
-                             <p className="text-lg font-medium flex items-center gap-2 text-neutral-900 dark:text-white transition-colors">View Services &amp; Pricing (From ₹29k)</p>
+                             <p className="text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-widest transition-colors mb-1">Engineering Leadership</p>
+                             <p className="text-lg font-medium flex items-center gap-2 text-neutral-900 dark:text-white transition-colors">Capabilities &amp; How I Work</p>
                            </div>
                            <div className="h-12 w-12 rounded-full border border-neutral-300 dark:border-neutral-700 flex items-center justify-center group-hover:bg-neutral-100 dark:group-hover:bg-neutral-855 transition-colors group-hover:translate-x-1">—&gt;</div>
                          </div>
@@ -1394,53 +1394,79 @@ export default function App() {
              )}
 
 
-              {/* SERVICES/FREELANCE VIEW */}
+              {/* CAPABILITIES & ENGAGEMENT VIEW */}
               {currentView === 'services' && (
                 <motion.div key="services" variants={pageVariants} initial="initial" animate="animate" exit="exit" className="space-y-16">
                   
                   <div className="border-b border-neutral-200 dark:border-neutral-800 pb-8">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase mb-3">
                       <Sparkles className="w-3.5 h-3.5" />
-                      Codtrex AI Studio Packages
+                      Engineering Leadership &amp; Architecture
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-medium tracking-tighter text-neutral-900 dark:text-neutral-100 transition-colors">Services &amp; Pricing</h2>
+                    <h2 className="text-3xl md:text-5xl font-medium tracking-tighter text-neutral-900 dark:text-neutral-100 transition-colors">Capabilities &amp; Engagement</h2>
                     <p className="text-neutral-500 dark:text-neutral-400 mt-4 max-w-2xl font-light leading-relaxed">
-                      Boutique AI engineering studio delivering production-grade applications in 14-20 days without $15k agency markups. Fixed prices, transparent scopes, and guaranteed delivery.
+                      How I partner with high-growth startups, ambitious founders, and engineering teams to architect, build, and scale resilient zero-to-one software, autonomous AI systems, and cloud infrastructure.
                     </p>
                   </div>
 
-                  {/* 15% Referral Program Banner */}
-                  <div className="p-6 md:p-8 rounded-3xl bg-gradient-to-r from-emerald-500/10 via-teal-500/5 to-indigo-500/10 border border-emerald-500/20 flex flex-col md:flex-row items-center justify-between gap-4">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-xl flex-shrink-0">
-                        15%
-                      </div>
-                      <div>
-                        <h4 className="text-base font-semibold text-neutral-900 dark:text-neutral-100">Codtrex Partner &amp; Referral Program</h4>
-                        <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">Earn 15% cash commission (₹4,350 to ₹12,000/mo) on every client you refer to Codtrex AI.</p>
-                      </div>
-                    </div>
-                    <motion.a
-                      href="https://codtrex.vercel.app/partner"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-widest transition-all shadow-md flex items-center gap-1.5 flex-shrink-0 cursor-pointer"
-                    >
-                      Join Partner Program <ArrowUpRight className="w-3.5 h-3.5" />
-                    </motion.a>
-                  </div>
-
-                  {/* Pricing and Engagement Models Grid */}
+                  {/* 3 Core Engagement Models for Companies */}
                   <div className="space-y-8">
                     <div className="flex items-center gap-2 border-b border-neutral-200/50 dark:border-neutral-800/50 pb-4">
-                      <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">Core Service Tiers</h2>
+                      <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">How We Can Work Together</h2>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       
-                      {/* Tier 1: AI MVP Starter */}
+                      {/* Model 1: Full-Time Founding / Senior Engineer */}
+                      <motion.div 
+                        whileHover={{ y: -6, scale: 1.02 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        className="p-8 rounded-3xl bg-emerald-500/5 dark:bg-emerald-500/10 border-2 border-emerald-500/40 shadow-xl backdrop-blur-md flex flex-col justify-between relative overflow-hidden"
+                      >
+                        <div className="absolute top-4 right-4">
+                          <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500 text-white">
+                            High Ownership
+                          </span>
+                        </div>
+                        <div>
+                          <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4">
+                            <Rocket className="w-6 h-6" />
+                          </div>
+                          <h3 className="text-xl font-medium mb-1 text-neutral-900 dark:text-neutral-100">Founding / Senior Engineer</h3>
+                          <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-6 font-mono">Full-Time Core Team Hire</p>
+                          <ul className="space-y-3 text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed mb-8">
+                            <li className="flex items-start gap-2">
+                              <span className="text-emerald-500 font-bold">&check;</span>
+                              <span><strong>End-to-End Ownership:</strong> Architecting frontend, backend, database schemas, and AI pipelines with zero hand-holding.</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-emerald-500 font-bold">&check;</span>
+                              <span><strong>Extreme Velocity:</strong> Rapid 0-to-1 prototype-to-production execution without enterprise bureaucracy.</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-emerald-500 font-bold">&check;</span>
+                              <span><strong>Modern Stack:</strong> Next.js 16, React 19, TypeScript, Supabase/PostgreSQL, FastAPI, Tailwind v4.</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-emerald-500 font-bold">&check;</span>
+                              <span><strong>Product-Minded:</strong> Writing code driven by real user metrics, churn prevention, and revenue impact.</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold mb-4">Open to remote &amp; hybrid roles</p>
+                          <motion.button 
+                            onClick={() => setCurrentView('contact')}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-widest transition-all cursor-pointer shadow-lg"
+                          >
+                            Discuss Full-Time Role &rarr;
+                          </motion.button>
+                        </div>
+                      </motion.div>
+
+                      {/* Model 2: Fractional Tech Lead / Systems Architect */}
                       <motion.div 
                         whileHover={{ y: -6, scale: 1.01 }}
                         transition={{ type: "spring", stiffness: 300 }}
@@ -1449,37 +1475,45 @@ export default function App() {
                         <div>
                           <div className="flex justify-between items-start mb-4">
                             <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 dark:bg-indigo-500/5 flex items-center justify-center text-indigo-500">
-                              <Rocket className="w-6 h-6" />
+                              <Brain className="w-6 h-6" />
                             </div>
-                            <span className="text-[10px] uppercase font-bold tracking-widest text-indigo-500 bg-indigo-500/10 px-3 py-1 rounded-full">10–14 Days</span>
+                            <span className="text-[10px] uppercase font-bold tracking-widest text-indigo-500 bg-indigo-500/10 px-3 py-1 rounded-full">Strategic Lead</span>
                           </div>
-                          <h3 className="text-xl font-medium mb-1 text-neutral-900 dark:text-neutral-100">AI MVP Starter</h3>
-                          <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-6 font-mono">Fast-track working prototype</p>
-                          <ul className="space-y-2.5 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
-                            <li className="flex items-center gap-2">&check; 4–5 Page Web App (React 19 / Next.js)</li>
-                            <li className="flex items-center gap-2">&check; LLM API Integration &amp; Prompt Chains</li>
-                            <li className="flex items-center gap-2">&check; Supabase Auth &amp; Database</li>
-                            <li className="flex items-center gap-2">&check; Vercel CI/CD + Custom Domain</li>
-                            <li className="flex items-center gap-2">&check; 14-Day Post-Launch Warranty</li>
+                          <h3 className="text-xl font-medium mb-1 text-neutral-900 dark:text-neutral-100">Fractional Systems Architect</h3>
+                          <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-6 font-mono">Contract Architecture &amp; Advisory</p>
+                          <ul className="space-y-3 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
+                            <li className="flex items-start gap-2">
+                              <span className="text-indigo-500 font-bold">&check;</span>
+                              <span><strong>Architecture Blueprints:</strong> Scalable multi-tenant databases, API contracts, and microservice topologies.</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-indigo-500 font-bold">&check;</span>
+                              <span><strong>AI Roadmap Strategy:</strong> Benchmarking multi-LLM failovers, latency reduction, and RAG vector search.</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-indigo-500 font-bold">&check;</span>
+                              <span><strong>Engineering Governance:</strong> Code review standards, CI/CD automated test gates, and developer onboarding.</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-indigo-500 font-bold">&check;</span>
+                              <span><strong>Flexible Retainer:</strong> 20–40 hrs/month dedicated strategic oversight for seed/Series A teams.</span>
+                            </li>
                           </ul>
                         </div>
                         <div>
-                          <div className="text-3xl font-medium text-neutral-900 dark:text-neutral-100 mb-1">
-                            ₹29,000 <span className="text-xs text-neutral-400 dark:text-neutral-500 font-normal">($350)</span>
-                          </div>
-                          <p className="text-[11px] text-neutral-400 mb-4">Fixed scope &bull; 50% upfront / 50% milestone</p>
+                          <p className="text-[11px] text-neutral-400 mb-4">Advisory &amp; strategic architecture</p>
                           <motion.button 
                             onClick={() => setCurrentView('contact')}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             className="w-full py-3 rounded-2xl bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-neutral-950 font-bold text-xs uppercase tracking-widest transition-all cursor-pointer"
                           >
-                            Book MVP Sprint
+                            Consult on Architecture &rarr;
                           </motion.button>
                         </div>
                       </motion.div>
 
-                      {/* Tier 2: Custom AI Automation */}
+                      {/* Model 3: Technical Audits & Deep-Dive Sprints */}
                       <motion.div 
                         whileHover={{ y: -6, scale: 1.01 }}
                         transition={{ type: "spring", stiffness: 300 }}
@@ -1488,157 +1522,75 @@ export default function App() {
                         <div>
                           <div className="flex justify-between items-start mb-4">
                             <div className="w-12 h-12 rounded-2xl bg-violet-500/10 dark:bg-violet-500/5 flex items-center justify-center text-violet-500">
-                              <Workflow className="w-6 h-6" />
+                              <Zap className="w-6 h-6" />
                             </div>
-                            <span className="text-[10px] uppercase font-bold tracking-widest text-violet-500 bg-violet-500/10 px-3 py-1 rounded-full">20–25 Days</span>
+                            <span className="text-[10px] uppercase font-bold tracking-widest text-violet-500 bg-violet-500/10 px-3 py-1 rounded-full">Rapid Sprint</span>
                           </div>
-                          <h3 className="text-xl font-medium mb-1 text-neutral-900 dark:text-neutral-100">Custom AI Automation</h3>
-                          <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-6 font-mono">Agentic workflows &amp; pipelines</p>
-                          <ul className="space-y-2.5 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
-                            <li className="flex items-center gap-2">&check; Autonomous Agent Pipelines &amp; n8n</li>
-                            <li className="flex items-center gap-2">&check; Multi-LLM Failover (Groq &rarr; OpenAI)</li>
-                            <li className="flex items-center gap-2">&check; Document Parsers, OCR &amp; Scrapers</li>
-                            <li className="flex items-center gap-2">&check; Telegram &amp; WhatsApp Alert Webhooks</li>
-                            <li className="flex items-center gap-2">&check; Complete Runbooks &amp; Architecture Docs</li>
+                          <h3 className="text-xl font-medium mb-1 text-neutral-900 dark:text-neutral-100">Technical Audits &amp; Sprints</h3>
+                          <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-6 font-mono">Targeted Problem Solving</p>
+                          <ul className="space-y-3 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
+                            <li className="flex items-start gap-2">
+                              <span className="text-violet-500 font-bold">&check;</span>
+                              <span><strong>AI Reliability Debugging:</strong> Eliminating prompt hallucinations, schema drift, and token wastage.</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-violet-500 font-bold">&check;</span>
+                              <span><strong>Performance &amp; Latency:</strong> Sub-300ms barcode/search tuning, database indexing, and TanStack caching.</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-violet-500 font-bold">&check;</span>
+                              <span><strong>Hardware / IoT Failsafes:</strong> ESP32 firmware stability, MQTT reconnection loops, and OTA rollback testing.</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <span className="text-violet-500 font-bold">&check;</span>
+                              <span><strong>Proof of Concept:</strong> De-risking complex new technical features before company-wide commits.</span>
+                            </li>
                           </ul>
                         </div>
                         <div>
-                          <div className="text-3xl font-medium text-neutral-900 dark:text-neutral-100 mb-1">
-                            ₹49,000 <span className="text-xs text-neutral-400 dark:text-neutral-500 font-normal">($590)</span>
-                          </div>
-                          <p className="text-[11px] text-neutral-400 mb-4">Tailored workflows &bull; Full code ownership</p>
+                          <p className="text-[11px] text-neutral-400 mb-4">1–2 week focused engineering sprint</p>
                           <motion.button 
                             onClick={() => setCurrentView('contact')}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             className="w-full py-3 rounded-2xl bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-neutral-950 font-bold text-xs uppercase tracking-widest transition-all cursor-pointer"
                           >
-                            Build Automation
+                            Request Technical Sprint &rarr;
                           </motion.button>
                         </div>
                       </motion.div>
-
-                      {/* Tier 3: Dedicated Tech Partner ⭐ */}
-                      <motion.div 
-                        whileHover={{ y: -6, scale: 1.02 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                        className="p-8 rounded-3xl bg-emerald-500/5 dark:bg-emerald-500/10 border-2 border-emerald-500/40 shadow-xl backdrop-blur-md flex flex-col justify-between relative overflow-hidden"
-                      >
-                        <div className="absolute top-4 right-4">
-                          <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500 text-white">
-                            ⭐ Most Popular
-                          </span>
-                        </div>
-                        <div>
-                          <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4">
-                            <Brain className="w-6 h-6" />
-                          </div>
-                          <h3 className="text-xl font-medium mb-1 text-neutral-900 dark:text-neutral-100">Dedicated Tech Partner</h3>
-                          <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-6 font-mono">Fractional CTO &amp; Lead Builder</p>
-                          <ul className="space-y-2.5 text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed mb-8">
-                            <li className="flex items-center gap-2">&check; 120–140 Hours / Month Dedicated</li>
-                            <li className="flex items-center gap-2">&check; End-to-End Architecture &amp; Code Delivery</li>
-                            <li className="flex items-center gap-2">&check; Daily Standups, Code Review &amp; Hiring</li>
-                            <li className="flex items-center gap-2">&check; Direct WhatsApp / Slack with 4-hr SLA</li>
-                            <li className="flex items-center gap-2">&check; Flexible Monthly Retainer, Cancel Anytime</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <div className="text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-1">
-                            ₹80,000 <span className="text-xs text-neutral-400 dark:text-neutral-500 font-normal">/ month ($990)</span>
-                          </div>
-                          <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold mb-4">Fractional CTO power at 1/10th agency cost</p>
-                          <motion.button 
-                            onClick={() => setCurrentView('contact')}
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-widest transition-all cursor-pointer shadow-lg"
-                          >
-                            Hire Fractional CTO
-                          </motion.button>
-                        </div>
-                      </motion.div>
-
-                    </div>
-
-                    {/* Secondary Tiers: IoT & Quick Fixes */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-                      
-                      {/* Commercial IoT & Hardware */}
-                      <div className="p-6 md:p-8 rounded-3xl bg-white/30 dark:bg-[#111111]/30 border border-white/60 dark:border-white/5 flex flex-col justify-between">
-                        <div>
-                          <div className="flex justify-between items-start mb-3">
-                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
-                              <Cpu className="w-5 h-5 text-indigo-500" />
-                              Commercial IoT &amp; Hardware Fleet
-                            </h4>
-                            <span className="text-xs font-bold text-indigo-500">₹75,000 (~$900)</span>
-                          </div>
-                          <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed font-light mb-4">
-                            ESP32 firmware (C++), EMQX MQTT cloud broker, Google HomeGraph certification, mobile control apps, and OTA 2.0 update pipelines delivered in ~30 days.
-                          </p>
-                        </div>
-                        <motion.button 
-                          onClick={() => setCurrentView('contact')}
-                          className="text-xs font-bold text-neutral-900 dark:text-neutral-100 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors uppercase tracking-wider text-left cursor-pointer"
-                        >
-                          Request IoT Architecture &rarr;
-                        </motion.button>
-                      </div>
-
-                      {/* Quick Fixes & Audits */}
-                      <div className="p-6 md:p-8 rounded-3xl bg-white/30 dark:bg-[#111111]/30 border border-white/60 dark:border-white/5 flex flex-col justify-between">
-                        <div>
-                          <div className="flex justify-between items-start mb-3">
-                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
-                              <ShieldCheck className="w-5 h-5 text-emerald-500" />
-                              AI Audit &amp; Emergency Quick Fixes
-                            </h4>
-                            <span className="text-xs font-bold text-emerald-500">From ₹4,999 (~$60)</span>
-                          </div>
-                          <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed font-light mb-4">
-                            Prompt debugging, hallucination reduction, security lockdowns (CORS, rate limiting, IDOR), webhook troubleshooting, and performance tuning delivered in 1–3 days.
-                          </p>
-                        </div>
-                        <motion.button 
-                          onClick={() => setCurrentView('contact')}
-                          className="text-xs font-bold text-neutral-900 dark:text-neutral-100 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors uppercase tracking-wider text-left cursor-pointer"
-                        >
-                          Book Emergency Fix &rarr;
-                        </motion.button>
-                      </div>
 
                     </div>
                   </div>
 
-                  {/* Services List / Core Offerings */}
+                  {/* Engineering Principles & Architecture Standards */}
                   <div className="space-y-8">
                     <div className="flex items-center gap-2 border-b border-neutral-200/50 dark:border-neutral-800/50 pb-4">
-                      <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">Core Capabilities</h2>
+                      <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">Engineering Principles</h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div className="space-y-6">
                         <div className="flex items-start gap-4">
                           <div className="w-10 h-10 rounded-xl bg-neutral-200/50 dark:bg-neutral-800/50 flex items-center justify-center text-neutral-600 dark:text-neutral-400 mt-1">
-                            <Brain className="w-5 h-5" />
+                            <Zap className="w-5 h-5 text-emerald-500" />
                           </div>
                           <div>
-                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">AI Prompt Engineering & Optimization</h4>
+                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Zero-to-One Shipping Velocity</h4>
                             <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mt-2 font-light">
-                              Designing complex prompt chains, structured output formats (JSON/XML), few-shot learning systems, and safety filters that make LLMs perform reliably in production applications.
+                              Demonstrated ability to turn product concepts into live, fully-functional production software (MediStock, UsedTech Market) in weeks by leveraging AI-accelerated development and modular architecture.
                             </p>
                           </div>
                         </div>
 
                         <div className="flex items-start gap-4">
                           <div className="w-10 h-10 rounded-xl bg-neutral-200/50 dark:bg-neutral-800/50 flex items-center justify-center text-neutral-600 dark:text-neutral-400 mt-1">
-                            <Workflow className="w-5 h-5" />
+                            <ShieldCheck className="w-5 h-5 text-indigo-500" />
                           </div>
                           <div>
-                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Agentic Workflows & Automation</h4>
+                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Defensive &amp; Resilient Architecture</h4>
                             <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mt-2 font-light">
-                              Creating autonomous agent systems that use tool callings, database actions, and automated integrations (e.g. n8n, LangChain, or custom Puppeteer scraping scripts) to reduce manual work.
+                              Prioritizing real-world operational resilience: offline-first POS syncing with indexed caching, HMAC-signed founder impersonation tokens, and dual-partition OTA rollback systems with Google Home certification.
                             </p>
                           </div>
                         </div>
@@ -1647,24 +1599,24 @@ export default function App() {
                       <div className="space-y-6">
                         <div className="flex items-start gap-4">
                           <div className="w-10 h-10 rounded-xl bg-neutral-200/50 dark:bg-neutral-800/50 flex items-center justify-center text-neutral-600 dark:text-neutral-400 mt-1">
-                            <Cpu className="w-5 h-5" />
+                            <Brain className="w-5 h-5 text-violet-500" />
                           </div>
                           <div>
-                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Full-Stack AI Prototyping</h4>
+                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Pragmatic AI Integration</h4>
                             <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mt-2 font-light">
-                              Developing lightweight React interfaces, API endpoints (Vite, Express, FastAPI), and databases (PostgreSQL/SQL) to quickly bring AI concepts from idea to a working prototype.
+                              Cutting through the AI hype to build deterministic systems: schema-constrained structured outputs (JSON/XML), multi-provider failover chains (Groq &rarr; OpenAI), and latency-budgeted prompt chains.
                             </p>
                           </div>
                         </div>
 
                         <div className="flex items-start gap-4">
                           <div className="w-10 h-10 rounded-xl bg-neutral-200/50 dark:bg-neutral-800/50 flex items-center justify-center text-neutral-600 dark:text-neutral-400 mt-1">
-                            <Database className="w-5 h-5" />
+                            <Layers className="w-5 h-5 text-emerald-500" />
                           </div>
                           <div>
-                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Custom Automation Tooling</h4>
+                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Full-Stack Fluidity</h4>
                             <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mt-2 font-light">
-                              Building automated PDF pipelines, web scrapers, data parsers, and custom workflows to sync resources and remove manual tasks.
+                              Comfortable across the entire spectrum: from low-level C++ ESP32 firmware and MQTT brokers to Python/FastAPI microservices, relational PostgreSQL schemas, and polished React 19 interfaces.
                             </p>
                           </div>
                         </div>
@@ -1672,62 +1624,43 @@ export default function App() {
                     </div>
                   </div>
 
-                  {/* My Working Process */}
-                  <div className="space-y-8">
-                    <div className="flex items-center gap-2 border-b border-neutral-200/50 dark:border-neutral-800/50 pb-4">
-                      <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">How I Work</h2>
+                  {/* Clean Dedicated Banner to Codtrex AI Studio */}
+                  <div className="p-6 md:p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-neutral-200/60 dark:border-neutral-800/60 flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-md">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-xl flex-shrink-0 border border-emerald-500/20">
+                        <Store className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <h4 className="text-base font-semibold text-neutral-900 dark:text-neutral-100">Looking for an outsourced agency project?</h4>
+                        <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">For clients seeking fixed-price turnkey MVP builds, automation workflows, or boutique agency packages, visit my studio.</p>
+                      </div>
                     </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 pt-4">
-                      
-                      <div className="p-6 rounded-2xl bg-white/20 dark:bg-[#111111]/20 border border-white/40 dark:border-white/5">
-                        <div className="text-xs font-bold text-indigo-500 mb-2">01</div>
-                        <h4 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Discovery</h4>
-                        <p className="text-xs text-neutral-500 dark:text-neutral-400 font-light leading-relaxed">
-                          We discuss your requirements, target goals, and technical stack details.
-                        </p>
-                      </div>
-
-                      <div className="p-6 rounded-2xl bg-white/20 dark:bg-[#111111]/20 border border-white/40 dark:border-white/5">
-                        <div className="text-xs font-bold text-indigo-500 mb-2">02</div>
-                        <h4 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Prototype</h4>
-                        <p className="text-xs text-neutral-500 dark:text-neutral-400 font-light leading-relaxed">
-                          I build a quick, testable prototype using AI-assisted speeds.
-                        </p>
-                      </div>
-
-                      <div className="p-6 rounded-2xl bg-white/20 dark:bg-[#111111]/20 border border-white/40 dark:border-white/5">
-                        <div className="text-xs font-bold text-indigo-500 mb-2">03</div>
-                        <h4 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Refine</h4>
-                        <p className="text-xs text-neutral-500 dark:text-neutral-400 font-light leading-relaxed">
-                          We run evaluations, test edge cases, and tune prompts for consistency.
-                        </p>
-                      </div>
-
-                      <div className="p-6 rounded-2xl bg-white/20 dark:bg-[#111111]/20 border border-white/40 dark:border-white/5">
-                        <div className="text-xs font-bold text-indigo-500 mb-2">04</div>
-                        <h4 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Delivery</h4>
-                        <p className="text-xs text-neutral-500 dark:text-neutral-400 font-light leading-relaxed">
-                          I deliver complete documentation, codebase transfer, and Vercel hosting setup.
-                        </p>
-                      </div>
-
-                    </div>
+                    <motion.a
+                      href="https://codtrex.vercel.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-6 py-3 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-bold uppercase tracking-widest transition-all shadow-md flex items-center gap-2 flex-shrink-0 cursor-pointer hover:opacity-90"
+                    >
+                      <span>Visit Codtrex AI Studio</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </motion.a>
                   </div>
 
-                  {/* Call to Action */}
-                  <div className="p-8 rounded-3xl bg-gradient-to-r from-indigo-500/10 to-violet-500/10 border border-indigo-500/20 dark:border-indigo-500/10 flex flex-col md:flex-row items-center justify-between gap-6">
+                  {/* Call to Action for Companies & Recruiters */}
+                  <div className="p-8 rounded-3xl bg-gradient-to-r from-emerald-500/10 to-indigo-500/10 border border-emerald-500/20 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div>
-                      <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100">Ready to build your next AI project?</h3>
-                      <p className="text-sm text-neutral-500 dark:text-neutral-400 font-light mt-1">Let's discuss how we can turn your product vision into a working application.</p>
+                      <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100">Ready to discuss an engineering role or technical challenge?</h3>
+                      <p className="text-sm text-neutral-500 dark:text-neutral-400 font-light mt-1">Let's connect to review how my architecture and full-stack execution can accelerate your product roadmap.</p>
                     </div>
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setCurrentView('contact')}
-                      className="px-6 py-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-neutral-950 font-semibold text-sm transition-all shadow-md cursor-pointer"
+                      className="px-8 py-3.5 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-neutral-950 font-bold text-xs uppercase tracking-widest transition-all shadow-md cursor-pointer flex-shrink-0"
                     >
-                      Start Collaboration
+                      Start Discussion &rarr;
                     </motion.button>
                   </div>
 

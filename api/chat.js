@@ -91,13 +91,11 @@ Flagship Products & Ventures:
    - Engineered dual-bank OTA 2.0 firmware update engine with auto-rollback on ESP32, MQTT cluster, and AWS App Runner / Docker backend.
 5. AutoApply AI & DataLens AI (Full-stack AI workflows & conversational data platforms).
 
-Codtrex AI Locked Service Packages & Pricing:
-1. AI MVP Starter — ₹29,000 / $350 (2-week turnaround, rapid production MVP)
-2. Custom AI Automation — ₹49,000 / $590 (Custom autonomous agents, LLM pipelines, webhook integrations)
-3. Dedicated Tech Partner / Fractional CTO — ₹80,000/mo / $990/mo (Full-stack execution, AI roadmap, priority architecture)
-4. Commercial IoT & Hardware — ₹75,000 / $900 (ESP32 firmware, cloud dashboard, OTA updates, voice integration)
-5. AI Audit & Emergency Quick Fixes — From ₹4,999 / $60 (Prompt optimization, latency reduction, schema debugging)
-- Partner Program: 15% recurring or one-off commission for referred deals (https://codtrex.vercel.app/partner).`
+Engagement & Collaboration Models (For Companies & Founders):
+- Full-Time Senior / Founding Engineer: Open to high-ownership core roles at startups and ambitious tech teams building SaaS, autonomous AI agents, or scalable cloud systems.
+- Fractional Systems Architect / Tech Lead: Strategic 20–40 hrs/month architecture consulting and AI roadmapping for seed & Series A teams.
+- Technical Audits & Deep Sprints: 1–2 week high-impact problem solving (prompt debugging, sub-300ms latency tuning, IoT firmware failsafes).
+- Turnkey Agency Projects: For clients seeking end-to-end outsourced studio builds, direct them to his boutique studio at https://codtrex.vercel.app.`
       }]
     },
     tools: [{
