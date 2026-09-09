@@ -31,66 +31,125 @@ import {
   Globe,
   Cpu,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Layers,
+  ShieldCheck,
+  Smartphone,
+  Zap,
+  CheckCircle2,
+  Rocket,
+  Store,
+  Bot,
+  ExternalLink
 } from 'lucide-react';
 
 const techSkillsData = [
-  { name: "Gemini API", icon: <Sparkles className="w-6 h-6" /> },
-  { name: "Prompt Engineering", icon: <Brain className="w-6 h-6" /> },
-  { name: "LangChain", icon: <Workflow className="w-6 h-6" /> },
-  { name: "n8n", icon: <Cpu className="w-6 h-6" /> },
-  { name: "Python", icon: <Terminal className="w-6 h-6" /> },
-  { name: "SQL", icon: <Database className="w-6 h-6" /> },
-  { name: "DuckDB", icon: <Server className="w-6 h-6" /> },
-  { name: "React", icon: <Globe className="w-6 h-6" /> },
-  { name: "TypeScript", icon: <Code2 className="w-6 h-6" /> }
+  { name: "Next.js & React 19", icon: <Globe className="w-6 h-6" /> },
+  { name: "TypeScript", icon: <Code2 className="w-6 h-6" /> },
+  { name: "Tailwind CSS v4", icon: <Sparkles className="w-6 h-6" /> },
+  { name: "Supabase & Postgres", icon: <Database className="w-6 h-6" /> },
+  { name: "Node.js & FastAPI", icon: <Server className="w-6 h-6" /> },
+  { name: "Multi-LLM & Groq", icon: <Brain className="w-6 h-6" /> },
+  { name: "ESP32 & MQTT (EMQX)", icon: <Cpu className="w-6 h-6" /> },
+  { name: "AWS & Docker", icon: <Layers className="w-6 h-6" /> },
+  { name: "Capacitor & Mobile", icon: <Smartphone className="w-6 h-6" /> }
 ];
 
-const projectsData = [
+export interface ProjectItem {
+  id: number;
+  title: string;
+  domain: string;
+  role?: string;
+  tags: string[];
+  summary: string[];
+  liveLink?: string;
+  adminLink?: string;
+  featuredBadge?: string;
+}
+
+const projectsData: ProjectItem[] = [
   {
-    id: 3,
-    title: "4Layers — Smart Home IoT Solution",
-    domain: "IoT & Full-Stack Automation",
-    tags: ["React Native", "FastAPI", "MQTT", "PostgreSQL", "Expo", "Docker"],
+    id: 101,
+    title: "Codtrex AI — Boutique AI Engineering Studio",
+    domain: "Startup & AI Engineering",
+    role: "Founder & Lead AI Engineer",
+    featuredBadge: "Flagship Startup",
+    tags: ["React 19", "Tailwind CSS v4", "Supabase", "Multi-LLM Failover", "Resend", "Vercel"],
+    liveLink: "https://codtrex.vercel.app",
     summary: [
-      "Built a home automation platform with React Native/Expo client and FastAPI backend for multi-room device bulk control and scheduling.",
-      "Integrated MQTT (EMQX) broker connection and JSON payload routing on ESP32 microcontrollers for real-time control and telemetry.",
-      "Engineered a camera-based QR provisioner to scan, pair, and register device hardware profiles instantly, with manual Node ID fallbacks."
+      "Founded and launched a boutique AI engineering studio delivering production-grade AI MVPs, autonomous agents, and full-stack software in 14-20 days without $15k agency markups.",
+      "Engineered client web platform with multi-provider AI failover (Groq → NVIDIA → OpenAI) featuring dynamic Hinglish/English language detection and project brief drafting.",
+      "Built complete automated webhook infrastructure: Contact Form → Supabase Database → Resend glassmorphic transactional emails → Telegram instant push (@codtrexbot) and WhatsApp alerts.",
+      "Productized 5 locked service tiers (₹29k AI MVP to ₹80k/mo Dedicated Tech Partner) with an integrated 15% partner commission referral system."
     ]
   },
   {
-    id: 2,
+    id: 102,
+    title: "MediStock — Cloud Pharmacy SaaS & Inventory System",
+    domain: "B2B SaaS & Point of Sale",
+    role: "Founder, Product Architect & Full-Stack Engineer",
+    featuredBadge: "Live B2B SaaS",
+    tags: ["React 18", "PostgreSQL (Supabase)", "Node.js", "Express", "Capacitor (Android)", "Razorpay", "Next.js 14"],
+    liveLink: "https://medistock-pharma.vercel.app",
+    adminLink: "https://medistock-admin.vercel.app",
+    summary: [
+      "Founded and architected a multi-device cloud pharmacy POS and inventory management platform designed for retail chemists across India, replacing legacy single-PC desktop software.",
+      "Engineered FEFO (First-Expiry-First-Out) automated stock rotation engine with 90-day color-coded distributor return warning alerts to eliminate costly inventory write-offs.",
+      "Built 1-click WhatsApp digital invoicing, customer Khata (Udhaar) ledger, Marg ERP/Excel catalog migration wizard, and AI camera invoice scanner for instant stock pre-fills.",
+      "Engineered multi-tenant store isolation (store_id scoping), 1-click HMAC-signed Founder Impersonation support tool, and 3-tier Razorpay automated subscription lock middleware.",
+      "Packaged a 3.5 MB ultra-lightweight native Android APK (Capacitor) optimized for high-speed mobile counter billing and IST (+05:30) day-boundary transactional analytics."
+    ]
+  },
+  {
+    id: 103,
+    title: "UsedTech Market — Verified PC Hardware Marketplace",
+    domain: "Verified Marketplace & E-Commerce",
+    role: "Product Architect & Full-Stack Engineer",
+    featuredBadge: "Verified E-Commerce",
+    tags: ["Next.js 16", "TypeScript", "Tailwind CSS 4", "Prisma", "SQLite", "TanStack Query", "Zustand"],
+    summary: [
+      "Engineered a curated marketplace for verified used computer hardware in India, eliminating fraud through a strict physical technician inspection pipeline across 18 hardware categories.",
+      "Built an algorithmic Fair-Price Engine that calculates dynamic market valuation (Good Deal to High Price) considering market depreciation, warranty, and mining/repair risk discounts.",
+      "Architected 4 distinct role-based dashboards (Buyer, Seller, Technician, Admin) with a 6-step sell wizard, category-specific stress test checklists, and WhatsApp-first buyer-seller routing.",
+      "Designed a data-driven category registry with non-destructive JSON metadata scaling on Prisma models and a mobile-first single-route SPA architecture."
+    ]
+  },
+  {
+    id: 104,
+    title: "4Layers / SmartNest — Commercial IoT Platform",
+    domain: "Commercial IoT & Cloud Infrastructure",
+    role: "Lead IoT & Cloud Architect",
+    featuredBadge: "Google Certified IoT",
+    tags: ["ESP32", "FastAPI", "MQTT (EMQX)", "AWS App Runner", "PostgreSQL RDS", "Google HomeGraph"],
+    summary: [
+      "Architected an enterprise IoT platform powering commercial smart home switches and fans across cloud, mobile, and ESP32 hardware fleets.",
+      "Achieved Google Home Ecosystem Certification: Engineered custom QA Hold Mode (fixing 15-second heartbeat race conditions during automated tests) and RFC 6749 OAuth 2.0 token refresh security.",
+      "Engineered an automated OTA 2.0 engine featuring exponential backoff retries, scheduled maintenance windows (02:00-05:00 IST), C2-GUARD skipped status, and live success-rate dashboards.",
+      "Migrated system to a 100% pure cloud architecture on AWS App Runner + EMQX MQTT with CORS origin lockdown, auth rate-limiting, and multi-tenant IDOR access controls."
+    ]
+  },
+  {
+    id: 105,
     title: "AutoApply AI — Automated Job Application System",
     domain: "AI Automation",
     tags: ["Python", "JavaScript", "Gemini AI", "Automation"],
+    liveLink: "https://autoapply-ai-alpha.vercel.app/",
     summary: [
       "Designed a multi-step prompt chain that reads a job description, extracts requirements, and generates a tailored resume and cover letter through structured LLM calls.",
       "Engineered system prompts to keep Gemini's output format, tone, and length consistent across hundreds of varying job postings.",
       "Built fallback and retry prompt logic to handle malformed or incomplete model outputs in production use."
-    ],
-    liveLink: "https://autoapply-ai-alpha.vercel.app/"
+    ]
   },
   {
-    id: 1,
+    id: 106,
     title: "DataLens AI — Full-Stack AI Analytics Platform",
     domain: "Frontend Architecture & BI",
     tags: ["React", "TypeScript", "Recharts", "Gemini AI", "Analytics"],
+    liveLink: "https://data-lens-ai-omega.vercel.app/",
     summary: [
       "Built an AI chat interface that converts natural-language questions into SQL queries via prompt-driven query generation.",
       "Designed prompt templates for the ML Lab module to explain model outputs and surface insights in plain language.",
       "Directed end-to-end product development — frontend, ETL pipeline, and SQL engine — using AI-assisted, prompt-first development."
-    ],
-    liveLink: "https://data-lens-ai-omega.vercel.app/"
-  },
-  {
-    id: 4,
-    title: "Interactive Portfolio & PDF Automation Pipeline",
-    domain: "Frontend & DevOps Automation",
-    tags: ["React", "TypeScript", "Framer Motion", "Node.js", "Puppeteer", "TailwindCSS"],
-    summary: [
-      "Engineered an interactive React/TypeScript portfolio featuring hardware-accelerated Framer Motion animations, a responsive terminal interface, and a system theme-matching toggle.",
-      "Automated resume exports by building a Node.js script using Puppeteer to dynamically scrape the live portfolio build and compile a pixel-perfect A4 PDF resume.",
-      "Optimized bundle loading and routing to achieve fast load times and clean responsiveness across all viewport layouts."
     ]
   }
 ];
@@ -779,197 +838,216 @@ export default function App() {
              {currentView === 'home' && (
                <motion.div key="home" variants={pageVariants} initial="initial" animate="animate" exit="exit" className="space-y-24 md:space-y-32">
                  
-                 <section className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 pt-8 md:pt-16">
-                    <div className="md:col-span-12 lg:col-span-7 flex flex-col items-center md:items-start text-center md:text-left">
-                      <h1 className="text-6xl md:text-8xl font-semibold tracking-tighter leading-tight mb-8 text-transparent bg-clip-text bg-gradient-to-br from-neutral-950 via-neutral-800 to-neutral-600 dark:from-white dark:via-neutral-300 dark:to-neutral-500 transition-all duration-500">
-                        Mohammad<br className="hidden md:block"/> Naved.
-                      </h1>
-                      <p className="text-xs uppercase tracking-widest font-bold text-neutral-400 dark:text-neutral-500 mb-4">
-                        AI-Assisted Builder &bull; Prompt Engineer
-                      </p>
-                      <p className="text-base text-neutral-500 dark:text-neutral-400 max-w-xl leading-relaxed mb-10 transition-colors mx-auto md:mx-0 font-light">
-                        Prompt Engineer who builds and ships real, working AI products by directing large language models rather than writing code line-by-line. Designs system prompts, prompt chains, and agentic workflows that turn LLMs into reliable application components — translating product ideas into working software through precise instruction design, iterative testing, and prompt-level debugging.
-                      </p>
-                      <div className="flex justify-center md:justify-start items-center space-x-4 mb-8 text-sm w-full">
-                        <div className="flex items-center gap-2">
-                          <div className="h-2 w-2 rounded-full bg-green-500 dark:bg-green-400 transition-colors shadow-[0_0_8px_rgba(34,197,94,0.4)]"></div>
-                          <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">Available for Opportunities</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="md:col-span-12 lg:col-span-5 flex flex-col justify-center items-center lg:items-end w-full max-w-lg mx-auto lg:mx-0 space-y-6 lg:pt-8">
-                      <motion.div 
-                        whileHover={{ scale: 1.02, y: -4 }}
-                        whileTap={{ scale: 0.98 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                        className="w-full bg-white dark:bg-neutral-900/90 text-neutral-900 dark:text-white p-8 rounded-2xl flex justify-between items-center group border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors cursor-pointer shadow-xl"
-                        onClick={() => setIsTerminalOpen(true)}
-                      >
-                        <div className="w-full flex justify-between items-center">
-                          <div className="space-y-1">
-                            <p className="text-[10px] text-neutral-400 dark:text-neutral-500 uppercase tracking-widest font-bold transition-colors mb-1">Interactive AI Assistant</p>
-                            <p className="text-2xl font-bold flex items-center gap-2 text-neutral-900 dark:text-white transition-colors">Chat with my AI Agent</p>
-                          </div>
-                          <div className="h-12 w-12 rounded-full border border-neutral-300 dark:border-neutral-700 flex items-center justify-center group-hover:bg-neutral-100 dark:group-hover:bg-neutral-850 transition-colors group-hover:translate-x-1">—&gt;</div>
-                        </div>
-                      </motion.div>
-                      <motion.div 
-                        whileHover={{ scale: 1.02, y: -4 }}
-                        whileTap={{ scale: 0.98 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                        className="w-full bg-white dark:bg-neutral-900/90 text-neutral-900 dark:text-white p-8 rounded-2xl flex justify-between items-center group border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors cursor-pointer shadow-xl"
-                        onClick={() => setCurrentView('contact')}
-                      >
-                        <div className="w-full flex justify-between items-center">
-                          <div className="space-y-1">
-                            <p className="text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-widest transition-colors mb-1">Contact Me</p>
-                            <p className="text-lg font-medium flex items-center gap-2 text-neutral-900 dark:text-white transition-colors">andyk4548@gmail.com</p>
-                          </div>
-                          <div className="h-12 w-12 rounded-full border border-neutral-300 dark:border-neutral-700 flex items-center justify-center group-hover:bg-neutral-100 dark:group-hover:bg-neutral-855 transition-colors group-hover:translate-x-1">—&gt;</div>
-                        </div>
-                      </motion.div>
-                      <div className="flex flex-wrap justify-center lg:justify-end gap-4 md:gap-6 text-sm font-medium tracking-widest uppercase text-neutral-500 dark:text-neutral-400 px-2 mt-4 transition-colors">
-                        <motion.a 
-                          href="https://github.com/MD-NAVED" 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          whileHover={{ scale: 1.05, x: 2 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors flex items-center gap-2 cursor-pointer"
-                        >
-                          GitHub <span className="text-xs">—&gt;</span>
-                        </motion.a>
-                        <motion.a 
-                          href="https://www.linkedin.com/in/md-naved-2b79b8382" 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          whileHover={{ scale: 1.05, x: 2 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors flex items-center gap-2 cursor-pointer"
-                        >
-                          LinkedIn <span className="text-xs">—&gt;</span>
-                        </motion.a>
-                        <motion.a 
-                          href="https://www.naukri.com/mnjuser/profile" 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          whileHover={{ scale: 1.05, x: 2 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors flex items-center gap-2 cursor-pointer"
-                        >
-                          Naukri <span className="text-xs">—&gt;</span>
-                        </motion.a>
-                        <motion.a 
-                          href="https://www.foundit.in/seeker/profile" 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          whileHover={{ scale: 1.05, x: 2 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors flex items-center gap-2 cursor-pointer"
-                        >
-                          Foundit <span className="text-xs">—&gt;</span>
-                        </motion.a>
-                      </div>
-                    </div>
-                 </section>
-
-                 <section className="border-t border-neutral-200 dark:border-neutral-800 pt-16 md:pt-24 transition-colors">
-                     <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-8 transition-colors flex items-center gap-2">
-                       <Brain className="w-4 h-4" />
-                       Core Expertise
-                     </h3>
-                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <motion.div 
-                          initial={{ opacity: 0, y: 30 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, margin: "-80px" }}
-                          transition={{ duration: 0.6, delay: 0, ease: [0.16, 1, 0.3, 1] }}
-                          whileHover={{ 
-                            y: -8, 
-                            scale: 1.015,
-                            boxShadow: "0 20px 40px -15px rgba(99, 102, 241, 0.12)"
-                          }}
-                          whileTap={{ scale: 0.985 }}
-                          className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-indigo-500/30 dark:hover:border-indigo-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
-                        >
-                          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-blue-500/5 dark:from-indigo-500/5 dark:via-transparent dark:to-blue-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                          <Sparkles className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-black dark:group-hover:text-white" />
-                          <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">Prompt Engineering & Design</h4>
-                          <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">System prompts, few-shot examples, chain-of-thought structuring, and output formatting control.</p>
-                        </motion.div>
-                        <motion.div 
-                          initial={{ opacity: 0, y: 30 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, margin: "-80px" }}
-                          transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                          whileHover={{ 
-                            y: -8, 
-                            scale: 1.015,
-                            boxShadow: "0 20px 40px -15px rgba(99, 102, 241, 0.12)"
-                          }}
-                          whileTap={{ scale: 0.985 }}
-                          className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-indigo-500/30 dark:hover:border-indigo-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
-                        >
-                          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-blue-500/5 dark:from-indigo-500/5 dark:via-transparent dark:to-blue-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                          <Workflow className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-black dark:group-hover:text-white" />
-                          <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">LLM Application Architecture</h4>
-                          <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Integrating Gemini API into multi-step, robust production-style workflows.</p>
-                        </motion.div>
-                        <motion.div 
-                          initial={{ opacity: 0, y: 30 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, margin: "-80px" }}
-                          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                          whileHover={{ 
-                            y: -8, 
-                            scale: 1.015,
-                            boxShadow: "0 20px 40px -15px rgba(99, 102, 241, 0.12)"
-                          }}
-                          whileTap={{ scale: 0.985 }}
-                          className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-indigo-500/30 dark:hover:border-indigo-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
-                        >
-                          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-blue-500/5 dark:from-indigo-500/5 dark:via-transparent dark:to-blue-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                          <Cpu className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-black dark:group-hover:text-white" />
-                          <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">AI Agent Workflows</h4>
-                          <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Building agent pipelines; expanding into LangChain and n8n for autonomous, multi-tool agents.</p>
-                        </motion.div>
-                        <motion.div 
-                          initial={{ opacity: 0, y: 30 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, margin: "-80px" }}
-                          transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                          whileHover={{ 
-                            y: -8, 
-                            scale: 1.015,
-                            boxShadow: "0 20px 40px -15px rgba(99, 102, 241, 0.12)"
-                          }}
-                          whileTap={{ scale: 0.985 }}
-                          className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-indigo-500/30 dark:hover:border-indigo-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
-                        >
-                          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-blue-500/5 dark:from-indigo-500/5 dark:via-transparent dark:to-blue-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                          <Code2 className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-black dark:group-hover:text-white" />
-                          <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">AI-Assisted Development</h4>
-                          <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Directing AI coding tools ("vibe-coding") to design, build, and ship full-stack products.</p>
-                        </motion.div>
-                        <motion.div 
-                          initial={{ opacity: 0, y: 30 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, margin: "-80px" }}
-                          transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                          whileHover={{ 
-                            y: -8, 
-                            scale: 1.015,
-                            boxShadow: "0 20px 40px -15px rgba(99, 102, 241, 0.12)"
-                          }}
-                          whileTap={{ scale: 0.985 }}
-                          className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-indigo-500/30 dark:hover:border-indigo-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
-                        >
-                          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-blue-500/5 dark:from-indigo-500/5 dark:via-transparent dark:to-blue-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                          <Terminal className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-black dark:group-hover:text-white" />
-                          <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">Prompt Debugging & Eval</h4>
-                          <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Iterating on prompt failures, hallucination control, and output consistency across edge cases.</p>
-                        </motion.div>
+                  <section className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 pt-8 md:pt-16">
+                     <div className="md:col-span-12 lg:col-span-7 flex flex-col items-center md:items-start text-center md:text-left">
+                       <h1 className="text-6xl md:text-8xl font-semibold tracking-tighter leading-tight mb-6 text-transparent bg-clip-text bg-gradient-to-br from-neutral-950 via-neutral-800 to-neutral-600 dark:from-white dark:via-neutral-300 dark:to-neutral-500 transition-all duration-500">
+                         Mohammad<br className="hidden md:block"/> Naved.
+                       </h1>
+                       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase mb-6">
+                         <Sparkles className="w-3.5 h-3.5" />
+                         Founder & Lead AI Engineer @ Codtrex AI
+                       </div>
+                       <p className="text-base text-neutral-600 dark:text-neutral-400 max-w-xl leading-relaxed mb-8 transition-colors mx-auto md:mx-0 font-light">
+                         Product Architect who conceptualizes, builds, and launches production-grade B2B SaaS, verified marketplace engines, and commercial IoT infrastructure. Directing modern AI coding models and autonomous agent pipelines to ship resilient zero-to-one applications in 14-20 days without $15k agency markups.
+                       </p>
+                       <div className="flex justify-center md:justify-start items-center space-x-4 mb-8 text-sm w-full">
+                         <div className="flex items-center gap-2">
+                           <div className="h-2.5 w-2.5 rounded-full bg-emerald-500 dark:bg-emerald-400 transition-colors shadow-[0_0_10px_rgba(16,185,129,0.6)] animate-pulse"></div>
+                           <span className="text-xs font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 transition-colors">Founder @ Codtrex AI &amp; MediStock &bull; Open for Strategic Partnerships</span>
+                         </div>
+                       </div>
                      </div>
+                     <div className="md:col-span-12 lg:col-span-5 flex flex-col justify-center items-center lg:items-end w-full max-w-lg mx-auto lg:mx-0 space-y-6 lg:pt-8">
+                       <motion.div 
+                         whileHover={{ scale: 1.02, y: -4 }}
+                         whileTap={{ scale: 0.98 }}
+                         transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                         className="w-full bg-white dark:bg-neutral-900/90 text-neutral-900 dark:text-white p-8 rounded-2xl flex justify-between items-center group border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors cursor-pointer shadow-xl"
+                         onClick={() => setIsTerminalOpen(true)}
+                       >
+                         <div className="w-full flex justify-between items-center">
+                           <div className="space-y-1">
+                             <p className="text-[10px] text-neutral-400 dark:text-neutral-500 uppercase tracking-widest font-bold transition-colors mb-1">Interactive AI Assistant</p>
+                             <p className="text-2xl font-bold flex items-center gap-2 text-neutral-900 dark:text-white transition-colors">Chat with my AI Agent</p>
+                           </div>
+                           <div className="h-12 w-12 rounded-full border border-neutral-300 dark:border-neutral-700 flex items-center justify-center group-hover:bg-neutral-100 dark:group-hover:bg-neutral-850 transition-colors group-hover:translate-x-1">—&gt;</div>
+                         </div>
+                       </motion.div>
+                       <motion.div 
+                         whileHover={{ scale: 1.02, y: -4 }}
+                         whileTap={{ scale: 0.98 }}
+                         transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                         className="w-full bg-white dark:bg-neutral-900/90 text-neutral-900 dark:text-white p-8 rounded-2xl flex justify-between items-center group border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors cursor-pointer shadow-xl"
+                         onClick={() => setCurrentView('services')}
+                       >
+                         <div className="w-full flex justify-between items-center">
+                           <div className="space-y-1">
+                             <p className="text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-widest transition-colors mb-1">Codtrex AI Studio</p>
+                             <p className="text-lg font-medium flex items-center gap-2 text-neutral-900 dark:text-white transition-colors">View Services &amp; Pricing (From ₹29k)</p>
+                           </div>
+                           <div className="h-12 w-12 rounded-full border border-neutral-300 dark:border-neutral-700 flex items-center justify-center group-hover:bg-neutral-100 dark:group-hover:bg-neutral-855 transition-colors group-hover:translate-x-1">—&gt;</div>
+                         </div>
+                       </motion.div>
+                       <div className="flex flex-wrap justify-center lg:justify-end gap-4 md:gap-6 text-sm font-medium tracking-widest uppercase text-neutral-500 dark:text-neutral-400 px-2 mt-4 transition-colors">
+                         <motion.a 
+                           href="https://codtrex.vercel.app" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           whileHover={{ scale: 1.05, x: 2 }}
+                           whileTap={{ scale: 0.95 }}
+                           className="text-emerald-600 dark:text-emerald-400 hover:underline transition-colors flex items-center gap-1.5 cursor-pointer font-bold"
+                         >
+                           Codtrex.ai <ArrowUpRight className="w-3.5 h-3.5" />
+                         </motion.a>
+                         <motion.a 
+                           href="https://github.com/MD-NAVED" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           whileHover={{ scale: 1.05, x: 2 }}
+                           whileTap={{ scale: 0.95 }}
+                           className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors flex items-center gap-2 cursor-pointer"
+                         >
+                           GitHub <span className="text-xs">—&gt;</span>
+                         </motion.a>
+                         <motion.a 
+                           href="https://www.linkedin.com/in/md-naved-2b79b8382" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           whileHover={{ scale: 1.05, x: 2 }}
+                           whileTap={{ scale: 0.95 }}
+                           className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors flex items-center gap-2 cursor-pointer"
+                         >
+                           LinkedIn <span className="text-xs">—&gt;</span>
+                         </motion.a>
+                         <motion.a 
+                           href="https://www.naukri.com/mnjuser/profile" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           whileHover={{ scale: 1.05, x: 2 }}
+                           whileTap={{ scale: 0.95 }}
+                           className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors flex items-center gap-2 cursor-pointer"
+                         >
+                           Naukri <span className="text-xs">—&gt;</span>
+                         </motion.a>
+                       </div>
+                     </div>
+                  </section>
+
+                  <section className="border-t border-neutral-200 dark:border-neutral-800 pt-16 md:pt-24 transition-colors">
+                      <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-8 transition-colors flex items-center gap-2">
+                        <Rocket className="w-4 h-4 text-emerald-500" />
+                        Core Expertise &amp; Architecture
+                      </h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                         <motion.div 
+                           initial={{ opacity: 0, y: 30 }}
+                           whileInView={{ opacity: 1, y: 0 }}
+                           viewport={{ once: true, margin: "-80px" }}
+                           transition={{ duration: 0.6, delay: 0, ease: [0.16, 1, 0.3, 1] }}
+                           whileHover={{ 
+                             y: -8, 
+                             scale: 1.015,
+                             boxShadow: "0 20px 40px -15px rgba(16, 185, 129, 0.15)"
+                           }}
+                           whileTap={{ scale: 0.985 }}
+                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-emerald-500/30 dark:hover:border-emerald-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
+                         >
+                           <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/5 dark:from-emerald-500/5 dark:via-transparent dark:to-teal-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                           <Brain className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
+                           <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">AI Agent Pipelines &amp; Failover</h4>
+                           <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Multi-provider LLM failover (Groq &rarr; NVIDIA &rarr; OpenAI), autonomous tool calling, structured JSON output formatting, and prompt evaluation.</p>
+                         </motion.div>
+                         <motion.div 
+                           initial={{ opacity: 0, y: 30 }}
+                           whileInView={{ opacity: 1, y: 0 }}
+                           viewport={{ once: true, margin: "-80px" }}
+                           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                           whileHover={{ 
+                             y: -8, 
+                             scale: 1.015,
+                             boxShadow: "0 20px 40px -15px rgba(16, 185, 129, 0.15)"
+                           }}
+                           whileTap={{ scale: 0.985 }}
+                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-emerald-500/30 dark:hover:border-emerald-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
+                         >
+                           <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/5 dark:from-emerald-500/5 dark:via-transparent dark:to-teal-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                           <Globe className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
+                           <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">B2B SaaS &amp; Multi-Tenant Systems</h4>
+                           <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Store-isolated database architectures (PostgreSQL/Supabase), RBAC, HMAC-signed founder impersonation, and live Razorpay payment engines.</p>
+                         </motion.div>
+                         <motion.div 
+                           initial={{ opacity: 0, y: 30 }}
+                           whileInView={{ opacity: 1, y: 0 }}
+                           viewport={{ once: true, margin: "-80px" }}
+                           transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                           whileHover={{ 
+                             y: -8, 
+                             scale: 1.015,
+                             boxShadow: "0 20px 40px -15px rgba(16, 185, 129, 0.15)"
+                           }}
+                           whileTap={{ scale: 0.985 }}
+                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-emerald-500/30 dark:hover:border-emerald-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
+                         >
+                           <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/5 dark:from-emerald-500/5 dark:via-transparent dark:to-teal-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                           <Cpu className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
+                           <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">Commercial IoT &amp; Cloud Fleet</h4>
+                           <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">ESP32 C++ firmware, EMQX MQTT routing, Google HomeGraph certification, QA Hold mode, and automated OTA 2.0 deployment pipelines.</p>
+                         </motion.div>
+                         <motion.div 
+                           initial={{ opacity: 0, y: 30 }}
+                           whileInView={{ opacity: 1, y: 0 }}
+                           viewport={{ once: true, margin: "-80px" }}
+                           transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                           whileHover={{ 
+                             y: -8, 
+                             scale: 1.015,
+                             boxShadow: "0 20px 40px -15px rgba(16, 185, 129, 0.15)"
+                           }}
+                           whileTap={{ scale: 0.985 }}
+                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-emerald-500/30 dark:hover:border-emerald-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
+                         >
+                           <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/5 dark:from-emerald-500/5 dark:via-transparent dark:to-teal-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                           <Store className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
+                           <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">Marketplaces &amp; Algorithmic Engines</h4>
+                           <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Category registries, algorithmic Fair-Price engines, technician stress-testing checklists, and frictionless WhatsApp-first commerce.</p>
+                         </motion.div>
+                         <motion.div 
+                           initial={{ opacity: 0, y: 30 }}
+                           whileInView={{ opacity: 1, y: 0 }}
+                           viewport={{ once: true, margin: "-80px" }}
+                           transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                           whileHover={{ 
+                             y: -8, 
+                             scale: 1.015,
+                             boxShadow: "0 20px 40px -15px rgba(16, 185, 129, 0.15)"
+                           }}
+                           whileTap={{ scale: 0.985 }}
+                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-emerald-500/30 dark:hover:border-emerald-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
+                         >
+                           <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/5 dark:from-emerald-500/5 dark:via-transparent dark:to-teal-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                           <ShieldCheck className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
+                           <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">DevSecOps &amp; Webhook Automation</h4>
+                           <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Supabase triggers, Resend email pipelines, Telegram/WhatsApp bots, CORS lockdown, rate limiting, and 100% automated regression suites.</p>
+                         </motion.div>
+                         <motion.div 
+                           initial={{ opacity: 0, y: 30 }}
+                           whileInView={{ opacity: 1, y: 0 }}
+                           viewport={{ once: true, margin: "-80px" }}
+                           transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                           whileHover={{ 
+                             y: -8, 
+                             scale: 1.015,
+                             boxShadow: "0 20px 40px -15px rgba(16, 185, 129, 0.15)"
+                           }}
+                           whileTap={{ scale: 0.985 }}
+                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-emerald-500/30 dark:hover:border-emerald-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
+                         >
+                           <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/5 dark:from-emerald-500/5 dark:via-transparent dark:to-teal-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                           <Rocket className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
+                           <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">Zero-to-One Product Velocity</h4>
+                           <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Directing AI coding agents to architect, iterate, and deploy production-ready applications in 14-20 days with 10x iteration speed.</p>
+                         </motion.div>
+                      </div>
                   </section>
 
                </motion.div>
@@ -981,8 +1059,12 @@ export default function App() {
                <motion.div key="projects" variants={pageVariants} initial="initial" animate="animate" exit="exit" className="space-y-12">
                  
                  <div className="border-b border-neutral-200 dark:border-neutral-800 pb-8 rounded-t-lg">
-                   <h2 className="text-3xl md:text-5xl font-medium tracking-tighter text-neutral-900 dark:text-neutral-100 transition-colors">Projects</h2>
-                   <p className="text-neutral-500 dark:text-neutral-400 mt-4 max-w-2xl font-light leading-relaxed">A selection of my recent works highlighting prompt engineering, agentic workflows, and AI product integrations.</p>
+                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase mb-3">
+                     <Rocket className="w-3.5 h-3.5" />
+                     Shipped &amp; Live Systems
+                   </div>
+                   <h2 className="text-3xl md:text-5xl font-medium tracking-tighter text-neutral-900 dark:text-neutral-100 transition-colors">Featured Projects</h2>
+                   <p className="text-neutral-500 dark:text-neutral-400 mt-4 max-w-2xl font-light leading-relaxed">Production B2B SaaS platforms, verified hardware marketplaces, commercial IoT systems, and autonomous AI agent architectures designed, architected, and shipped end-to-end.</p>
                  </div>
                  
                  <div className="space-y-10">
@@ -992,39 +1074,57 @@ export default function App() {
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.7, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0.7, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
                         whileHover={{ 
                           y: -8, 
                           scale: 1.01,
-                          boxShadow: "0 25px 50px -15px rgba(99, 102, 241, 0.15)"
+                          boxShadow: "0 25px 50px -15px rgba(16, 185, 129, 0.15)"
                         }}
                         whileTap={{ scale: 0.99 }}
-                        className="group cursor-pointer p-8 md:p-12 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 hover:border-indigo-500/30 dark:hover:border-indigo-500/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300 relative overflow-hidden"
+                        className="group cursor-pointer p-8 md:p-12 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 hover:border-emerald-500/30 dark:hover:border-emerald-500/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300 relative overflow-hidden"
                         onClick={() => setSelectedProject(project)}
                       >
-                         <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-blue-500/5 dark:from-indigo-500/5 dark:via-transparent dark:to-blue-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/5 dark:from-emerald-500/5 dark:via-transparent dark:to-teal-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                         
+                         <div className="flex flex-wrap items-center justify-between gap-3 mb-3 relative z-10">
+                           <div className="flex items-center gap-2">
+                             {project.featuredBadge && (
+                               <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                                 <Sparkles className="w-3 h-3" />
+                                 {project.featuredBadge}
+                               </span>
+                             )}
+                             {project.role && (
+                               <span className="text-xs font-semibold text-neutral-500 dark:text-neutral-400">
+                                 {project.role}
+                               </span>
+                             )}
+                           </div>
+                           {project.domain && <span className="text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest flex-shrink-0 transition-colors">{project.domain}</span>}
+                         </div>
+
                          <div className="flex flex-wrap items-start justify-between gap-4 mb-4 relative z-10">
-                           <h3 className="text-2xl md:text-3xl font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-neutral-500 transition-colors flex items-center gap-3">
+                           <h3 className="text-2xl md:text-3xl font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors flex items-center gap-3">
                              {project.title}
                              <ArrowUpRight className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity" />
                            </h3>
-                           {project.domain && <span className="text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest flex-shrink-0 transition-colors mt-2">{project.domain}</span>}
                          </div>
+                         
                          <div className="flex flex-wrap gap-2 mb-8 relative z-10">
                            {project.tags.map(tag => (
-                             <span key={tag} className="border border-neutral-200 dark:border-neutral-800 bg-white/60 dark:bg-black/20 px-3 py-1 rounded-full text-xs font-medium text-neutral-500 dark:text-neutral-400 transition-colors">{tag}</span>
+                             <span key={tag} className="border border-neutral-200 dark:border-neutral-800 bg-white/60 dark:bg-black/20 px-3 py-1 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-400 transition-colors">{tag}</span>
                            ))}
                          </div>
-                         <ul className="space-y-4 text-neutral-500 dark:text-neutral-400 text-sm leading-relaxed max-w-3xl transition-colors relative z-10">
+                         <ul className="space-y-4 text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed max-w-3xl transition-colors relative z-10 font-light">
                            {project.summary.map((point, i) => (
                              <li key={i} className="flex items-start gap-3">
-                               <span className="text-neutral-300 dark:text-neutral-700 mt-0.5 transition-colors">—</span>
+                               <span className="text-emerald-500 dark:text-emerald-400 mt-0.5 font-bold transition-colors">—</span>
                                <p>{point}</p>
                              </li>
                            ))}
                          </ul>
                          
-                         <div className="mt-10 relative z-10 flex gap-6 items-center">
+                         <div className="mt-10 relative z-10 flex flex-wrap gap-6 items-center">
                             <motion.button 
                               onClick={(e) => {
                                 e.stopPropagation();
@@ -1032,9 +1132,9 @@ export default function App() {
                               }}
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-neutral-100 border-b border-transparent hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors pb-1 focus:outline-none cursor-pointer"
+                              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-neutral-100 border-b border-neutral-900/30 dark:border-neutral-100/30 hover:border-emerald-500 dark:hover:border-emerald-400 transition-colors pb-1 focus:outline-none cursor-pointer"
                             >
-                              View Details
+                              Deep-Dive Case Study
                             </motion.button>
                             {project.liveLink && (
                               <motion.a 
@@ -1044,9 +1144,22 @@ export default function App() {
                                 onClick={(e) => e.stopPropagation()}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-neutral-100 border-b border-transparent hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors pb-1 cursor-pointer"
+                                className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 border-b border-emerald-500/30 hover:border-emerald-500 transition-colors pb-1 cursor-pointer"
                               >
-                                Live Project <ArrowUpRight className="w-3.5 h-3.5" />
+                                Live Platform <ArrowUpRight className="w-3.5 h-3.5" />
+                              </motion.a>
+                            )}
+                            {project.adminLink && (
+                              <motion.a 
+                                href={project.adminLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-indigo-500 dark:text-indigo-400 border-b border-indigo-500/30 hover:border-indigo-400 transition-colors pb-1 cursor-pointer"
+                              >
+                                Founder Admin Console <ArrowUpRight className="w-3.5 h-3.5" />
                               </motion.a>
                             )}
                          </div>
@@ -1062,11 +1175,111 @@ export default function App() {
              {currentView === 'experience' && (
                <motion.div key="experience" variants={pageVariants} initial="initial" animate="animate" exit="exit" className="space-y-16">
                  <div className="border-b border-neutral-200 dark:border-neutral-800 pb-8">
-                   <h2 className="text-3xl md:text-5xl font-medium tracking-tighter text-neutral-900 dark:text-neutral-100 transition-colors">Experience & Background</h2>
-                   <p className="text-neutral-500 dark:text-neutral-400 mt-4 max-w-2xl font-light leading-relaxed">A detailed look into my professional journey, core competencies, and the value I deliver to teams.</p>
+                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase mb-3">
+                     <Briefcase className="w-3.5 h-3.5" />
+                     Track Record &amp; Competencies
+                   </div>
+                   <h2 className="text-3xl md:text-5xl font-medium tracking-tighter text-neutral-900 dark:text-neutral-100 transition-colors">Founder &amp; Engineering Experience</h2>
+                   <p className="text-neutral-500 dark:text-neutral-400 mt-4 max-w-2xl font-light leading-relaxed">A detailed look into my journey founding companies, architecting production systems, and delivering high-impact software.</p>
                  </div>
 
-                                   <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 transition-colors">
+                 {/* Founder & Engineering Journey */}
+                 <div className="space-y-6">
+                   <div className="flex items-center gap-2 border-b border-neutral-200/50 dark:border-neutral-800/50 pb-4">
+                     <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">Ventures &amp; Leadership</h2>
+                   </div>
+
+                   <div className="space-y-6">
+                     <div className="p-8 md:p-10 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 backdrop-blur-md shadow-sm">
+                       <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                         <div>
+                           <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+                             Founder &amp; Lead AI Engineer
+                             <span className="text-emerald-600 dark:text-emerald-400 text-sm font-semibold">&bull; Codtrex AI</span>
+                           </h3>
+                           <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 mt-0.5">Boutique AI Engineering Studio &bull; codtrex.vercel.app</p>
+                         </div>
+                         <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+                           2026 &ndash; Present
+                         </span>
+                       </div>
+                       <ul className="space-y-2.5 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-light mt-4">
+                         <li className="flex items-start gap-2.5">
+                           <span className="text-emerald-500 font-bold">&mdash;</span>
+                           <span>Directing an agile AI engineering studio delivering production applications in 14-20 days without $15k agency markups.</span>
+                         </li>
+                         <li className="flex items-start gap-2.5">
+                           <span className="text-emerald-500 font-bold">&mdash;</span>
+                           <span>Engineered client web platform with multi-provider AI failover (Groq &rarr; NVIDIA &rarr; OpenAI) with Hinglish/English language detection.</span>
+                         </li>
+                         <li className="flex items-start gap-2.5">
+                           <span className="text-emerald-500 font-bold">&mdash;</span>
+                           <span>Architected full webhook event pipeline: Supabase &rarr; Resend transactional emails &rarr; Telegram (@codtrexbot) and WhatsApp alerts.</span>
+                         </li>
+                       </ul>
+                     </div>
+
+                     <div className="p-8 md:p-10 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 backdrop-blur-md shadow-sm">
+                       <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                         <div>
+                           <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+                             Founder &amp; Product Architect
+                             <span className="text-teal-600 dark:text-teal-400 text-sm font-semibold">&bull; MediStock</span>
+                           </h3>
+                           <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 mt-0.5">Cloud Pharmacy SaaS &amp; POS Platform &bull; medistock-pharma.vercel.app</p>
+                         </div>
+                         <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-teal-500/10 border border-teal-500/20 text-teal-600 dark:text-teal-400">
+                           2026 &ndash; Present
+                         </span>
+                       </div>
+                       <ul className="space-y-2.5 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-light mt-4">
+                         <li className="flex items-start gap-2.5">
+                           <span className="text-teal-500 font-bold">&mdash;</span>
+                           <span>Architected a multi-device B2B cloud pharmacy SaaS with FEFO automated inventory liquidation, reducing costly medicine expiry losses.</span>
+                         </li>
+                         <li className="flex items-start gap-2.5">
+                           <span className="text-teal-500 font-bold">&mdash;</span>
+                           <span>Built 1-click WhatsApp invoicing, customer Khata ledger, AI camera invoice scanner, and Marg ERP/Excel catalog migration engine.</span>
+                         </li>
+                         <li className="flex items-start gap-2.5">
+                           <span className="text-teal-500 font-bold">&mdash;</span>
+                           <span>Packaged ultra-light 3.5 MB native Android APK (Capacitor) with high-speed counter billing and Razorpay automated subscription locks.</span>
+                         </li>
+                       </ul>
+                     </div>
+
+                     <div className="p-8 md:p-10 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 backdrop-blur-md shadow-sm">
+                       <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                         <div>
+                           <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+                             Lead IoT &amp; Cloud Systems Architect
+                             <span className="text-indigo-600 dark:text-indigo-400 text-sm font-semibold">&bull; 4Layers / SmartNest</span>
+                           </h3>
+                           <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 mt-0.5">Commercial IoT Fleet &amp; Smart Home Ecosystem</p>
+                         </div>
+                         <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400">
+                           2026
+                         </span>
+                       </div>
+                       <ul className="space-y-2.5 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-light mt-4">
+                         <li className="flex items-start gap-2.5">
+                           <span className="text-indigo-500 font-bold">&mdash;</span>
+                           <span>Achieved Google Home Ecosystem Certification, building QA Hold Mode to eliminate heartbeat race conditions during Google Test Suite runs.</span>
+                         </li>
+                         <li className="flex items-start gap-2.5">
+                           <span className="text-indigo-500 font-bold">&mdash;</span>
+                           <span>Engineered OTA 2.0 deployment engine with backoff retries, scheduled maintenance windows (02:00-05:00 IST), and live stats dashboard.</span>
+                         </li>
+                         <li className="flex items-start gap-2.5">
+                           <span className="text-indigo-500 font-bold">&mdash;</span>
+                           <span>Migrated platform to 100% pure cloud architecture on AWS App Runner + EMQX MQTT with CORS lockdown and IDOR protection.</span>
+                         </li>
+                       </ul>
+                     </div>
+                   </div>
+                 </div>
+
+                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 transition-colors pt-6">
                      
                      {/* Left Column: Skills */}
                      <motion.div
@@ -1076,10 +1289,10 @@ export default function App() {
                        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                      >
                        <div className="flex items-center gap-2 mb-6 border-b border-neutral-200/50 dark:border-neutral-800/50 pb-4">
-                         <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">Skills & Competencies</h2>
+                         <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">Skills &amp; Competencies</h2>
                        </div>
                        
-                       <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-6 transition-colors">Technical Skills</h3>
+                       <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-6 transition-colors">Technical Stack</h3>
                        <div className="grid grid-cols-3 gap-4 mb-12">
                          {techSkillsData.map((skill, idx) => (
                            <div key={idx} className="relative group flex flex-col items-center justify-center">
@@ -1099,54 +1312,30 @@ export default function App() {
 
                        <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-6 transition-colors">Core Competencies</h3>
                        <div className="flex flex-wrap gap-2">
-                         <motion.span 
-                           whileHover={{ scale: 1.05, backgroundColor: isDarkMode ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)", borderColor: isDarkMode ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)" }}
-                           whileTap={{ scale: 0.95 }}
-                           transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                           className="border border-neutral-200 dark:border-neutral-800 text-neutral-500 dark:text-neutral-400 px-3 py-1 text-xs font-medium rounded-full transition-colors bg-white/30 dark:bg-[#111111]/30 cursor-default"
-                         >
-                           Prompt Design
-                         </motion.span>
-                         <motion.span 
-                           whileHover={{ scale: 1.05, backgroundColor: isDarkMode ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)", borderColor: isDarkMode ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)" }}
-                           whileTap={{ scale: 0.95 }}
-                           transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                           className="border border-neutral-200 dark:border-neutral-800 text-neutral-500 dark:text-neutral-400 px-3 py-1 text-xs font-medium rounded-full transition-colors bg-white/30 dark:bg-[#111111]/30 cursor-default"
-                         >
-                           Agentic Workflows
-                         </motion.span>
-                         <motion.span 
-                           whileHover={{ scale: 1.05, backgroundColor: isDarkMode ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)", borderColor: isDarkMode ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)" }}
-                           whileTap={{ scale: 0.95 }}
-                           transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                           className="border border-neutral-200 dark:border-neutral-800 text-neutral-500 dark:text-neutral-400 px-3 py-1 text-xs font-medium rounded-full transition-colors bg-white/30 dark:bg-[#111111]/30 cursor-default"
-                         >
-                           LLM Orchestration
-                         </motion.span>
-                         <motion.span 
-                           whileHover={{ scale: 1.05, backgroundColor: isDarkMode ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)", borderColor: isDarkMode ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)" }}
-                           whileTap={{ scale: 0.95 }}
-                           transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                           className="border border-neutral-200 dark:border-neutral-800 text-neutral-500 dark:text-neutral-400 px-3 py-1 text-xs font-medium rounded-full transition-colors bg-white/30 dark:bg-[#111111]/30 cursor-default"
-                         >
-                           Few-Shot Prompting
-                         </motion.span>
-                         <motion.span 
-                           whileHover={{ scale: 1.05, backgroundColor: isDarkMode ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)", borderColor: isDarkMode ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)" }}
-                           whileTap={{ scale: 0.95 }}
-                           transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                           className="border border-neutral-200 dark:border-neutral-800 text-neutral-500 dark:text-neutral-400 px-3 py-1 text-xs font-medium rounded-full transition-colors bg-white/30 dark:bg-[#111111]/30 cursor-default"
-                         >
-                           Schema Enforcement
-                         </motion.span>
-                         <motion.span 
-                           whileHover={{ scale: 1.05, backgroundColor: isDarkMode ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)", borderColor: isDarkMode ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)" }}
-                           whileTap={{ scale: 0.95 }}
-                           transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                           className="border border-neutral-200 dark:border-neutral-800 text-neutral-500 dark:text-neutral-400 px-3 py-1 text-xs font-medium rounded-full transition-colors bg-white/30 dark:bg-[#111111]/30 cursor-default"
-                         >
-                           Instruction Debugging
-                         </motion.span>
+                         {[
+                           "B2B SaaS Architecture",
+                           "Multi-Tenant RBAC",
+                           "AI Agent Pipelines",
+                           "Multi-LLM Failover",
+                           "Google HomeGraph Ecosystem",
+                           "Payment Systems (Razorpay)",
+                           "Algorithmic Pricing Engines",
+                           "Commercial IoT & ESP32",
+                           "OTA Firmware Deployment",
+                           "Capacitor Mobile Packaging",
+                           "DevSecOps & Rate Limiting",
+                           "Zero-to-One Product Launch"
+                         ].map((item) => (
+                           <motion.span 
+                             key={item}
+                             whileHover={{ scale: 1.05, backgroundColor: isDarkMode ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)", borderColor: isDarkMode ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)" }}
+                             whileTap={{ scale: 0.95 }}
+                             transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                             className="border border-neutral-200 dark:border-neutral-800 text-neutral-500 dark:text-neutral-400 px-3 py-1 text-xs font-medium rounded-full transition-colors bg-white/30 dark:bg-[#111111]/30 cursor-default"
+                           >
+                             {item}
+                           </motion.span>
+                         ))}
                        </div>
                      </motion.div>
 
@@ -1160,28 +1349,28 @@ export default function App() {
                      >
                        <div>
                          <div className="flex items-center gap-2 mb-6 border-b border-neutral-200/50 dark:border-neutral-800/50 pb-4">
-                           <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">Certifications & Languages</h2>
+                           <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">Certifications &amp; Languages</h2>
                          </div>
                        </div>
 
                        <div>
-                         <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-6 transition-colors">Certifications & Learning</h3>
+                         <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-6 transition-colors">Certifications &amp; Architecture Training</h3>
                          <div className="space-y-4 text-sm text-neutral-600 dark:text-neutral-300 transition-colors bg-white/40 dark:bg-[#111111]/40 p-6 rounded-2xl border border-white/60 dark:border-white/5 backdrop-blur-sm">
                            <div className="border-b border-neutral-200/50 dark:border-neutral-800/50 pb-3">
-                              <p className="font-medium text-neutral-900 dark:text-neutral-100">Python for Data Analysis & Visualization</p> 
-                              <span className="text-neutral-400 dark:text-neutral-500 text-xs font-bold uppercase tracking-widest mt-1 block">Self-directed</span>
+                              <p className="font-medium text-neutral-900 dark:text-neutral-100">Full-Stack Cloud &amp; Microservices Architecture</p> 
+                              <span className="text-neutral-400 dark:text-neutral-500 text-xs font-bold uppercase tracking-widest mt-1 block">Production SaaS &amp; Distributed Systems</span>
                            </div>
                            <div className="border-b border-neutral-200/50 dark:border-neutral-800/50 pb-3 pt-1">
-                              <p className="font-medium text-neutral-900 dark:text-neutral-100">Generative AI with Gemini</p> 
-                              <span className="text-neutral-400 dark:text-neutral-500 text-xs font-bold uppercase tracking-widest mt-1 block">Prompt Engineering</span>
+                              <p className="font-medium text-neutral-900 dark:text-neutral-100">Applied Generative AI &amp; Agentic Workflows</p> 
+                              <span className="text-neutral-400 dark:text-neutral-500 text-xs font-bold uppercase tracking-widest mt-1 block">Prompt Engineering &amp; Multi-Agent Failover</span>
                            </div>
                            <div className="border-b border-neutral-200/50 dark:border-neutral-800/50 pb-3 pt-1">
-                              <p className="font-medium text-neutral-900 dark:text-neutral-100">SQL for Data Analytics</p> 
-                              <span className="text-neutral-400 dark:text-neutral-500 text-xs font-bold uppercase tracking-widest mt-1 block">Relational Database Workflows</span>
+                              <p className="font-medium text-neutral-900 dark:text-neutral-100">Commercial IoT &amp; Embedded Systems</p> 
+                              <span className="text-neutral-400 dark:text-neutral-500 text-xs font-bold uppercase tracking-widest mt-1 block">ESP32, MQTT &amp; Google HomeGraph Certification</span>
                            </div>
                            <div className="pt-1">
-                              <p className="font-medium text-neutral-900 dark:text-neutral-100">Power BI</p> 
-                              <span className="text-neutral-400 dark:text-neutral-500 text-xs font-bold uppercase tracking-widest mt-1 block">Interactive Dashboard Design & Reporting</span>
+                              <p className="font-medium text-neutral-900 dark:text-neutral-100">Relational Database &amp; Data Warehousing</p> 
+                              <span className="text-neutral-400 dark:text-neutral-500 text-xs font-bold uppercase tracking-widest mt-1 block">PostgreSQL, SQL &amp; Financial Analytics</span>
                            </div>
                          </div>
                        </div>
@@ -1191,18 +1380,18 @@ export default function App() {
                          <div className="space-y-4 text-sm text-neutral-600 dark:text-neutral-300 transition-colors bg-white/40 dark:bg-[#111111]/40 p-6 rounded-2xl border border-white/60 dark:border-white/5 backdrop-blur-sm">
                            <div className="flex justify-between items-center border-b border-neutral-200/50 dark:border-neutral-800/50 pb-3">
                               <p className="font-medium">English</p> 
-                              <span className="text-neutral-400 dark:text-neutral-500 text-xs font-bold uppercase tracking-widest">Professional</span>
+                              <span className="text-neutral-400 dark:text-neutral-500 text-xs font-bold uppercase tracking-widest">Professional Working Proficiency</span>
                            </div>
                            <div className="flex justify-between items-center pt-1">
-                               <p className="font-medium">Hindi</p> 
-                               <span className="text-neutral-400 dark:text-neutral-500 text-xs font-bold uppercase tracking-widest">Native/Bilingual</span>
+                               <p className="font-medium">Hindi &amp; Hinglish</p> 
+                               <span className="text-neutral-400 dark:text-neutral-500 text-xs font-bold uppercase tracking-widest">Native / Fluent</span>
                            </div>
                          </div>
                        </div>
                      </motion.div>
-                  </div>
-                </motion.div>
-              )}
+                 </div>
+               </motion.div>
+             )}
 
 
               {/* SERVICES/FREELANCE VIEW */}
@@ -1210,88 +1399,214 @@ export default function App() {
                 <motion.div key="services" variants={pageVariants} initial="initial" animate="animate" exit="exit" className="space-y-16">
                   
                   <div className="border-b border-neutral-200 dark:border-neutral-800 pb-8">
-                    <h2 className="text-3xl md:text-5xl font-medium tracking-tighter text-neutral-900 dark:text-neutral-100 transition-colors">Freelance Services</h2>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase mb-3">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      Codtrex AI Studio Packages
+                    </div>
+                    <h2 className="text-3xl md:text-5xl font-medium tracking-tighter text-neutral-900 dark:text-neutral-100 transition-colors">Services &amp; Pricing</h2>
                     <p className="text-neutral-500 dark:text-neutral-400 mt-4 max-w-2xl font-light leading-relaxed">
-                      Custom AI solutions, workflow automation, and full-stack development designed to accelerate your business.
+                      Boutique AI engineering studio delivering production-grade applications in 14-20 days without $15k agency markups. Fixed prices, transparent scopes, and guaranteed delivery.
                     </p>
+                  </div>
+
+                  {/* 15% Referral Program Banner */}
+                  <div className="p-6 md:p-8 rounded-3xl bg-gradient-to-r from-emerald-500/10 via-teal-500/5 to-indigo-500/10 border border-emerald-500/20 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-xl flex-shrink-0">
+                        15%
+                      </div>
+                      <div>
+                        <h4 className="text-base font-semibold text-neutral-900 dark:text-neutral-100">Codtrex Partner &amp; Referral Program</h4>
+                        <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">Earn 15% cash commission (₹4,350 to ₹12,000/mo) on every client you refer to Codtrex AI.</p>
+                      </div>
+                    </div>
+                    <motion.a
+                      href="https://codtrex.vercel.app/partner"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-widest transition-all shadow-md flex items-center gap-1.5 flex-shrink-0 cursor-pointer"
+                    >
+                      Join Partner Program <ArrowUpRight className="w-3.5 h-3.5" />
+                    </motion.a>
                   </div>
 
                   {/* Pricing and Engagement Models Grid */}
                   <div className="space-y-8">
                     <div className="flex items-center gap-2 border-b border-neutral-200/50 dark:border-neutral-800/50 pb-4">
-                      <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">Engagement Models</h2>
+                      <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 transition-colors">Core Service Tiers</h2>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       
-                      {/* Hourly Rate Card */}
+                      {/* Tier 1: AI MVP Starter */}
                       <motion.div 
                         whileHover={{ y: -6, scale: 1.01 }}
                         transition={{ type: "spring", stiffness: 300 }}
                         className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 shadow-sm backdrop-blur-md flex flex-col justify-between"
                       >
                         <div>
-                          <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 dark:bg-indigo-500/5 flex items-center justify-center text-indigo-500 mb-6">
-                            <Briefcase className="w-6 h-6" />
+                          <div className="flex justify-between items-start mb-4">
+                            <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 dark:bg-indigo-500/5 flex items-center justify-center text-indigo-500">
+                              <Rocket className="w-6 h-6" />
+                            </div>
+                            <span className="text-[10px] uppercase font-bold tracking-widest text-indigo-500 bg-indigo-500/10 px-3 py-1 rounded-full">10–14 Days</span>
                           </div>
-                          <h3 className="text-xl font-medium mb-3 text-neutral-900 dark:text-neutral-100">Hourly Collaboration</h3>
-                          <p className="text-sm font-light text-neutral-500 dark:text-neutral-400 leading-relaxed mb-6">
-                            Best for debugging, consultation, ad-hoc prompt tuning, or helping you build features step-by-step.
-                          </p>
+                          <h3 className="text-xl font-medium mb-1 text-neutral-900 dark:text-neutral-100">AI MVP Starter</h3>
+                          <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-6 font-mono">Fast-track working prototype</p>
+                          <ul className="space-y-2.5 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
+                            <li className="flex items-center gap-2">&check; 4–5 Page Web App (React 19 / Next.js)</li>
+                            <li className="flex items-center gap-2">&check; LLM API Integration &amp; Prompt Chains</li>
+                            <li className="flex items-center gap-2">&check; Supabase Auth &amp; Database</li>
+                            <li className="flex items-center gap-2">&check; Vercel CI/CD + Custom Domain</li>
+                            <li className="flex items-center gap-2">&check; 14-Day Post-Launch Warranty</li>
+                          </ul>
                         </div>
                         <div>
-                          <div className="text-3xl font-medium text-neutral-900 dark:text-neutral-100 mb-2">
-                            $25 - $35 <span className="text-xs text-neutral-400 dark:text-neutral-500 font-bold uppercase tracking-wider">/ Hour</span>
+                          <div className="text-3xl font-medium text-neutral-900 dark:text-neutral-100 mb-1">
+                            ₹29,000 <span className="text-xs text-neutral-400 dark:text-neutral-500 font-normal">($350)</span>
                           </div>
-                          <span className="text-[10px] uppercase font-bold tracking-widest text-indigo-500 bg-indigo-500/10 px-3 py-1 rounded-full">Flexible</span>
+                          <p className="text-[11px] text-neutral-400 mb-4">Fixed scope &bull; 50% upfront / 50% milestone</p>
+                          <motion.button 
+                            onClick={() => setCurrentView('contact')}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full py-3 rounded-2xl bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-neutral-950 font-bold text-xs uppercase tracking-widest transition-all cursor-pointer"
+                          >
+                            Book MVP Sprint
+                          </motion.button>
                         </div>
                       </motion.div>
 
-                      {/* Project-Based Card */}
+                      {/* Tier 2: Custom AI Automation */}
                       <motion.div 
                         whileHover={{ y: -6, scale: 1.01 }}
                         transition={{ type: "spring", stiffness: 300 }}
                         className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 shadow-sm backdrop-blur-md flex flex-col justify-between"
                       >
                         <div>
-                          <div className="w-12 h-12 rounded-2xl bg-violet-500/10 dark:bg-violet-500/5 flex items-center justify-center text-violet-500 mb-6">
-                            <Workflow className="w-6 h-6" />
+                          <div className="flex justify-between items-start mb-4">
+                            <div className="w-12 h-12 rounded-2xl bg-violet-500/10 dark:bg-violet-500/5 flex items-center justify-center text-violet-500">
+                              <Workflow className="w-6 h-6" />
+                            </div>
+                            <span className="text-[10px] uppercase font-bold tracking-widest text-violet-500 bg-violet-500/10 px-3 py-1 rounded-full">20–25 Days</span>
                           </div>
-                          <h3 className="text-xl font-medium mb-3 text-neutral-900 dark:text-neutral-100">Project-Based</h3>
-                          <p className="text-sm font-light text-neutral-500 dark:text-neutral-400 leading-relaxed mb-6">
-                            Best for complete products with scoped requirements (e.g., custom AI agent pipelines or dashboards).
-                          </p>
+                          <h3 className="text-xl font-medium mb-1 text-neutral-900 dark:text-neutral-100">Custom AI Automation</h3>
+                          <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-6 font-mono">Agentic workflows &amp; pipelines</p>
+                          <ul className="space-y-2.5 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
+                            <li className="flex items-center gap-2">&check; Autonomous Agent Pipelines &amp; n8n</li>
+                            <li className="flex items-center gap-2">&check; Multi-LLM Failover (Groq &rarr; OpenAI)</li>
+                            <li className="flex items-center gap-2">&check; Document Parsers, OCR &amp; Scrapers</li>
+                            <li className="flex items-center gap-2">&check; Telegram &amp; WhatsApp Alert Webhooks</li>
+                            <li className="flex items-center gap-2">&check; Complete Runbooks &amp; Architecture Docs</li>
+                          </ul>
                         </div>
                         <div>
-                          <div className="text-3xl font-medium text-neutral-900 dark:text-neutral-100 mb-2">
-                            Custom Quote
+                          <div className="text-3xl font-medium text-neutral-900 dark:text-neutral-100 mb-1">
+                            ₹49,000 <span className="text-xs text-neutral-400 dark:text-neutral-500 font-normal">($590)</span>
                           </div>
-                          <span className="text-[10px] uppercase font-bold tracking-widest text-violet-500 bg-violet-500/10 px-3 py-1 rounded-full">Scoped Scope</span>
+                          <p className="text-[11px] text-neutral-400 mb-4">Tailored workflows &bull; Full code ownership</p>
+                          <motion.button 
+                            onClick={() => setCurrentView('contact')}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full py-3 rounded-2xl bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-neutral-950 font-bold text-xs uppercase tracking-widest transition-all cursor-pointer"
+                          >
+                            Build Automation
+                          </motion.button>
                         </div>
                       </motion.div>
 
-                      {/* Monthly Retainer Card */}
+                      {/* Tier 3: Dedicated Tech Partner ⭐ */}
                       <motion.div 
-                        whileHover={{ y: -6, scale: 1.01 }}
+                        whileHover={{ y: -6, scale: 1.02 }}
                         transition={{ type: "spring", stiffness: 300 }}
-                        className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 shadow-sm backdrop-blur-md flex flex-col justify-between"
+                        className="p-8 rounded-3xl bg-emerald-500/5 dark:bg-emerald-500/10 border-2 border-emerald-500/40 shadow-xl backdrop-blur-md flex flex-col justify-between relative overflow-hidden"
                       >
-                        <div>
-                          <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 dark:bg-emerald-500/5 flex items-center justify-center text-emerald-500 mb-6">
-                            <Server className="w-6 h-6" />
-                          </div>
-                          <h3 className="text-xl font-medium mb-3 text-neutral-900 dark:text-neutral-100">Monthly Retainer</h3>
-                          <p className="text-sm font-light text-neutral-500 dark:text-neutral-400 leading-relaxed mb-6">
-                            Best for ongoing support, regular pipeline updates, prompt monitoring, or continuous AI building.
-                          </p>
+                        <div className="absolute top-4 right-4">
+                          <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500 text-white">
+                            ⭐ Most Popular
+                          </span>
                         </div>
                         <div>
-                          <div className="text-3xl font-medium text-neutral-900 dark:text-neutral-100 mb-2">
-                            $1,000+ <span className="text-xs text-neutral-400 dark:text-neutral-500 font-bold uppercase tracking-wider">/ Month</span>
+                          <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4">
+                            <Brain className="w-6 h-6" />
                           </div>
-                          <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-500 bg-emerald-500/10 px-3 py-1 rounded-full">Dedicated</span>
+                          <h3 className="text-xl font-medium mb-1 text-neutral-900 dark:text-neutral-100">Dedicated Tech Partner</h3>
+                          <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-6 font-mono">Fractional CTO &amp; Lead Builder</p>
+                          <ul className="space-y-2.5 text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed mb-8">
+                            <li className="flex items-center gap-2">&check; 120–140 Hours / Month Dedicated</li>
+                            <li className="flex items-center gap-2">&check; End-to-End Architecture &amp; Code Delivery</li>
+                            <li className="flex items-center gap-2">&check; Daily Standups, Code Review &amp; Hiring</li>
+                            <li className="flex items-center gap-2">&check; Direct WhatsApp / Slack with 4-hr SLA</li>
+                            <li className="flex items-center gap-2">&check; Flexible Monthly Retainer, Cancel Anytime</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-1">
+                            ₹80,000 <span className="text-xs text-neutral-400 dark:text-neutral-500 font-normal">/ month ($990)</span>
+                          </div>
+                          <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold mb-4">Fractional CTO power at 1/10th agency cost</p>
+                          <motion.button 
+                            onClick={() => setCurrentView('contact')}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-widest transition-all cursor-pointer shadow-lg"
+                          >
+                            Hire Fractional CTO
+                          </motion.button>
                         </div>
                       </motion.div>
+
+                    </div>
+
+                    {/* Secondary Tiers: IoT & Quick Fixes */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                      
+                      {/* Commercial IoT & Hardware */}
+                      <div className="p-6 md:p-8 rounded-3xl bg-white/30 dark:bg-[#111111]/30 border border-white/60 dark:border-white/5 flex flex-col justify-between">
+                        <div>
+                          <div className="flex justify-between items-start mb-3">
+                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+                              <Cpu className="w-5 h-5 text-indigo-500" />
+                              Commercial IoT &amp; Hardware Fleet
+                            </h4>
+                            <span className="text-xs font-bold text-indigo-500">₹75,000 (~$900)</span>
+                          </div>
+                          <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed font-light mb-4">
+                            ESP32 firmware (C++), EMQX MQTT cloud broker, Google HomeGraph certification, mobile control apps, and OTA 2.0 update pipelines delivered in ~30 days.
+                          </p>
+                        </div>
+                        <motion.button 
+                          onClick={() => setCurrentView('contact')}
+                          className="text-xs font-bold text-neutral-900 dark:text-neutral-100 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors uppercase tracking-wider text-left cursor-pointer"
+                        >
+                          Request IoT Architecture &rarr;
+                        </motion.button>
+                      </div>
+
+                      {/* Quick Fixes & Audits */}
+                      <div className="p-6 md:p-8 rounded-3xl bg-white/30 dark:bg-[#111111]/30 border border-white/60 dark:border-white/5 flex flex-col justify-between">
+                        <div>
+                          <div className="flex justify-between items-start mb-3">
+                            <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+                              <ShieldCheck className="w-5 h-5 text-emerald-500" />
+                              AI Audit &amp; Emergency Quick Fixes
+                            </h4>
+                            <span className="text-xs font-bold text-emerald-500">From ₹4,999 (~$60)</span>
+                          </div>
+                          <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed font-light mb-4">
+                            Prompt debugging, hallucination reduction, security lockdowns (CORS, rate limiting, IDOR), webhook troubleshooting, and performance tuning delivered in 1–3 days.
+                          </p>
+                        </div>
+                        <motion.button 
+                          onClick={() => setCurrentView('contact')}
+                          className="text-xs font-bold text-neutral-900 dark:text-neutral-100 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors uppercase tracking-wider text-left cursor-pointer"
+                        >
+                          Book Emergency Fix &rarr;
+                        </motion.button>
+                      </div>
 
                     </div>
                   </div>
@@ -1438,20 +1753,39 @@ export default function App() {
                       className="md:col-span-4 space-y-8"
                     >
                       <div>
-                        <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 mb-6 transition-colors">Contact Details</h2>
+                        <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 mb-6 transition-colors">Direct Contact</h2>
                         <div className="space-y-6">
                           <a href="mailto:andyk4548@gmail.com" className="group flex items-start gap-4 hover:opacity-80 transition-opacity">
                              <div className="mt-1"><Mail className="w-5 h-5 text-neutral-400" /></div>
                              <div>
-                                <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100">Email Address</p>
+                                <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100">Founder Email</p>
                                 <p className="text-sm text-neutral-500 mt-1 font-light">andyk4548@gmail.com</p>
+                             </div>
+                          </a>
+                          <a href="mailto:contact.codtrexai@gmail.com" className="group flex items-start gap-4 hover:opacity-80 transition-opacity">
+                             <div className="mt-1"><Rocket className="w-5 h-5 text-emerald-500" /></div>
+                             <div>
+                                <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100">Studio Inquiries</p>
+                                <p className="text-sm text-neutral-500 mt-1 font-light">contact.codtrexai@gmail.com</p>
                              </div>
                           </a>
                           <a href="tel:+919753880839" className="group flex items-start gap-4 hover:opacity-80 transition-opacity">
                              <div className="mt-1"><Phone className="w-5 h-5 text-neutral-400" /></div>
                              <div>
-                                <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100">Phone</p>
+                                <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100">Phone & WhatsApp</p>
                                 <p className="text-sm text-neutral-500 mt-1 font-light">+91 9753880839</p>
+                             </div>
+                          </a>
+                          <a 
+                            href="https://codtrex.vercel.app" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="group flex items-start gap-4 hover:opacity-80 transition-opacity"
+                          >
+                             <div className="mt-1"><ExternalLink className="w-5 h-5 text-emerald-500" /></div>
+                             <div>
+                                <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100">Codtrex AI Studio</p>
+                                <p className="text-sm text-emerald-600 dark:text-emerald-400 mt-1 font-mono text-xs">codtrex.vercel.app ↗</p>
                              </div>
                           </a>
                           <a 
@@ -1571,6 +1905,17 @@ export default function App() {
           </div>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-3">
             <motion.a 
+              href="https://codtrex.vercel.app" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              whileHover={{ scale: 1.08, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              className="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 cursor-pointer inline-block"
+            >
+              Codtrex AI ↗
+            </motion.a>
+            <motion.a 
               href="https://www.linkedin.com/in/md-naved-2b79b8382" 
               target="_blank" 
               rel="noopener noreferrer" 
@@ -1658,13 +2003,59 @@ export default function App() {
                   </motion.button>
                   
                   <div className="mb-12 md:mb-16">
-                    {selectedProject.domain && <span className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 mb-4 block transition-colors">{selectedProject.domain}</span>}
+                    <div className="flex flex-wrap items-center gap-2 mb-4">
+                      {selectedProject.domain && (
+                        <span className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500">
+                          {selectedProject.domain}
+                        </span>
+                      )}
+                      {selectedProject.featuredBadge && (
+                        <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-semibold">
+                          {selectedProject.featuredBadge}
+                        </span>
+                      )}
+                      {selectedProject.role && (
+                        <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">
+                          {selectedProject.role}
+                        </span>
+                      )}
+                    </div>
+
                     <h3 className="text-3xl md:text-5xl font-medium tracking-tighter text-neutral-900 dark:text-neutral-100 transition-colors mb-6">{selectedProject.title}</h3>
-                    <div className="flex flex-wrap gap-2">
+                    
+                    <div className="flex flex-wrap gap-2 mb-6">
                       {selectedProject.tags.map(tag => (
                         <span key={tag} className="border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#1a1a1a] px-4 py-1.5 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-300 transition-colors">{tag}</span>
                       ))}
                     </div>
+
+                    {/* Quick Live Actions */}
+                    {(selectedProject.liveLink || selectedProject.adminLink) && (
+                      <div className="flex flex-wrap gap-3 pt-2">
+                        {selectedProject.liveLink && (
+                          <a
+                            href={selectedProject.liveLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold hover:opacity-90 transition-opacity shadow-md"
+                          >
+                            <span>Open Live Platform</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+                        {selectedProject.adminLink && (
+                          <a
+                            href={selectedProject.adminLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-800 dark:text-neutral-200 text-xs font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800/60 transition-colors"
+                          >
+                            <span>Founder Admin Console</span>
+                            <ExternalLink className="w-3.5 h-3.5 text-neutral-400" />
+                          </a>
+                        )}
+                      </div>
+                    )}
                   </div>
 
                   <div className="space-y-16">
