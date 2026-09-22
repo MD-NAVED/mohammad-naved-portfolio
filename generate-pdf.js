@@ -7,7 +7,10 @@ const __dirname = path.dirname(__filename);
 
 (async () => {
   console.log('Starting PDF generation...');
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-web-security']
+  });
   const page = await browser.newPage();
   
   // Navigate directly to local resume.html file
@@ -16,8 +19,8 @@ const __dirname = path.dirname(__filename);
   console.log(`Navigating to ${url}...`);
   try {
     await page.goto(url, {
-      waitUntil: 'networkidle0',
-      timeout: 30000
+      waitUntil: 'domcontentloaded',
+      timeout: 60000
     });
   } catch (error) {
     console.error('Error navigating to file:', error);
@@ -25,8 +28,8 @@ const __dirname = path.dirname(__filename);
     process.exit(1);
   }
 
-  // Wait for fonts to load
-  await new Promise(r => setTimeout(r, 2000));
+  // Wait for fonts to render
+  await new Promise(r => setTimeout(r, 3000));
 
   const outputPath = path.join(__dirname, 'public', 'Mohammad_Naved_Resume.pdf');
 
