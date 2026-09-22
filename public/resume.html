@@ -15,17 +15,20 @@
       font-family: Arial, Helvetica, sans-serif;
       background: #ffffff;
       color: #000000;
-      font-size: 11px;
-      line-height: 1.45;
+      font-size: 11.5px;
+      line-height: 1.6;
     }
 
     .page {
       width: 210mm;
-      min-height: 297mm;
+      height: 297mm;
       margin: 0 auto;
       background: #ffffff;
-      padding: 28px 44px;
+      padding: 30px 46px;
       box-sizing: border-box;
+      page-break-after: always;
+      break-after: page;
+      overflow: hidden;
     }
 
     @media print {
@@ -42,69 +45,74 @@
     /* ---- HEADER ---- */
     .header {
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .header-name {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 700;
-      margin-bottom: 3px;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
     }
     .header-title {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 600;
       margin-bottom: 5px;
     }
     .header-contact {
-      font-size: 10px;
+      font-size: 10.5px;
       color: #222222;
+      line-height: 1.7;
     }
 
     /* ---- DIVIDER ---- */
-    .divider {
+    hr.divider {
       border: none;
       border-top: 1.5px solid #000000;
-      margin: 8px 0;
+      margin: 10px 0;
     }
 
     /* ---- SECTION ---- */
     .section {
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
     .section-title {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 6px;
-      border-bottom: 0.5px solid #888888;
-      padding-bottom: 2px;
-    }
-
-    /* ---- ENTRY (Experience / Projects) ---- */
-    .entry {
+      border-bottom: 0.75px solid #555555;
+      padding-bottom: 3px;
       margin-bottom: 9px;
     }
+
+    /* ---- ENTRY ---- */
+    .entry {
+      margin-bottom: 12px;
+    }
+    .entry:last-child {
+      margin-bottom: 0;
+    }
     .entry-top {
-      display: block;
       overflow: hidden;
-      margin-bottom: 1px;
+      margin-bottom: 2px;
     }
     .entry-title {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 700;
       float: left;
     }
     .entry-date {
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 400;
       float: right;
       font-style: italic;
+      color: #333333;
     }
     .entry-sub {
       clear: both;
-      font-size: 10px;
+      font-size: 10.5px;
       font-style: italic;
-      color: #333333;
-      margin-bottom: 4px;
+      color: #444444;
+      margin-bottom: 5px;
     }
 
     /* ---- BULLETS ---- */
@@ -114,10 +122,14 @@
       margin: 0;
     }
     ul.blist li {
-      padding-left: 12px;
+      padding-left: 14px;
       position: relative;
-      margin-bottom: 3px;
+      margin-bottom: 4px;
       color: #111111;
+      line-height: 1.55;
+    }
+    ul.blist li:last-child {
+      margin-bottom: 0;
     }
     ul.blist li::before {
       content: "-";
@@ -127,14 +139,26 @@
 
     /* ---- SKILLS ---- */
     .skill-row {
-      margin-bottom: 4px;
+      margin-bottom: 5px;
+      line-height: 1.55;
+    }
+    .skill-row:last-child {
+      margin-bottom: 0;
     }
     .skill-label {
       font-weight: 700;
     }
+
+    /* ---- SUMMARY ---- */
+    .summary-text {
+      line-height: 1.65;
+      color: #111111;
+    }
   </style>
 </head>
 <body>
+
+<!-- ========== PAGE 1 ========== -->
 <div class="page">
 
   <!-- HEADER -->
@@ -142,8 +166,8 @@
     <div class="header-name">MOHAMMAD NAVED</div>
     <div class="header-title">Founder and Lead AI Engineer at Codtrex AI | Full-Stack Product Architect</div>
     <div class="header-contact">
-      Indore, Madhya Pradesh | +91 9753880839 | andyk4548@gmail.com | contact.codtrexai@gmail.com
-      | linkedin.com/in/md-naved-2b79b8382 | github.com/MD-NAVED
+      Indore, Madhya Pradesh | +91 9753880839 | andyk4548@gmail.com | contact.codtrexai@gmail.com<br>
+      linkedin.com/in/md-naved-2b79b8382 | github.com/MD-NAVED
     </div>
   </div>
 
@@ -152,10 +176,12 @@
   <!-- PROFILE SUMMARY -->
   <div class="section">
     <div class="section-title">Profile Summary</div>
-    <p>
-      Founder and Lead AI Engineer with a track record of shipping production-grade full-stack products including a Google-certified IoT Smart Home ecosystem, a B2B cloud pharmacy SaaS, and an AI engineering studio. Founded Codtrex AI, a boutique studio delivering custom LLM integration, cloud systems, and IoT solutions for clients. Deep expertise across the full stack: embedded firmware (ESP32, Arduino), cloud infrastructure (AWS IoT Core, Docker, App Runner), modern web frontends (React 19, Next.js 15/16, TypeScript), and AI integration (Gemini API, multi-LLM orchestration). Actively seeking senior engineering roles and consulting engagements where ownership, zero-to-one velocity, and full-stack product thinking are valued.
+    <p class="summary-text">
+      Founder and Lead AI Engineer with a proven track record of shipping production-grade, full-stack products across IoT, SaaS, and AI domains. Founded Codtrex AI, a boutique engineering studio delivering custom LLM integrations, cloud systems, and smart hardware solutions for clients. Built and achieved official Google Smart Home certification for 4Layers, a custom ESP32-based IoT ecosystem connected to AWS IoT Core and Google Home. Also shipped MediStock, a live B2B cloud pharmacy SaaS used by pharmacies. Deep expertise spanning embedded firmware (ESP32, Arduino/C++), cloud infrastructure (AWS, Docker), modern web development (React 19, Next.js 15/16, TypeScript), and AI engineering (Gemini API, multi-LLM orchestration). Seeking senior engineering roles and consulting engagements where full-stack ownership and product velocity are core to the mission.
     </p>
   </div>
+
+  <hr class="divider">
 
   <!-- CORE EXPERTISE -->
   <div class="section">
@@ -164,13 +190,15 @@
       <li><span class="skill-label">AI and LLM Engineering</span> - production Gemini API integration, multi-LLM orchestration, agentic workflows, prompt architecture, RAG system design</li>
       <li><span class="skill-label">Full-Stack Product Development</span> - React 19, Next.js 15/16, TypeScript, Tailwind CSS v4, Vite, Supabase (PostgreSQL), FastAPI (Python)</li>
       <li><span class="skill-label">IoT and Embedded Systems</span> - ESP32 firmware (Arduino/C++), MQTT protocol, AWS IoT Core, mTLS device authentication, OTA firmware updates</li>
-      <li><span class="skill-label">Cloud and DevOps</span> - AWS (IoT Core, App Runner, ECR, S3), Docker, Vercel, GitHub Actions CI/CD</li>
-      <li><span class="skill-label">Mobile Development</span> - React Native (Expo), Capacitor Android for Google Play</li>
-      <li><span class="skill-label">Studio and Client Delivery</span> - end-to-end product ownership from spec to deployment; Google Smart Home certification process</li>
+      <li><span class="skill-label">Cloud and DevOps</span> - AWS (IoT Core, App Runner, ECR, S3), Docker, Vercel, GitHub Actions CI/CD pipelines</li>
+      <li><span class="skill-label">Mobile Development</span> - React Native (Expo), Capacitor Android for Google Play publishing</li>
+      <li><span class="skill-label">Studio and Client Delivery</span> - end-to-end product ownership from requirements to deployment; Google Smart Home certification lifecycle</li>
     </ul>
   </div>
 
-  <!-- EXPERIENCE / VENTURES -->
+  <hr class="divider">
+
+  <!-- EXPERIENCE -->
   <div class="section">
     <div class="section-title">Experience</div>
 
@@ -183,8 +211,8 @@
       <div class="entry-sub">Founder and Lead Engineer | codtrex.vercel.app | React 19, Vite, Tailwind CSS v4, Supabase, Gemini API, Vercel</div>
       <ul class="blist">
         <li>Founded and operate a boutique AI engineering studio offering end-to-end LLM integration, full-stack web products, IoT systems, and technical consultation to clients</li>
-        <li>Built and shipped the studio public website with an AI chat assistant, service tiers, and client case studies at codtrex.vercel.app</li>
-        <li>Designed multi-LLM product architectures and client-facing AI solutions across web, mobile, and embedded platforms</li>
+        <li>Built and shipped the studio public website with an AI chat assistant, service tiers, and client case studies deployed at codtrex.vercel.app</li>
+        <li>Designed multi-LLM product architectures and delivered client-facing AI solutions across web, mobile, and embedded platforms</li>
       </ul>
     </div>
 
@@ -197,10 +225,10 @@
       <div class="entry-sub">Founder and Systems Engineer | ESP32, AWS IoT Core, MQTT, mTLS, React Native, FastAPI, Docker, AWS App Runner</div>
       <ul class="blist">
         <li>Achieved official Google Smart Home certification - passed 71 out of 75 tests in the Google Home Test Suite; devices listed and functional in the Google Home ecosystem</li>
-        <li>Architected a 3-source real-time state synchronization system (ESP32 hardware to AWS IoT Core MQTT to Google Home) ensuring zero state divergence across physical buttons, app controls, and voice commands</li>
-        <li>Engineered QA Hold Mode to prevent Google Home from reverting local hardware states during certification test execution - a critical blocking issue discovered and resolved independently</li>
-        <li>Built OTA 2.0 with version pinning and rollback safety enabling firmware updates across deployed devices without physical access</li>
-        <li>Designed custom ESP32 hardware nodes: 4-channel relay switch boards and Triac-based multi-speed fan regulator; mTLS certificates provisioned per device via AWS IoT Core</li>
+        <li>Architected 3-source real-time state synchronization (ESP32 hardware to AWS IoT Core MQTT to Google Home) achieving zero state divergence across physical buttons, app controls, and voice commands</li>
+        <li>Engineered QA Hold Mode to prevent Google Home from reverting local hardware states during certification test runs - a critical blocking issue independently discovered and resolved</li>
+        <li>Built OTA 2.0 with version pinning and rollback safety for wireless firmware updates across all deployed devices without physical access</li>
+        <li>Designed custom ESP32 hardware: 4-channel relay switch boards and Triac-based multi-speed fan regulator; mTLS certificates provisioned per device via AWS IoT Core</li>
       </ul>
     </div>
 
@@ -212,15 +240,20 @@
       </div>
       <div class="entry-sub">Founder and Product Architect | React 18, Supabase, PostgreSQL, Capacitor Android, Vercel | medistock-pharma.vercel.app</div>
       <ul class="blist">
-        <li>Built and shipped a full B2B pharmacy SaaS including inventory management, expiry tracking, billing, and supplier management for pharmacy businesses</li>
-        <li>Deployed cross-platform as a live web app and Android APK via Capacitor targeting Google Play submission</li>
-        <li>Designed multi-tenant Supabase (PostgreSQL) schema with Row Level Security for pharmacy data isolation</li>
+        <li>Built and shipped a full B2B pharmacy SaaS covering inventory management, expiry tracking, billing, and supplier management for pharmacy businesses</li>
+        <li>Deployed cross-platform as a live web application and Android APK via Capacitor; targeting Google Play Store submission</li>
+        <li>Designed a multi-tenant Supabase (PostgreSQL) schema with Row Level Security ensuring complete pharmacy data isolation across accounts</li>
       </ul>
     </div>
+
   </div>
+</div>
+
+<!-- ========== PAGE 2 ========== -->
+<div class="page">
 
   <!-- PROJECTS -->
-  <div class="section">
+  <div class="section" style="padding-top: 6px;">
     <div class="section-title">Projects</div>
 
     <!-- UsedTech Market -->
@@ -231,8 +264,9 @@
       </div>
       <div class="entry-sub">Product Architect | Next.js 15/16, React 19, TypeScript, Supabase, Tailwind CSS v4</div>
       <ul class="blist">
-        <li>Architected a consumer-to-consumer marketplace for buying and selling used electronics with real-time listings, search filters, and seller dashboards</li>
-        <li>Built on Next.js 15/16 App Router with SSR for SEO-optimized product pages and Supabase real-time subscriptions for live listing updates</li>
+        <li>Architected a consumer-to-consumer marketplace for buying and selling used electronics with real-time listings, advanced search filters, and seller dashboards</li>
+        <li>Built on Next.js 15/16 App Router with server-side rendering for SEO-optimized product pages and Supabase real-time subscriptions for live listing updates</li>
+        <li>Designed the full product data model, authentication flow, and listing lifecycle from draft to published to sold states</li>
       </ul>
     </div>
 
@@ -242,10 +276,11 @@
         <span class="entry-title">AutoApply AI - Automated Job Application System</span>
         <span class="entry-date">2025</span>
       </div>
-      <div class="entry-sub">Self-Initiated | Python, Gemini AI, Multi-LLM Orchestration</div>
+      <div class="entry-sub">Self-Initiated | Python, Gemini AI, Multi-LLM Orchestration, Prompt Engineering</div>
       <ul class="blist">
-        <li>Designed a multi-step prompt chain that reads job descriptions, extracts requirements, and generates tailored resumes and cover letters via structured LLM calls</li>
-        <li>Engineered retry and fallback prompt logic to handle malformed or incomplete model outputs in production use</li>
+        <li>Designed a multi-step prompt chain that reads job descriptions, extracts key requirements, and generates tailored resumes and cover letters through structured LLM calls</li>
+        <li>Engineered retry and fallback prompt logic to handle malformed or incomplete model outputs ensuring consistent output quality in production use</li>
+        <li>Built output validation layer to enforce format, tone, and length constraints across hundreds of varying job postings</li>
       </ul>
     </div>
 
@@ -257,23 +292,41 @@
       </div>
       <div class="entry-sub">Self-Initiated | React, TypeScript, Recharts, Gemini AI, DuckDB, SQL</div>
       <ul class="blist">
-        <li>Built an AI analytics platform with a natural-language-to-SQL chat interface and an ML Lab module for model output explanation and insight surfacing</li>
-        <li>Designed prompt templates for consistent LLM output across varying data schemas and edge cases</li>
+        <li>Built an AI analytics platform with a natural-language-to-SQL chat interface enabling non-technical users to query data through plain English questions</li>
+        <li>Developed ML Lab module for model output explanation and business insight surfacing using Gemini-powered prompt templates</li>
+        <li>Designed the ETL pipeline, SQL engine, and data visualization layer end-to-end as a single engineer</li>
+      </ul>
+    </div>
+
+    <!-- Portfolio -->
+    <div class="entry">
+      <div class="entry-top">
+        <span class="entry-title">Interactive Portfolio and PDF Automation Pipeline</span>
+        <span class="entry-date">2025</span>
+      </div>
+      <div class="entry-sub">Self-Initiated | React 19, TypeScript, Framer Motion, Tailwind CSS v4, Node.js, Puppeteer, Gemini AI</div>
+      <ul class="blist">
+        <li>Built a single-page interactive portfolio with hardware-accelerated animations, an AI chatbot powered by Gemini, and a context-aware navigation system</li>
+        <li>Automated resume PDF generation via a Node.js and Puppeteer script producing a pixel-perfect A4 PDF from live HTML source, eliminating manual export steps from the update workflow</li>
       </ul>
     </div>
   </div>
+
+  <hr class="divider">
 
   <!-- TECHNICAL SKILLS -->
   <div class="section">
     <div class="section-title">Technical Skills</div>
     <div class="skill-row"><span class="skill-label">AI and LLM:</span> Gemini API, Multi-LLM Orchestration, Prompt Engineering, Agentic Workflows, RAG Systems</div>
-    <div class="skill-row"><span class="skill-label">Frontend:</span> React 19, Next.js 15/16, TypeScript, Tailwind CSS v4, Vite, Framer Motion</div>
-    <div class="skill-row"><span class="skill-label">Backend:</span> FastAPI (Python), Node.js, REST APIs, Supabase, PostgreSQL, SQL</div>
+    <div class="skill-row"><span class="skill-label">Frontend:</span> React 19, Next.js 15/16, TypeScript, Tailwind CSS v4, Vite, Framer Motion, Recharts</div>
+    <div class="skill-row"><span class="skill-label">Backend:</span> FastAPI (Python), Node.js, REST APIs, Supabase, PostgreSQL, SQL, DuckDB</div>
     <div class="skill-row"><span class="skill-label">IoT and Embedded:</span> ESP32 (Arduino/C++), MQTT, AWS IoT Core, mTLS, OTA Firmware Updates, Triac control</div>
     <div class="skill-row"><span class="skill-label">Cloud and DevOps:</span> AWS IoT Core, AWS App Runner, AWS ECR, AWS S3, Docker, Vercel, GitHub Actions</div>
     <div class="skill-row"><span class="skill-label">Mobile:</span> React Native (Expo), Capacitor Android</div>
     <div class="skill-row"><span class="skill-label">Languages:</span> TypeScript, Python, C++ (Arduino), SQL, JavaScript</div>
   </div>
+
+  <hr class="divider">
 
   <!-- EDUCATION -->
   <div class="section">
@@ -283,14 +336,17 @@
         <span class="entry-title">B.Tech, Computer Science - RGPV University, Indore</span>
         <span class="entry-date">2025</span>
       </div>
+      <div class="entry-sub">Rajiv Gandhi Proudyogiki Vishwavidyalaya | Madhya Pradesh, India</div>
     </div>
   </div>
+
+  <hr class="divider">
 
   <!-- CERTIFICATIONS -->
   <div class="section">
     <div class="section-title">Certifications and Achievements</div>
     <ul class="blist">
-      <li>Google Smart Home Certification - 4Layers IoT Ecosystem (71 out of 75 tests passed, Google Home Test Suite)</li>
+      <li>Google Smart Home Certification - 4Layers IoT Ecosystem (71 out of 75 tests passed in the Google Home Test Suite)</li>
       <li>Generative AI with Gemini - Prompt Engineering and LLM Application Development</li>
       <li>Python for Data Analysis and Visualization - Self-directed</li>
       <li>SQL for Data Analytics - Relational Database Workflows</li>
