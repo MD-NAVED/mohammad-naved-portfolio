@@ -942,16 +942,6 @@ export default function App() {
                          >
                            LinkedIn <span className="text-xs">—&gt;</span>
                          </motion.a>
-                         <motion.a 
-                           href="https://www.naukri.com/mnjuser/profile" 
-                           target="_blank" 
-                           rel="noopener noreferrer" 
-                           whileHover={{ scale: 1.05, x: 2 }}
-                           whileTap={{ scale: 0.95 }}
-                           className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors flex items-center gap-2 cursor-pointer"
-                         >
-                           Naukri <span className="text-xs">—&gt;</span>
-                         </motion.a>
                        </div>
                      </div>
                   </section>
@@ -1912,28 +1902,6 @@ export default function App() {
               className="hover:text-neutral-900 dark:hover:text-neutral-100 cursor-pointer inline-block"
             >
               GitHub
-            </motion.a>
-            <motion.a 
-              href="https://www.naukri.com/mnjuser/profile" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              whileHover={{ scale: 1.08, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              className="hover:text-neutral-900 dark:hover:text-neutral-100 cursor-pointer inline-block"
-            >
-              Naukri
-            </motion.a>
-            <motion.a 
-              href="https://www.foundit.in/seeker/profile" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              whileHover={{ scale: 1.08, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              className="hover:text-neutral-900 dark:hover:text-neutral-100 cursor-pointer inline-block"
-            >
-              Foundit
             </motion.a>
             <motion.a 
               href="mailto:andyk4548@gmail.com" 
