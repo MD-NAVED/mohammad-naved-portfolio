@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Banner Studio — Mohammad Naved</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #090d16;
+      color: #f1f5f9;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 30px 20px;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      padding: 10px 18px;
+      border-radius: 9999px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    .toolbar h1 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-right: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toolbar h1 span {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+    }
+
+    .btn {
+      background: #10b981;
+      color: #042f2e;
+      font-weight: 700;
+      font-size: 13px;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn:hover {
+      background: #34d399;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      box-shadow: none;
+    }
+
+    /* Container for Banner preview */
+    .banner-wrapper {
+      position: relative;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    /* EXACT LINKEDIN RESOLUTION: 1584 x 396 (4:1) */
+    #banner-canvas-source {
+      width: 1584px;
+      height: 396px;
+      position: relative;
+      background: #080c14;
+      background-image: url('banner-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 38px 50px 32px 50px;
+    }
+
+    /* Ambient dark overlay & glowing accents */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(8, 12, 20, 0.95) 0%,
+        rgba(8, 12, 20, 0.82) 32%,
+        rgba(8, 12, 20, 0.45) 65%,
+        rgba(8, 12, 20, 0.8) 100%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .mesh-glow {
+      position: absolute;
+      width: 500px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, transparent 70%);
+      top: -100px;
+      left: 320px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Content positioned above overlay */
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    /* TOP ROW: Founder pill & status */
+    .top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-left: 230px; /* Safe space past profile avatar */
+    }
+
+    .founder-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #34d399;
+      backdrop-filter: blur(8px);
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    .studio-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #94a3b8;
+      letter-spacing: 0.5px;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .studio-brand b {
+      color: #ffffff;
+      font-weight: 800;
+    }
+
+    /* MIDDLE ROW: Name, Headline & Pillars */
+    .middle-row {
+      padding-left: 230px; /* Aligns with safe zone */
+      margin-top: 10px;
+    }
+
+    .banner-name {
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      line-height: 1;
+      margin-bottom: 8px;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+    }
+
+    .banner-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 18px;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .banner-title .highlight {
+      color: #34d399;
+      font-weight: 700;
+    }
+
+    .banner-title .sep {
+      color: #475569;
+    }
+
+    /* PILLARS / BADGES ROW */
+    .pillars-grid {
+      display: flex;
+      gap: 12px;
+    }
+
+    .pillar-card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 8px 14px;
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .pillar-card.featured {
+      border-color: rgba(52, 211, 153, 0.4);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(15, 23, 42, 0.8) 100%);
+    }
+
+    .pillar-icon {
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pillar-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pillar-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #f8fafc;
+      line-height: 1.2;
+    }
+
+    .pillar-desc {
+      font-size: 10px;
+      font-weight: 500;
+      color: #94a3b8;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* BOTTOM ROW: URLs & Handles */
+    .bottom-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-left: 230px; /* Safe space */
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 12px;
+      margin-top: 6px;
+    }
+
+    .tagline-text {
+      font-size: 11px;
+      color: #64748b;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tagline-text b {
+      color: #cbd5e1;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: #94a3b8;
+    }
+
+    .social-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .social-item span.accent {
+      color: #34d399;
+      font-weight: 600;
+    }
+
+    /* MOCK PROFILE PICTURE OVERLAY (FOR PREVIEW ONLY) */
+    .avatar-mock {
+      position: absolute;
+      left: 45px;
+      bottom: -60px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid #090d16;
+      background: radial-gradient(circle, #1e293b 0%, #0f172a 100%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .avatar-mock-text {
+      font-size: 10px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+      line-height: 1.3;
+      padding: 0 10px;
+    }
+
+    .avatar-mock-text span {
+      color: #10b981;
+      display: block;
+      font-size: 11px;
+      margin-bottom: 2px;
+    }
+
+    /* Scaling helper for preview on smaller screens */
+    @media (max-width: 1640px) {
+      .banner-wrapper {
+        transform-origin: top center;
+        zoom: 0.8;
+      }
+    }
+    @media (max-width: 1300px) {
+      .banner-wrapper {
+        zoom: 0.65;
+      }
+    }
+    @media (max-width: 1024px) {
+      .banner-wrapper {
+        zoom: 0.5;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CONTROLS -->
+  <div class="toolbar">
+    <h1><span></span> LinkedIn Banner (1584 &times; 396 px)</h1>
+    <button class="btn-secondary btn" id="toggle-avatar-btn">Hide Profile Pic Guide</button>
+    <button class="btn" id="download-btn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      Download High-Res PNG
+    </button>
+  </div>
+
+  <!-- BANNER CONTAINER -->
+  <div class="banner-wrapper">
+    <div id="banner-canvas-source">
+      
+      <!-- BACKGROUND OVERLAYS -->
+      <div class="overlay"></div>
+      <div class="mesh-glow"></div>
+
+      <!-- MAIN BANNER CONTENT -->
+      <div class="banner-content">
+        
+        <!-- TOP ROW -->
+        <div class="top-row">
+          <div class="founder-badge">
+            <span class="pulse-dot"></span>
+            Founder &amp; Lead AI Engineer
+          </div>
+          <div class="studio-brand">
+            Engineering Studio &nbsp;&bull;&nbsp; <b>CODTREX AI</b>
+          </div>
+        </div>
+
+        <!-- MIDDLE ROW -->
+        <div class="middle-row">
+          <h1 class="banner-name">MOHAMMAD NAVED</h1>
+          <div class="banner-title">
+            <span class="highlight">Full-Stack Product Architect</span>
+            <span class="sep">&bull;</span>
+            <span>Applied AI &amp; Cloud Systems</span>
+            <span class="sep">&bull;</span>
+            <span>Embedded IoT</span>
+          </div>
+
+          <!-- 4 PILLARS -->
+          <div class="pillars-grid">
+            <div class="pillar-card featured">
+              <div class="pillar-icon">🏠</div>
+              <div class="pillar-info">
+                <span class="pillar-title">4Layers IoT Ecosystem</span>
+                <span class="pillar-desc">Google Certified (71+/75) &bull; ESP32</span>
+              </div>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-icon">⚡</div>
+              <div class="pillar-info">
+                <span class="pillar-title">AI &amp; Multi-LLM</span>
+                <span class="pillar-desc">Gemini API &bull; Agents &bull; RAG</span>
+              </div>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-icon">📦</div>
+              <div class="pillar-info">
+                <span class="pillar-title">MediStock SaaS</span>
+                <span class="pillar-desc">React 18 &bull; Supabase &bull; Mobile</span>
+              </div>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-icon">☁️</div>
+              <div class="pillar-info">
+                <span class="pillar-title">Modern Full-Stack</span>
+                <span class="pillar-desc">Next.js 16 &bull; FastAPI &bull; AWS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM ROW -->
+        <div class="bottom-row">
+          <div class="tagline-text">
+            Zero-to-One <b>Velocity</b> &bull; Production <b>Reliability</b>
+          </div>
+          <div class="social-links">
+            <div class="social-item">
+              🌐 <span class="accent">codtrex.vercel.app</span>
+            </div>
+            <div class="social-item">
+              💻 <span class="accent">github.com/MD-NAVED</span>
+            </div>
+            <div class="social-item">
+              ✉️ <span class="accent">andyk4548@gmail.com</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SAFE ZONE PROFILE PIC MOCK (Hidden when exporting) -->
+      <div class="avatar-mock" id="avatar-mock">
+        <div class="avatar-mock-text">
+          <span>SAFE ZONE</span>
+          Profile Picture Overlap
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCRIPT FOR EXPORTING CANVAS -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script>
+    const avatarMock = document.getElementById('avatar-mock');
+    const toggleAvatarBtn = document.getElementById('toggle-avatar-btn');
+    const downloadBtn = document.getElementById('download-btn');
+    const bannerSource = document.getElementById('banner-canvas-source');
+
+    let isAvatarVisible = true;
+    toggleAvatarBtn.addEventListener('click', () => {
+      isAvatarVisible = !isAvatarVisible;
+      avatarMock.style.display = isAvatarVisible ? 'flex' : 'none';
+      toggleAvatarBtn.innerText = isAvatarVisible ? 'Hide Profile Pic Guide' : 'Show Profile Pic Guide';
+    });
+
+    downloadBtn.addEventListener('click', async () => {
+      // Temporarily hide the avatar mockup guide
+      const prevAvatarDisplay = avatarMock.style.display;
+      avatarMock.style.display = 'none';
+
+      downloadBtn.innerText = 'Generating 1584x396 PNG...';
+      downloadBtn.disabled = true;
+
+      try {
+        const canvas = await html2canvas(bannerSource, {
+          width: 1584,
+          height: 396,
+          scale: 2, // 2x Retina quality (3168 x 792)
+          useCORS: true,
+          backgroundColor: '#080c14',
+          logging: false
+        });
+
+        const link = document.createElement('a');
+        link.download = 'Mohammad_Naved_LinkedIn_Banner_1584x396.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      } catch (err) {
+        alert('Export error: ' + err.message);
+      } finally {
+        avatarMock.style.display = prevAvatarDisplay;
+        downloadBtn.innerHTML = `
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download High-Res PNG
+        `;
+        downloadBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
