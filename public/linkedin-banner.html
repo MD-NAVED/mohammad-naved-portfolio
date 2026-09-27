@@ -15,8 +15,8 @@
     }
 
     body {
-      background: #030712;
-      color: #f1f5f9;
+      background: #020617;
+      color: #f8fafc;
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       display: flex;
       flex-direction: column;
@@ -31,7 +31,7 @@
       gap: 14px;
       margin-bottom: 20px;
       align-items: center;
-      background: rgba(11, 19, 43, 0.85);
+      background: rgba(15, 23, 42, 0.85);
       border: 1px solid rgba(56, 189, 248, 0.2);
       backdrop-filter: blur(12px);
       padding: 10px 20px;
@@ -92,7 +92,7 @@
     /* Container for Banner preview */
     .banner-wrapper {
       position: relative;
-      box-shadow: 0 30px 90px -15px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(56, 189, 248, 0.15);
+      box-shadow: 0 30px 90px -15px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(255, 255, 255, 0.1);
       border-radius: 12px;
       overflow: hidden;
       max-width: 100%;
@@ -103,7 +103,7 @@
       width: 1584px;
       height: 396px;
       position: relative;
-      background: #030712;
+      background: #020617;
       background-image: url('banner-fiber-bg.png');
       background-size: cover;
       background-position: center;
@@ -111,31 +111,32 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 40px 60px 34px 60px;
+      padding: 38px 64px 34px 64px;
     }
 
-    /* Smooth sapphire-dark gradient overlay for text readability */
+    /* Cinematic dark overlay with smooth vignette */
     .overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
         90deg,
-        rgba(3, 7, 18, 0.94) 0%,
-        rgba(4, 10, 24, 0.86) 35%,
-        rgba(5, 14, 36, 0.45) 68%,
-        rgba(3, 7, 18, 0.88) 100%
+        rgba(2, 6, 23, 0.97) 0%,
+        rgba(3, 7, 28, 0.90) 34%,
+        rgba(4, 11, 36, 0.52) 68%,
+        rgba(2, 6, 23, 0.90) 100%
       );
       pointer-events: none;
       z-index: 1;
     }
 
+    /* Subtle ambient light pool */
     .ambient-glow {
       position: absolute;
-      width: 550px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
-      top: -100px;
-      left: 260px;
+      width: 650px;
+      height: 340px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+      top: -110px;
+      left: 280px;
       pointer-events: none;
       z-index: 1;
     }
@@ -150,110 +151,95 @@
       height: 100%;
     }
 
-    /* TOP BAR: Clean Recruiter-Targeted Status Badge & Handles */
-    .top-bar {
+    /* TOP ROW: Pure Minimalist Editorial Header */
+    .top-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-left: 260px; /* Generous 320px clearance from left edge */
+      padding-left: 260px; /* Safe space past profile avatar */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 12px;
     }
 
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      padding: 5px 14px;
-      border-radius: 9999px;
+    .top-role-label {
+      font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
+      font-weight: 600;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: #38bdf8;
-      font-family: 'JetBrains Mono', monospace;
-      backdrop-filter: blur(8px);
     }
 
-    .status-badge .dot {
-      width: 6px;
-      height: 6px;
-      background: #10b981;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #10b981;
-    }
-
-    .top-handles {
+    .top-meta-links {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
       color: #94a3b8;
     }
 
-    .handle-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+    .top-meta-links span.sep {
+      color: #334155;
+    }
+
+    .top-meta-links a {
       color: #cbd5e1;
       text-decoration: none;
+      transition: color 0.2s ease;
     }
 
-    .handle-link svg {
+    .top-meta-links a.highlight {
       color: #38bdf8;
-      opacity: 0.85;
     }
 
-    .handle-link span.accent {
-      color: #38bdf8;
-      font-weight: 600;
-    }
-
-    /* HERO CORE: Name, Title & Recruiter-Friendly Value Proposition */
+    /* HERO CORE: Authoritative, Clean Typography */
     .hero-core {
       padding-left: 260px;
-      margin-top: 4px;
+      margin-top: 6px;
+      margin-bottom: 6px;
     }
 
     .hero-name {
-      font-size: 46px;
+      font-size: 48px;
       font-weight: 800;
-      letter-spacing: -1.4px;
+      letter-spacing: -1.6px;
       line-height: 1.05;
       margin-bottom: 6px;
-      background: linear-gradient(180deg, #ffffff 20%, #cbd5e1 100%);
+      background: linear-gradient(180deg, #ffffff 30%, #cbd5e1 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 4px 25px rgba(0, 0, 0, 0.8);
+      text-shadow: 0 4px 28px rgba(0, 0, 0, 0.85);
     }
 
-    .hero-role {
-      font-size: 19px;
+    .hero-subtitle {
+      font-size: 17px;
       font-weight: 600;
       color: #94a3b8;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.3px;
       margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .hero-role .accent {
-      color: #38bdf8;
-      font-weight: 700;
+    .hero-subtitle span.focus {
+      color: #f1f5f9;
+      font-weight: 600;
     }
 
-    .hero-role .sep {
+    .hero-subtitle span.sep {
       color: #334155;
+      font-weight: 400;
     }
 
     .hero-tagline {
       font-size: 13.5px;
-      line-height: 1.5;
+      line-height: 1.55;
       color: #cbd5e1;
-      max-width: 980px;
+      max-width: 960px;
       font-weight: 400;
+      letter-spacing: -0.1px;
     }
 
     .hero-tagline strong {
@@ -261,56 +247,50 @@
       font-weight: 600;
     }
 
-    /* BOTTOM BAR: Professional Capabilities Matrix */
-    .bottom-bar {
-      padding-left: 260px;
+    /* BOTTOM ROW: Pure Technical Stack (No Emojis, No Boxes, No Cards) */
+    .bottom-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding-left: 260px;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       padding-top: 14px;
     }
 
-    .capabilities-matrix {
+    .tech-domains {
       display: flex;
       align-items: center;
-      gap: 10px;
-    }
-
-    .cap-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(11, 20, 42, 0.7);
-      border: 1px solid rgba(56, 189, 248, 0.18);
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 11.5px;
+      gap: 16px;
+      font-size: 12px;
       font-weight: 600;
+      color: #94a3b8;
+      letter-spacing: 0.2px;
+    }
+
+    .tech-domains span.item {
       color: #e2e8f0;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      font-weight: 600;
     }
 
-    .cap-item svg {
+    .tech-domains span.dot {
       color: #38bdf8;
-      flex-shrink: 0;
+      font-size: 14px;
     }
 
-    .bottom-meta {
+    .status-availability {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: #64748b;
-      letter-spacing: 0.5px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
+      color: #64748b;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .bottom-meta span.accent {
-      color: #10b981;
-      font-weight: 600;
+    .status-availability span.active {
+      color: #38bdf8;
+      font-weight: 700;
     }
 
     /* MOCK PROFILE PICTURE OVERLAY */
@@ -321,8 +301,8 @@
       width: 156px;
       height: 156px;
       border-radius: 50%;
-      border: 4px solid #030712;
-      background: radial-gradient(circle, #0f172a 0%, #030712 100%);
+      border: 4px solid #020617;
+      background: radial-gradient(circle, #0f172a 0%, #020617 100%);
       z-index: 10;
       display: flex;
       flex-direction: column;
@@ -373,14 +353,9 @@
 
   <!-- TOOLBAR -->
   <div class="toolbar">
-    <h1><span></span> LinkedIn Job-Ready Banner (1584 &times; 396 px)</h1>
+    <h1><span></span> LinkedIn Ultra-Professional Banner (1584 &times; 396 px)</h1>
     <button class="btn-secondary btn" id="toggle-avatar-btn">Hide Profile Pic Guide</button>
     <button class="btn" id="download-btn">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-        <polyline points="7 10 12 15 17 10"></polyline>
-        <line x1="12" y1="15" x2="12" y2="3"></line>
-      </svg>
       Download High-Res PNG
     </button>
   </div>
@@ -396,101 +371,52 @@
       <!-- MAIN BANNER CONTENT -->
       <div class="banner-content">
         
-        <!-- TOP BAR: JOB & RECRUITER TARGETED -->
-        <div class="top-bar">
-          <div class="status-badge">
-            <span class="dot"></span>
-            Open to Senior Engineering &amp; AI Architect Roles
+        <!-- TOP ROW: MINIMALIST RECRUITER METADATA -->
+        <div class="top-row">
+          <div class="top-role-label">
+            Lead AI Engineer &amp; Full-Stack Product Architect
           </div>
           
-          <div class="top-handles">
-            <div class="handle-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-              </svg>
-              <span class="accent">mohammad-naved-portfolio.vercel.app</span>
-            </div>
-            <div class="handle-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-              </svg>
-              <span>github.com/MD-NAVED</span>
-            </div>
-            <div class="handle-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-              </svg>
-              <span>andyk4548@gmail.com</span>
-            </div>
+          <div class="top-meta-links">
+            <a href="https://mohammad-naved-portfolio.vercel.app" class="highlight">mohammad-naved-portfolio.vercel.app</a>
+            <span class="sep">/</span>
+            <a href="https://github.com/MD-NAVED">github.com/MD-NAVED</a>
+            <span class="sep">/</span>
+            <span>andyk4548@gmail.com</span>
           </div>
         </div>
 
-        <!-- HERO CORE: JOB FOCUSED -->
+        <!-- HERO CORE: BIG AUTHORITATIVE TYPOGRAPHY -->
         <div class="hero-core">
           <h1 class="hero-name">MOHAMMAD NAVED</h1>
-          <div class="hero-role">
-            <span class="accent">Lead AI Engineer</span>
+          <div class="hero-subtitle">
+            <span class="focus">Applied AI &amp; Multi-LLM Systems</span>
             <span class="sep">&bull;</span>
-            <span>Full-Stack Product Architect</span>
+            <span class="focus">Cloud Architecture</span>
             <span class="sep">&bull;</span>
-            <span>Cloud &amp; IoT Systems</span>
+            <span class="focus">Embedded IoT Engineering</span>
           </div>
           <p class="hero-tagline">
-            Engineering <strong>production-grade AI workflows</strong>, high-throughput cloud backends, and <strong>connected IoT systems</strong> with zero-to-one velocity and defensive architecture.
+            Specialized in architecting <strong>production-grade AI workflows</strong>, high-throughput cloud backends, and <strong>connected IoT systems</strong> with zero-to-one velocity and defensive architecture.
           </p>
         </div>
 
-        <!-- BOTTOM BAR: PURE ENGINEERING CAPABILITIES -->
-        <div class="bottom-bar">
-          <div class="capabilities-matrix">
-            
-            <div class="cap-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-              </svg>
-              <span>Applied AI &amp; Multi-LLM</span>
-            </div>
-
-            <div class="cap-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
-              </svg>
-              <span>Full-Stack &amp; Next.js 16</span>
-            </div>
-
-            <div class="cap-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-              </svg>
-              <span>AWS Cloud &amp; Distributed Systems</span>
-            </div>
-
-            <div class="cap-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                <rect x="9" y="9" width="6" height="6"></rect>
-                <line x1="9" y1="1" x2="9" y2="4"></line>
-                <line x1="15" y1="1" x2="15" y2="4"></line>
-                <line x1="9" y1="20" x2="9" y2="23"></line>
-                <line x1="15" y1="20" x2="15" y2="23"></line>
-                <line x1="20" y1="9" x2="23" y2="9"></line>
-                <line x1="20" y1="14" x2="23" y2="14"></line>
-                <line x1="1" y1="9" x2="4" y2="9"></line>
-                <line x1="1" y1="14" x2="4" y2="14"></line>
-              </svg>
-              <span>Embedded IoT &amp; Firmware</span>
-            </div>
-
+        <!-- BOTTOM ROW: PURE TECHNICAL COMPETENCIES (NO EMOJIS, NO BOXES) -->
+        <div class="bottom-row">
+          <div class="tech-domains">
+            <span class="item">Gemini API &amp; Agentic Systems</span>
+            <span class="dot">&bull;</span>
+            <span class="item">Next.js 16 &amp; React 19</span>
+            <span class="dot">&bull;</span>
+            <span class="item">Python &amp; FastAPI</span>
+            <span class="dot">&bull;</span>
+            <span class="item">AWS &amp; Distributed Systems</span>
+            <span class="dot">&bull;</span>
+            <span class="item">ESP32 &amp; MQTT</span>
           </div>
 
-          <div class="bottom-meta">
-            <span>AVAILABILITY:</span>
-            <span class="accent">FULL-TIME &bull; CONTRACT</span>
+          <div class="status-availability">
+            STATUS: <span class="active">OPEN TO ROLES &bull; FULL-TIME / CONTRACT</span>
           </div>
         </div>
 
@@ -535,7 +461,7 @@
           height: 396,
           scale: 2,
           useCORS: true,
-          backgroundColor: '#030712',
+          backgroundColor: '#020617',
           logging: false
         });
 
@@ -547,14 +473,7 @@
         alert('Export error: ' + err.message);
       } finally {
         avatarMock.style.display = prevAvatarDisplay;
-        downloadBtn.innerHTML = `
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-          Download High-Res PNG
-        `;
+        downloadBtn.innerText = 'Download High-Res PNG';
         downloadBtn.disabled = false;
       }
     });
