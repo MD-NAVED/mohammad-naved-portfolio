@@ -1167,35 +1167,6 @@ export default function App() {
                               </motion.a>
                             )}
                          </div>
-
-                      <div className="p-8 md:p-10 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 backdrop-blur-md shadow-sm">
-                        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                          <div>
-                            <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
-                              Systems &amp; Gameplay Developer (R&amp;D)
-                              <span className="text-cyan-600 dark:text-cyan-400 text-sm font-semibold">&bull; Unreal Engine 5 &amp; MCP</span>
-                            </h3>
-                            <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 mt-0.5">3D Interactive Mechanics &bull; Blender Pipelines &bull; Agentic Game Tooling</p>
-                          </div>
-                          <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400">
-                            2025 &ndash; Present
-                          </span>
-                        </div>
-                        <ul className="space-y-2.5 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-light mt-4">
-                          <li className="flex items-start gap-2.5">
-                            <span className="text-cyan-500 font-bold">&mdash;</span>
-                            <span>Engineered real-time gameplay mechanics, character locomotion physics, and environment blockouts in Unreal Engine 5 using custom Blender 3D models.</span>
-                          </li>
-                          <li className="flex items-start gap-2.5">
-                            <span className="text-cyan-500 font-bold">&mdash;</span>
-                            <span>Integrated Model Context Protocol (MCP) plugins to connect LLMs with Unreal Engine runtime, enabling AI-assisted world generation and agentic NPC behavior pipelines.</span>
-                          </li>
-                          <li className="flex items-start gap-2.5">
-                            <span className="text-cyan-500 font-bold">&mdash;</span>
-                            <span>Architected modular Blueprints and C++ components for event-driven gameplay logic and procedural level prototyping.</span>
-                          </li>
-                        </ul>
-                      </div>
                       </motion.div>
                    ))}
                  </div>
@@ -1313,6 +1284,35 @@ export default function App() {
                          </li>
                        </ul>
                      </div>
+
+                      <div className="p-8 md:p-10 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 backdrop-blur-md shadow-sm">
+                        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                          <div>
+                            <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+                              Systems &amp; Gameplay Developer (R&amp;D)
+                              <span className="text-cyan-600 dark:text-cyan-400 text-sm font-semibold">&bull; Unreal Engine 5 &amp; MCP</span>
+                            </h3>
+                            <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 mt-0.5">3D Interactive Mechanics &bull; Blender Pipelines &bull; Agentic Game Tooling</p>
+                          </div>
+                          <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400">
+                            2025 &ndash; Present
+                          </span>
+                        </div>
+                        <ul className="space-y-2.5 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-light mt-4">
+                          <li className="flex items-start gap-2.5">
+                            <span className="text-cyan-500 font-bold">&mdash;</span>
+                            <span>Engineered real-time gameplay mechanics, character locomotion physics, and environment blockouts in Unreal Engine 5 using custom Blender 3D models.</span>
+                          </li>
+                          <li className="flex items-start gap-2.5">
+                            <span className="text-cyan-500 font-bold">&mdash;</span>
+                            <span>Integrated Model Context Protocol (MCP) plugins to connect LLMs with Unreal Engine runtime, enabling AI-assisted world generation and agentic NPC behavior pipelines.</span>
+                          </li>
+                          <li className="flex items-start gap-2.5">
+                            <span className="text-cyan-500 font-bold">&mdash;</span>
+                            <span>Architected modular Blueprints and C++ components for event-driven gameplay logic and procedural level prototyping.</span>
+                          </li>
+                        </ul>
+                      </div>
                    </div>
                  </div>
 
