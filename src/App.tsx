@@ -40,12 +40,15 @@ import {
   Rocket,
   Store,
   Bot,
-  ExternalLink
+  ExternalLink,
+  Gamepad2
 } from 'lucide-react';
 
 const techSkillsData = [
+  { name: "Unreal Engine 5 & Blender", icon: <Gamepad2 className="w-6 h-6" /> },
   { name: "Next.js & React 19", icon: <Globe className="w-6 h-6" /> },
   { name: "TypeScript", icon: <Code2 className="w-6 h-6" /> },
+  { name: "MCP & AI Tooling", icon: <Workflow className="w-6 h-6" /> },
   { name: "Tailwind CSS v4", icon: <Sparkles className="w-6 h-6" /> },
   { name: "Supabase & Postgres", icon: <Database className="w-6 h-6" /> },
   { name: "Node.js & FastAPI", icon: <Server className="w-6 h-6" /> },
@@ -126,6 +129,20 @@ const projectsData: ProjectItem[] = [
       "Built an algorithmic Fair-Price Engine that calculates dynamic market valuation (Good Deal to High Price) considering market depreciation, warranty, and mining/repair risk discounts.",
       "Architected 4 distinct role-based dashboards (Buyer, Seller, Technician, Admin) with a 6-step sell wizard, category-specific stress test checklists, and WhatsApp-first buyer-seller routing.",
       "Designed a data-driven category registry with non-destructive JSON metadata scaling on Prisma models and a mobile-first single-route SPA architecture."
+    ]
+  },
+  {
+    id: 107,
+    title: "AI-Assisted 3D & Gameplay Systems (UE5 & MCP)",
+    domain: "Game Development & 3D Interactive Systems",
+    role: "Systems & Gameplay Developer",
+    featuredBadge: "Game Dev & 3D R&D",
+    tags: ["Unreal Engine 5", "Blender", "Model Context Protocol (MCP)", "C++", "Python", "Physics & Blueprints"],
+    summary: [
+      "Engineered real-time 3D interactive mechanics, character locomotion physics, and environment blockouts in Unreal Engine 5 using custom Blender 3D assets.",
+      "Integrated Model Context Protocol (MCP) server plugins into Unreal Engine, enabling bidirectional agentic communication between LLMs and real-time game world states.",
+      "Built autonomous NPC behavior pipelines and procedural tooling that query in-engine gameplay contexts via structured AI tool-calling.",
+      "Architected modular Blueprint and C++ gameplay components designed for performance, modularity, and rapid prototyping."
     ]
   },
   {
@@ -845,15 +862,15 @@ export default function App() {
                        </h1>
                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase mb-6">
                          <Sparkles className="w-3.5 h-3.5" />
-                         Founder & Lead AI Engineer @ Codtrex AI
+                         Full-Stack Architect &bull; AI Systems &bull; Game Development (UE5)
                        </div>
                        <p className="text-base text-neutral-600 dark:text-neutral-400 max-w-xl leading-relaxed mb-8 transition-colors mx-auto md:mx-0 font-light">
-                         Product Architect who conceptualizes, builds, and launches production-grade B2B SaaS, verified marketplace engines, and commercial IoT infrastructure. Directing modern AI coding models and autonomous agent pipelines to ship resilient, production-ready zero-to-one systems with extreme velocity.
+                         Systems &amp; Product Architect building scalable cloud platforms, autonomous AI agent pipelines, and real-time 3D interactive mechanics. Deeply experienced in Unreal Engine 5, Blender 3D tooling, and connecting LLMs via Model Context Protocol (MCP) to live game &amp; simulation environments.
                        </p>
                        <div className="flex justify-center md:justify-start items-center space-x-4 mb-8 text-sm w-full">
                          <div className="flex items-center gap-2">
                            <div className="h-2.5 w-2.5 rounded-full bg-emerald-500 dark:bg-emerald-400 transition-colors shadow-[0_0_10px_rgba(16,185,129,0.6)] animate-pulse"></div>
-                           <span className="text-xs font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 transition-colors">Founder @ Codtrex AI &amp; MediStock &bull; Open for Engineering Roles &amp; Consulting</span>
+                           <span className="text-xs font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 transition-colors">Open for Full-Stack, AI &amp; Game Dev Roles &bull; Remote &amp; Relocation</span>
                          </div>
                        </div>
                      </div>
@@ -1150,6 +1167,35 @@ export default function App() {
                               </motion.a>
                             )}
                          </div>
+
+                      <div className="p-8 md:p-10 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 backdrop-blur-md shadow-sm">
+                        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                          <div>
+                            <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+                              Systems &amp; Gameplay Developer (R&amp;D)
+                              <span className="text-cyan-600 dark:text-cyan-400 text-sm font-semibold">&bull; Unreal Engine 5 &amp; MCP</span>
+                            </h3>
+                            <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 mt-0.5">3D Interactive Mechanics &bull; Blender Pipelines &bull; Agentic Game Tooling</p>
+                          </div>
+                          <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400">
+                            2025 &ndash; Present
+                          </span>
+                        </div>
+                        <ul className="space-y-2.5 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-light mt-4">
+                          <li className="flex items-start gap-2.5">
+                            <span className="text-cyan-500 font-bold">&mdash;</span>
+                            <span>Engineered real-time gameplay mechanics, character locomotion physics, and environment blockouts in Unreal Engine 5 using custom Blender 3D models.</span>
+                          </li>
+                          <li className="flex items-start gap-2.5">
+                            <span className="text-cyan-500 font-bold">&mdash;</span>
+                            <span>Integrated Model Context Protocol (MCP) plugins to connect LLMs with Unreal Engine runtime, enabling AI-assisted world generation and agentic NPC behavior pipelines.</span>
+                          </li>
+                          <li className="flex items-start gap-2.5">
+                            <span className="text-cyan-500 font-bold">&mdash;</span>
+                            <span>Architected modular Blueprints and C++ components for event-driven gameplay logic and procedural level prototyping.</span>
+                          </li>
+                        </ul>
+                      </div>
                       </motion.div>
                    ))}
                  </div>
