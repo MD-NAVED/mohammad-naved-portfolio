@@ -60,20 +60,34 @@ const __dirname = path.dirname(__filename);
   const bannerElement = await page.$('#banner-canvas-source');
   const outputPath = path.join(__dirname, 'public', 'Mohammad_Naved_LinkedIn_Banner.png');
 
-  console.log('Taking high-res 1584x396 (2x) screenshot...');
+  console.log('Taking high-res 1584x396 (2x) clean screenshot...');
   if (bannerElement) {
     await bannerElement.screenshot({
       path: outputPath,
       type: 'png'
     });
-  } else {
-    await page.screenshot({
-      path: outputPath,
-      type: 'png',
-      clip: { x: 0, y: 0, width: 1584, height: 396 }
+  }
+
+  // Now take preview screenshot with avatar guide visible
+  console.log('Taking preview screenshot with LinkedIn avatar overlay...');
+  await page.evaluate(() => {
+    const avatarMock = document.getElementById('avatar-mock');
+    if (avatarMock) {
+      avatarMock.style.display = 'flex';
+      avatarMock.style.border = '4px solid #38bdf8';
+      avatarMock.style.boxShadow = '0 0 30px rgba(56, 189, 248, 0.4)';
+    }
+  });
+
+  const previewOutputPath = path.join(__dirname, 'public', 'Mohammad_Naved_LinkedIn_Banner_PREVIEW.png');
+  if (bannerElement) {
+    await bannerElement.screenshot({
+      path: previewOutputPath,
+      type: 'png'
     });
   }
 
   await browser.close();
-  console.log('LinkedIn banner generated successfully:', outputPath);
+  console.log('LinkedIn clean banner generated:', outputPath);
+  console.log('LinkedIn preview with avatar guide generated:', previewOutputPath);
 })();
