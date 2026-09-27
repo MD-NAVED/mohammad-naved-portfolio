@@ -203,13 +203,12 @@
     .hero-name {
       font-size: 48px;
       font-weight: 800;
-      letter-spacing: -1.6px;
+      letter-spacing: -1.4px;
       line-height: 1.05;
       margin-bottom: 6px;
-      background: linear-gradient(180deg, #ffffff 30%, #cbd5e1 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 4px 28px rgba(0, 0, 0, 0.85);
+      color: #ffffff;
+      text-shadow: 0 4px 28px rgba(0, 0, 0, 0.9);
+      display: inline-block;
     }
 
     .hero-subtitle {
@@ -449,32 +448,38 @@
     });
 
     downloadBtn.addEventListener('click', async () => {
-      const prevAvatarDisplay = avatarMock.style.display;
-      avatarMock.style.display = 'none';
-
-      downloadBtn.innerText = 'Generating 1584x396 PNG...';
-      downloadBtn.disabled = true;
-
+      // First try downloading the pre-rendered pixel-perfect PNG
       try {
-        const canvas = await html2canvas(bannerSource, {
-          width: 1584,
-          height: 396,
-          scale: 2,
-          useCORS: true,
-          backgroundColor: '#020617',
-          logging: false
-        });
-
         const link = document.createElement('a');
-        link.download = 'Mohammad_Naved_LinkedIn_Banner_1584x396.png';
-        link.href = canvas.toDataURL('image/png');
+        link.download = 'Mohammad_Naved_LinkedIn_Banner.png';
+        link.href = 'Mohammad_Naved_LinkedIn_Banner.png';
+        document.body.appendChild(link);
         link.click();
-      } catch (err) {
-        alert('Export error: ' + err.message);
-      } finally {
-        avatarMock.style.display = prevAvatarDisplay;
-        downloadBtn.innerText = 'Download High-Res PNG';
-        downloadBtn.disabled = false;
+        document.body.removeChild(link);
+      } catch (e) {
+        // Fallback to html2canvas if opened from file:// or without server
+        const prevAvatarDisplay = avatarMock.style.display;
+        avatarMock.style.display = 'none';
+
+        try {
+          const canvas = await html2canvas(bannerSource, {
+            width: 1584,
+            height: 396,
+            scale: 2,
+            useCORS: true,
+            backgroundColor: '#020617',
+            logging: false
+          });
+
+          const link = document.createElement('a');
+          link.download = 'Mohammad_Naved_LinkedIn_Banner.png';
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+        } catch (err) {
+          alert('Export error: ' + err.message);
+        } finally {
+          avatarMock.style.display = prevAvatarDisplay;
+        }
       }
     });
   </script>
