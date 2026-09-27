@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LinkedIn Banner Studio — Mohammad Naved</title>
+  <title>LinkedIn Banner — Mohammad Naved</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
     }
 
     body {
-      background: #090d16;
+      background: #06090e;
       color: #f1f5f9;
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       display: flex;
@@ -28,22 +28,21 @@
 
     .toolbar {
       display: flex;
-      gap: 12px;
+      gap: 14px;
       margin-bottom: 20px;
       align-items: center;
       background: rgba(15, 23, 42, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(12px);
-      padding: 10px 18px;
+      padding: 10px 20px;
       border-radius: 9999px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     .toolbar h1 {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       color: #cbd5e1;
-      margin-right: 12px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -60,7 +59,7 @@
 
     .btn {
       background: #10b981;
-      color: #042f2e;
+      color: #022c22;
       font-weight: 700;
       font-size: 13px;
       border: none;
@@ -77,7 +76,6 @@
     .btn:hover {
       background: #34d399;
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
     }
 
     .btn-secondary {
@@ -89,24 +87,23 @@
     .btn-secondary:hover {
       background: rgba(255, 255, 255, 0.15);
       color: #ffffff;
-      box-shadow: none;
     }
 
     /* Container for Banner preview */
     .banner-wrapper {
       position: relative;
-      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08);
       border-radius: 12px;
       overflow: hidden;
       max-width: 100%;
     }
 
-    /* EXACT LINKEDIN RESOLUTION: 1584 x 396 (4:1) */
+    /* EXACT LINKEDIN RESOLUTION: 1584 x 396 px (4:1) */
     #banner-canvas-source {
       width: 1584px;
       height: 396px;
       position: relative;
-      background: #080c14;
+      background: #070a11;
       background-image: url('banner-bg.jpg');
       background-size: cover;
       background-position: center;
@@ -114,36 +111,36 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 38px 50px 32px 50px;
+      padding: 40px 60px 34px 60px;
     }
 
-    /* Ambient dark overlay & glowing accents */
+    /* Smooth obsidian cinematic gradient overlay */
     .overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
         90deg,
-        rgba(8, 12, 20, 0.95) 0%,
-        rgba(8, 12, 20, 0.82) 32%,
-        rgba(8, 12, 20, 0.45) 65%,
-        rgba(8, 12, 20, 0.8) 100%
+        rgba(7, 10, 17, 0.96) 0%,
+        rgba(7, 10, 17, 0.88) 32%,
+        rgba(7, 10, 17, 0.52) 65%,
+        rgba(7, 10, 17, 0.86) 100%
       );
       pointer-events: none;
       z-index: 1;
     }
 
-    .mesh-glow {
+    .ambient-glow {
       position: absolute;
-      width: 500px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, transparent 70%);
-      top: -100px;
-      left: 320px;
+      width: 600px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.14) 0%, transparent 70%);
+      top: -120px;
+      left: 280px;
       pointer-events: none;
       z-index: 1;
     }
 
-    /* Content positioned above overlay */
+    /* Main container above background */
     .banner-content {
       position: relative;
       z-index: 2;
@@ -153,31 +150,31 @@
       height: 100%;
     }
 
-    /* TOP ROW: Founder pill & status */
-    .top-row {
+    /* TOP BAR: Clean studio badge & handles */
+    .top-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-left: 230px; /* Safe space past profile avatar */
+      padding-left: 215px; /* Clean clearance past profile picture */
     }
 
-    .founder-badge {
+    .status-badge {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(52, 211, 153, 0.35);
-      padding: 6px 14px;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(52, 211, 153, 0.28);
+      padding: 5px 14px;
       border-radius: 9999px;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: #34d399;
-      backdrop-filter: blur(8px);
+      font-family: 'JetBrains Mono', monospace;
     }
 
-    .pulse-dot {
+    .status-badge .dot {
       width: 6px;
       height: 6px;
       background: #10b981;
@@ -185,176 +182,155 @@
       box-shadow: 0 0 8px #10b981;
     }
 
-    .studio-brand {
+    .top-handles {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #94a3b8;
+    }
+
+    .handle-link {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #94a3b8;
-      letter-spacing: 0.5px;
-      background: rgba(15, 23, 42, 0.6);
-      padding: 6px 16px;
-      border-radius: 9999px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      gap: 6px;
+      color: #cbd5e1;
+      text-decoration: none;
     }
 
-    .studio-brand b {
-      color: #ffffff;
+    .handle-link svg {
+      opacity: 0.7;
+    }
+
+    .handle-link span.accent {
+      color: #34d399;
+      font-weight: 600;
+    }
+
+    /* HERO CORE: Name, Title & Value proposition */
+    .hero-core {
+      padding-left: 215px;
+      margin-top: 4px;
+    }
+
+    .hero-name {
+      font-size: 46px;
       font-weight: 800;
-    }
-
-    /* MIDDLE ROW: Name, Headline & Pillars */
-    .middle-row {
-      padding-left: 230px; /* Aligns with safe zone */
-      margin-top: 10px;
-    }
-
-    .banner-name {
-      font-size: 44px;
-      font-weight: 800;
-      letter-spacing: -1.2px;
-      line-height: 1;
-      margin-bottom: 8px;
-      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      letter-spacing: -1.4px;
+      line-height: 1.05;
+      margin-bottom: 6px;
+      background: linear-gradient(180deg, #ffffff 15%, #cbd5e1 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
     }
 
-    .banner-title {
-      font-size: 18px;
+    .hero-role {
+      font-size: 19px;
       font-weight: 600;
       color: #94a3b8;
-      margin-bottom: 18px;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.4px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 10px;
-    }
-
-    .banner-title .highlight {
-      color: #34d399;
-      font-weight: 700;
-    }
-
-    .banner-title .sep {
-      color: #475569;
-    }
-
-    /* PILLARS / BADGES ROW */
-    .pillars-grid {
-      display: flex;
       gap: 12px;
     }
 
-    .pillar-card {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 8px 14px;
-      backdrop-filter: blur(10px);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-
-    .pillar-card.featured {
-      border-color: rgba(52, 211, 153, 0.4);
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(15, 23, 42, 0.8) 100%);
-    }
-
-    .pillar-icon {
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 7px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .pillar-info {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .pillar-title {
-      font-size: 12px;
+    .hero-role .accent {
+      color: #34d399;
       font-weight: 700;
-      color: #f8fafc;
-      line-height: 1.2;
     }
 
-    .pillar-desc {
-      font-size: 10px;
-      font-weight: 500;
-      color: #94a3b8;
-      font-family: 'JetBrains Mono', monospace;
+    .hero-role .sep {
+      color: #334155;
     }
 
-    /* BOTTOM ROW: URLs & Handles */
-    .bottom-row {
+    .hero-tagline {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: #cbd5e1;
+      max-width: 980px;
+      font-weight: 400;
+    }
+
+    .hero-tagline strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* BOTTOM BAR: Professional Capabilities Matrix (Clean, No Emojis, No Project Names) */
+    .bottom-bar {
+      padding-left: 215px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-left: 230px; /* Safe space */
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 12px;
-      margin-top: 6px;
+      padding-top: 14px;
     }
 
-    .tagline-text {
-      font-size: 11px;
-      color: #64748b;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .tagline-text b {
-      color: #cbd5e1;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 16px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11.5px;
-      color: #94a3b8;
-    }
-
-    .social-item {
+    .capabilities-matrix {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 10px;
     }
 
-    .social-item span.accent {
+    .cap-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #e2e8f0;
+      backdrop-filter: blur(8px);
+    }
+
+    .cap-item svg {
+      color: #34d399;
+      flex-shrink: 0;
+    }
+
+    .cap-item span.highlight {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .bottom-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #64748b;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bottom-meta span.studio {
       color: #34d399;
       font-weight: 600;
     }
 
-    /* MOCK PROFILE PICTURE OVERLAY (FOR PREVIEW ONLY) */
+    /* MOCK PROFILE PICTURE OVERLAY */
     .avatar-mock {
       position: absolute;
       left: 45px;
       bottom: -60px;
-      width: 160px;
-      height: 160px;
+      width: 156px;
+      height: 156px;
       border-radius: 50%;
-      border: 4px solid #090d16;
+      border: 4px solid #06090e;
       background: radial-gradient(circle, #1e293b 0%, #0f172a 100%);
       z-index: 10;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
       pointer-events: none;
       transition: opacity 0.2s ease;
     }
@@ -377,7 +353,6 @@
       margin-bottom: 2px;
     }
 
-    /* Scaling helper for preview on smaller screens */
     @media (max-width: 1640px) {
       .banner-wrapper {
         transform-origin: top center;
@@ -398,9 +373,9 @@
 </head>
 <body>
 
-  <!-- CONTROLS -->
+  <!-- TOOLBAR -->
   <div class="toolbar">
-    <h1><span></span> LinkedIn Banner (1584 &times; 396 px)</h1>
+    <h1><span></span> LinkedIn Executive Banner (1584 &times; 396 px)</h1>
     <button class="btn-secondary btn" id="toggle-avatar-btn">Hide Profile Pic Guide</button>
     <button class="btn" id="download-btn">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -418,90 +393,113 @@
       
       <!-- BACKGROUND OVERLAYS -->
       <div class="overlay"></div>
-      <div class="mesh-glow"></div>
+      <div class="ambient-glow"></div>
 
       <!-- MAIN BANNER CONTENT -->
       <div class="banner-content">
         
-        <!-- TOP ROW -->
-        <div class="top-row">
-          <div class="founder-badge">
-            <span class="pulse-dot"></span>
-            Founder &amp; Lead AI Engineer
+        <!-- TOP BAR -->
+        <div class="top-bar">
+          <div class="status-badge">
+            <span class="dot"></span>
+            Founder @ Codtrex AI &bull; Systems &amp; AI Engineer
           </div>
-          <div class="studio-brand">
-            Engineering Studio &nbsp;&bull;&nbsp; <b>CODTREX AI</b>
-          </div>
-        </div>
-
-        <!-- MIDDLE ROW -->
-        <div class="middle-row">
-          <h1 class="banner-name">MOHAMMAD NAVED</h1>
-          <div class="banner-title">
-            <span class="highlight">Full-Stack Product Architect</span>
-            <span class="sep">&bull;</span>
-            <span>Applied AI &amp; Cloud Systems</span>
-            <span class="sep">&bull;</span>
-            <span>Embedded IoT</span>
-          </div>
-
-          <!-- 4 PILLARS -->
-          <div class="pillars-grid">
-            <div class="pillar-card featured">
-              <div class="pillar-icon">🏠</div>
-              <div class="pillar-info">
-                <span class="pillar-title">4Layers IoT Ecosystem</span>
-                <span class="pillar-desc">Google Certified (71+/75) &bull; ESP32</span>
-              </div>
+          
+          <div class="top-handles">
+            <div class="handle-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              <span class="accent">codtrex.vercel.app</span>
             </div>
-
-            <div class="pillar-card">
-              <div class="pillar-icon">⚡</div>
-              <div class="pillar-info">
-                <span class="pillar-title">AI &amp; Multi-LLM</span>
-                <span class="pillar-desc">Gemini API &bull; Agents &bull; RAG</span>
-              </div>
+            <div class="handle-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              <span>github.com/MD-NAVED</span>
             </div>
-
-            <div class="pillar-card">
-              <div class="pillar-icon">📦</div>
-              <div class="pillar-info">
-                <span class="pillar-title">MediStock SaaS</span>
-                <span class="pillar-desc">React 18 &bull; Supabase &bull; Mobile</span>
-              </div>
-            </div>
-
-            <div class="pillar-card">
-              <div class="pillar-icon">☁️</div>
-              <div class="pillar-info">
-                <span class="pillar-title">Modern Full-Stack</span>
-                <span class="pillar-desc">Next.js 16 &bull; FastAPI &bull; AWS</span>
-              </div>
+            <div class="handle-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              <span>andyk4548@gmail.com</span>
             </div>
           </div>
         </div>
 
-        <!-- BOTTOM ROW -->
-        <div class="bottom-row">
-          <div class="tagline-text">
-            Zero-to-One <b>Velocity</b> &bull; Production <b>Reliability</b>
+        <!-- HERO CORE -->
+        <div class="hero-core">
+          <h1 class="hero-name">MOHAMMAD NAVED</h1>
+          <div class="hero-role">
+            <span class="accent">Lead AI Engineer</span>
+            <span class="sep">&bull;</span>
+            <span>Full-Stack Product Architect</span>
+            <span class="sep">&bull;</span>
+            <span>Embedded Systems</span>
           </div>
-          <div class="social-links">
-            <div class="social-item">
-              🌐 <span class="accent">codtrex.vercel.app</span>
+          <p class="hero-tagline">
+            Architecting <strong>production-grade AI workflows</strong>, high-throughput cloud backends, and <strong>certified edge IoT ecosystems</strong> with zero-to-one engineering velocity.
+          </p>
+        </div>
+
+        <!-- BOTTOM BAR: CAPABILITIES (NO EMOJIS, NO PROJECTS) -->
+        <div class="bottom-bar">
+          <div class="capabilities-matrix">
+            
+            <div class="cap-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              <span>Applied AI &amp; Multi-LLM</span>
             </div>
-            <div class="social-item">
-              💻 <span class="accent">github.com/MD-NAVED</span>
+
+            <div class="cap-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <span>Full-Stack &amp; Next.js 16</span>
             </div>
-            <div class="social-item">
-              ✉️ <span class="accent">andyk4548@gmail.com</span>
+
+            <div class="cap-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+              </svg>
+              <span>AWS Cloud &amp; Distributed Systems</span>
             </div>
+
+            <div class="cap-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                <rect x="9" y="9" width="6" height="6"></rect>
+                <line x1="9" y1="1" x2="9" y2="4"></line>
+                <line x1="15" y1="1" x2="15" y2="4"></line>
+                <line x1="9" y1="20" x2="9" y2="23"></line>
+                <line x1="15" y1="20" x2="15" y2="23"></line>
+                <line x1="20" y1="9" x2="23" y2="9"></line>
+                <line x1="20" y1="14" x2="23" y2="14"></line>
+                <line x1="1" y1="9" x2="4" y2="9"></line>
+                <line x1="1" y1="14" x2="4" y2="14"></line>
+              </svg>
+              <span>Embedded IoT &amp; Firmware</span>
+            </div>
+
+          </div>
+
+          <div class="bottom-meta">
+            <span>Engineering Discipline</span>
+            <span>&bull;</span>
+            <span class="studio">CODTREX STUDIO</span>
           </div>
         </div>
 
       </div>
 
-      <!-- SAFE ZONE PROFILE PIC MOCK (Hidden when exporting) -->
+      <!-- SAFE ZONE PROFILE PIC MOCK (Hidden during screenshot) -->
       <div class="avatar-mock" id="avatar-mock">
         <div class="avatar-mock-text">
           <span>SAFE ZONE</span>
@@ -528,7 +526,6 @@
     });
 
     downloadBtn.addEventListener('click', async () => {
-      // Temporarily hide the avatar mockup guide
       const prevAvatarDisplay = avatarMock.style.display;
       avatarMock.style.display = 'none';
 
@@ -539,9 +536,9 @@
         const canvas = await html2canvas(bannerSource, {
           width: 1584,
           height: 396,
-          scale: 2, // 2x Retina quality (3168 x 792)
+          scale: 2, // 2x Retina quality
           useCORS: true,
-          backgroundColor: '#080c14',
+          backgroundColor: '#070a11',
           logging: false
         });
 
