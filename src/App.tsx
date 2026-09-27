@@ -428,6 +428,12 @@ function PromptTerminal({ currentView, setCurrentView, isDarkMode, setIsDarkMode
               🛠️ Skills
             </button>
             <button 
+              onClick={() => handleQuickAction('Tell me about your Game Dev, Unreal Engine 5, and MCP experience')}
+              className="px-3.5 py-1.5 rounded-full bg-white dark:bg-[#161616] border border-neutral-200 dark:border-neutral-800 text-[10px] font-bold text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors shadow-sm flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+            >
+              🎮 Game Dev &amp; 3D
+            </button>
+            <button 
               onClick={() => handleQuickAction('Download your CV')}
               className="px-3.5 py-1.5 rounded-full bg-white dark:bg-[#161616] border border-neutral-200 dark:border-neutral-800 text-[10px] font-bold text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors shadow-sm flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
             >
