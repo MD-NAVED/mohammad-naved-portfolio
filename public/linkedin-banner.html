@@ -6,7 +6,7 @@
   <title>LinkedIn Banner — Mohammad Naved</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -16,7 +16,7 @@
 
     body {
       background: #020617;
-      color: #f8fafc;
+      color: #ffffff;
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       display: flex;
       flex-direction: column;
@@ -31,9 +31,8 @@
       gap: 14px;
       margin-bottom: 20px;
       align-items: center;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(56, 189, 248, 0.2);
-      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(56, 189, 248, 0.3);
       padding: 10px 20px;
       border-radius: 9999px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
@@ -41,8 +40,8 @@
 
     .toolbar h1 {
       font-size: 13px;
-      font-weight: 600;
-      color: #cbd5e1;
+      font-weight: 700;
+      color: #f1f5f9;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -59,8 +58,8 @@
 
     .btn {
       background: #38bdf8;
-      color: #031428;
-      font-weight: 700;
+      color: #020617;
+      font-weight: 800;
       font-size: 13px;
       border: none;
       padding: 8px 18px;
@@ -70,7 +69,7 @@
       align-items: center;
       gap: 8px;
       transition: all 0.2s ease;
-      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
     }
 
     .btn:hover {
@@ -79,19 +78,18 @@
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.08);
-      color: #e2e8f0;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
       box-shadow: none;
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.15);
-      color: #ffffff;
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .banner-wrapper {
       position: relative;
-      box-shadow: 0 30px 90px -15px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 30px 90px -15px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(255, 255, 255, 0.15);
       border-radius: 12px;
       overflow: hidden;
       max-width: 100%;
@@ -109,33 +107,22 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      /* Generous 460px left padding guarantees ZERO overlap with LinkedIn avatar */
-      padding: 36px 64px 36px 460px;
+      justify-content: space-between;
+      /* 460px left padding keeps profile picture 100% clear */
+      padding: 38px 60px 38px 460px;
     }
 
-    /* Deep cinematic dark overlay */
+    /* High-contrast solid dark backing behind text to eliminate light-bleed blur */
     .overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
         90deg,
-        rgba(2, 6, 23, 0.98) 0%,
-        rgba(3, 8, 28, 0.92) 28%,
-        rgba(4, 12, 38, 0.58) 60%,
-        rgba(2, 6, 23, 0.88) 100%
+        rgba(2, 6, 23, 0.92) 0%,
+        rgba(2, 6, 23, 0.85) 28%,
+        rgba(2, 6, 23, 0.94) 45%,
+        rgba(2, 6, 23, 0.98) 100%
       );
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .ambient-glow {
-      position: absolute;
-      width: 600px;
-      height: 340px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, transparent 70%);
-      top: -60px;
-      left: 420px;
       pointer-events: none;
       z-index: 1;
     }
@@ -155,13 +142,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
       padding-bottom: 12px;
     }
 
     .top-badge {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -170,36 +157,33 @@
 
     .top-link {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      font-weight: 600;
-      color: #94a3b8;
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.5px;
     }
 
-    .top-link span.accent {
-      color: #cbd5e1;
-    }
-
-    /* CENTER: BIG BOLD AUTHORITATIVE HEADLINE */
+    /* CENTER: BIG BOLD AUTHORITATIVE HEADLINE (SHARP & HIGH CONTRAST) */
     .center-hero {
-      margin-top: 6px;
-      margin-bottom: 6px;
+      margin-top: 4px;
+      margin-bottom: 4px;
     }
 
     .hero-name {
-      font-size: 56px;
+      font-size: 64px;
       font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 1.05;
+      letter-spacing: -1.8px;
+      line-height: 1.02;
       color: #ffffff;
       margin-bottom: 8px;
-      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
     }
 
     .hero-domains {
-      font-size: 20px;
-      font-weight: 600;
-      color: #e2e8f0;
-      letter-spacing: -0.3px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #38bdf8;
+      letter-spacing: -0.2px;
       margin-bottom: 8px;
       display: flex;
       align-items: center;
@@ -207,23 +191,24 @@
     }
 
     .hero-domains span.sep {
-      color: #38bdf8;
-      font-weight: 700;
+      color: #ffffff;
+      font-weight: 800;
       font-size: 16px;
     }
 
     .hero-tech-line {
-      font-size: 15px;
-      font-weight: 500;
-      color: #94a3b8;
+      font-size: 17px;
+      font-weight: 600;
+      color: #f1f5f9;
       font-family: 'JetBrains Mono', monospace;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .hero-tech-line span.sep {
-      color: #334155;
+      color: #475569;
+      font-weight: 700;
     }
 
     /* LINE 3: BOTTOM STATUS BAR */
@@ -231,26 +216,26 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
       padding-top: 12px;
     }
 
     .status-open {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: #38bdf8;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
     }
 
     .status-open span.dot {
       display: inline-block;
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: #10b981;
       box-shadow: 0 0 10px #10b981;
@@ -258,22 +243,12 @@
 
     .handles-list {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      color: #64748b;
-      display: flex;
-      align-items: center;
-      gap: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #ffffff;
     }
 
-    .handles-list span.val {
-      color: #cbd5e1;
-    }
-
-    .handles-list span.sep {
-      color: #334155;
-    }
-
-    /* ACTUAL LINKEDIN PROFILE PICTURE OVERLAY */
+    /* LINKEDIN PROFILE PICTURE SAFE ZONE MOCKUP */
     .avatar-mock {
       position: absolute;
       left: 54px;
@@ -333,9 +308,9 @@
 
   <!-- TOOLBAR -->
   <div class="toolbar">
-    <h1><span></span> LinkedIn High-Sharpness Banner (1584 &times; 396 px)</h1>
+    <h1><span></span> LinkedIn Pixel-Perfect Banner (1584 &times; 396 px)</h1>
     <button class="btn-secondary btn" id="toggle-avatar-btn">Hide Profile Pic Guide</button>
-    <button class="btn" id="download-btn">Download High-Res PNG</button>
+    <button class="btn" id="download-btn">Download Sharp PNG</button>
   </div>
 
   <!-- BANNER CONTAINER -->
@@ -344,7 +319,6 @@
       
       <!-- BACKGROUND OVERLAYS -->
       <div class="overlay"></div>
-      <div class="ambient-glow"></div>
 
       <!-- MAIN BANNER CONTENT -->
       <div class="banner-content">
@@ -355,11 +329,11 @@
             Lead AI Engineer &bull; Full-Stack Product Architect
           </div>
           <div class="top-link">
-            github.com/<span class="accent">MD-NAVED</span>
+            github.com/MD-NAVED
           </div>
         </div>
 
-        <!-- LINE 2: BIG BOLD HEADLINE (NO BLUR, NO TINY TEXT) -->
+        <!-- LINE 2: BIG BOLD HEADLINE (CRYSTAL CLEAR HIGH CONTRAST) -->
         <div class="center-hero">
           <h1 class="hero-name">MOHAMMAD NAVED</h1>
           <div class="hero-domains">
@@ -387,7 +361,7 @@
             Open to Senior Engineering &amp; Architect Roles
           </div>
           <div class="handles-list">
-            <span class="val">mohammad-naved-portfolio.vercel.app</span>
+            mohammad-naved-portfolio.vercel.app
           </div>
         </div>
 

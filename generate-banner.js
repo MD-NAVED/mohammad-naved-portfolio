@@ -13,11 +13,12 @@ const __dirname = path.dirname(__filename);
   });
   const page = await browser.newPage();
 
-  // Set viewport to exact LinkedIn banner dimensions
+  // Set viewport to EXACT LinkedIn standard dimensions (1584 x 396) at 1x pixel mapping
+  // This prevents LinkedIn's backend from resizing/downsampling the image upon upload
   await page.setViewport({
     width: 1584,
     height: 396,
-    deviceScaleFactor: 2 // 2x Retina resolution: 3168 x 792 px
+    deviceScaleFactor: 1
   });
 
   const htmlPath = path.join(__dirname, 'public', 'linkedin-banner.html');
@@ -35,10 +36,10 @@ const __dirname = path.dirname(__filename);
     process.exit(1);
   }
 
-  // Wait 3 seconds for Google Fonts & image to render
+  // Wait for Google Fonts to render
   await new Promise(r => setTimeout(r, 3000));
 
-  // Hide the toolbar and the avatar mockup guide before taking the screenshot
+  // Hide toolbar & avatar guide before screenshot
   await page.evaluate(() => {
     const toolbar = document.querySelector('.toolbar');
     if (toolbar) toolbar.style.display = 'none';
@@ -58,36 +59,44 @@ const __dirname = path.dirname(__filename);
   });
 
   const bannerElement = await page.$('#banner-canvas-source');
-  const outputPath = path.join(__dirname, 'public', 'Mohammad_Naved_LinkedIn_Banner.png');
+  const pngPath = path.join(__dirname, 'public', 'Mohammad_Naved_LinkedIn_Banner.png');
+  const jpgPath = path.join(__dirname, 'public', 'Mohammad_Naved_LinkedIn_Banner.jpg');
 
-  console.log('Taking high-res 1584x396 (2x) clean screenshot...');
+  console.log('Exporting native 1584x396 PNG...');
   if (bannerElement) {
     await bannerElement.screenshot({
-      path: outputPath,
+      path: pngPath,
       type: 'png'
+    });
+
+    console.log('Exporting ultra-sharp 1584x396 JPG (Quality 98)...');
+    await bannerElement.screenshot({
+      path: jpgPath,
+      type: 'jpeg',
+      quality: 98
     });
   }
 
-  // Now take preview screenshot with avatar guide visible
-  console.log('Taking preview screenshot with LinkedIn avatar overlay...');
+  // Also export preview with avatar overlay for verification
   await page.evaluate(() => {
     const avatarMock = document.getElementById('avatar-mock');
     if (avatarMock) {
       avatarMock.style.display = 'flex';
       avatarMock.style.border = '4px solid #38bdf8';
-      avatarMock.style.boxShadow = '0 0 30px rgba(56, 189, 248, 0.4)';
+      avatarMock.style.boxShadow = '0 0 35px rgba(56, 189, 248, 0.4)';
     }
   });
 
-  const previewOutputPath = path.join(__dirname, 'public', 'Mohammad_Naved_LinkedIn_Banner_PREVIEW.png');
+  const previewPath = path.join(__dirname, 'public', 'Mohammad_Naved_LinkedIn_Banner_PREVIEW.png');
   if (bannerElement) {
     await bannerElement.screenshot({
-      path: previewOutputPath,
+      path: previewPath,
       type: 'png'
     });
   }
 
   await browser.close();
-  console.log('LinkedIn clean banner generated:', outputPath);
-  console.log('LinkedIn preview with avatar guide generated:', previewOutputPath);
+  console.log('Generated PNG (1584x396):', pngPath);
+  console.log('Generated JPG (1584x396, 98%):', jpgPath);
+  console.log('Generated Preview with Guide:', previewPath);
 })();
