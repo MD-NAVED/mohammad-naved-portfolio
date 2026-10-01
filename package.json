@@ -10,7 +10,8 @@
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
     "pdf": "node generate-pdf.js",
-    "banner": "node generate-banner.js"
+    "banner": "node generate-banner.js",
+    "resume-images": "node generate-resume-images.js"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
