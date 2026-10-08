@@ -108,7 +108,7 @@ const projectsData: ProjectItem[] = [
     role: "Founder, Product Architect & Full-Stack Engineer",
     featuredBadge: "Live B2B SaaS",
     tags: ["React 18", "PostgreSQL (Supabase)", "Node.js", "Express", "Capacitor (Android)", "Razorpay", "Next.js 14"],
-    liveLink: "https://medistock-pharma.vercel.app",
+    liveLink: "https://medistock-pos.vercel.app",
     summary: [
       "Founded and architected a multi-device cloud pharmacy POS and inventory management platform designed for retail chemists across India, replacing legacy single-PC desktop software.",
       "Engineered FEFO (First-Expiry-First-Out) automated stock rotation engine with 90-day color-coded distributor return warning alerts to eliminate costly inventory write-offs.",
@@ -1259,7 +1259,7 @@ export default function App() {
                              Founder &amp; Product Architect
                              <span className="text-teal-600 dark:text-teal-400 text-sm font-semibold">&bull; MediStock</span>
                            </h3>
-                           <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 mt-0.5">Cloud Pharmacy SaaS &amp; POS Platform &bull; medistock-pharma.vercel.app</p>
+                           <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 mt-0.5">Cloud Pharmacy SaaS &amp; POS Platform &bull; medistock-pos.vercel.app</p>
                          </div>
                          <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-teal-500/10 border border-teal-500/20 text-teal-600 dark:text-teal-400">
                            2026 &ndash; Present

@@ -92,7 +92,7 @@ Flagship Products & Projects:
    - Live Studio: https://codtrex.vercel.app
    - Boutique AI Engineering Studio building high-performance MVPs, custom LLM workflows, and intelligent software.
 4. MediStock (Founder, Product Architect & Full-Stack Engineer)
-   - Live Production: https://medistock-pharma.vercel.app
+   - Live Production: https://medistock-pos.vercel.app
    - Cloud-native B2B Pharmacy Management & POS SaaS built with React 18, Supabase, Tailwind, Node.js, Capacitor Android.
    - Key highlights: Sub-300ms barcode billing, FEFO inventory engine, WhatsApp invoice dispatch, and offline POS resilience.
 5. UsedTech Market (Product Architect & Full-Stack Engineer)
