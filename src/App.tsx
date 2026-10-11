@@ -52,7 +52,8 @@ const techSkillsData = [
   { name: "Tailwind CSS v4", icon: <Sparkles className="w-6 h-6" /> },
   { name: "Supabase & Postgres", icon: <Database className="w-6 h-6" /> },
   { name: "Node.js & FastAPI", icon: <Server className="w-6 h-6" /> },
-  { name: "Multi-LLM & Groq", icon: <Brain className="w-6 h-6" /> },
+  { name: "Claude, Gemini & NVIDIA", icon: <Brain className="w-6 h-6" /> },
+  { name: "GLM & Open-Weights", icon: <Bot className="w-6 h-6" /> },
   { name: "ESP32 & MQTT (EMQX)", icon: <Cpu className="w-6 h-6" /> },
   { name: "AWS & Docker", icon: <Layers className="w-6 h-6" /> },
   { name: "Capacitor & Mobile", icon: <Smartphone className="w-6 h-6" /> }
@@ -89,15 +90,15 @@ const projectsData: ProjectItem[] = [
     featuredBadge: "Flagship Startup",
     metrics: [
       { label: "Primary Latency", value: "400ms (Groq 70B)" },
-      { label: "Failover Gateway", value: "Groq → NVIDIA → OpenAI" },
+      { label: "Failover Gateway", value: "Claude → Gemini → NVIDIA → GLM" },
       { label: "Delivery Velocity", value: "14 - 20 Days MVP" },
       { label: "Protocol Standard", value: "Model Context Protocol (MCP)" }
     ],
-    tags: ["React 19", "Tailwind CSS v4", "Supabase (Deno)", "Multi-LLM Failover", "Model Context Protocol (MCP)", "Resend", "Telegram Bot API"],
+    tags: ["Claude", "Gemini", "NVIDIA NIM", "GLM", "React 19", "Tailwind CSS v4", "Supabase", "MCP"],
     liveLink: "https://codtrex.vercel.app",
     summary: [
       "Founded and launched a boutique AI engineering studio delivering production-grade AI MVPs, autonomous agents, and full-stack software in 14-20 days without $15k agency markups.",
-      "Engineered multi-provider AI failover gateway (Groq Llama 3.3 70B @ 400ms → NVIDIA NIM → OpenAI) with graceful degradation and dynamic Roman Hinglish / English chat assistant.",
+      "Engineered multi-provider AI failover gateway (Claude, Gemini, NVIDIA NIM, GLM & Groq Llama 3.3 @ 400ms) with graceful degradation and dynamic Roman Hinglish / English chat assistant.",
       "Architected custom Model Context Protocol (MCP) server pipelines connecting LLMs to live databases and external systems via standardized JSON-RPC 2.0 tool-calling.",
       "Built asynchronous event-driven webhook pipeline: Contact Form → Supabase Database INSERT → Edge Webhook → Telegram instant push (@codtrexbot) + WhatsApp Gateway + Resend glassmorphic transactional emails.",
       "Productized 5 locked service tiers (₹29k AI MVP to ₹80k/mo Dedicated Tech Partner) with an integrated 15% partner commission referral system."
@@ -917,7 +918,7 @@ export default function App() {
                          AI-Assisted Developer &bull; Prompt Engineer &bull; Full-Stack Product Builder
                        </div>
                        <p className="text-base text-neutral-600 dark:text-neutral-400 max-w-xl leading-relaxed mb-8 transition-colors mx-auto md:mx-0 font-light">
-                         AI-assisted developer who designs, ships, and tests full-stack, IoT, and LLM-powered products by directing AI coding agents (Antigravity IDE). Hands-on experience with Gemini API integration, prompt engineering, natural-language-to-SQL, and cloud deployment. Shipped a Google-certified smart home system, a multi-tenant SaaS, and an AI analytics platform.
+                         AI-assisted developer who designs, ships, and tests full-stack, IoT, and LLM-powered products by directing AI coding agents (Antigravity IDE). Hands-on experience integrating multi-model LLMs (Claude, Gemini, NVIDIA NIM, GLM), prompt engineering, natural-language-to-SQL, and cloud deployment. Shipped a Google-certified smart home system, a multi-tenant SaaS, and an AI analytics platform.
                        </p>
                        <div className="flex justify-center md:justify-start items-center space-x-4 mb-8 text-sm w-full">
                          <div className="flex items-center gap-2">
@@ -1014,7 +1015,7 @@ export default function App() {
                            <div className="absolute inset-0 bg-gradient-to-br from-neutral-500/[0.03] via-transparent to-neutral-500/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                            <Brain className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-neutral-950 dark:group-hover:text-white" />
                            <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">AI Agent Pipelines &amp; Failover</h4>
-                           <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Multi-provider LLM failover (Groq &rarr; NVIDIA &rarr; OpenAI), autonomous tool calling, structured JSON output formatting, and prompt evaluation.</p>
+                           <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Multi-provider LLM failover (Claude, Gemini, NVIDIA NIM, GLM &amp; Groq), autonomous tool calling, structured JSON output formatting, and prompt evaluation.</p>
                          </motion.div>
                          <motion.div 
                            initial={{ opacity: 0, y: 30 }}
