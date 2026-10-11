@@ -914,15 +914,15 @@ export default function App() {
                        </h1>
                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-neutral-800 dark:text-neutral-200 text-xs font-bold tracking-widest uppercase mb-6">
                          <Sparkles className="w-3.5 h-3.5" />
-                         Full-Stack Architect &bull; AI Systems &bull; Game Development (UE5)
+                         AI-Assisted Developer &bull; Prompt Engineer &bull; Full-Stack Product Builder
                        </div>
                        <p className="text-base text-neutral-600 dark:text-neutral-400 max-w-xl leading-relaxed mb-8 transition-colors mx-auto md:mx-0 font-light">
-                         Systems &amp; Product Architect building scalable cloud platforms, autonomous AI agent pipelines, and real-time 3D interactive mechanics. Deeply experienced in Unreal Engine 5, Blender 3D tooling, and connecting LLMs via Model Context Protocol (MCP) to live game &amp; simulation environments.
+                         AI-assisted developer who designs, ships, and tests full-stack, IoT, and LLM-powered products by directing AI coding agents (Antigravity IDE). Hands-on experience with Gemini API integration, prompt engineering, natural-language-to-SQL, and cloud deployment. Shipped a Google-certified smart home system, a multi-tenant SaaS, and an AI analytics platform.
                        </p>
                        <div className="flex justify-center md:justify-start items-center space-x-4 mb-8 text-sm w-full">
                          <div className="flex items-center gap-2">
                            <div className="h-2.5 w-2.5 rounded-full bg-emerald-500 dark:bg-emerald-400 transition-colors shadow-[0_0_10px_rgba(16,185,129,0.6)] animate-pulse"></div>
-                           <span className="text-xs font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 transition-colors">Open for Full-Stack, AI &amp; Game Dev Roles &bull; Remote &amp; Relocation</span>
+                           <span className="text-xs font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 transition-colors">Open for AI Developer &amp; Full-Stack Roles &bull; Remote &amp; Relocation</span>
                          </div>
                        </div>
                      </div>
