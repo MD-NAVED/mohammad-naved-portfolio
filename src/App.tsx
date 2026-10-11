@@ -1496,49 +1496,49 @@ export default function App() {
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       
-                      {/* Model 1: Full-Time Founding / Senior Engineer */}
+                      {/* Model 1: Full-Time Founding / Senior Engineer (Featured Primary Tier) */}
                       <motion.div 
-                        whileHover={{ y: -6, scale: 1.02 }}
+                        whileHover={{ y: -6, scale: 1.015 }}
                         transition={{ type: "spring", stiffness: 300 }}
-                        className="p-8 rounded-3xl bg-neutral-950 text-white dark:bg-white/[0.05] border-2 border-neutral-900 dark:border-white/20 shadow-2xl backdrop-blur-md flex flex-col justify-between relative overflow-hidden"
+                        className="p-8 rounded-3xl bg-white/70 dark:bg-[#121212]/70 border-2 border-neutral-900/30 dark:border-white/20 shadow-lg backdrop-blur-md flex flex-col justify-between relative overflow-hidden"
                       >
                         <div className="absolute top-4 right-4">
-                          <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white text-neutral-950 dark:bg-white dark:text-neutral-950 shadow-sm">
+                          <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs">
                             High Ownership
                           </span>
                         </div>
                         <div>
-                          <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white mb-4">
+                          <div className="w-12 h-12 rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 flex items-center justify-center mb-4 shadow-sm">
                             <Rocket className="w-6 h-6" />
                           </div>
-                          <h3 className="text-xl font-medium mb-1 text-white">Founding / Senior Engineer</h3>
-                          <p className="text-xs text-neutral-300 dark:text-neutral-400 mb-6 font-mono">Full-Time Core Team Hire</p>
-                          <ul className="space-y-3 text-xs text-neutral-300 leading-relaxed mb-8">
-                            <li className="flex items-start gap-2">
-                              <span className="text-white font-bold">&check;</span>
+                          <h3 className="text-xl font-medium mb-1 text-neutral-900 dark:text-neutral-100">Founding / Senior Engineer</h3>
+                          <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-6 font-mono">Full-Time Core Team Hire</p>
+                          <ul className="space-y-3 text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed mb-8">
+                            <li className="flex items-start gap-2.5">
+                              <CheckCircle2 className="w-4 h-4 text-neutral-900 dark:text-white shrink-0 mt-0.5" />
                               <span><strong>End-to-End Ownership:</strong> Architecting frontend, backend, database schemas, and AI pipelines with zero hand-holding.</span>
                             </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-white font-bold">&check;</span>
+                            <li className="flex items-start gap-2.5">
+                              <CheckCircle2 className="w-4 h-4 text-neutral-900 dark:text-white shrink-0 mt-0.5" />
                               <span><strong>Extreme Velocity:</strong> Rapid 0-to-1 prototype-to-production execution without enterprise bureaucracy.</span>
                             </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-white font-bold">&check;</span>
+                            <li className="flex items-start gap-2.5">
+                              <CheckCircle2 className="w-4 h-4 text-neutral-900 dark:text-white shrink-0 mt-0.5" />
                               <span><strong>Modern Stack:</strong> Next.js 16, React 19, TypeScript, Supabase/PostgreSQL, FastAPI, Tailwind v4.</span>
                             </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-white font-bold">&check;</span>
+                            <li className="flex items-start gap-2.5">
+                              <CheckCircle2 className="w-4 h-4 text-neutral-900 dark:text-white shrink-0 mt-0.5" />
                               <span><strong>Product-Minded:</strong> Writing code driven by real user metrics, churn prevention, and revenue impact.</span>
                             </li>
                           </ul>
                         </div>
                         <div>
-                          <p className="text-[11px] text-neutral-400 font-semibold mb-4">Open to remote &amp; hybrid roles</p>
+                          <p className="text-[11px] text-neutral-400 dark:text-neutral-500 font-medium mb-4">Open to remote &amp; hybrid roles</p>
                           <motion.button 
                             onClick={() => setCurrentView('contact')}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full py-3.5 rounded-2xl bg-white text-neutral-950 hover:bg-neutral-200 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 font-bold text-xs uppercase tracking-widest transition-all cursor-pointer shadow-lg"
+                            className="w-full py-3.5 rounded-2xl bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-neutral-950 font-bold text-xs uppercase tracking-widest transition-all cursor-pointer shadow-md"
                           >
                             Discuss Full-Time Role &rarr;
                           </motion.button>
@@ -1549,7 +1549,7 @@ export default function App() {
                       <motion.div 
                         whileHover={{ y: -6, scale: 1.01 }}
                         transition={{ type: "spring", stiffness: 300 }}
-                        className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 shadow-sm backdrop-blur-md flex flex-col justify-between"
+                        className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-neutral-200/80 dark:border-white/5 shadow-xs backdrop-blur-md flex flex-col justify-between"
                       >
                         <div>
                           <div className="flex justify-between items-start mb-4">
@@ -1561,20 +1561,20 @@ export default function App() {
                           <h3 className="text-xl font-medium mb-1 text-neutral-900 dark:text-neutral-100">Fractional Systems Architect</h3>
                           <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-6 font-mono">Contract Architecture &amp; Advisory</p>
                           <ul className="space-y-3 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
-                            <li className="flex items-start gap-2">
-                              <span className="text-indigo-500 font-bold">&check;</span>
+                            <li className="flex items-start gap-2.5">
+                              <CheckCircle2 className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
                               <span><strong>Architecture Blueprints:</strong> Scalable multi-tenant databases, API contracts, and microservice topologies.</span>
                             </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-indigo-500 font-bold">&check;</span>
+                            <li className="flex items-start gap-2.5">
+                              <CheckCircle2 className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
                               <span><strong>AI Roadmap Strategy:</strong> Benchmarking multi-LLM failovers, latency reduction, and RAG vector search.</span>
                             </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-indigo-500 font-bold">&check;</span>
+                            <li className="flex items-start gap-2.5">
+                              <CheckCircle2 className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
                               <span><strong>Engineering Governance:</strong> Code review standards, CI/CD automated test gates, and developer onboarding.</span>
                             </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-indigo-500 font-bold">&check;</span>
+                            <li className="flex items-start gap-2.5">
+                              <CheckCircle2 className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
                               <span><strong>Flexible Retainer:</strong> 20–40 hrs/month dedicated strategic oversight for seed/Series A teams.</span>
                             </li>
                           </ul>
@@ -1585,7 +1585,7 @@ export default function App() {
                             onClick={() => setCurrentView('contact')}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full py-3 rounded-2xl bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-neutral-950 font-bold text-xs uppercase tracking-widest transition-all cursor-pointer"
+                            className="w-full py-3.5 rounded-2xl border border-neutral-300 dark:border-neutral-700 bg-white/60 dark:bg-white/5 hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-neutral-900 text-neutral-900 dark:text-white font-bold text-xs uppercase tracking-widest transition-all cursor-pointer"
                           >
                             Consult on Architecture &rarr;
                           </motion.button>
@@ -1596,7 +1596,7 @@ export default function App() {
                       <motion.div 
                         whileHover={{ y: -6, scale: 1.01 }}
                         transition={{ type: "spring", stiffness: 300 }}
-                        className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-white/60 dark:border-white/5 shadow-sm backdrop-blur-md flex flex-col justify-between"
+                        className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-neutral-200/80 dark:border-white/5 shadow-xs backdrop-blur-md flex flex-col justify-between"
                       >
                         <div>
                           <div className="flex justify-between items-start mb-4">
@@ -1608,20 +1608,20 @@ export default function App() {
                           <h3 className="text-xl font-medium mb-1 text-neutral-900 dark:text-neutral-100">Technical Audits &amp; Sprints</h3>
                           <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-6 font-mono">Targeted Problem Solving</p>
                           <ul className="space-y-3 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
-                            <li className="flex items-start gap-2">
-                              <span className="text-violet-500 font-bold">&check;</span>
+                            <li className="flex items-start gap-2.5">
+                              <CheckCircle2 className="w-4 h-4 text-violet-500 shrink-0 mt-0.5" />
                               <span><strong>AI Reliability Debugging:</strong> Eliminating prompt hallucinations, schema drift, and token wastage.</span>
                             </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-violet-500 font-bold">&check;</span>
+                            <li className="flex items-start gap-2.5">
+                              <CheckCircle2 className="w-4 h-4 text-violet-500 shrink-0 mt-0.5" />
                               <span><strong>Performance &amp; Latency:</strong> Sub-300ms barcode/search tuning, database indexing, and TanStack caching.</span>
                             </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-violet-500 font-bold">&check;</span>
+                            <li className="flex items-start gap-2.5">
+                              <CheckCircle2 className="w-4 h-4 text-violet-500 shrink-0 mt-0.5" />
                               <span><strong>Hardware / IoT Failsafes:</strong> ESP32 firmware stability, MQTT reconnection loops, and OTA rollback testing.</span>
                             </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-violet-500 font-bold">&check;</span>
+                            <li className="flex items-start gap-2.5">
+                              <CheckCircle2 className="w-4 h-4 text-violet-500 shrink-0 mt-0.5" />
                               <span><strong>Proof of Concept:</strong> De-risking complex new technical features before company-wide commits.</span>
                             </li>
                           </ul>
@@ -1632,7 +1632,7 @@ export default function App() {
                             onClick={() => setCurrentView('contact')}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full py-3 rounded-2xl bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-neutral-950 font-bold text-xs uppercase tracking-widest transition-all cursor-pointer"
+                            className="w-full py-3.5 rounded-2xl border border-neutral-300 dark:border-neutral-700 bg-white/60 dark:bg-white/5 hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-neutral-900 text-neutral-900 dark:text-white font-bold text-xs uppercase tracking-widest transition-all cursor-pointer"
                           >
                             Request Technical Sprint &rarr;
                           </motion.button>
