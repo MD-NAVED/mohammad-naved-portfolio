@@ -1174,23 +1174,6 @@ export default function App() {
                              <span key={tag} className="border border-neutral-200 dark:border-neutral-800 bg-white/60 dark:bg-black/20 px-3 py-1 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-400 transition-colors">{tag}</span>
                            ))}
                          </div>
-
-                         {project.metrics && (
-                           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 relative z-10">
-                             {project.metrics.map((metric, mIdx) => (
-                               <div 
-                                 key={mIdx} 
-                                 className="p-3.5 rounded-2xl bg-white/70 dark:bg-white/[0.04] border border-neutral-200/70 dark:border-white/10 backdrop-blur-md shadow-xs"
-                               >
-                                 <div className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-1">{metric.label}</div>
-                                 <div className="text-xs sm:text-sm font-bold text-neutral-900 dark:text-neutral-100 font-mono flex items-center gap-1.5">
-                                   <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 dark:bg-neutral-500 shrink-0"></span>
-                                   <span>{metric.value}</span>
-                                 </div>
-                                </div>
-                             ))}
-                           </div>
-                         )}
                          <ul className="space-y-4 text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed max-w-3xl transition-colors relative z-10 font-light">
                            {project.summary.map((point, i) => (
                              <li key={i} className="flex items-start gap-3">
