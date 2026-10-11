@@ -58,6 +58,11 @@ const techSkillsData = [
   { name: "Capacitor & Mobile", icon: <Smartphone className="w-6 h-6" /> }
 ];
 
+export interface ProjectMetric {
+  label: string;
+  value: string;
+}
+
 export interface ProjectItem {
   id: number;
   title: string;
@@ -67,6 +72,12 @@ export interface ProjectItem {
   summary: string[];
   liveLink?: string;
   featuredBadge?: string;
+  metrics?: ProjectMetric[];
+  deepDiveProblem?: {
+    issue: string;
+    rootCause: string;
+    solution: string;
+  };
 }
 
 const projectsData: ProjectItem[] = [
@@ -76,46 +87,81 @@ const projectsData: ProjectItem[] = [
     domain: "Startup & AI Engineering",
     role: "Founder & Lead AI Engineer",
     featuredBadge: "Flagship Startup",
-    tags: ["React 19", "Tailwind CSS v4", "Supabase", "Multi-LLM Failover", "Resend", "Vercel"],
+    metrics: [
+      { label: "Primary Latency", value: "400ms (Groq 70B)" },
+      { label: "Failover Gateway", value: "Groq → NVIDIA → OpenAI" },
+      { label: "Delivery Velocity", value: "14 - 20 Days MVP" },
+      { label: "Protocol Standard", value: "Model Context Protocol (MCP)" }
+    ],
+    tags: ["React 19", "Tailwind CSS v4", "Supabase (Deno)", "Multi-LLM Failover", "Model Context Protocol (MCP)", "Resend", "Telegram Bot API"],
     liveLink: "https://codtrex.vercel.app",
     summary: [
       "Founded and launched a boutique AI engineering studio delivering production-grade AI MVPs, autonomous agents, and full-stack software in 14-20 days without $15k agency markups.",
-      "Engineered client web platform with multi-provider AI failover (Groq → NVIDIA → OpenAI) featuring dynamic Hinglish/English language detection and project brief drafting.",
-      "Built complete automated webhook infrastructure: Contact Form → Supabase Database → Resend glassmorphic transactional emails → Telegram instant push (@codtrexbot) and WhatsApp alerts.",
+      "Engineered multi-provider AI failover gateway (Groq Llama 3.3 70B @ 400ms → NVIDIA NIM → OpenAI) with graceful degradation and dynamic Roman Hinglish / English chat assistant.",
+      "Architected custom Model Context Protocol (MCP) server pipelines connecting LLMs to live databases and external systems via standardized JSON-RPC 2.0 tool-calling.",
+      "Built asynchronous event-driven webhook pipeline: Contact Form → Supabase Database INSERT → Edge Webhook → Telegram instant push (@codtrexbot) + WhatsApp Gateway + Resend glassmorphic transactional emails.",
       "Productized 5 locked service tiers (₹29k AI MVP to ₹80k/mo Dedicated Tech Partner) with an integrated 15% partner commission referral system."
-    ]
+    ],
+    deepDiveProblem: {
+      issue: "Single-provider LLM dependencies caused intermittent 429 rate-limit drops and high latency variance during peak client production traffic.",
+      rootCause: "Commercial frontier LLM endpoints experience latency spikes and strict token-per-minute (TPM) quotas during sudden traffic surges.",
+      solution: "Engineered a tiered multi-provider gateway routing requests first to ultra-fast Groq Llama 3.3 (400ms) with automated failover to NVIDIA NIM and OpenAI fallback, delivering 99.9% uptime and sub-second response times."
+    }
   },
   {
     id: 104,
-    title: "4Layers — Google Certified Smart Home IoT Ecosystem",
+    title: "4Layers — Google-Certified Commercial IoT Ecosystem",
     domain: "Commercial IoT & Cloud Infrastructure",
     role: "Lead IoT & Cloud Systems Architect",
     featuredBadge: "Official Google Certified",
-    tags: ["ESP32 (ESP-IDF/C)", "AWS IoT Core (mTLS 8883)", "FastAPI", "Google HomeGraph API", "PostgreSQL (RDS)", "AWS App Runner", "Docker & ECR", "OAuth 2.0 (RFC 6749)"],
+    metrics: [
+      { label: "Google Certification", value: "71 / 75 Tests Passed" },
+      { label: "State Synchronization", value: "Zero Divergence" },
+      { label: "Channel Sync Engine", value: "Idempotent Sync" },
+      { label: "Fleet Rollback", value: "Dual-Bank Range-Resume" }
+    ],
+    tags: ["ESP32 (C++/FreeRTOS)", "AWS IoT Core (mTLS 8883)", "FastAPI", "Google HomeGraph API", "PostgreSQL (RDS)", "AWS App Runner", "Docker & ECR", "OTA 2.0 Range-Resume"],
     summary: [
-      "Architected a production-grade IoT smart home platform connecting custom ESP32 hardware nodes (4-channel relay boards + triac fan speed controller) to AWS Cloud and Google Assistant ecosystem.",
-      "Achieved Official Google Smart Home Certification: Passed 71+/75 automated test cases in the official Google Test Suite with full RFC 6749 OAuth 2.0 auth lifecycle, SYNC/QUERY/EXECUTE fulfillment, and real-time HomeGraph state reporting (reportStateAndNotification).",
-      "Three-Source Real-Time State Sync: Engineered cross-source state reconciliation across Mobile App (React Native Expo), 433MHz RF Remote, and physical wall switches using AWS IoT Device Shadows (MQTT over mTLS 8883) as single source of truth.",
-      "Invented QA Hold Mode Engine: Solved asynchronous heartbeat race conditions during cloud certification testing via a custom hold-mode engine with 10-minute TTL auto-expiry and fail-open design, suppressing false-positive telemetry restoration.",
-      "4-Layer State Divergence Resolution: Traced and eliminated a complex fan speed divergence bug across shadow webhook key mappings, SQLAlchemy PostgreSQL JSON column dirty-tracking (flag_modified), and Python falsy-0 evaluations.",
-      "Production-Grade OTA 2.0 & Cloud CI/CD: Engineered dual-bank (A/B) partition flashing with NVS boot confirmation, exponential backoff retries, and automated zero-downtime rolling updates on AWS App Runner via Docker and Amazon ECR."
-    ]
+      "Architected a production-grade IoT smart home platform connecting custom ESP32 hardware nodes (relay boards + triac fan speed controller) to AWS Cloud and Google Assistant ecosystem.",
+      "Achieved Official Google Smart Home Certification: Passed 71/75 automated test cases in the official Google Test Suite with full RFC 6749 OAuth 2.0, SYNC/QUERY/EXECUTE fulfillment, and real-time HomeGraph reportStateAndNotification.",
+      "Three-Source Real-Time State Sync: Engineered cross-source state reconciliation across Mobile App (React Native Expo), 433MHz RF Remote, and physical wall switches using AWS IoT Device Shadows (mTLS 8883) with zero state divergence.",
+      "Authoritative Channel Sync Engine (channel_sync.py): Resolved Model B 8-channel hardware desync across PostgreSQL rows and firmware hooks with 8/8 unit tests passing and zero-downtime deployment on AWS App Runner.",
+      "Production-Grade OTA 2.0 & Rollback: Engineered HTTP Range-Resume (Range: bytes={offset}-) flashing with dual-partition (ota_0/ota_1) NVS boot confirmation and automated rollback safety on network interruption.",
+      "Invented QA Hold Mode Engine: Solved asynchronous heartbeat race conditions during cloud certification testing via a custom hold-mode engine with 10-minute TTL auto-expiry and fail-open design, suppressing false-positive telemetry restoration."
+    ],
+    deepDiveProblem: {
+      issue: "Model B 8-channel ESP32 boards displayed only 6 switch tiles in mobile app, leaving the 7th relay uncontrollable and Channel 5 locked as a fan.",
+      rootCause: "When devices provisioned or toggled hardware models, PostgreSQL device rows were never dynamically regenerated to match the 8-channel Model B layout.",
+      solution: "Implemented an authoritative, idempotent Channel Synchronization Engine (channel_sync.py) integrated into all lifecycle hooks (Model Switch API, MQTT Telemetry, Provisioning/Claim, Admin UI), achieving zero state divergence."
+    }
   },
   {
     id: 102,
-    title: "MediStock — Cloud Pharmacy SaaS & Inventory System",
+    title: "MediStock — Cloud Pharmacy POS & Clinical Inventory System",
     domain: "B2B SaaS & Point of Sale",
     role: "Founder, Product Architect & Full-Stack Engineer",
     featuredBadge: "Live B2B SaaS",
-    tags: ["React 18", "PostgreSQL (Supabase)", "Node.js", "Express", "Capacitor (Android)", "Razorpay", "Next.js 14"],
+    metrics: [
+      { label: "WAN Import Benchmark", value: "3,300 Rows / 1.83s" },
+      { label: "Race Prevention", value: "SELECT ... FOR UPDATE" },
+      { label: "Native Android Shell", value: "3.60 MB APK" },
+      { label: "Test Coverage", value: "209 Automated Tests" }
+    ],
+    tags: ["React 18", "MUI 6", "Capacitor 8.5 (Android)", "Node.js (Express)", "PostgreSQL (Supabase)", "Upstash Redis", "Google Gemini 3.6 Flash", "WASM Tesseract.js"],
     liveLink: "https://medistock-pos.vercel.app",
     summary: [
-      "Founded and architected a multi-device cloud pharmacy POS and inventory management platform designed for retail chemists across India, replacing legacy single-PC desktop software.",
-      "Engineered FEFO (First-Expiry-First-Out) automated stock rotation engine with 90-day color-coded distributor return warning alerts to eliminate costly inventory write-offs.",
-      "Built 1-click WhatsApp digital invoicing, customer Khata (Udhaar) ledger, Marg ERP/Excel catalog migration wizard, and AI camera invoice scanner for instant stock pre-fills.",
-      "Engineered multi-tenant store isolation (store_id scoping), 1-click HMAC-signed Founder Impersonation support tool, and 3-tier Razorpay automated subscription lock middleware.",
-      "Packaged a 3.5 MB ultra-lightweight native Android APK (Capacitor) optimized for high-speed mobile counter billing and IST (+05:30) day-boundary transactional analytics."
-    ]
+      "Founded and architected a multi-device cloud pharmacy POS and clinical inventory system designed for Indian retail chemists and clinic pharmacies, replacing legacy single-PC software.",
+      "FEFO (First-Expiry-First-Out) Auto-Allocation: Engineered nearest-expiry batch selection with atomic multi-batch deduction via row-level SELECT ... FOR UPDATE locks on PostgreSQL, eliminating negative stock across concurrent billing counters.",
+      "Scale-Hardened Excel/CSV Import Wizard: Engineered auto-detection for Marg ERP and TradeEasy formats, executing single atomic transactions using PostgreSQL UNNEST array batching in 500-row chunks — benchmarked at 3,300 rows committed in 1.834s over WAN with idempotent ON CONFLICT replace semantics.",
+      "Dual-Layer Wholesale Invoice Scanner: Built multi-tier AI document intelligence using Google Gemini 3.6 Flash Vision (extracting supplier, batch, expiry, rate) with on-device WebAssembly Tesseract.js and Mozilla PDF.js v4.10 fallback.",
+      "Customer Khata (Udhaar) ledger, HMAC-signed WhatsApp digital bills (INVOICE_SHARE_SECRET), and Upstash Redis distributed sliding-window rate limiting (120 req/min for billing, 10 req/5min for login).",
+      "Packaged a 3.60 MB lightweight native Android APK (Capacitor 8.5, versionCode 19) optimized for high-density counter billing and IST (+05:30) day-boundary transactional analytics."
+    ],
+    deepDiveProblem: {
+      issue: "Concurrent counter billing caused inventory race conditions where multiple chemists selling the same batch drove stock into negative quantities.",
+      rootCause: "Standard non-locking SELECT queries read stale quantity snapshots before issuing UPDATE statements during parallel checkout transactions.",
+      solution: "Enforced row-level locking via SELECT ... FOR UPDATE on the batches table within an isolated database transaction, ensuring serialization of stock deductions and eliminating race conditions completely."
+    }
   },
   {
     id: 103,
@@ -370,7 +416,7 @@ function PromptTerminal({ currentView, setCurrentView, isDarkMode, setIsDarkMode
               {/* Tool Execution Logs */}
               {msg.toolLog && (
                 <div className="flex justify-center my-2">
-                  <span className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[10px] font-mono font-bold py-1 px-3 rounded-full flex items-center gap-1.5 shadow-sm">
+                  <span className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-750 text-neutral-700 dark:text-neutral-300 text-[10px] font-mono font-bold py-1 px-3 rounded-full flex items-center gap-1.5 shadow-xs">
                     {msg.toolLog}
                   </span>
                 </div>
@@ -866,7 +912,7 @@ export default function App() {
                        <h1 className="text-6xl md:text-8xl font-semibold tracking-tighter leading-tight mb-6 text-transparent bg-clip-text bg-gradient-to-br from-neutral-950 via-neutral-800 to-neutral-600 dark:from-white dark:via-neutral-300 dark:to-neutral-500 transition-all duration-500">
                          Mohammad<br className="hidden md:block"/> Naved.
                        </h1>
-                       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase mb-6">
+                       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-neutral-800 dark:text-neutral-200 text-xs font-bold tracking-widest uppercase mb-6">
                          <Sparkles className="w-3.5 h-3.5" />
                          Full-Stack Architect &bull; AI Systems &bull; Game Development (UE5)
                        </div>
@@ -918,7 +964,7 @@ export default function App() {
                            rel="noopener noreferrer" 
                            whileHover={{ scale: 1.05, x: 2 }}
                            whileTap={{ scale: 0.95 }}
-                           className="text-emerald-600 dark:text-emerald-400 hover:underline transition-colors flex items-center gap-1.5 cursor-pointer font-bold"
+                           className="text-neutral-900 dark:text-neutral-100 hover:opacity-80 transition-opacity flex items-center gap-1.5 cursor-pointer font-bold"
                          >
                            Codtrex.ai <ArrowUpRight className="w-3.5 h-3.5" />
                          </motion.a>
@@ -948,7 +994,7 @@ export default function App() {
 
                   <section className="border-t border-neutral-200 dark:border-neutral-800 pt-16 md:pt-24 transition-colors">
                       <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-8 transition-colors flex items-center gap-2">
-                        <Rocket className="w-4 h-4 text-emerald-500" />
+                        <Rocket className="w-4 h-4 text-neutral-700 dark:text-neutral-300" />
                         Core Expertise &amp; Architecture
                       </h3>
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -960,13 +1006,13 @@ export default function App() {
                            whileHover={{ 
                              y: -8, 
                              scale: 1.015,
-                             boxShadow: "0 20px 40px -15px rgba(16, 185, 129, 0.15)"
+                             boxShadow: "0 20px 40px -15px rgba(0, 0, 0, 0.06)"
                            }}
                            whileTap={{ scale: 0.985 }}
-                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-emerald-500/30 dark:hover:border-emerald-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
+                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300 group overflow-hidden relative cursor-pointer"
                          >
-                           <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/5 dark:from-emerald-500/5 dark:via-transparent dark:to-teal-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                           <Brain className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
+                           <div className="absolute inset-0 bg-gradient-to-br from-neutral-500/[0.03] via-transparent to-neutral-500/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                           <Brain className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-neutral-950 dark:group-hover:text-white" />
                            <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">AI Agent Pipelines &amp; Failover</h4>
                            <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Multi-provider LLM failover (Groq &rarr; NVIDIA &rarr; OpenAI), autonomous tool calling, structured JSON output formatting, and prompt evaluation.</p>
                          </motion.div>
@@ -978,13 +1024,13 @@ export default function App() {
                            whileHover={{ 
                              y: -8, 
                              scale: 1.015,
-                             boxShadow: "0 20px 40px -15px rgba(16, 185, 129, 0.15)"
+                             boxShadow: "0 20px 40px -15px rgba(0, 0, 0, 0.06)"
                            }}
                            whileTap={{ scale: 0.985 }}
-                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-emerald-500/30 dark:hover:border-emerald-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
+                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300 group overflow-hidden relative cursor-pointer"
                          >
-                           <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/5 dark:from-emerald-500/5 dark:via-transparent dark:to-teal-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                           <Globe className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
+                           <div className="absolute inset-0 bg-gradient-to-br from-neutral-500/[0.03] via-transparent to-neutral-500/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                           <Globe className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-neutral-950 dark:group-hover:text-white" />
                            <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">B2B SaaS &amp; Multi-Tenant Systems</h4>
                            <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Store-isolated database architectures (PostgreSQL/Supabase), RBAC, HMAC-signed founder impersonation, and live Razorpay payment engines.</p>
                          </motion.div>
@@ -996,13 +1042,13 @@ export default function App() {
                            whileHover={{ 
                              y: -8, 
                              scale: 1.015,
-                             boxShadow: "0 20px 40px -15px rgba(16, 185, 129, 0.15)"
+                             boxShadow: "0 20px 40px -15px rgba(0, 0, 0, 0.06)"
                            }}
                            whileTap={{ scale: 0.985 }}
-                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-emerald-500/30 dark:hover:border-emerald-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
+                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300 group overflow-hidden relative cursor-pointer"
                          >
-                           <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/5 dark:from-emerald-500/5 dark:via-transparent dark:to-teal-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                           <Cpu className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
+                           <div className="absolute inset-0 bg-gradient-to-br from-neutral-500/[0.03] via-transparent to-neutral-500/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                           <Cpu className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-neutral-950 dark:group-hover:text-white" />
                            <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">Commercial IoT &amp; Cloud Fleet</h4>
                            <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">ESP32 C++ firmware, EMQX MQTT routing, Google HomeGraph certification, QA Hold mode, and automated OTA 2.0 deployment pipelines.</p>
                          </motion.div>
@@ -1014,13 +1060,13 @@ export default function App() {
                            whileHover={{ 
                              y: -8, 
                              scale: 1.015,
-                             boxShadow: "0 20px 40px -15px rgba(16, 185, 129, 0.15)"
+                             boxShadow: "0 20px 40px -15px rgba(0, 0, 0, 0.06)"
                            }}
                            whileTap={{ scale: 0.985 }}
-                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-emerald-500/30 dark:hover:border-emerald-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
+                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300 group overflow-hidden relative cursor-pointer"
                          >
-                           <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/5 dark:from-emerald-500/5 dark:via-transparent dark:to-teal-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                           <Store className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
+                           <div className="absolute inset-0 bg-gradient-to-br from-neutral-500/[0.03] via-transparent to-neutral-500/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                           <Store className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-neutral-950 dark:group-hover:text-white" />
                            <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">Marketplaces &amp; Algorithmic Engines</h4>
                            <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Category registries, algorithmic Fair-Price engines, technician stress-testing checklists, and frictionless WhatsApp-first commerce.</p>
                          </motion.div>
@@ -1032,13 +1078,13 @@ export default function App() {
                            whileHover={{ 
                              y: -8, 
                              scale: 1.015,
-                             boxShadow: "0 20px 40px -15px rgba(16, 185, 129, 0.15)"
+                             boxShadow: "0 20px 40px -15px rgba(0, 0, 0, 0.06)"
                            }}
                            whileTap={{ scale: 0.985 }}
-                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-emerald-500/30 dark:hover:border-emerald-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
+                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300 group overflow-hidden relative cursor-pointer"
                          >
-                           <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/5 dark:from-emerald-500/5 dark:via-transparent dark:to-teal-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                           <ShieldCheck className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
+                           <div className="absolute inset-0 bg-gradient-to-br from-neutral-500/[0.03] via-transparent to-neutral-500/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                           <ShieldCheck className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-neutral-950 dark:group-hover:text-white" />
                            <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">DevSecOps &amp; Webhook Automation</h4>
                            <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Supabase triggers, Resend email pipelines, Telegram/WhatsApp bots, CORS lockdown, rate limiting, and 100% automated regression suites.</p>
                          </motion.div>
@@ -1050,13 +1096,13 @@ export default function App() {
                            whileHover={{ 
                              y: -8, 
                              scale: 1.015,
-                             boxShadow: "0 20px 40px -15px rgba(16, 185, 129, 0.15)"
+                             boxShadow: "0 20px 40px -15px rgba(0, 0, 0, 0.06)"
                            }}
                            whileTap={{ scale: 0.985 }}
-                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-emerald-500/30 dark:hover:border-emerald-500/20 transition-all duration-300 group overflow-hidden relative cursor-pointer"
+                           className="p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300 group overflow-hidden relative cursor-pointer"
                          >
-                           <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/5 dark:from-emerald-500/5 dark:via-transparent dark:to-teal-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                           <Rocket className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
+                           <div className="absolute inset-0 bg-gradient-to-br from-neutral-500/[0.03] via-transparent to-neutral-500/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                           <Rocket className="relative z-10 w-8 h-8 text-neutral-700 dark:text-neutral-300 mb-6 transition-colors group-hover:text-neutral-950 dark:group-hover:text-white" />
                            <h4 className="relative z-10 text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-3 transition-colors">Zero-to-One Product Velocity</h4>
                            <p className="relative z-10 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed transition-colors">Directing AI coding agents to architect, iterate, and deploy production-ready applications in 14-20 days with 10x iteration speed.</p>
                          </motion.div>
@@ -1072,7 +1118,7 @@ export default function App() {
                <motion.div key="projects" variants={pageVariants} initial="initial" animate="animate" exit="exit" className="space-y-12">
                  
                  <div className="border-b border-neutral-200 dark:border-neutral-800 pb-8 rounded-t-lg">
-                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase mb-3">
+                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-neutral-800 dark:text-neutral-200 text-xs font-bold tracking-widest uppercase mb-3">
                      <Rocket className="w-3.5 h-3.5" />
                      Shipped &amp; Live Systems
                    </div>
@@ -1091,18 +1137,18 @@ export default function App() {
                         whileHover={{ 
                           y: -8, 
                           scale: 1.01,
-                          boxShadow: "0 25px 50px -15px rgba(16, 185, 129, 0.15)"
+                          boxShadow: "0 25px 50px -15px rgba(0, 0, 0, 0.1)"
                         }}
                         whileTap={{ scale: 0.99 }}
-                        className="group cursor-pointer p-8 md:p-12 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 hover:border-emerald-500/30 dark:hover:border-emerald-500/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300 relative overflow-hidden"
+                        className="group cursor-pointer p-8 md:p-12 rounded-3xl bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md border border-white/60 dark:border-white/5 hover:border-neutral-300 dark:hover:border-neutral-700 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300 relative overflow-hidden"
                         onClick={() => setSelectedProject(project)}
                       >
-                         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/5 dark:from-emerald-500/5 dark:via-transparent dark:to-teal-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                         <div className="absolute inset-0 bg-gradient-to-br from-neutral-500/[0.03] via-transparent to-neutral-500/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                          
                          <div className="flex flex-wrap items-center justify-between gap-3 mb-3 relative z-10">
                            <div className="flex items-center gap-2">
                              {project.featuredBadge && (
-                               <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                               <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 flex items-center gap-1">
                                  <Sparkles className="w-3 h-3" />
                                  {project.featuredBadge}
                                </span>
@@ -1117,21 +1163,38 @@ export default function App() {
                          </div>
 
                          <div className="flex flex-wrap items-start justify-between gap-4 mb-4 relative z-10">
-                           <h3 className="text-2xl md:text-3xl font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors flex items-center gap-3">
+                           <h3 className="text-2xl md:text-3xl font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-neutral-950 dark:group-hover:text-white transition-colors flex items-center gap-3">
                              {project.title}
                              <ArrowUpRight className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity" />
                            </h3>
                          </div>
                          
-                         <div className="flex flex-wrap gap-2 mb-8 relative z-10">
+                         <div className="flex flex-wrap gap-2 mb-6 relative z-10">
                            {project.tags.map(tag => (
                              <span key={tag} className="border border-neutral-200 dark:border-neutral-800 bg-white/60 dark:bg-black/20 px-3 py-1 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-400 transition-colors">{tag}</span>
                            ))}
                          </div>
+
+                         {project.metrics && (
+                           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 relative z-10">
+                             {project.metrics.map((metric, mIdx) => (
+                               <div 
+                                 key={mIdx} 
+                                 className="p-3.5 rounded-2xl bg-white/70 dark:bg-white/[0.04] border border-neutral-200/70 dark:border-white/10 backdrop-blur-md shadow-xs"
+                               >
+                                 <div className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-1">{metric.label}</div>
+                                 <div className="text-xs sm:text-sm font-bold text-neutral-900 dark:text-neutral-100 font-mono flex items-center gap-1.5">
+                                   <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 dark:bg-neutral-500 shrink-0"></span>
+                                   <span>{metric.value}</span>
+                                 </div>
+                                </div>
+                             ))}
+                           </div>
+                         )}
                          <ul className="space-y-4 text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed max-w-3xl transition-colors relative z-10 font-light">
                            {project.summary.map((point, i) => (
                              <li key={i} className="flex items-start gap-3">
-                               <span className="text-emerald-500 dark:text-emerald-400 mt-0.5 font-bold transition-colors">—</span>
+                               <span className="text-neutral-400 dark:text-neutral-500 mt-0.5 font-bold transition-colors">—</span>
                                <p>{point}</p>
                              </li>
                            ))}
@@ -1145,7 +1208,7 @@ export default function App() {
                               }}
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-neutral-100 border-b border-neutral-900/30 dark:border-neutral-100/30 hover:border-emerald-500 dark:hover:border-emerald-400 transition-colors pb-1 focus:outline-none cursor-pointer"
+                              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-neutral-100 border-b border-neutral-900/30 dark:border-neutral-100/30 hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors pb-1 focus:outline-none cursor-pointer"
                             >
                               Deep-Dive Case Study
                             </motion.button>
@@ -1157,7 +1220,7 @@ export default function App() {
                                 onClick={(e) => e.stopPropagation()}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 border-b border-emerald-500/30 hover:border-emerald-500 transition-colors pb-1 cursor-pointer"
+                                className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-neutral-100 border-b border-neutral-900/30 dark:border-neutral-100/30 hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors pb-1 cursor-pointer"
                               >
                                 Live Platform <ArrowUpRight className="w-3.5 h-3.5" />
                               </motion.a>
@@ -1175,7 +1238,7 @@ export default function App() {
              {currentView === 'experience' && (
                <motion.div key="experience" variants={pageVariants} initial="initial" animate="animate" exit="exit" className="space-y-16">
                  <div className="border-b border-neutral-200 dark:border-neutral-800 pb-8">
-                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase mb-3">
+                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-neutral-800 dark:text-neutral-200 text-xs font-bold tracking-widest uppercase mb-3">
                      <Briefcase className="w-3.5 h-3.5" />
                      Track Record &amp; Competencies
                    </div>
@@ -1195,26 +1258,26 @@ export default function App() {
                          <div>
                            <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
                              Founder &amp; Lead AI Engineer
-                             <span className="text-emerald-600 dark:text-emerald-400 text-sm font-semibold">&bull; Codtrex AI</span>
+                             <span className="text-neutral-900 dark:text-neutral-100 text-sm font-semibold">&bull; Codtrex AI</span>
                            </h3>
                            <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 mt-0.5">Boutique AI Engineering Studio &bull; codtrex.vercel.app</p>
                          </div>
-                         <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+                         <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300">
                            2026 &ndash; Present
                          </span>
                        </div>
                        <ul className="space-y-2.5 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-light mt-4">
                          <li className="flex items-start gap-2.5">
-                           <span className="text-emerald-500 font-bold">&mdash;</span>
+                           <span className="text-neutral-400 dark:text-neutral-500 font-bold">&mdash;</span>
                            <span>Directing an agile AI engineering studio delivering production applications in 14-20 days without $15k agency markups.</span>
                          </li>
                          <li className="flex items-start gap-2.5">
-                           <span className="text-emerald-500 font-bold">&mdash;</span>
-                           <span>Engineered client web platform with multi-provider AI failover (Groq &rarr; NVIDIA &rarr; OpenAI) with Hinglish/English language detection.</span>
+                           <span className="text-neutral-400 dark:text-neutral-500 font-bold">&mdash;</span>
+                           <span>Engineered multi-provider AI failover gateway (Groq Llama 3.3 70B @ 400ms &rarr; NVIDIA NIM &rarr; OpenAI) and Model Context Protocol (MCP) tool pipelines.</span>
                          </li>
                          <li className="flex items-start gap-2.5">
-                           <span className="text-emerald-500 font-bold">&mdash;</span>
-                           <span>Architected full webhook event pipeline: Supabase &rarr; Resend transactional emails &rarr; Telegram (@codtrexbot) and WhatsApp alerts.</span>
+                           <span className="text-neutral-400 dark:text-neutral-500 font-bold">&mdash;</span>
+                           <span>Architected asynchronous event-driven webhook pipeline: Supabase Database INSERT &rarr; Edge Functions &rarr; Resend transactional emails &rarr; Telegram (@codtrexbot) and WhatsApp alerts.</span>
                          </li>
                        </ul>
                      </div>
@@ -1235,19 +1298,19 @@ export default function App() {
                         <ul className="space-y-2.5 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-light mt-4">
                           <li className="flex items-start gap-2.5">
                             <span className="text-indigo-500 font-bold">&mdash;</span>
-                            <span>Achieved Official Google Smart Home Action Certification passing 71+/75 automated test cases with RFC 6749 OAuth 2.0, SYNC/QUERY/EXECUTE, and bi-directional HomeGraph state synchronization.</span>
+                            <span>Achieved Official Google Smart Home Action Certification passing 71/75 automated test cases with RFC 6749 OAuth 2.0, SYNC/QUERY/EXECUTE, and bi-directional HomeGraph state synchronization.</span>
                           </li>
                           <li className="flex items-start gap-2.5">
                             <span className="text-indigo-500 font-bold">&mdash;</span>
-                            <span>Engineered 3-source real-time state synchronization across Mobile App (React Native Expo), 433MHz RF Remote, and physical wall switches using AWS IoT Device Shadows (mTLS 8883) as single source of truth.</span>
+                            <span>Engineered 3-source real-time state synchronization across Mobile App (React Native Expo), 433MHz RF Remote, and physical wall switches using AWS IoT Device Shadows (mTLS 8883) with zero state divergence.</span>
                           </li>
                           <li className="flex items-start gap-2.5">
                             <span className="text-indigo-500 font-bold">&mdash;</span>
-                            <span>Invented QA Hold Mode with 10-minute TTL auto-expiry to suppress false-positive heartbeat race conditions during Google cloud certification tests.</span>
+                            <span>Built authoritative idempotent Channel Sync Engine (channel_sync.py) to resolve Model B 8-channel relay desync, passing 8/8 unit tests and deployed to AWS App Runner with zero downtime.</span>
                           </li>
                           <li className="flex items-start gap-2.5">
                             <span className="text-indigo-500 font-bold">&mdash;</span>
-                            <span>Engineered production-grade OTA 2.0 dual-partition (A/B) flashing with NVS boot confirmation and zero-downtime rolling updates on AWS App Runner via Docker and Amazon ECR.</span>
+                            <span>Engineered production-grade OTA 2.0 with HTTP Range-Resume (Range: bytes={'{'}offset{'}'}-), dual-partition (A/B) NVS rollback protection, and QA Hold Mode (10-min TTL) for cloud test isolation.</span>
                           </li>
                         </ul>
                       </div>
@@ -1257,26 +1320,26 @@ export default function App() {
                          <div>
                            <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
                              Founder &amp; Product Architect
-                             <span className="text-teal-600 dark:text-teal-400 text-sm font-semibold">&bull; MediStock</span>
+                             <span className="text-neutral-900 dark:text-neutral-100 text-sm font-semibold">&bull; MediStock</span>
                            </h3>
                            <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 mt-0.5">Cloud Pharmacy SaaS &amp; POS Platform &bull; medistock-pos.vercel.app</p>
                          </div>
-                         <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-teal-500/10 border border-teal-500/20 text-teal-600 dark:text-teal-400">
+                         <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300">
                            2026 &ndash; Present
                          </span>
                        </div>
                        <ul className="space-y-2.5 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-light mt-4">
                          <li className="flex items-start gap-2.5">
-                           <span className="text-teal-500 font-bold">&mdash;</span>
-                           <span>Architected a multi-device B2B cloud pharmacy SaaS with FEFO automated inventory liquidation, reducing costly medicine expiry losses.</span>
+                           <span className="text-neutral-400 dark:text-neutral-500 font-bold">&mdash;</span>
+                           <span>Architected a multi-device B2B cloud pharmacy POS with FEFO automated batch allocation and row-level SELECT ... FOR UPDATE locks on PostgreSQL, eliminating negative stock across concurrent billing counters.</span>
                          </li>
                          <li className="flex items-start gap-2.5">
-                           <span className="text-teal-500 font-bold">&mdash;</span>
-                           <span>Built 1-click WhatsApp invoicing, customer Khata ledger, AI camera invoice scanner, and Marg ERP/Excel catalog migration engine.</span>
+                           <span className="text-neutral-400 dark:text-neutral-500 font-bold">&mdash;</span>
+                           <span>Engineered Scale-Hardened Excel/CSV Import Wizard with Marg ERP/TradeEasy auto-detection, using PostgreSQL UNNEST 500-row chunking to commit 3,300 rows in 1.834s over WAN with idempotent replace semantics.</span>
                          </li>
                          <li className="flex items-start gap-2.5">
-                           <span className="text-teal-500 font-bold">&mdash;</span>
-                           <span>Packaged ultra-light 3.5 MB native Android APK (Capacitor) with high-speed counter billing and Razorpay automated subscription locks.</span>
+                           <span className="text-neutral-400 dark:text-neutral-500 font-bold">&mdash;</span>
+                           <span>Built Dual-Layer Wholesale Invoice Scanner using Google Gemini 3.6 Flash Vision with on-device WASM Tesseract.js fallback, 1-click WhatsApp digital bills (HMAC-signed), and 3.60 MB native Android APK (Capacitor 8.5).</span>
                          </li>
                        </ul>
                      </div>
@@ -1432,7 +1495,7 @@ export default function App() {
                 <motion.div key="services" variants={pageVariants} initial="initial" animate="animate" exit="exit" className="space-y-16">
                   
                   <div className="border-b border-neutral-200 dark:border-neutral-800 pb-8">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase mb-3">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200/80 dark:border-white/10 text-neutral-800 dark:text-neutral-200 text-xs font-bold tracking-widest uppercase mb-3">
                       <Sparkles className="w-3.5 h-3.5" />
                       Engineering Leadership &amp; Architecture
                     </div>
@@ -1454,45 +1517,45 @@ export default function App() {
                       <motion.div 
                         whileHover={{ y: -6, scale: 1.02 }}
                         transition={{ type: "spring", stiffness: 300 }}
-                        className="p-8 rounded-3xl bg-emerald-500/5 dark:bg-emerald-500/10 border-2 border-emerald-500/40 shadow-xl backdrop-blur-md flex flex-col justify-between relative overflow-hidden"
+                        className="p-8 rounded-3xl bg-neutral-950 text-white dark:bg-white/[0.05] border-2 border-neutral-900 dark:border-white/20 shadow-2xl backdrop-blur-md flex flex-col justify-between relative overflow-hidden"
                       >
                         <div className="absolute top-4 right-4">
-                          <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500 text-white">
+                          <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white text-neutral-950 dark:bg-white dark:text-neutral-950 shadow-sm">
                             High Ownership
                           </span>
                         </div>
                         <div>
-                          <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4">
+                          <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white mb-4">
                             <Rocket className="w-6 h-6" />
                           </div>
-                          <h3 className="text-xl font-medium mb-1 text-neutral-900 dark:text-neutral-100">Founding / Senior Engineer</h3>
-                          <p className="text-xs text-neutral-400 dark:text-neutral-500 mb-6 font-mono">Full-Time Core Team Hire</p>
-                          <ul className="space-y-3 text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed mb-8">
+                          <h3 className="text-xl font-medium mb-1 text-white">Founding / Senior Engineer</h3>
+                          <p className="text-xs text-neutral-300 dark:text-neutral-400 mb-6 font-mono">Full-Time Core Team Hire</p>
+                          <ul className="space-y-3 text-xs text-neutral-300 leading-relaxed mb-8">
                             <li className="flex items-start gap-2">
-                              <span className="text-emerald-500 font-bold">&check;</span>
+                              <span className="text-white font-bold">&check;</span>
                               <span><strong>End-to-End Ownership:</strong> Architecting frontend, backend, database schemas, and AI pipelines with zero hand-holding.</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-emerald-500 font-bold">&check;</span>
+                              <span className="text-white font-bold">&check;</span>
                               <span><strong>Extreme Velocity:</strong> Rapid 0-to-1 prototype-to-production execution without enterprise bureaucracy.</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-emerald-500 font-bold">&check;</span>
+                              <span className="text-white font-bold">&check;</span>
                               <span><strong>Modern Stack:</strong> Next.js 16, React 19, TypeScript, Supabase/PostgreSQL, FastAPI, Tailwind v4.</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <span className="text-emerald-500 font-bold">&check;</span>
+                              <span className="text-white font-bold">&check;</span>
                               <span><strong>Product-Minded:</strong> Writing code driven by real user metrics, churn prevention, and revenue impact.</span>
                             </li>
                           </ul>
                         </div>
                         <div>
-                          <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold mb-4">Open to remote &amp; hybrid roles</p>
+                          <p className="text-[11px] text-neutral-400 font-semibold mb-4">Open to remote &amp; hybrid roles</p>
                           <motion.button 
                             onClick={() => setCurrentView('contact')}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-widest transition-all cursor-pointer shadow-lg"
+                            className="w-full py-3.5 rounded-2xl bg-white text-neutral-950 hover:bg-neutral-200 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 font-bold text-xs uppercase tracking-widest transition-all cursor-pointer shadow-lg"
                           >
                             Discuss Full-Time Role &rarr;
                           </motion.button>
@@ -1606,7 +1669,7 @@ export default function App() {
                       <div className="space-y-6">
                         <div className="flex items-start gap-4">
                           <div className="w-10 h-10 rounded-xl bg-neutral-200/50 dark:bg-neutral-800/50 flex items-center justify-center text-neutral-600 dark:text-neutral-400 mt-1">
-                            <Zap className="w-5 h-5 text-emerald-500" />
+                            <Zap className="w-5 h-5 text-amber-500" />
                           </div>
                           <div>
                             <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Zero-to-One Shipping Velocity</h4>
@@ -1644,7 +1707,7 @@ export default function App() {
 
                         <div className="flex items-start gap-4">
                           <div className="w-10 h-10 rounded-xl bg-neutral-200/50 dark:bg-neutral-800/50 flex items-center justify-center text-neutral-600 dark:text-neutral-400 mt-1">
-                            <Layers className="w-5 h-5 text-emerald-500" />
+                            <Layers className="w-5 h-5 text-neutral-700 dark:text-neutral-300" />
                           </div>
                           <div>
                             <h4 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Full-Stack Fluidity</h4>
@@ -1660,7 +1723,7 @@ export default function App() {
                   {/* Clean Dedicated Banner to Codtrex AI Studio */}
                   <div className="p-6 md:p-8 rounded-3xl bg-white/40 dark:bg-[#111111]/40 border border-neutral-200/60 dark:border-neutral-800/60 flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-md">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-xl flex-shrink-0 border border-emerald-500/20">
+                      <div className="w-12 h-12 rounded-2xl bg-neutral-100 dark:bg-white/10 text-neutral-900 dark:text-white flex items-center justify-center font-bold text-xl flex-shrink-0 border border-neutral-200 dark:border-neutral-800">
                         <Store className="w-6 h-6" />
                       </div>
                       <div>
@@ -1682,7 +1745,7 @@ export default function App() {
                   </div>
 
                   {/* Call to Action for Companies & Recruiters */}
-                  <div className="p-8 rounded-3xl bg-gradient-to-r from-emerald-500/10 to-indigo-500/10 border border-emerald-500/20 flex flex-col md:flex-row items-center justify-between gap-6">
+                  <div className="p-8 rounded-3xl bg-neutral-100/80 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div>
                       <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100">Ready to discuss an engineering role or technical challenge?</h3>
                       <p className="text-sm text-neutral-500 dark:text-neutral-400 font-light mt-1">Let's connect to review how my architecture and full-stack execution can accelerate your product roadmap.</p>
@@ -1729,7 +1792,7 @@ export default function App() {
                              </div>
                           </a>
                           <a href="mailto:contact.codtrexai@gmail.com" className="group flex items-start gap-4 hover:opacity-80 transition-opacity">
-                             <div className="mt-1"><Rocket className="w-5 h-5 text-emerald-500" /></div>
+                             <div className="mt-1"><Rocket className="w-5 h-5 text-neutral-500" /></div>
                              <div>
                                 <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100">Studio Inquiries</p>
                                 <p className="text-sm text-neutral-500 mt-1 font-light">contact.codtrexai@gmail.com</p>
@@ -1748,10 +1811,10 @@ export default function App() {
                             rel="noopener noreferrer" 
                             className="group flex items-start gap-4 hover:opacity-80 transition-opacity"
                           >
-                             <div className="mt-1"><ExternalLink className="w-5 h-5 text-emerald-500" /></div>
+                             <div className="mt-1"><ExternalLink className="w-5 h-5 text-neutral-500" /></div>
                              <div>
                                 <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100">Codtrex AI Studio</p>
-                                <p className="text-sm text-emerald-600 dark:text-emerald-400 mt-1 font-mono text-xs">codtrex.vercel.app ↗</p>
+                                <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-1 font-mono text-xs hover:underline">codtrex.vercel.app ↗</p>
                              </div>
                           </a>
                           <a 
@@ -1877,7 +1940,7 @@ export default function App() {
               whileHover={{ scale: 1.08, y: -2 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              className="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 cursor-pointer inline-block"
+              className="hover:text-neutral-900 dark:hover:text-neutral-100 cursor-pointer inline-block"
             >
               Codtrex AI ↗
             </motion.a>
@@ -1954,7 +2017,7 @@ export default function App() {
                         </span>
                       )}
                       {selectedProject.featuredBadge && (
-                        <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-semibold">
+                        <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold">
                           {selectedProject.featuredBadge}
                         </span>
                       )}
@@ -1989,13 +2052,68 @@ export default function App() {
                     )}
                   </div>
 
-                  <div className="space-y-16">
+                  <div className="space-y-12">
+                    {/* Metrics Section */}
+                    {selectedProject.metrics && (
+                      <section>
+                        <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-neutral-100 mb-4 flex items-center gap-2">
+                          <Sparkles className="w-3.5 h-3.5" />
+                          Engineering Benchmarks &amp; Production KPIs
+                        </h4>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
+                          {selectedProject.metrics.map((metric, idx) => (
+                            <div 
+                              key={idx} 
+                              className="p-4 rounded-2xl bg-neutral-50 dark:bg-[#161616] border border-neutral-200/80 dark:border-neutral-800/80"
+                            >
+                              <div className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-1">{metric.label}</div>
+                              <div className="text-xs sm:text-sm font-bold text-neutral-900 dark:text-neutral-100 font-mono flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 dark:bg-neutral-500 shrink-0"></span>
+                                <span>{metric.value}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </section>
+                    )}
+
+                    {/* Deep-Dive Problem Section */}
+                    {selectedProject.deepDiveProblem && (
+                      <section className="p-6 md:p-8 rounded-3xl bg-neutral-50/70 dark:bg-[#141414] border border-neutral-200/80 dark:border-neutral-800/80 space-y-4">
+                        <div className="flex items-center gap-2">
+                          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
+                            Production Challenge
+                          </span>
+                          <span className="text-[11px] font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest">
+                            Architecture Case Study
+                          </span>
+                        </div>
+                        <div className="space-y-3 text-xs md:text-sm leading-relaxed">
+                          <div>
+                            <p className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Challenge / Incident:</p>
+                            <p className="text-neutral-600 dark:text-neutral-400 font-light">{selectedProject.deepDiveProblem.issue}</p>
+                          </div>
+                          <div className="p-4 rounded-2xl bg-white dark:bg-[#1a1a1a] border border-neutral-200/60 dark:border-neutral-800/60">
+                            <p className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Root Cause:</p>
+                            <p className="text-neutral-600 dark:text-neutral-400 font-light text-xs">{selectedProject.deepDiveProblem.rootCause}</p>
+                          </div>
+                          <div className="p-4 rounded-2xl bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200/80 dark:border-white/10">
+                            <p className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1 flex items-center gap-2">
+                              <CheckCircle2 className="w-3.5 h-3.5" />
+                              Authoritative Solution &amp; Outcome:
+                            </p>
+                            <p className="text-neutral-700 dark:text-neutral-300 font-light text-xs">{selectedProject.deepDiveProblem.solution}</p>
+                          </div>
+                        </div>
+                      </section>
+                    )}
+
                     <section>
-                      <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-neutral-100 mb-6 transition-colors">Key Contributions</h4>
-                      <ul className="space-y-6 pl-0 md:pl-6 border-l-0 md:border-l-2 border-neutral-200 dark:border-neutral-800 text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed font-light transition-colors">
+                      <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-neutral-100 mb-6 transition-colors">Key Contributions &amp; Architectural Deliverables</h4>
+                      <ul className="space-y-5 pl-0 md:pl-6 border-l-0 md:border-l-2 border-neutral-200 dark:border-neutral-800 text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed font-light transition-colors">
                         {selectedProject.summary.map((point, i) => (
-                          <li key={i} className="flex items-start gap-4">
-                            <span className="text-neutral-300 dark:text-neutral-700 mt-1">&mdash;</span>
+                          <li key={i} className="flex items-start gap-3">
+                            <span className="text-neutral-400 dark:text-neutral-500 mt-1">&mdash;</span>
                             <p>{point}</p>
                           </li>
                         ))}
