@@ -918,7 +918,7 @@ export default function App() {
                          AI-Assisted Developer &bull; Prompt Engineer &bull; Full-Stack Product Builder
                        </div>
                        <p className="text-base text-neutral-600 dark:text-neutral-400 max-w-xl leading-relaxed mb-8 transition-colors mx-auto md:mx-0 font-light">
-                         AI-assisted developer who designs, ships, and tests full-stack, IoT, and LLM-powered products by directing AI coding agents (Antigravity IDE). Hands-on experience integrating multi-model LLMs (Claude, Gemini, NVIDIA NIM, GLM), prompt engineering, natural-language-to-SQL, and cloud deployment. Shipped a Google-certified smart home system, a multi-tenant SaaS, and an AI analytics platform.
+                         AI-assisted developer who designs, ships, and tests full-stack, IoT, and LLM-powered products by directing autonomous AI coding agents and workflows. Hands-on experience integrating multi-model LLMs (Claude, Gemini, NVIDIA NIM, GLM), prompt engineering, natural-language-to-SQL, and cloud deployment. Shipped a Google-certified smart home system, a multi-tenant SaaS, and an AI analytics platform.
                        </p>
                        <div className="flex justify-center md:justify-start items-center space-x-4 mb-8 text-sm w-full">
                          <div className="flex items-center gap-2">
