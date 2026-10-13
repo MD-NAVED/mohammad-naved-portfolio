@@ -206,13 +206,13 @@ const projectsData: ProjectItem[] = [
   },
   {
     id: 106,
-    title: "DataLens AI — Full-Stack AI Analytics Platform",
+    title: "Analyst.AI — AI-Powered Data Analytics Suite",
     domain: "Frontend Architecture & BI",
     tags: ["React", "TypeScript", "Recharts", "Gemini AI", "Analytics"],
-    liveLink: "https://data-lens-ai-omega.vercel.app/",
+    liveLink: "https://analystdotai.vercel.app/",
     summary: [
-      "Built an AI chat interface that converts natural-language questions into SQL queries via prompt-driven query generation.",
-      "Designed prompt templates for the ML Lab module to explain model outputs and surface insights in plain language.",
+      "Built an AI Auto-Analyst interface that converts natural-language questions into SQL queries via prompt-driven query generation across CSV and Excel datasets.",
+      "Engineered automated data cleaning, outlier detection, and prompt templates for instant statistical insights and executive audits.",
       "Directed end-to-end product development — frontend, ETL pipeline, and SQL engine — using AI-assisted, prompt-first development."
     ]
   }

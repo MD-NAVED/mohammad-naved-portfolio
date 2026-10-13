@@ -14,7 +14,7 @@ Hi, I'm Mohammad Naved! I'm an AI-Assisted Builder and Prompt Engineer. I build 
 * **Web Development:** React, TypeScript, TailwindCSS
 
 ## 💻 Projects
-* **DataLens AI:** A full-stack AI analytics platform featuring an AI chat interface that converts natural-language questions into SQL queries via prompt-driven query generation.
+* **Analyst.AI:** An AI-powered data analytics suite featuring an AI Auto-Analyst chat interface that converts natural-language questions into SQL queries via prompt-driven query generation across datasets.
 * **AutoApply AI:** An automated job application system featuring a multi-step prompt chain that tailors resumes and cover letters based on job descriptions.
 
 ## 🚀 How to run this portfolio app locally
